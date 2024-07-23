@@ -1,0 +1,12 @@
+﻿namespace Temptica.TwitchBot.Bot.Alerts
+{
+    internal class ReSubAlert : SubAlert
+    {
+        public ReSubAlert(string username, string msg, string tts) : base(username)
+        {
+            Message = msg;
+            TTSMessage = tts;
+        }
+    }
+}
+
