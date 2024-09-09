@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshoafwqdnsi8"]
+
+[ext_resource type="PackedScene" uid="uid://cr4qsrvfdybed" path="res://Templates/laser.tscn" id="1_wtqjt"]
+
+[node name="EmoteShowOff" type="Node3D"]
+
+[node name="Laser" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(-0.102497, -0.994733, 0, 0.994733, -0.102497, 0, 0, 0, 1, -7.8, 0, 0)
+
+[node name="Laser2" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(-0.315169, -0.949036, 0, 0.949036, -0.315169, 0, 0, 0, 1, -7.8, 2, 0)
+
+[node name="Laser3" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(0.253893, -0.967232, 0, 0.967232, 0.253893, 0, 0, 0, 1, -7.8, -2, 0)
+
+[node name="Laser4" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(0.38444, 0.92315, 0, -0.92315, 0.38444, 0, 0, 0, 1, 7.8, 0, 0)
+
+[node name="Laser5" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(0.274647, 0.961545, 0, -0.961545, 0.274647, 0, 0, 0, 1, 7.8, 2, 0)
+
+[node name="Laser6" parent="." instance=ExtResource("1_wtqjt")]
+transform = Transform3D(-0.332375, 0.943147, 0, -0.943147, -0.332375, 0, 0, 0, 1, 7.8, -2, 0)

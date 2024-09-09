@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dovrejaqxj1au"]
+
+[ext_resource type="Script" path="res://Scripts/LaserShow/LaserShow.cs" id="1_2hdun"]
+[ext_resource type="PackedScene" uid="uid://cr4qsrvfdybed" path="res://Templates/laser.tscn" id="1_k1xjd"]
+
+[node name="LaserShow" type="Node3D"]
+script = ExtResource("1_2hdun")
+
+[node name="Laser" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(1.91068e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 5.5, 4.5, 0)
+visible = false
+
+[node name="Laser2" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(0.984808, -6.64077e-10, 0.173648, -0.173648, -7.5904e-09, 0.984808, 6.64077e-10, -1, -7.5904e-09, 5.5, 4.5, 0)
+visible = false
+
+[node name="Laser3" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(-7.5904e-09, -4.30473e-08, 1, -0.984808, 0.173648, 0, -0.173648, -0.984808, -4.37114e-08, 8, 4.5, 0)
+visible = false
+
+[node name="Laser4" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 8, 4.5, 0)
+visible = false
+
+[node name="Laser5" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 10.5, 4.5, 0)
+visible = false
+
+[node name="Laser6" parent="." instance=ExtResource("1_k1xjd")]
+transform = Transform3D(1.91068e-15, -4.37114e-08, 1, -0.999999, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 10.5, 4.5, 0)
+visible = false

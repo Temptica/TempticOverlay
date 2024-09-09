@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://vy81m6e3jwoe"]
+
+[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/Plane.cs" id="1_hplwo"]
+[ext_resource type="Texture2D" uid="uid://docvul8c3lx7h" path="res://Images/a400m.png" id="2_s8ofj"]
+[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/PeepoSpawner.cs" id="3_uee7c"]
+
+[node name="Plane" type="Node3D"]
+script = ExtResource("1_hplwo")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+texture = ExtResource("2_s8ofj")
+
+[node name="PeepoSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129348, -0.218567, -0.0186586)
+script = ExtResource("3_uee7c")

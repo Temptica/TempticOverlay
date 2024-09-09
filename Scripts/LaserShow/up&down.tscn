@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://byc7ohnmi8vir"]
+
+[ext_resource type="PackedScene" uid="uid://cr4qsrvfdybed" path="res://Templates/laser.tscn" id="1_sn8ri"]
+
+[sub_resource type="Animation" id="Animation_00vqq"]
+resource_name = "Up&Down"
+length = 164.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Laser")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Laser2")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Laser3")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Laser4")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array()
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Laser5")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array()
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Laser6")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array()
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uruxs"]
+_data = {
+"Up&Down": SubResource("Animation_00vqq")
+}
+
+[node name="Up&Down" type="Node3D"]
+
+[node name="Laser" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 4.5, 0)
+
+[node name="Laser2" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 4.5, 0)
+
+[node name="Laser3" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 0)
+
+[node name="Laser4" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 0)
+
+[node name="Laser5" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.5, 0)
+
+[node name="Laser6" parent="." instance=ExtResource("1_sn8ri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uruxs")
+}

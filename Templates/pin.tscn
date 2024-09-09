@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw1jgnqx2upy0"]
+
+[ext_resource type="CylinderMesh" uid="uid://dj2ape7i3jpn0" path="res://Meshes/plinko.tres" id="1_j0n4f"]
+[ext_resource type="PhysicsMaterial" uid="uid://chi15pa3qjnxy" path="res://PhysicMaterials/plinko.tres" id="2_hc3c8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_obqq8"]
+height = 0.3
+radius = 0.075
+
+[node name="Pin" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_j0n4f")
+
+[node name="PinBody" type="StaticBody3D" parent="."]
+collision_layer = 32
+collision_mask = 16
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = ExtResource("2_hc3c8")
+constant_angular_velocity = Vector3(0.174533, 0.174533, 0.174533)
+
+[node name="PinCollisionBox" type="CollisionShape3D" parent="PinBody"]
+shape = SubResource("CylinderShape3D_obqq8")

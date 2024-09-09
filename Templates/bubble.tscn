@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6wsfj3ojirv3"]
+
+[ext_resource type="Texture2D" uid="uid://d18fvfrom1rr" path="res://Images/Bubble.png" id="1_cvigm"]
+[ext_resource type="Script" path="res://Templates/Bubble.cs" id="1_khv37"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gs7x3"]
+resource_local_to_scene = true
+friction = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vgyt1"]
+resource_local_to_scene = true
+radius = 0.195852
+
+[node name="Bubble" type="RigidBody3D"]
+collision_layer = 7
+collision_mask = 4
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_gs7x3")
+gravity_scale = -0.05
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 1.0
+script = ExtResource("1_khv37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.005, 0.001)
+shape = SubResource("SphereShape3D_vgyt1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
+pixel_size = 0.001
+texture = ExtResource("1_cvigm")

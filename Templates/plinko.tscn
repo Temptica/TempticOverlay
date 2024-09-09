@@ -1,0 +1,143 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4xjqfscsjpgl"]
+
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_7d68t"]
+[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/Plinko.cs" id="1_67cxv"]
+[ext_resource type="PackedScene" uid="uid://dw1jgnqx2upy0" path="res://Templates/pin.tscn" id="1_addmo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bo7nq"]
+material = ExtResource("1_7d68t")
+size = Vector3(0.1, 0.3, 0.3)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pcmfl"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oaoxr"]
+size = Vector3(0.1, 0.3, 0.3)
+
+[sub_resource type="Animation" id="Animation_56nu2"]
+resource_name = "MoingWall"
+length = 30.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MovingWall")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -7, 0.3, 0, 14, 1, 7, 0.3, 0, 15, 1, 7, -0.7, 0, 29, 1, -7, -0.7, 0, 30, 1, -7, 0.3, 0)
+
+[sub_resource type="Animation" id="Animation_tya1v"]
+resource_name = "ShowPlinko"
+length = 2.0
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.001, 0.001, 0.001, 2, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6c0gl"]
+_data = {
+"MoveWall": SubResource("Animation_56nu2"),
+"ShowPlinko": SubResource("Animation_tya1v")
+}
+
+[node name="Plinko" type="Node3D"]
+script = ExtResource("1_67cxv")
+
+[node name="MovingWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05843, -0.7, 0)
+mesh = SubResource("BoxMesh_bo7nq")
+
+[node name="RigidBody3D" type="StaticBody3D" parent="MovingWall"]
+collision_layer = 32
+physics_material_override = SubResource("PhysicsMaterial_pcmfl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingWall/RigidBody3D"]
+visibility_parent = NodePath("../..")
+shape = SubResource("BoxShape3D_oaoxr")
+
+[node name="Pins" type="Node3D" parent="."]
+
+[node name="Pin" parent="Pins" instance=ExtResource("1_addmo")]
+skeleton = NodePath("../..")
+
+[node name="Pin2" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.5, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin3" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin4" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.5, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin5" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin11" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.5, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin12" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin13" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.5, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin14" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin15" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.725, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin16" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.225, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin17" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.725, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin18" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.225, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin19" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.725, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin20" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.775, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin21" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.275, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin22" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.775, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin23" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.275, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="Pin24" parent="Pins" instance=ExtResource("1_addmo")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.775, -1, 0)
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MovingWall")
+libraries = {
+"": SubResource("AnimationLibrary_6c0gl")
+}

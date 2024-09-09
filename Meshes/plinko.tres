@@ -1,0 +1,9 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=3 uid="uid://dj2ape7i3jpn0"]
+
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_bbq2p"]
+
+[resource]
+material = ExtResource("1_bbq2p")
+top_radius = 0.075
+bottom_radius = 0.075
+height = 0.3

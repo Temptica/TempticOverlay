@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr4qsrvfdybed"]
+
+[ext_resource type="Script" path="res://Scripts/Laser.cs" id="1_xxymq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jwktx"]
+resource_local_to_scene = true
+flip_faces = true
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgvmg"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0.384314, 0, 0.843137)
+emission_enabled = true
+emission = Color(1, 0.384314, 0, 1)
+emission_energy_multiplier = 10.0
+
+[node name="Laser" type="RayCast3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+exclude_parent = false
+target_position = Vector3(0, -30, 0)
+collision_mask = 41
+collide_with_areas = true
+script = ExtResource("1_xxymq")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="."]
+layers = 16
+transparency = 0.86
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_jwktx")
+surface_material_override/0 = SubResource("StandardMaterial3D_vgvmg")

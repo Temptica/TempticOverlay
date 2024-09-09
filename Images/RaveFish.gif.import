@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://c2fq2tj88phq7"
+path="res://.godot/imported/RaveFish.gif-7cd969ec8fba53531fb6b1c17058a7df.tres"
+
+[deps]
+
+source_file="res://Images/RaveFish.gif"
+dest_files=["res://.godot/imported/RaveFish.gif-7cd969ec8fba53531fb6b1c17058a7df.tres"]
+
+[params]
+
+frames_per_second=30
