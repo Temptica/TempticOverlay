@@ -139,4 +139,8 @@ public abstract class Alert
         AlertLabels.ShowAlert(this);
     }
 
+    public void SkipSpeech()
+    {
+        TextToSpeechService.Stop();
+    }
 }

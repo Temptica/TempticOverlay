@@ -118,11 +118,5 @@ public partial class Fish : RigidBody3D
 			
 			LinearVelocity = new Vector3(x, y, 0);
 		}
-		
-		
 	}
-	
-	
-	
-	
 }

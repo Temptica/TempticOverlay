@@ -158,4 +158,9 @@ public partial class AlertQueue : Node
 	{
 		Paused = true;
 	}
+
+	public static void SkipSpeech()
+	{
+		_currentAlert.SkipSpeech();
+	}
 }

@@ -1,13 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfghpwuiwsj57"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://davqd0wy4spsw" path="res://Templates/fishPhysicsMaterial.tres" id="1_7lovr"]
 [ext_resource type="Script" path="res://Scripts/Fishes/Fish.cs" id="1_lsf2j"]
 [ext_resource type="Texture2D" uid="uid://c3c41e5pp6pf8" path="res://Images/fishBlue.png" id="2_72fug"]
 [ext_resource type="Texture2D" uid="uid://c72g222xtmhaf" path="res://Images/fishOrange.png" id="3_6glt7"]
 [ext_resource type="SpriteFrames" uid="uid://c2fq2tj88phq7" path="res://Images/RaveFish.gif" id="4_p7eyf"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6m74g"]
-friction = 0.0
-bounce = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7oei"]
 size = Vector3(0.394913, 0.392822, 1)
@@ -18,7 +15,7 @@ collision_mask = 15
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
-physics_material_override = SubResource("PhysicsMaterial_6m74g")
+physics_material_override = ExtResource("1_7lovr")
 gravity_scale = 0.0
 linear_damp = 0.1
 script = ExtResource("1_lsf2j")

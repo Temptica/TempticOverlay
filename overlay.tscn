@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://sqlkahhtwtbi"]
+[gd_scene load_steps=52 format=3 uid="uid://sqlkahhtwtbi"]
 
 [ext_resource type="Script" path="res://Scripts/Overlay.cs" id="1_hqm4s"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_rs5k5"]
@@ -21,10 +21,11 @@
 [ext_resource type="Script" path="res://Scripts/Fishes/FishSpawner.cs" id="19_h5rfu"]
 [ext_resource type="Script" path="res://Scripts/OverlayClicker.cs" id="20_te3yf"]
 [ext_resource type="Script" path="res://Scripts/Labels/PartyModeLabel.cs" id="21_b10b6"]
-[ext_resource type="PackedScene" uid="uid://cr4qsrvfdybed" path="res://Templates/laser.tscn" id="22_j4q4c"]
 [ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://Scenes/emote_show_off.tscn" id="23_nmb5k"]
 [ext_resource type="Script" path="res://Scripts/BubbleSpawner.cs" id="24_c8sna"]
+[ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://Scenes/fish_duel.tscn" id="24_cir8p"]
 [ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://Scenes/lasershow.tscn" id="25_8y85k"]
+[ext_resource type="Texture2D" uid="uid://byqkpenl3y4p3" path="res://Images/Halloween/Pumpking.png" id="26_2iafw"]
 
 [sub_resource type="Environment" id="Environment_3kf53"]
 ambient_light_source = 3
@@ -46,7 +47,7 @@ albedo_color = Color(0, 0, 0, 0.513726)
 grow = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_3u44p"]
-size = Vector3(4, 3, 0.05)
+size = Vector3(4, 1.855, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt3bq"]
 albedo_color = Color(0, 0, 0, 1)
@@ -148,13 +149,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wck2e")
 [node name="AlertBox" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1.00537, 0, 0, 0, 1.00537, 0, 0, 0, 1.00537, 8, 4.5, -0.014)
-visible = false
 transparency = 0.53
 mesh = SubResource("BoxMesh_3u44p")
 surface_material_override/0 = SubResource("StandardMaterial3D_tt3bq")
 
 [node name="Sprite3D" type="Sprite3D" parent="AlertBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0971075)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.577815, 0.0971075)
 pixel_size = 0.005
 texture = SubResource("ViewportTexture_tqs4t")
 
@@ -207,24 +207,28 @@ libraries = {
 
 [node name="Glow4" type="MeshInstance3D" parent="AlertBox"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.49043, 0)
+visible = false
 mesh = SubResource("BoxMesh_3n0pd")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("8_kwnld")
 
 [node name="Glow5" type="MeshInstance3D" parent="AlertBox"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1.52885, 0)
+visible = false
 mesh = SubResource("BoxMesh_3n0pd")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("8_kwnld")
 
 [node name="Glow6" type="MeshInstance3D" parent="AlertBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02531, -0.0192466, 0)
+visible = false
 mesh = SubResource("BoxMesh_c7c0i")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("8_kwnld")
 
 [node name="Glow7" type="MeshInstance3D" parent="AlertBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03507, -0.0192466, 0)
+visible = false
 mesh = SubResource("BoxMesh_c7c0i")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("8_kwnld")
@@ -237,15 +241,6 @@ script = ExtResource("10_bfasq")
 [node name="AlertQueue" type="Node" parent="."]
 script = ExtResource("8_81w2r")
 
-[node name="PlaneSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5227, 6.87993, 0)
-script = ExtResource("14_xjvym")
-
-[node name="Plinko" parent="." instance=ExtResource("15_d00cj")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87826, 2.07304, 0)
-visible = false
-
 [node name="AudioListener" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("18_dd2qo")
@@ -256,12 +251,6 @@ stream = SubResource("AudioStreamMicrophone_3ncr7")
 autoplay = true
 bus = &"Music"
 
-[node name="FishSpawner" type="Node3D" parent="."]
-script = ExtResource("19_h5rfu")
-
-[node name="OverlayClicker" type="Node3D" parent="."]
-script = ExtResource("20_te3yf")
-
 [node name="PartyModeLabel" type="Label3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.72293, 0)
@@ -269,10 +258,6 @@ visible = false
 text = "PARTY MODE ENABLED"
 font_size = 64
 script = ExtResource("21_b10b6")
-
-[node name="Laser" parent="." instance=ExtResource("22_j4q4c")]
-transform = Transform3D(-0.390747, -0.920498, 0, 0.920498, -0.390747, 0, 0, 0, 1, 0.205277, 2.05688, -0.0338135)
-visible = false
 
 [node name="Borders" type="Node3D" parent="."]
 
@@ -447,8 +432,31 @@ shape = SubResource("BoxShape3D_y56as")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 visible = false
 
-[node name="BubbleSpawner" type="Node3D" parent="."]
+[node name="LaserShow" parent="." instance=ExtResource("25_8y85k")]
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="PlaneSpawner" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5227, 6.87993, 0)
+script = ExtResource("14_xjvym")
+
+[node name="Plinko" parent="Spawners" instance=ExtResource("15_d00cj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87826, 2.07304, 0)
+visible = false
+
+[node name="FishSpawner" type="Node3D" parent="Spawners"]
+script = ExtResource("19_h5rfu")
+
+[node name="BubbleSpawner" type="Node3D" parent="Spawners"]
 unique_name_in_owner = true
 script = ExtResource("24_c8sna")
 
-[node name="LaserShow" parent="." instance=ExtResource("25_8y85k")]
+[node name="FishDuel" parent="Spawners" instance=ExtResource("24_cir8p")]
+
+[node name="OverlayClicker" type="Node3D" parent="Spawners"]
+script = ExtResource("20_te3yf")
+
+[node name="Pumpking" type="Sprite3D" parent="."]
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.982552, 0.802567, 0)
+texture = ExtResource("26_2iafw")

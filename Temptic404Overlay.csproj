@@ -39,7 +39,4 @@
     <Content Include="AudioFiles\sub_alert.wav" />
     <Content Include="AudioFiles\water.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\SignalR\Listeners\Alert\" />
-  </ItemGroup>
 </Project>

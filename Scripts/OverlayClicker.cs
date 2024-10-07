@@ -23,7 +23,7 @@ public partial class OverlayClicker : Node3D
 			
 			
 			//check hits any of teh fishes
-			if(FishSpawner.CheckFishesHit(new Vector2(float.Parse(model.X)*16,  9 - float.Parse(model.Y)*9), model.Username))
+			if(FishSpawner.CheckFishesHit(new Vector2(clickPos.X,  clickPos.Y), model.Username))
 				return;
 			
 			if(_bubbleSpawner.CheckBubbleHit(clickPos))

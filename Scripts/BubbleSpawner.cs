@@ -35,12 +35,10 @@ public partial class BubbleSpawner : Node3D
     {
         try
         {
-            var children = CallThreadSafe("get_children").AsGodotArray<Node>();
-            GD.Print($"found {children.Count} bubbles");
+            var children = _bubbles.ToList();
 
             return children
-                .Where(b => b is Bubble)
-                .Cast<Bubble>()
+                .Where(b => b != null)
                 .Any(child => child.CheckClick(clickPos));
         }
         catch (Exception e)

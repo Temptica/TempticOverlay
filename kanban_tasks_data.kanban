@@ -10,7 +10,9 @@
 		{
 			"uuid": "f2e700cd-067d-41f1-b139-9fb61b127630",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"a8329f62-9ee6-45ca-a38b-67b1ca9107ce"
+			]
 		},
 		{
 			"uuid": "1cbec840-7efd-4da0-b995-38baa7b47c5b",
@@ -27,6 +29,13 @@
 		{
 			"uuid": "673e8cc4-54df-4a91-af93-865831016730",
 			"title": "New task",
+			"description": "",
+			"category": "408a531f-3242-43be-a4b3-19947ad0c1bd",
+			"steps": []
+		},
+		{
+			"uuid": "a8329f62-9ee6-45ca-a38b-67b1ca9107ce",
+			"title": "Fix bubbles not getting clicked",
 			"description": "",
 			"category": "408a531f-3242-43be-a4b3-19947ad0c1bd",
 			"steps": []

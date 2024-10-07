@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptic404Overlay.Scripts.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -60,5 +61,10 @@ public class SignalRService : IAsyncDisposable
 	public void AddPoints(string username, int sum)
 	{
 		_overlayHubConnection.InvokeAsync("FishClicked", username, sum);
+	}
+
+	public void DuelWinnerColor(FishColor winnerFish)
+	{
+		_overlayHubConnection.InvokeAsync("DuelWinnerColor", (int)winnerFish);
 	}
 }
