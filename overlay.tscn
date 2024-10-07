@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://sqlkahhtwtbi"]
+[gd_scene load_steps=53 format=3 uid="uid://sqlkahhtwtbi"]
 
 [ext_resource type="Script" path="res://Scripts/Overlay.cs" id="1_hqm4s"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_rs5k5"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://Scenes/fish_duel.tscn" id="24_cir8p"]
 [ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://Scenes/lasershow.tscn" id="25_8y85k"]
 [ext_resource type="Texture2D" uid="uid://byqkpenl3y4p3" path="res://Images/Halloween/Pumpking.png" id="26_2iafw"]
+[ext_resource type="PackedScene" uid="uid://x44fy0hjs7fp" path="res://Scenes/slot_machine.tscn" id="27_8i0r4"]
 
 [sub_resource type="Environment" id="Environment_3kf53"]
 ambient_light_source = 3
@@ -460,3 +461,6 @@ script = ExtResource("20_te3yf")
 [node name="Pumpking" type="Sprite3D" parent="."]
 transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.982552, 0.802567, 0)
 texture = ExtResource("26_2iafw")
+
+[node name="SlotMachine" parent="." instance=ExtResource("27_8i0r4")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1, 0)

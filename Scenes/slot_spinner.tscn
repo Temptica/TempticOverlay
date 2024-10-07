@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bge0jhusdlhhj"]
+
+[ext_resource type="Texture2D" uid="uid://c3c41e5pp6pf8" path="res://Images/fishBlue.png" id="1_fcr3e"]
+[ext_resource type="Texture2D" uid="uid://kpvhvbh3c0ia" path="res://Images/fishGray.png" id="2_07pjd"]
+[ext_resource type="Texture2D" uid="uid://r640qjioqrss" path="res://Images/fishGreen.png" id="3_k48k2"]
+[ext_resource type="Texture2D" uid="uid://c72g222xtmhaf" path="res://Images/fishOrange.png" id="4_sf4ip"]
+[ext_resource type="Texture2D" uid="uid://dsmcio666hcak" path="res://Images/fishPink.png" id="5_8vo42"]
+[ext_resource type="Texture2D" uid="uid://deu5682byrn1m" path="res://Images/fishPurple.png" id="6_hwve4"]
+[ext_resource type="Texture2D" uid="uid://c7k7echpvic6h" path="res://Images/fishRed.png" id="7_r1cjy"]
+[ext_resource type="SpriteFrames" uid="uid://c2fq2tj88phq7" path="res://Images/RaveFish.gif" id="8_4hbwm"]
+
+[node name="SlotSpinner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="FishBlue" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+texture = ExtResource("1_fcr3e")
+
+[node name="FishGray" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707106, -0.707106, 0, 0.707106, 0.707106, 0, -0.25, 0.25)
+texture = ExtResource("2_07pjd")
+
+[node name="FishGreen" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
+texture = ExtResource("3_k48k2")
+
+[node name="FishOrange" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, -0.25, -0.25)
+texture = ExtResource("4_sf4ip")
+
+[node name="FishPink" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -0.5)
+texture = ExtResource("5_8vo42")
+
+[node name="FishPurple" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0.25, -0.25)
+texture = ExtResource("6_hwve4")
+
+[node name="FishRed" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0.5, 0)
+texture = ExtResource("7_r1cjy")
+
+[node name="FishRainbow" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.65, 0, 0, 0, 0.459619, 0.459619, 0, -0.459619, 0.459619, 0, 0.25, 0.25)
+sprite_frames = ExtResource("8_4hbwm")
+animation = &"gif"
