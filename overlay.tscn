@@ -150,6 +150,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wck2e")
 [node name="AlertBox" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1.00537, 0, 0, 0, 1.00537, 0, 0, 0, 1.00537, 8, 4.5, -0.014)
+visible = false
 transparency = 0.53
 mesh = SubResource("BoxMesh_3u44p")
 surface_material_override/0 = SubResource("StandardMaterial3D_tt3bq")
@@ -463,4 +464,4 @@ transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.982552, 0.80256
 texture = ExtResource("26_2iafw")
 
 [node name="SlotMachine" parent="." instance=ExtResource("27_8i0r4")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3, 1, 0)
+transform = Transform3D(1.27739, 0, 0.7375, 0, 1.475, 0, -0.7375, 0, 1.27739, 3, 1.35016, 0)

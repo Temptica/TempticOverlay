@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://x44fy0hjs7fp"]
 
 [ext_resource type="Script" path="res://Scripts/SlotMachine.cs" id="1_21cys"]
+[ext_resource type="PackedScene" uid="uid://bge0jhusdlhhj" path="res://Scenes/slot_spinner.tscn" id="2_nq5jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iot5y"]
 albedo_color = Color(0.000246814, 0.29698, 0.430227, 1)
@@ -8,25 +9,22 @@ albedo_color = Color(0.000246814, 0.29698, 0.430227, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_o4is3"]
 material = SubResource("StandardMaterial3D_iot5y")
 
-[sub_resource type="BoxMesh" id="BoxMesh_5n57v"]
-size = Vector3(0.2, 0.3, 1)
-
-[node name="SlotMachine" type="Node3D"]
+[node name="SlotMachine" type="Node3D" node_paths=PackedStringArray("_leftSpinner", "_centerSpinner", "_rightSpinner")]
 script = ExtResource("1_21cys")
+_leftSpinner = NodePath("MainBody/LeftSlotSpinner")
+_centerSpinner = NodePath("MainBody/CenterSlotSpinner2")
+_rightSpinner = NodePath("MainBody/RightSlotSpinner3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="MainBody" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_o4is3")
 
-[node name="LeftWindow" type="MeshInstance3D" parent="MainBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.06)
-mesh = SubResource("BoxMesh_5n57v")
+[node name="LeftSlotSpinner" parent="MainBody" instance=ExtResource("2_nq5jh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.369613)
 
-[node name="CenterWindow" type="MeshInstance3D" parent="MainBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06)
-mesh = SubResource("BoxMesh_5n57v")
+[node name="CenterSlotSpinner2" parent="MainBody" instance=ExtResource("2_nq5jh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37)
 
-[node name="RightWindow" type="MeshInstance3D" parent="MainBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.06)
-mesh = SubResource("BoxMesh_5n57v")
+[node name="RightSlotSpinner3" parent="MainBody" instance=ExtResource("2_nq5jh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.37)

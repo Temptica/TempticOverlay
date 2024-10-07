@@ -29,6 +29,7 @@ public partial class Overlay : Node3D
 		_spotifyService = new SpotifyService(tokens);
 		_ = Task.Run(async () => await _spotifyService.Initialize());
 		VoiceMeeterService.LogIn().Wait();
+		SlotMachine.Spin("test", 100);
 	}
 
 	public override async void _Notification(int what)

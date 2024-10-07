@@ -33,7 +33,6 @@ public partial class AlertLabels : VBoxContainer
 		_alertTypeLabel.Text = e.Event.ToString();
 		_alertBox.Show();
 		_alertAnimationPlayer.Play("ShowAlertBox");
-		
 	}
 	
 	public static void HideAlert()
