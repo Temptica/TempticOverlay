@@ -6,11 +6,16 @@ public partial class SlotSpinner : Node3D
     [Export]
     private AnimatedSprite3D _rainbowFish;
     private double _spinSpeedMax;
-    private double _spinSlowDown = 1;
+    private double _spinSlowDown = 2;
     private double _spinSpeed;
     private SpinnerState _spinnerState = SpinnerState.Stopped;
     private SpinFishType _spinFishType;
-    
+
+    public static readonly SpinFishType[] SpinnersFish = [
+        SpinFishType.Blue, SpinFishType.Rainbow, SpinFishType.Red,SpinFishType.Purple, SpinFishType.Blue,  SpinFishType.Orange,
+        SpinFishType.Red,SpinFishType.Green
+    ];
+
     public override void _Ready()
     {
         _rainbowFish.Play("gif");
@@ -35,48 +40,32 @@ public partial class SlotSpinner : Node3D
                 }
                 break;
             //slow down
-            case SpinnerState.SlowingDown when _spinSpeed > 0.02f :
+            case SpinnerState.SlowingDown when _spinSpeed > 0.0001f :
                 _spinSpeed -= _spinSlowDown*delta;
                 break;
-            case SpinnerState.SlowingDown when _spinSpeed > 0:
-                //smoothly stop spinning to end up on X being _fishType * 45
-                var target = (int)_spinFishType * 45;
-                if(target > 180)
-                    target -= 360;
-                if (GlobalRotationDegrees.X < target)
-                {
-                    GD.Print(Mathf.Lerp(GlobalRotationDegrees.X, target, (float)delta *0.025f));
-                    RotateX(Mathf.Lerp(GlobalRotationDegrees.X, target, (float)delta *0.5f));
-                    return;
-                }
-                if (GlobalRotationDegrees.X > target)
-                {
-                    RotateX(Mathf.Lerp(GlobalRotationDegrees.X, target, (float)delta *0.025f));
-                    return;
-                }
-                _spinnerState = SpinnerState.Stopped;
-                GD.Print("Stopped");
-
-                break;
+            //stop
             case SpinnerState.SlowingDown:
+                var target = (int)_spinFishType * 45;
+                RotationDegrees = new Vector3(target, RotationDegrees.Y, RotationDegrees.Z);
+                _spinSpeed = 0;
                 _spinnerState = SpinnerState.Stopped;
                 break;
             default: return;
         }
-        //rotate the spinner
         RotateX((float)_spinSpeed);
-        GD.Print(_spinSpeed);
     }
 
     public bool IsSpinning()
     {
         return _spinnerState != SpinnerState.Stopped;
     }
+
+    public SpinFishType GetSpinResult() => _spinFishType;
 }
 
 public enum SpinFishType
 {
-    Blue, Rainbow, Red, Purple, Pink, Orange, Green, Gray
+    Blue, Rainbow, Red, Purple, Orange, Green
 }
 
 public enum SpinnerState

@@ -6,16 +6,16 @@
 [ext_resource type="Material" uid="uid://b7mmwwh0ujia0" path="res://Materials/purple_fish.tres" id="4_ltdna"]
 [ext_resource type="Material" uid="uid://dykqo3qb6pk3f" path="res://Materials/pink_fish.tres" id="5_igwvw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gth4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekigy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_apg8b"]
-material = SubResource("StandardMaterial3D_7gth4")
+material = SubResource("StandardMaterial3D_ekigy")
 size = Vector3(4, 0.25, 0.01)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csh15"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwr0y"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ym6hw"]
-material = SubResource("StandardMaterial3D_csh15")
+material = SubResource("StandardMaterial3D_xwr0y")
 size = Vector3(4, 0.25, 0.01)
 
 [node name="FishDuel" type="Node3D" node_paths=PackedStringArray("_leftMeshInstance", "_rightMeshInstance")]

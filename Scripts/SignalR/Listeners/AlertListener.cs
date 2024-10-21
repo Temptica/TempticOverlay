@@ -9,7 +9,6 @@ namespace Temptic404Overlay.Scripts.SignalR.Listeners;
 
 public class AlertListener : ISignalRListener
 {
-	
 	public AlertListener(HubConnection connection)
 	{
 		connection.On<string, string, AlertType,int>("Alert", (user, message, type, amount) =>

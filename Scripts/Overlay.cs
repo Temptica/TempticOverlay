@@ -18,18 +18,17 @@ public partial class Overlay : Node3D
 	public static SpotifyService SpotifyService => _spotifyService;
 	private static SignalRService _signalRService;
 	private static SpotifyService _spotifyService;
-	
 
 	public override void _Ready()
 	{
 		_signalRService = new SignalRService();
+		
 		var tokens = new AccessTokenService();
 		
 		tokens.LoadTokens();
 		_spotifyService = new SpotifyService(tokens);
 		_ = Task.Run(async () => await _spotifyService.Initialize());
 		VoiceMeeterService.LogIn().Wait();
-		SlotMachine.Spin("test", 100);
 	}
 
 	public override async void _Notification(int what)

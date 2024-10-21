@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4nxeh7fakmc"]
+
+[ext_resource type="Script" path="res://Scripts/AdTimer.cs" id="1_m3ea2"]
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_wieh2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5m2uk"]
+material = ExtResource("1_wieh2")
+size = Vector3(4.02, 0.27, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5xwe"]
+albedo_color = Color(0.847059, 0.388235, 0, 0.886275)
+
+[sub_resource type="BoxMesh" id="BoxMesh_76ges"]
+material = SubResource("StandardMaterial3D_e5xwe")
+size = Vector3(4, 0.25, 0.01)
+
+[node name="AdTimer" type="Node3D"]
+script = ExtResource("1_m3ea2")
+
+[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5m2uk")
+
+[node name="FrontMeshInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+mesh = SubResource("BoxMesh_76ges")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.052124)
+text = "Ads in 0 seconds	"

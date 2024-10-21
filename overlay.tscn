@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://sqlkahhtwtbi"]
+[gd_scene load_steps=56 format=3 uid="uid://sqlkahhtwtbi"]
 
 [ext_resource type="Script" path="res://Scripts/Overlay.cs" id="1_hqm4s"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_rs5k5"]
@@ -27,6 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://Scenes/lasershow.tscn" id="25_8y85k"]
 [ext_resource type="Texture2D" uid="uid://byqkpenl3y4p3" path="res://Images/Halloween/Pumpking.png" id="26_2iafw"]
 [ext_resource type="PackedScene" uid="uid://x44fy0hjs7fp" path="res://Scenes/slot_machine.tscn" id="27_8i0r4"]
+[ext_resource type="Texture2D" uid="uid://cyochraqbdb2h" path="res://Images/Halloween/witch-hat.png" id="28_t6rqo"]
+[ext_resource type="PackedScene" uid="uid://d4nxeh7fakmc" path="res://Scenes/ad_timer.tscn" id="29_4kghx"]
+[ext_resource type="Texture2D" uid="uid://74qfevgtrnf5" path="res://Images/Noor.png" id="30_cphfa"]
 
 [sub_resource type="Environment" id="Environment_3kf53"]
 ambient_light_source = 3
@@ -460,8 +463,21 @@ script = ExtResource("24_c8sna")
 script = ExtResource("20_te3yf")
 
 [node name="Pumpking" type="Sprite3D" parent="."]
-transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 0.982552, 0.802567, 0)
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 1.20142, 0.764946, -0.112427)
 texture = ExtResource("26_2iafw")
 
 [node name="SlotMachine" parent="." instance=ExtResource("27_8i0r4")]
-transform = Transform3D(1.27739, 0, 0.7375, 0, 1.475, 0, -0.7375, 0, 1.27739, 3, 1.35016, 0)
+transform = Transform3D(1.27739, 0, 0.7375, 0, 1.475, 0, -0.7375, 0, 1.27739, 3, -5, 0)
+
+[node name="WichHat" type="Sprite3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 15.6025, 2.3999, -1.09387)
+visible = false
+texture = ExtResource("28_t6rqo")
+
+[node name="AdTimer" parent="." instance=ExtResource("29_4kghx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36864, 8.13921, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66174, 5.26282, -2.16418)
+visible = false
+texture = ExtResource("30_cphfa")

@@ -1,7 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://x44fy0hjs7fp"]
+[gd_scene load_steps=15 format=3 uid="uid://x44fy0hjs7fp"]
 
 [ext_resource type="Script" path="res://Scripts/SlotMachine.cs" id="1_21cys"]
 [ext_resource type="PackedScene" uid="uid://bge0jhusdlhhj" path="res://Scenes/slot_spinner.tscn" id="2_nq5jh"]
+[ext_resource type="Material" uid="uid://b46jn5oc5l6h3" path="res://Materials/handle.tres" id="3_770jr"]
+
+[sub_resource type="Animation" id="Animation_oh64x"]
+resource_name = "Hide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SetIsOffScreen"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sn0x6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_3q1nv"]
+resource_name = "ShowUp"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.933333, 0.0198402, 1.5, -0.633333, 0.0331049, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SetIsOnScreen"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lw00g"]
+resource_name = "StartSpin"
+length = 2.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpinHandle:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.04325, -0.25, 0, 0.4, -0.455997, 0, -0.9, 0.0715446, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7mng"]
+_data = {
+"Hide": SubResource("Animation_oh64x"),
+"RESET": SubResource("Animation_sn0x6"),
+"ShowUp": SubResource("Animation_3q1nv"),
+"StartSpin": SubResource("Animation_lw00g")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iot5y"]
 albedo_color = Color(0.000246814, 0.29698, 0.430227, 1)
@@ -9,13 +104,35 @@ albedo_color = Color(0.000246814, 0.29698, 0.430227, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_o4is3"]
 material = SubResource("StandardMaterial3D_iot5y")
 
-[node name="SlotMachine" type="Node3D" node_paths=PackedStringArray("_leftSpinner", "_centerSpinner", "_rightSpinner")]
+[sub_resource type="BoxMesh" id="BoxMesh_wtbf7"]
+material = ExtResource("3_770jr")
+size = Vector3(0.08, 0.84, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gss68"]
+albedo_color = Color(0.753217, 0, 0.0179043, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_34q51"]
+material = SubResource("StandardMaterial3D_gss68")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f5yog"]
+material = ExtResource("3_770jr")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.1
+
+[node name="SlotMachine" type="Node3D" node_paths=PackedStringArray("_leftSpinner", "_centerSpinner", "_rightSpinner", "_animationPlayer", "_usernameLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 script = ExtResource("1_21cys")
 _leftSpinner = NodePath("MainBody/LeftSlotSpinner")
-_centerSpinner = NodePath("MainBody/CenterSlotSpinner2")
-_rightSpinner = NodePath("MainBody/RightSlotSpinner3")
+_centerSpinner = NodePath("MainBody/CenterSlotSpinner")
+_rightSpinner = NodePath("MainBody/RightSlotSpinner")
+_animationPlayer = NodePath("AnimationPlayer")
+_usernameLabel = NodePath("Name")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t7mng")
+}
 
 [node name="MainBody" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_o4is3")
@@ -23,8 +140,31 @@ mesh = SubResource("BoxMesh_o4is3")
 [node name="LeftSlotSpinner" parent="MainBody" instance=ExtResource("2_nq5jh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.369613)
 
-[node name="CenterSlotSpinner2" parent="MainBody" instance=ExtResource("2_nq5jh")]
+[node name="CenterSlotSpinner" parent="MainBody" instance=ExtResource("2_nq5jh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37)
 
-[node name="RightSlotSpinner3" parent="MainBody" instance=ExtResource("2_nq5jh")]
+[node name="RightSlotSpinner" parent="MainBody" instance=ExtResource("2_nq5jh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.37)
+
+[node name="Name" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.327087, 0.509743)
+pixel_size = 0.0023
+text = "Tomatoes_cannotBeTrusted"
+
+[node name="SpinHandle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.508812, -0.386139, 0)
+
+[node name="HandGrip" type="MeshInstance3D" parent="SpinHandle"]
+transform = Transform3D(1, 0, 0, 0, 0.764413, 0, 0, 0, 1, 0.0746049, 0.270271, 0)
+mesh = SubResource("BoxMesh_wtbf7")
+skeleton = NodePath("../..")
+
+[node name="HandGribTop" type="MeshInstance3D" parent="SpinHandle/HandGrip"]
+transform = Transform3D(0.157, 0, 0, 0, 0.206, 0, 0, 0, 0.157, 0, 0.447, 0)
+mesh = SubResource("SphereMesh_34q51")
+skeleton = NodePath("../..")
+
+[node name="TurnPoint" type="MeshInstance3D" parent="SpinHandle"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_f5yog")

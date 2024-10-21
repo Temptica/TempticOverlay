@@ -18,21 +18,28 @@ public class SignalRService : IAsyncDisposable
 	
 	public SignalRService()
 	{
-		_overlayHubConnection = new HubConnectionBuilder()
-			.WithUrl(hubUrl+"/OverlayHub")
-			.Build();
-			GD.Print(hubUrl);
-		_overlayHubConnection.Closed += async (error) =>
+		try
 		{
-			GD.Print("Connection closed");
-			_isConnected = false;
-			await Task.Delay(1000);
-			await StartAsync();
-		};
+			_overlayHubConnection = new HubConnectionBuilder()
+				.WithUrl(hubUrl+"/OverlayHub")
+				.Build();
+			GD.Print(hubUrl);
+			_overlayHubConnection.Closed += async (error) =>
+			{
+				GD.Print("Connection closed");
+				_isConnected = false;
+				await Task.Delay(1000);
+				await StartAsync();
+			};
 		
-		_listeners = SignalRReflection.RegisterListeners(_overlayHubConnection);
+			_listeners = SignalRReflection.RegisterListeners(_overlayHubConnection);
 
-		_ = StartAsync();
+			_ = StartAsync();
+		}
+		catch (Exception e)
+		{
+			GD.Print(e);
+		}
 	}
 
 	private async Task StartAsync()
@@ -46,6 +53,7 @@ public class SignalRService : IAsyncDisposable
 			}
 			await _overlayHubConnection.StartAsync();
 			_isConnected = _overlayHubConnection.State == HubConnectionState.Connected;
+			GD.Print("Connected");
 		}
 		catch (Exception e)
 		{
@@ -62,9 +70,19 @@ public class SignalRService : IAsyncDisposable
 	{
 		_overlayHubConnection.InvokeAsync("FishClicked", username, sum);
 	}
+	
+	public void SendChatMessage(string message)
+	{
+		_overlayHubConnection.InvokeAsync("SendChatMessage", message);
+	}
 
 	public void DuelWinnerColor(FishColor winnerFish)
 	{
 		_overlayHubConnection.InvokeAsync("DuelWinnerColor", (int)winnerFish);
+	}
+
+	public async Task RequestAdTime()
+	{
+		await _overlayHubConnection.InvokeAsync("NextAdRequest");
 	}
 }
