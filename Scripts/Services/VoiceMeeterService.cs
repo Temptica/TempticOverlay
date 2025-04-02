@@ -18,18 +18,18 @@ public class VoiceMeeterService
     {
         try
         {
-            _loggedIn = await Remote.Login(Type);
+            GD.Print("Login in ...");
+            _disposable = await Remote.Initialize(Type);
 
-            if (!_loggedIn)
+            if (_disposable is null)
             {
                 GD.Print("Failed to login to VoiceMeeter");
                 return;
             }
-        
+            
+            GD.Print("Staring");
             Remote.Start(Type);
-            
-            _disposable = await Remote.Initialize(Type);
-            
+            GD.Print("started");
         }
         catch (Exception e)
         {
@@ -38,28 +38,23 @@ public class VoiceMeeterService
         }
     }
     
-    public static async Task MuteSpotify()
+    public static void MuteSpotify()
     {
         try
         {
-            //Mute Spotify
             Remote.SetParameter("Strip[0].Mute", 1);
         }
         catch (Exception e)
         {
-            //wait for the user to login to VoiceMeeter
-            
-            
             GD.PrintErr(e);
             throw;
         }
     }
     
-    public static async Task UnmuteSpotify()
+    public static void UnmuteSpotify()
     {
         try
         {
-            //Unmute Spotify
             Remote.SetParameter("Strip[0].Mute", 0);
         }
         catch (Exception e)
@@ -69,7 +64,7 @@ public class VoiceMeeterService
         }
     }
 
-    public static async Task Logout()
+    public static void Logout()
     {
         _disposable.Dispose();
     }

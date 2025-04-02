@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbwqubbq37uxa"]
+
+[ext_resource type="PackedScene" uid="uid://dqm5rhv5r88dq" path="res://Materials/Pipe.glb" id="1_kulht"]
+[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://scenes/BubbleMachineSpawner.cs" id="2_5x37d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_om47i"]
+size = Vector3(0.675781, 0.735046, 0.604492)
+
+[node name="BubbleMachine" type="Node3D"]
+
+[node name="Pipe" parent="." instance=ExtResource("1_kulht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247803, 0, -0.0518799)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.802078, 0, -0.597219, 0, 1, 0, 0.597219, 0, 0.802078, 0, 0, 1.27711)
+light_energy = 0.127
+
+[node name="BubblesSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030014, 0.482345, 0.34638)
+script = ExtResource("2_5x37d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162109, 0.323578, 0.112793)
+shape = SubResource("BoxShape3D_om47i")

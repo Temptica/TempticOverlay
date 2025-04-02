@@ -1,0 +1,17 @@
+using System;
+using Microsoft.AspNetCore.SignalR.Client;
+
+namespace Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
+
+public class ThrowPlushieListener : ISignalRListener
+{
+    public static EventHandler OnThrowPlushie;
+
+    public ThrowPlushieListener(HubConnection hubConnection)
+    {
+        hubConnection.On("ThrowPlushie", () =>
+        {
+            OnThrowPlushie?.Invoke(null, EventArgs.Empty);
+        });
+    }
+}

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5n3h0hermdxt"]
+[gd_scene load_steps=12 format=3 uid="uid://c5n3h0hermdxt"]
 
-[ext_resource type="Script" path="res://Scenes/FishDuel.cs" id="1_jku8s"]
+[ext_resource type="Script" uid="uid://bh5dc3our0cyo" path="res://scenes/FishDuel.cs" id="1_jku8s"]
 [ext_resource type="Material" uid="uid://chab85jjbor3f" path="res://Materials/red_fish.tres" id="2_tkif4"]
 [ext_resource type="Material" uid="uid://clpvm5x5ex4k3" path="res://Materials/green_fish.tres" id="3_50p8r"]
 [ext_resource type="Material" uid="uid://b7mmwwh0ujia0" path="res://Materials/purple_fish.tres" id="4_ltdna"]
 [ext_resource type="Material" uid="uid://dykqo3qb6pk3f" path="res://Materials/pink_fish.tres" id="5_igwvw"]
+[ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="6_6e4u4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekigy"]
 
@@ -18,10 +19,15 @@ size = Vector3(4, 0.25, 0.01)
 material = SubResource("StandardMaterial3D_xwr0y")
 size = Vector3(4, 0.25, 0.01)
 
-[node name="FishDuel" type="Node3D" node_paths=PackedStringArray("_leftMeshInstance", "_rightMeshInstance")]
+[sub_resource type="BoxMesh" id="BoxMesh_4gq64"]
+material = ExtResource("6_6e4u4")
+size = Vector3(0.1, 0.25, 0.01)
+
+[node name="FishDuel" type="Node3D" node_paths=PackedStringArray("_leftMeshInstance", "_rightMeshInstance", "_centerMeshInstance")]
 script = ExtResource("1_jku8s")
 _leftMeshInstance = NodePath("LeftMeshInstance")
 _rightMeshInstance = NodePath("RightMeshInstance")
+_centerMeshInstance = NodePath("CenterInstance")
 _redFishMaterial = ExtResource("2_tkif4")
 _greenFishMaterial = ExtResource("3_50p8r")
 _pinkFishMaterial = ExtResource("5_igwvw")
@@ -36,3 +42,8 @@ mesh = SubResource("BoxMesh_apg8b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_ym6hw")
+
+[node name="CenterInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0.01)
+visible = false
+mesh = SubResource("BoxMesh_4gq64")

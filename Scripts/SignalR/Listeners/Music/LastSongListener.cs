@@ -7,15 +7,15 @@ public class LastSongListener : ISignalRListener
 {
     public LastSongListener(HubConnection hubConnection)
     {
-        hubConnection.On("LastSong", () =>
+        hubConnection.On("LastSong", async () =>
         {
             try
             {
-                hubConnection.InvokeAsync("SendChatMessage", $"Last played: {SpotifyService.GetLastSong()}");
+                await hubConnection.InvokeAsync("SendChatMessage", $"Last played: {await SpotifyService.GetLastSong()}");
             }
             catch (SongNotFoundException e)
             {
-                hubConnection.InvokeAsync("SendChatMessage", e.Message);
+                await hubConnection.InvokeAsync("SendChatMessage", e.Message);
             }
         });
     }

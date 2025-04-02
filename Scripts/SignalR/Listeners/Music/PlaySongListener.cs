@@ -13,7 +13,13 @@ public class PlaySongListener : ISignalRListener
             // Play song
             try
             {
-                await hubConnection.InvokeAsync("SendChatMessage", $"Added {SpotifyService.AddSongToQueue(song)} to the queue.");    
+                var songName = await SpotifyService.AddSongToQueue(song);
+                
+                await hubConnection.InvokeAsync("SendChatMessage", $"Added {songName} to the queue.");
+            }
+            catch (SongNotFoundException)
+            {
+                await hubConnection.InvokeAsync("SendChatMessage", "Song not found.");
             }
             catch (Exception e)
             {

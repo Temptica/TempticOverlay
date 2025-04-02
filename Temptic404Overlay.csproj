@@ -1,10 +1,10 @@
-<Project Sdk="Godot.NET.Sdk/4.3.0">
+<Project Sdk="Godot.NET.Sdk/4.4.0">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <LangVersion>12</LangVersion>
+    <UserSecretsId>6afccc16-f5b8-4fa9-a9e7-c45e3d409df2</UserSecretsId>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
@@ -12,11 +12,6 @@
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
     <PackageReference Include="System.Speech" Version="8.0.0" />
     <PackageReference Include="VoicemeeterRemote" Version="1.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Temptica.TwitchBot.Shared">
-      <HintPath>..\..\Gamedev\Temptica.TwitchBot\Temptica.TwitchBot.Shared\bin\Debug\net8.0\Temptica.TwitchBot.Shared.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AudioFiles\flashbang.wav" />
@@ -38,5 +33,10 @@
     <Content Include="AudioFiles\raidAlert.wav" />
     <Content Include="AudioFiles\sub_alert.wav" />
     <Content Include="AudioFiles\water.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Temptica.TwitchBot.Shared">
+      <HintPath>..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\bin\Release\net8.0\Temptica.TwitchBot.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

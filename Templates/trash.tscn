@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://de53yhr240hdi"]
+
+[ext_resource type="Script" uid="uid://cbe1tq2y7wja2" path="res://Scripts/Trash.cs" id="1_y3s7i"]
+[ext_resource type="Texture2D" uid="uid://c1wcrarxnujtq" path="res://Images/Trash/Bag.png" id="2_4hmvr"]
+[ext_resource type="Texture2D" uid="uid://b435vl7vkobhd" path="res://Images/Trash/Bottel_1.png" id="3_pk0qo"]
+[ext_resource type="Texture2D" uid="uid://c8s5fqerxsfa0" path="res://Images/Trash/Bottel_2.png" id="4_h3n0t"]
+[ext_resource type="Texture2D" uid="uid://dsqlqkm04ido5" path="res://Images/Trash/Dead_fish.png" id="5_2ncda"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68tjx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4vbx"]
+size = Vector3(0.720703, 1.07788, 1)
+
+[node name="Trash" type="RigidBody3D" node_paths=PackedStringArray("_trashTextures")]
+collision_layer = 4096
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_68tjx")
+script = ExtResource("1_y3s7i")
+_trashTextures = [NodePath("BagSprite"), NodePath("Bottle1Sprite"), NodePath("Bottle2Sprite"), NodePath("FishBoneSprite")]
+Amplitude = 0.765
+_fallSpeedMin = 0.98
+
+[node name="BagSprite" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.001
+texture = ExtResource("2_4hmvr")
+
+[node name="Bottle1Sprite" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.001
+texture = ExtResource("3_pk0qo")
+
+[node name="Bottle2Sprite" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.001
+texture = ExtResource("4_h3n0t")
+
+[node name="FishBoneSprite" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.001
+texture = ExtResource("5_2ncda")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000976563, 0.00134277, 0)
+shape = SubResource("BoxShape3D_k4vbx")

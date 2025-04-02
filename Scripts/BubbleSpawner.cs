@@ -4,6 +4,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 using Temptic404Overlay.Templates;
+using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptic404Overlay.Scripts;
 
@@ -11,18 +12,29 @@ public partial class BubbleSpawner : Node3D
 {
     private PackedScene _bubbleScene;
 
-    public static EventHandler<Vector3> SpawnBubble;
+    public static EventHandler<Vector3?> SpawnBubble;
     private List<Bubble> _bubbles = [];
+    
+    public static BubbleSpawner Instance { get; private set; }
     public override void _Ready()
     {
+        Instance = this;
         _bubbleScene = GD.Load<PackedScene>("res://Templates/bubble.tscn");
-        SpawnBubble += (_, pos) =>
+        SpawnBubble += (obj , pos) =>
         {
+            pos ??= GlobalPosition;
             var bubble = (Bubble)_bubbleScene.Instantiate();
             
             CallDeferred("add_child", bubble);
             
-            bubble.CallDeferred("set_global_position", pos);
+            bubble.CallDeferred("set_global_position", pos.Value);
+            
+            bubble.InitialX = pos.Value.X;
+            if (obj is BubbleMachineSpawner)
+            {
+                bubble.CallDeferred("set_linear_velocity", new Vector3(0,2,0));
+                
+            }
         };
     }
 
@@ -36,10 +48,12 @@ public partial class BubbleSpawner : Node3D
         try
         {
             var children = _bubbles.ToList();
-
-            return children
+                
+            var result = children
                 .Where(b => b != null)
-                .Any(child => child.CheckClick(clickPos));
+                .Count(child => child.CheckClick(clickPos));
+            ClickCounterDisplay.UpdateBubbles(result);
+            return result>0;
         }
         catch (Exception e)
         {

@@ -60,9 +60,9 @@ namespace Temptic404Overlay.Scripts.Alerts
             {
                 if (BitAmount == 500)
                 {
-                    StartShow?.Invoke(this, "Up&Down");
-                    TTSMessage = "";
-                    return;
+                    //StartShow?.Invoke(this, "Up&Down");
+                    //TTSMessage = "";
+                    //return;
                 }
                 base.StartAlert(); 
             }

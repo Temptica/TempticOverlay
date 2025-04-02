@@ -20,10 +20,13 @@ public partial class LaserShow : Node3D
     {
         _laserScene = GD.Load<PackedScene>("res://Templates/laser.tscn");
         _audioListener = GetNode<AudioListener>("%AudioListener");
-        BitsAlert.StartShow += async (sender, song) => await StartShow(song);
+        BitsAlert.StartShow += async void (sender, song) =>
+        {
+            await StartShow(song);
+        };
     }
-    
-    public async Task StartShow(string song)
+
+    private async Task StartShow(string song)
     {
         if (IsPlaying)
         {
@@ -123,7 +126,7 @@ public partial class LaserShow : Node3D
         GD.Print("stopping alerts");
         AlertQueue.StopAlerts();
         
-        await VoiceMeeterService.MuteSpotify();
+        VoiceMeeterService.MuteSpotify();
 
 
         var lastFrame = _showLoader.LaserKeyFrames.MaxBy(kf => kf.Time + kf.Duration);
@@ -132,7 +135,7 @@ public partial class LaserShow : Node3D
         _ = Task.Run(async () =>
         {
             await Task.Delay((int)((duration+2) * 1000));
-            await VoiceMeeterService.UnmuteSpotify();
+            VoiceMeeterService.UnmuteSpotify();
             IsPlaying = false;
             AlertQueue.ResumeAlerts();
             _audioListener.EndPartyMode();

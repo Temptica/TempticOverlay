@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3q6f30uiiqt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22yb6"]
+
+[node name="Emote" type="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_22yb6")

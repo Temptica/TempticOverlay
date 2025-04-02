@@ -23,9 +23,11 @@ public partial class AudioListener : Node3D
 	private float _currentPeak;
 	private double _timeSinceLastPeak;
 	private const float EnergyResetTime = 3f;
+	
+	public static float Energy { get; private set; }
 	public override void _Ready()
 	{
-		var input = AudioServer.GetInputDeviceList().First(o => o.Contains("CABLE-C"));
+		var input = AudioServer.GetInputDeviceList().First(o => o.Contains("CABLE-A"));
 		AudioServer.InputDevice = input;
 		var output = AudioServer.GetOutputDeviceList().First(o => o.Contains("VAIO3"));
 		
@@ -42,28 +44,27 @@ public partial class AudioListener : Node3D
 
 	public override void _Process(double delta)
 	{
-		if(!PartyMode || _paused) return;
 		var spectrum = (AudioEffectSpectrumAnalyzerInstance)AudioServer.GetBusEffectInstance(_busIndex, 0);
 		
 		var magnitude = ((Vector2)spectrum.Call("get_magnitude_for_frequency_range", 100, 500)).Length();
 		
 		var db = (MinDb + Mathf.LinearToDb(magnitude)) / MinDb;
 		
-		var energy = Mathf.Clamp(db , 0 , 1f);
+		Energy = Mathf.Clamp(db , 0 , 1f);
 			
 		const float threshold = 0.55f;
-		energy = (float)Math.Round(energy, 3);
-		_maxEnergy = Mathf.Max(_maxEnergy, energy);
+		Energy = (float)Math.Round(Energy, 3);
+		_maxEnergy = Mathf.Max(_maxEnergy, Energy);
 			
-		if(energy > threshold)
+		if(Energy > threshold)
 		{
 			//energy will be between tresold and 1. It should now be between 0 and 1 (treshold becomes 0,_maxEnergy becomes 1)
-			energy = (energy - threshold) / (_maxEnergy - threshold);
-			_currentPeak = Mathf.Max(_currentPeak, energy);
+			Energy = (Energy - threshold) / (_maxEnergy - threshold);
+			_currentPeak = Mathf.Max(_currentPeak, Energy);
 		}
 		else
 		{
-			energy = 0;
+			Energy = 0;
 			if (_currentPeak > 0)
 			{
 				_currentPeak = 0;
@@ -80,7 +81,9 @@ public partial class AudioListener : Node3D
 		}
 			
 		//map energy to glow
-		var glow = Mathf.Lerp(MinGlow, MaxGlow, energy);
+		if(!PartyMode || _paused) return;
+		var glow = Mathf.Lerp(MinGlow, MaxGlow, Energy);
+		Energy = glow;
 		_environment.GlowStrength = Mathf.Lerp(_environment.GlowStrength, glow, Math.Abs(_environment.GlowStrength - glow));
 	}
 	
@@ -94,7 +97,7 @@ public partial class AudioListener : Node3D
 		//audio bus: set recordStopper to Unmute
 		var idx = AudioServer.GetBusIndex("recordStopper");
 		AudioServer.SetBusMute(idx, false);
-		VoiceMeeterService.MuteSpotify().Wait();
+		VoiceMeeterService.MuteSpotify();
 	}
 	public static void PausePartyMode()
 	{
@@ -122,7 +125,7 @@ public partial class AudioListener : Node3D
 		//audio bus: set recordStopper to mute
 		var idx = AudioServer.GetBusIndex("recordStopper");
 		AudioServer.SetBusMute(idx, true);
-		VoiceMeeterService.UnmuteSpotify().Wait();
+		VoiceMeeterService.UnmuteSpotify();
 		_partyModeLabel.EndPartyMode();
 		_environment.CallDeferred("set_glow_strength", 1f);
 	}

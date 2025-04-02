@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://vy81m6e3jwoe"]
 
-[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/Plane.cs" id="1_hplwo"]
+[ext_resource type="Script" uid="uid://bu70auw6uljnv" path="res://Scripts/Alerts/RaidAlert/Plane.cs" id="1_hplwo"]
 [ext_resource type="Texture2D" uid="uid://docvul8c3lx7h" path="res://Images/a400m.png" id="2_s8ofj"]
-[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/PeepoSpawner.cs" id="3_uee7c"]
+[ext_resource type="Script" uid="uid://drftdfsej3gc2" path="res://Scripts/Alerts/RaidAlert/PeepoSpawner.cs" id="3_uee7c"]
 
 [node name="Plane" type="Node3D"]
 script = ExtResource("1_hplwo")

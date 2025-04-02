@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://8vamd2vfra1i"]
+
+[ext_resource type="Script" uid="uid://cbd2kmlbvtxuh" path="res://Scripts/Winter/Snow.cs" id="1_ih7gm"]
+[ext_resource type="Texture2D" uid="uid://eke0uc70f41q" path="res://Images/Winter/Snowflake.png" id="2_vv78i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fg74s"]
+radius = 0.225034
+
+[node name="Snow" type="RigidBody3D"]
+collision_layer = 256
+collision_mask = 512
+mass = 0.001
+gravity_scale = 0.01
+script = ExtResource("1_ih7gm")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0006
+texture = ExtResource("2_vv78i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fg74s")

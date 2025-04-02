@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4xjqfscsjpgl"]
 
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_7d68t"]
-[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/Plinko.cs" id="1_67cxv"]
+[ext_resource type="Script" uid="uid://bp3o8uv74ryo3" path="res://Scripts/Alerts/RaidAlert/Plinko.cs" id="1_67cxv"]
 [ext_resource type="PackedScene" uid="uid://dw1jgnqx2upy0" path="res://Templates/pin.tscn" id="1_addmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bo7nq"]
@@ -40,8 +40,8 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0.001, 0.001, 0.001, 2, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6c0gl"]
 _data = {
-"MoveWall": SubResource("Animation_56nu2"),
-"ShowPlinko": SubResource("Animation_tya1v")
+&"MoveWall": SubResource("Animation_56nu2"),
+&"ShowPlinko": SubResource("Animation_tya1v")
 }
 
 [node name="Plinko" type="Node3D"]

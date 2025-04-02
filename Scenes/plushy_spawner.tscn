@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsb7y1uddpgft"]
+
+[ext_resource type="Script" uid="uid://ka6tqbmo5y2o" path="res://Scripts/PlushySpawner.cs" id="1_giaa8"]
+
+[node name="PlushySpawner" type="Node3D"]
+script = ExtResource("1_giaa8")

@@ -12,10 +12,12 @@ public enum FishType
 public partial class Fish : RigidBody3D
 {
 	public FishType Type { get; set; }
-	private int _hitTimes = 0;
+	private int _hitTimes;
 	private Sprite3D _normalFish;
 	private Sprite3D _goldFish;
 	private AnimatedSprite3D _rainbowFish;
+	private Vector3 _initialVelocity; //Velocity should not be slower, but can change in direction
+	private DateTime _timeTillChange;
 	public override void _Ready()
 	{
 		_normalFish = GetChild<Sprite3D>(0);
@@ -32,7 +34,7 @@ public partial class Fish : RigidBody3D
 			_ => FishType.Normal
 		};
 		
-		//depending on teh type, a different mesh will be loaded
+		//depending on the type, a different mesh will be loaded
 		switch (Type)
 		{
 			case FishType.Normal:
@@ -41,7 +43,7 @@ public partial class Fish : RigidBody3D
 			case FishType.Gold:
 				_goldFish.Show();
 				//make it move in a random direction
-				LinearVelocity = new Vector3((float)random.NextDouble(), (float)random.NextDouble(), 0);
+				LinearVelocity = new Vector3((float)random.NextDouble()-0.5f, (float)random.NextDouble()-0.5f, 0);
 				break;
 			case FishType.Rainbow:
 				
@@ -52,8 +54,35 @@ public partial class Fish : RigidBody3D
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+		_initialVelocity = LinearVelocity;
 		
 		BodyEntered += OnBodyEntered;
+		
+		_timeTillChange += TimeSpan.FromMinutes(5);
+	}
+
+	public override void _Process(double delta)
+	{
+		if (_timeTillChange > DateTime.Now)
+		{
+			switch (Type)
+			{
+				case FishType.Normal:
+					Type++;
+					_normalFish.Hide();
+					_goldFish.Show();
+					break;
+				case FishType.Gold:
+					Type++;
+					_goldFish.Hide();
+					_rainbowFish.Show();
+					break;
+				case FishType.Rainbow:
+					QueueFree();
+					break;
+			}
+			_timeTillChange -= TimeSpan.FromMinutes(5);
+		}
 	}
 
 	private void OnBodyEntered(Node body)
@@ -85,38 +114,5 @@ public partial class Fish : RigidBody3D
 		}
 		
 		return isHit;
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		//a rainbow fish and golden fish should have a speed of at least 0.3f on either X or Y axis
-		if (Type is FishType.Normal) return;
-		
-		if(LinearVelocity.Length() < 0.3f)
-		{
-			//Always go in teh same direction the fish is already going so it doesn't weirdly turn backwards
-			var x = LinearVelocity.X;
-			var y = LinearVelocity.Y;
-
-			if (x >= 0)
-			{
-				x += 0.1f * (float)delta;
-			}
-			else
-			{
-				x -= 0.1f * (float)delta;
-			}
-			
-			if(y>=0)
-			{
-				y += 0.1f * (float)delta;
-			}
-			else
-			{
-				y -= 0.1f * (float)delta;
-			}
-			
-			LinearVelocity = new Vector3(x, y, 0);
-		}
 	}
 }

@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://doqewfiknnadb"]
+
+[ext_resource type="Script" uid="uid://ch8a6cpeh4aom" path="res://Scripts/Labels/ClickCounterDisplay.cs" id="1_mnh3m"]
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_44aco"]
+[ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="3_jv1en"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnxwq"]
+material = ExtResource("2_44aco")
+size = Vector3(2, 1, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihebw"]
+material = ExtResource("3_jv1en")
+size = Vector3(2, 0.05, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8fb4"]
+material = ExtResource("3_jv1en")
+size = Vector3(0.05, 1.1, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bof5o"]
+material = ExtResource("2_44aco")
+size = Vector3(0.1, 0.5, 0.01)
+
+[node name="ClickCounterDisplay" type="Node3D" node_paths=PackedStringArray("_noseLabel", "_bubblesLabel", "_fishesLabel")]
+script = ExtResource("1_mnh3m")
+_noseLabel = NodePath("DisplayBox/NoseBoopCounter")
+_bubblesLabel = NodePath("DisplayBox/BublesPoppedCounter")
+_fishesLabel = NodePath("DisplayBox/FishClickedCounter")
+
+[node name="DisplayBox" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nnxwq")
+
+[node name="NoseBoopCounter" type="Label3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922009, 0.238111, 0.0291748)
+text = "Nose boopes: 5"
+horizontal_alignment = 0
+
+[node name="FishClickedCounter" type="Label3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922009, -0.00243759, 0.0291748)
+text = "Fishes clicked: 10"
+horizontal_alignment = 0
+
+[node name="BublesPoppedCounter" type="Label3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922009, -0.228149, 0.0291748)
+text = "Bubbles popped: 25"
+horizontal_alignment = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0)
+mesh = SubResource("BoxMesh_ihebw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.025, 0, 0)
+mesh = SubResource("BoxMesh_t8fb4")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.025, 0, 0)
+mesh = SubResource("BoxMesh_t8fb4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DisplayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0)
+mesh = SubResource("BoxMesh_ihebw")
+
+[node name="DisplayBox2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742929, 0.751709, -0.0109863)
+mesh = SubResource("BoxMesh_bof5o")
+
+[node name="DisplayBox3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.686096, 0.751709, -0.0109863)
+mesh = SubResource("BoxMesh_bof5o")
+
+[node name="DisplayBox4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.2766, 0.326294, -0.0109863)
+mesh = SubResource("BoxMesh_bof5o")
+
+[node name="DisplayBox5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.2766, -0.34021, -0.0109863)
+mesh = SubResource("BoxMesh_bof5o")

@@ -3,7 +3,7 @@ using Temptic404Overlay.Scripts.Spotify;
 
 namespace Temptic404Overlay.Scripts.Labels;
 
-public partial class MusicLabel : Label
+public partial class MusicLabel : Label3D
 {
 	private string changedText = "";
 	private bool textChanged = false;

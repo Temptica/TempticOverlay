@@ -8,17 +8,16 @@ public class CurrentSongListener : ISignalRListener
 {
     public CurrentSongListener(HubConnection hubConnection)
     {
-        hubConnection.On("CurrentSong", () =>
+        hubConnection.On("CurrentSong",async  () =>
         {
             try
             {
-                hubConnection.InvokeAsync("SendChatMessage", $"Currently playing: {SpotifyService.GetCurrentlyPlayingAsync()}");
+                await hubConnection.InvokeAsync("SendChatMessage", $"Currently playing: {await SpotifyService.GetCurrentlyPlayingAsync()}");
             }
             catch (SongNotFoundException e)
             {
-                hubConnection.InvokeAsync("SendChatMessage", e.Message);
+                await hubConnection.InvokeAsync("SendChatMessage", e.Message);
             }
         });
     }
-    
 }

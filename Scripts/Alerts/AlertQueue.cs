@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Godot;
+using Temptic404Overlay.Scripts.Fishes;
 using Temptic404Overlay.Scripts.Labels;
 using Temptic404Overlay.Scripts.Models;
 using Temptic404Overlay.Scripts.Spotify;
@@ -44,6 +45,7 @@ public partial class AlertQueue : Node
 			//if alert is cheer, set last cheer label
 			case AlertType.Bit:
 				LastCheerLabel.OnAlert(null, alert);
+				FishSpawner.SpawnFishes((int)Math.Floor(alert.Amount/100d));
 				if (alert.Amount >= 100)
 				{
 					_queue.Enqueue(new BitsAlert(alert.User, alert.Amount, alert.Message,alert.Message ));
@@ -55,16 +57,19 @@ public partial class AlertQueue : Node
 			//if alert is sub, set last sub label
 			case AlertType.Sub or AlertType.Resub:
 				LastSubLabel.OnAlert(null, alert);
+				FishSpawner.SpawnFishes(alert.Amount/1000);
 				_queue.Enqueue(new SubAlert(alert.User, alert.Message));
 				return;
 			//if alert is raid, set raid label
 			case AlertType.Raid:
 				RaidLabel.OnAlert(null, alert);
+				FishSpawner.SpawnFishes(alert.Amount);
 				_queue.Enqueue(new RaidAlert.RaidAlert(alert.User, alert.Amount));
 				return;
 			case AlertType.Follow:
 				//if alert is follow, set last follow label
 				_queue.Enqueue(new FollowAlert(alert.User));
+				FishSpawner.SpawnFishes(1);
 				return;
 		}
 	}
@@ -162,5 +167,10 @@ public partial class AlertQueue : Node
 	public static void SkipSpeech()
 	{
 		_currentAlert.SkipSpeech();
+	}
+
+	public static void SkipAll()
+	{
+		_queue.Clear();
 	}
 }

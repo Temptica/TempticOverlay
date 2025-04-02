@@ -11,9 +11,8 @@ public class TextToSpeechService : IDisposable
 {
     private static TextToSpeechService _textToSpeechService;
     public static TextToSpeechService Instance => _textToSpeechService ??= new TextToSpeechService();
-
+    
     public bool IsSpeaking { get; private set; }
-
     public bool IsPaused => _synth.State == SynthesizerState.Paused;
 
     private readonly SpeechSynthesizer _synth;
@@ -22,7 +21,6 @@ public class TextToSpeechService : IDisposable
     {
         _synth = new SpeechSynthesizer();
         _synth.SpeakCompleted += OnSpeakCompleted;
-        _synth.SetOutputToDefaultAudioDevice();
     }
 
     private void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)

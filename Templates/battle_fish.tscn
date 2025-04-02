@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5kkx6swyjg3m"]
 
-[ext_resource type="Script" path="res://Scripts/Fishes/BattleFish.cs" id="1_m2oor"]
+[ext_resource type="Script" uid="uid://xnbyem7o2103" path="res://Scripts/Fishes/BattleFish.cs" id="1_m2oor"]
 [ext_resource type="PhysicsMaterial" uid="uid://davqd0wy4spsw" path="res://Templates/fishPhysicsMaterial.tres" id="1_xsrp2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43fp2"]

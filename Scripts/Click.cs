@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Godot;
 using Temptic404Overlay.Scripts.Models;
@@ -8,6 +9,7 @@ public partial class Click : Node3D
 {
 	public OverlayClickModel OverlayClickModel { get; set; }
 	private MeshInstance3D _meshInstance;
+	private int _pointsToAdd = 0;
 	
 	public override void _Ready()
 	{
@@ -26,10 +28,11 @@ public partial class Click : Node3D
 		_meshInstance.Mesh.SurfaceSetMaterial(0, material);
 		
 		// left under =0,0,0 top right = 16,9,0
-		var x = float.Parse(OverlayClickModel.X);
-		var y = float.Parse(OverlayClickModel.Y);
+		var x = float.Parse(OverlayClickModel.X, CultureInfo.InvariantCulture);
+		var y = float.Parse(OverlayClickModel.Y, CultureInfo.InvariantCulture);
+		
 		//invert the Y value (0 is 1 and 1 is 0)
-		GlobalPosition = new Vector3(16 * x, 9 - (9 * y), 0);
+		GlobalPosition = new Vector3(16 * x, 9 - 9 * y, 0);
 		
 		var tweenLabel = GetTree().CreateTween();
 		var tweenMesh = GetTree().CreateTween();
@@ -37,5 +40,19 @@ public partial class Click : Node3D
 		tweenMesh.TweenProperty(material, "albedo_color:a", 0,4).SetTrans(Tween.TransitionType.Cubic).SetDelay(1);
 		tweenLabel.TweenProperty(label, "modulate:a", 0,4).SetTrans(Tween.TransitionType.Cubic).SetDelay(1);
 		tweenLabel.TweenCallback(Callable.From(QueueFree));
+	}
+
+	public override void _Process(double delta)
+	{
+		if (_pointsToAdd > 0)
+		{
+			GetChildren().OfType<Label3D>().First().Text += $" +{_pointsToAdd}" ;
+			_pointsToAdd = 0;
+		}
+	}
+
+	public void AddPoints(int points)
+	{
+		_pointsToAdd = points;
 	}
 }

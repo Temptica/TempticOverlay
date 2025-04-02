@@ -1,42 +1,44 @@
 using Godot;
 using System.Threading.Tasks;
 using Godot.Collections;
+using Godot.NativeInterop;
 using HttpClient = System.Net.Http.HttpClient;
 
 namespace Temptic404Overlay.Scripts.Services;
 
 public class EmoteService
 {
-    const string EmoteUrl = "https://static-cdn.jtvnw.net/emoticons/v2/{id}/static/light/3.0"; //replace {id} with the emote id
+    /*const string EmoteUrl = "https://static-cdn.jtvnw.net/emoticons/v2/{id}/static/light/3.0"; //replace {id} with the emote id
     const string EmotePath = "user://emotes/"; //replace {id} with the emote id
     
-    public SpriteFrames GetEmotePath(int emoteId)
+    public SpriteFrames GetEmote(int emoteId)
     {
         //check if the emote exist in the file system. if not, download it from the url and save it to the file system. Then return the path to the emote
-        if (EmoteExists(emoteId))
-        {
-            var emoteData = GetEmoteImage(emoteId);
-            //convert this data to a sprite frame
-            var spriteFrames = new SpriteFrames();
-            spriteFrames.Animations = new Array();
-            
-        }
-        else
+        if (!EmoteExists(emoteId))
         {
             var emoteData = DownloadEmote(emoteId, out var isGif);
             var path = $"{EmotePath}{emoteId}{(isGif?".gif":".png")}";
             SaveEmote(path, emoteData);
+            
         }
-
-        return null;
+        
+        var emoteDataGet = GetEmoteImage(emoteId);
+        var image = new Image();
+        image.LoadPngFromBuffer(emoteDataGet);
+        var texture = new ImageTexture();
+        texture.SetImage(image);
+        
+        var frames = new SpriteFrames();
+        frames.AddFrame("png",texture);
+        return frames;
     }
     
-    private void SaveEmote(string fileName, byte[] emoteData )
+    private static void SaveEmote(string fileName, byte[] emoteData )
     {
         //save the emote to the file system
-        FileAccess.Open(fileName,FileAccess.ModeFlags.Write).StoreBuffer(emoteData);
-        
-        
+        var access = FileAccess.Open(fileName,FileAccess.ModeFlags.Write);
+        access.StoreBuffer(emoteData);
+        access.Close();
     }
     
     private bool EmoteExists(int emoteId)
@@ -66,5 +68,5 @@ public class EmoteService
         }
         
         return data;
-    }
+    }*/
 }

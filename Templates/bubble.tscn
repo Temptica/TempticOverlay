@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6wsfj3ojirv3"]
+[gd_scene load_steps=8 format=3 uid="uid://b6wsfj3ojirv3"]
 
 [ext_resource type="Texture2D" uid="uid://d18fvfrom1rr" path="res://Images/Bubble.png" id="1_cvigm"]
-[ext_resource type="Script" path="res://Templates/Bubble.cs" id="1_khv37"]
+[ext_resource type="Script" uid="uid://c2d5mc53oxdgm" path="res://Templates/Bubble.cs" id="1_khv37"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gs7x3"]
 resource_local_to_scene = true
@@ -11,26 +11,74 @@ friction = 0.4
 resource_local_to_scene = true
 radius = 0.195852
 
-[node name="Bubble" type="RigidBody3D"]
-collision_layer = 7
-collision_mask = 4
+[sub_resource type="Animation" id="Animation_amtpr"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_k2l0h"]
+resource_name = "wobble"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, -0.5, 0, 0, 1.46667, 1, 0.5, 0, 0, 2, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, -0.5, 0, 0, 1.46667, 1, 0.5, 0, 0, 2, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y28uj"]
+_data = {
+&"RESET": SubResource("Animation_amtpr"),
+&"wobble": SubResource("Animation_k2l0h")
+}
+
+[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("_animationPlayer")]
+collision_layer = 4
+collision_mask = 6
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_gs7x3")
-gravity_scale = -0.05
+gravity_scale = 0.1
 contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 1.0
+angular_velocity = Vector3(0, 0, 0.872665)
 script = ExtResource("1_khv37")
+_animationPlayer = NodePath("AnimationPlayer")
+Frequency = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -0.005, 0.001)
 shape = SubResource("SphereShape3D_vgyt1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
 pixel_size = 0.001
 texture = ExtResource("1_cvigm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y28uj")
+}

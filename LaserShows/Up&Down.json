@@ -4,271 +4,271 @@
   "LaserGroupCount": 3,
   "LaserCount": 6,
   "LaserGroups": [
-    {
-      "GroupId": 0,
-      "Position": {
-        "X": 5.5,
-        "Y": 4.5,
-        "Z": 0
-      },
-      "Lasers": [
-        {
-          "LaserId": 0
-        },
-        {
-          "LaserId": 1
-        }
-      ]
-    },
-    {
-      "GroupId": 1,
-      "Position": {
-        "X": 8,
-        "Y": 4.5,
-        "Z": 0
-      },
-      "Lasers": [
-        {
-          "LaserId": 2
-        },
-        {
-          "LaserId": 3
-        }
-      ]
-    },
-    {
-      "GroupId": 2,
-      "Position": {
-        "X": 10.5,
-        "Y": 4.5,
-        "Z": 0
-      },
-      "Lasers": [
-        {
-          "LaserId": 4
-        },
-        {
-          "LaserId": 5
-        }
-      ]
-    }
+	{
+	  "GroupId": 0,
+	  "Position": {
+		"X": 5.5,
+		"Y": 4.5,
+		"Z": 0
+	  },
+	  "Lasers": [
+		{
+		  "LaserId": 0
+		},
+		{
+		  "LaserId": 1
+		}
+	  ]
+	},
+	{
+	  "GroupId": 1,
+	  "Position": {
+		"X": 8,
+		"Y": 4.5,
+		"Z": 0
+	  },
+	  "Lasers": [
+		{
+		  "LaserId": 2
+		},
+		{
+		  "LaserId": 3
+		}
+	  ]
+	},
+	{
+	  "GroupId": 2,
+	  "Position": {
+		"X": 10.5,
+		"Y": 4.5,
+		"Z": 0
+	  },
+	  "Lasers": [
+		{
+		  "LaserId": 4
+		},
+		{
+		  "LaserId": 5
+		}
+	  ]
+	}
   ],
   "LaserKeyFrames": [
-    {
-      "LaserId": 0,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 0.0,
-      "Duration": 0.0
-    },
-    {
-      "LaserId": 0,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 0.0,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 0,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 0.8,
-      "Duration": 0
-    },
-    {
-      "LaserId": 2,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 0.8,
-      "Duration": 0.0
-    },
-    {
-      "LaserId": 2,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 0.8,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 2,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 1.6,
-      "Duration": 0
-    },
-    {
-      "LaserId": 4,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 1.6,
-      "Duration": 0.0
-    },
-    {
-      "LaserId": 4,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 1.6,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 4,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 2.4,
-      "Duration": 0
-    },
-    {
-      "LaserId": 1,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 2.4,
-      "Duration": 0
-    },
-    {
-      "LaserId": 3,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 2.4,
-      "Duration": 0
-    },
-    {
-      "LaserId": 5,
-      "On": true,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "ff6200d7",
-      "Time": 2.4,
-      "Duration": 0
-    },
-    {
-      "LaserId": 3,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 2.4,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 5,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 2.4,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 5,
-      "On": true,
-      "Rotation": {
-        "X": 360,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 2.4,
-      "Duration": 0.8
-    },
-    {
-      "LaserId": 1,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 3.2,
-      "Duration": 0
-    },
-    {
-      "LaserId": 3,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 3.2,
-      "Duration": 0
-    },
-    {
-      "LaserId": 5,
-      "On": false,
-      "Rotation": {
-        "X": 0,
-        "Y": 90,
-        "Z": -80
-      },
-      "Color": "00C5FFd7",
-      "Time": 3.2,
-      "Duration": 0
-    }
+	{
+	  "LaserId": 0,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 0.0,
+	  "Duration": 0.0
+	},
+	{
+	  "LaserId": 0,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 0.0,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 0,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 0.8,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 2,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 0.8,
+	  "Duration": 0.0
+	},
+	{
+	  "LaserId": 2,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 0.8,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 2,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 1.6,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 4,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 1.6,
+	  "Duration": 0.0
+	},
+	{
+	  "LaserId": 4,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 1.6,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 4,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 2.4,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 1,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 2.4,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 3,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 2.4,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 5,
+	  "On": true,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "ff6200d7",
+	  "Time": 2.4,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 3,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 2.4,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 5,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 2.4,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 5,
+	  "On": true,
+	  "Rotation": {
+		"X": 360,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 2.4,
+	  "Duration": 0.8
+	},
+	{
+	  "LaserId": 1,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 3.2,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 3,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 3.2,
+	  "Duration": 0
+	},
+	{
+	  "LaserId": 5,
+	  "On": false,
+	  "Rotation": {
+		"X": 0,
+		"Y": 90,
+		"Z": -80
+	  },
+	  "Color": "00C5FFd7",
+	  "Time": 3.2,
+	  "Duration": 0
+	}
   ]
 }

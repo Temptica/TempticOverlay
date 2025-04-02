@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://p2v04a2ytt5b"]
 
-[ext_resource type="Script" path="res://Scripts/Click.cs" id="1_ra3vi"]
+[ext_resource type="Script" uid="uid://ccnuuqb0ce14a" path="res://Scripts/Click.cs" id="1_ra3vi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vg6mf"]
 resource_local_to_scene = true

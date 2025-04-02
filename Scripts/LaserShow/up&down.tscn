@@ -50,7 +50,7 @@ tracks/5/keys = PackedFloat32Array()
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uruxs"]
 _data = {
-"Up&Down": SubResource("Animation_00vqq")
+&"Up&Down": SubResource("Animation_00vqq")
 }
 
 [node name="Up&Down" type="Node3D"]

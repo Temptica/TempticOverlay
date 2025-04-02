@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://hfiqmmonjemi"]
+
+[ext_resource type="Texture2D" uid="uid://d1lb6s4hfn0n5" path="res://Images/Winter/Snowball.png" id="1_7py1m"]
+[ext_resource type="Script" uid="uid://s504v31awk4w" path="res://Templates/SnowBall.cs" id="1_ejt40"]
+[ext_resource type="Texture2D" uid="uid://dscqspr0yn2g0" path="res://Images/Winter/Snowball_Splat.png" id="2_dnene"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uk7vg"]
+radius = 0.176769
+
+[node name="SnowBall" type="RigidBody3D" node_paths=PackedStringArray("_snowBallSprite", "_snowSplashSprite")]
+collision_layer = 256
+collision_mask = 512
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ejt40")
+_snowBallSprite = NodePath("Ball")
+_snowSplashSprite = NodePath("Splat")
+
+[node name="Ball" type="Sprite3D" parent="."]
+pixel_size = 0.0007
+texture = ExtResource("1_7py1m")
+
+[node name="Splat" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.0007
+render_priority = 10
+texture = ExtResource("2_dnene")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00493526, 0.0103455, 0)
+shape = SubResource("SphereShape3D_uk7vg")

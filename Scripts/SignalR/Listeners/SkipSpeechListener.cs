@@ -14,5 +14,12 @@ public class SkipSpeechListener : ISignalRListener
             AlertQueue.SkipSpeech();
         });
         
+        connection.On("StopAllAlerts", ()=>
+        {
+            GD.Print("Recieved StopAllAlerts");
+            AlertQueue.SkipAll();
+
+        });
+
     }
 }

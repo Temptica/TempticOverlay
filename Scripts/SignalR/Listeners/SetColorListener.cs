@@ -10,7 +10,7 @@ public class SetColorListener : ISignalRListener
 	{
 		connection.On<string>("SetColor", color =>
 		{
-			SetColor?.Invoke(this, color.Trim());
+			SetColor?.Invoke(this, color.Trim().ToUpper());
 		});
 	}
 	

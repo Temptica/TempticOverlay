@@ -11,6 +11,7 @@ public partial class FishDuel : Node3D
 {
     [Export] private MeshInstance3D _leftMeshInstance;
     [Export] private MeshInstance3D _rightMeshInstance;
+    [Export] private MeshInstance3D _centerMeshInstance;
     [Export] private StandardMaterial3D _redFishMaterial;
     [Export] private StandardMaterial3D _greenFishMaterial;
     [Export] private StandardMaterial3D _pinkFishMaterial;
@@ -53,6 +54,7 @@ public partial class FishDuel : Node3D
             }
             _leftMeshInstance.Hide();
             _rightMeshInstance.Hide();
+            _centerMeshInstance.Hide();
         }
         if (ShouldStartBattle)
         {
@@ -118,9 +120,11 @@ public partial class FishDuel : Node3D
                     GD.Print($"{_currentBattle[0]} Has won this tournament!");
                     EndBattle(_currentBattle[0]);
                     _rightMeshInstance.Hide();
+                    _centerMeshInstance.Hide();
                     return;
                 }
                 _rightMeshInstance.Hide();
+                _centerMeshInstance.Hide();
                 EndBattle();
             }
             else if (firstColorCount < secondColorCount)
@@ -140,9 +144,11 @@ public partial class FishDuel : Node3D
                     GD.Print($"{_currentBattle[1]} Has won this tournament!");
                     EndBattle(_currentBattle[1]);
                     _leftMeshInstance.Hide();
+                    _centerMeshInstance.Hide();
                     return;
                 }
                 _leftMeshInstance.Hide();
+                _centerMeshInstance.Hide();
                 EndBattle();
             }
             else
@@ -215,6 +221,8 @@ public partial class FishDuel : Node3D
         _battleTwoColors[0] = colors[0];
         _battleTwoColors[1] = colors[1];
         
+        _battleThreeColors = [FishColor.Green, FishColor.Red];
+        
         _currentBattle = _battleOneColors;
         
         _ = Task.Run(async () =>
@@ -261,6 +269,7 @@ public partial class FishDuel : Node3D
         _rightMeshInstance.Mesh.SurfaceSetMaterial(0, GetMaterial(_currentBattle[1]));
         _leftMeshInstance.Show();
         _rightMeshInstance.Show();
+        _centerMeshInstance.Show();
         
         BattleStartTime = DateTime.Now;
         GD.Print($"Battle started at {BattleStartTime}");

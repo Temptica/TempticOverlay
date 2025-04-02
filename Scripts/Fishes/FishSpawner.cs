@@ -12,7 +12,7 @@ public partial class FishSpawner : Node3D
 	private PackedScene _fishScene;
 	private float _timeToSpawn = 2f;
 	private double _timeElapsed ;
-	private double _fishesToSpawn ;
+	private static double _fishesToSpawn ;
 	public static readonly List<Fish> Fishes = new();
 
 	public override void _Ready()
@@ -28,9 +28,14 @@ public partial class FishSpawner : Node3D
 		};
 	}
 
-	private void StartFishGame()
+	private static void StartFishGame()
 	{
 		_fishesToSpawn += 30;
+	}
+
+	public static void SpawnFishes(int count)
+	{
+		_fishesToSpawn += count;
 	}
 
 	public override void _Process(double delta)
@@ -55,13 +60,14 @@ public partial class FishSpawner : Node3D
 		Fishes.Add(fish);
 	}
 	
-	public static bool CheckFishesHit(Vector2 position,string username)
+	public static bool CheckFishesHit(Vector2 position,string username, out int points)
 	{
 		//check if the position is within the fish
 		GD.Print("Checking for hits");
 		var clickedFishes =  Fishes.Where(fish => fish.IsHit(position)).ToList();
 		GD.Print($"Found {clickedFishes.Count} fishes");
-		var sum = clickedFishes.Sum(fish => fish.Type switch
+		ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
+		points = clickedFishes.Sum(fish => fish.Type switch
 		{
 			FishType.Normal => 1,
 			FishType.Gold => 2,
@@ -69,13 +75,13 @@ public partial class FishSpawner : Node3D
 			_ => 0
 		});
 
-		if (sum <= 0) return false;
+		if (points <= 0) return false;
 		
-		GD.Print($"clicked for {sum} points");
+		GD.Print($"clicked for {points} points");
 		
 		clickedFishes.ForEach(f=>f.QueueFree());
 		Fishes.RemoveAll(fish => clickedFishes.Contains(fish));
-		Overlay.SignalRService.AddPoints(username, sum);
+		Overlay.SignalRService.AddPoints(username, points);
 		return true;
 	}
 	

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://s83c4yistfj0"]
+
+[ext_resource type="Script" uid="uid://mmxe6cpu0c20" path="res://scenes/SnowSpawner.cs" id="1_x0a32"]
+
+[node name="SnowSpawner" type="Node3D"]
+script = ExtResource("1_x0a32")

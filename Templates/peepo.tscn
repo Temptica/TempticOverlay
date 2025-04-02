@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccick2nkvh46s"]
+[gd_scene load_steps=13 format=3 uid="uid://ccick2nkvh46s"]
 
-[ext_resource type="Script" path="res://Scripts/Alerts/RaidAlert/Peepo.cs" id="1_d0soi"]
-[ext_resource type="Texture2D" uid="uid://dwdwtdafbh5md" path="res://Images/PeepoHappy.png" id="2_lh4v8"]
+[ext_resource type="Script" uid="uid://bwley8665pkvh" path="res://Scripts/Alerts/RaidAlert/Peepo.cs" id="1_d0soi"]
+[ext_resource type="Texture2D" uid="uid://des6rgiys5me4" path="res://Images/Parashute/parachute_otter_blue.png" id="2_a2i1a"]
+[ext_resource type="Texture2D" uid="uid://crrabd6snayh7" path="res://Images/Parashute/parachute_otter_cyan.png" id="3_el1kq"]
+[ext_resource type="Texture2D" uid="uid://bi32j17a6von7" path="res://Images/Parashute/parachute_otter_geen.png" id="4_ahld5"]
+[ext_resource type="Texture2D" uid="uid://m7u735288gwj" path="res://Images/Parashute/parachute_otter_orange.png" id="5_anlvt"]
+[ext_resource type="Texture2D" uid="uid://d05s5ve8eyqoa" path="res://Images/Parashute/parachute_otter_purple.png" id="6_x784s"]
+[ext_resource type="Texture2D" uid="uid://beps44ympy7br" path="res://Images/Parashute/parachute_otter_red.png" id="7_60k6j"]
+[ext_resource type="Texture2D" uid="uid://dfjkvqdfjh27o" path="res://Images/Parashute/parachute_otter_yellow.png" id="8_vh7yx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6bjmt"]
 bounce = 1.0
@@ -12,14 +18,14 @@ length = 2.0
 tracks/0/type = "scale_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D")
+tracks/0/path = NodePath("JumperSprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.1, 0.1, 0.1, 2, 1, 0.25, 0.25, 0.25)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D")
+tracks/1/path = NodePath("JumperSprite")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.0416636, 0.0196838, 0, 2, 1, 0.4, 0.07, 0)
@@ -33,13 +39,13 @@ tracks/2/keys = PackedFloat32Array(0, 1, 0.042, 0.02, 0, 2, 1, 0.4, 0.07, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e5l6q"]
 _data = {
-"JumpOut": SubResource("Animation_pyaue")
+&"JumpOut": SubResource("Animation_pyaue")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vdc1e"]
 size = Vector3(0.961989, 1.45699, 0.5)
 
-[node name="Peepo" type="RigidBody3D"]
+[node name="Peepo" type="RigidBody3D" node_paths=PackedStringArray("Sprites", "_parashute")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 0, 0)
 collision_layer = 16
 collision_mask = 49
@@ -50,17 +56,53 @@ lock_rotation = true
 freeze = true
 continuous_cd = true
 script = ExtResource("1_d0soi")
+Sprites = [NodePath("JumperSprite/Blue"), NodePath("JumperSprite/Cyan"), NodePath("JumperSprite/Green"), NodePath("JumperSprite/Orange"), NodePath("JumperSprite/Purple"), NodePath("JumperSprite/Red"), NodePath("JumperSprite/Yellow")]
+_parashute = NodePath("JumperSprite")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.4, 0.07, 0)
-texture = ExtResource("2_lh4v8")
+[node name="JumperSprite" type="Node3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0416636, 0.0196838, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JumperSprite"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_e5l6q")
+&"": SubResource("AnimationLibrary_e5l6q")
 }
 
+[node name="Blue" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("2_a2i1a")
+
+[node name="Cyan" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("3_el1kq")
+
+[node name="Green" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("4_ahld5")
+
+[node name="Orange" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("5_anlvt")
+
+[node name="Purple" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("6_x784s")
+
+[node name="Red" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("7_60k6j")
+
+[node name="Yellow" type="Sprite3D" parent="JumperSprite"]
+visible = false
+pixel_size = 0.0002
+texture = ExtResource("8_vh7yx")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.4, 0.07, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.042, 0.02, 0)
 shape = SubResource("BoxShape3D_vdc1e")

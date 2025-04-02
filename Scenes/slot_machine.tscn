@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://x44fy0hjs7fp"]
 
-[ext_resource type="Script" path="res://Scripts/SlotMachine.cs" id="1_21cys"]
-[ext_resource type="PackedScene" uid="uid://bge0jhusdlhhj" path="res://Scenes/slot_spinner.tscn" id="2_nq5jh"]
+[ext_resource type="Script" uid="uid://bjra7jqoo335q" path="res://Scripts/SlotMachine.cs" id="1_21cys"]
+[ext_resource type="PackedScene" uid="uid://bge0jhusdlhhj" path="res://scenes/slot_spinner.tscn" id="2_nq5jh"]
 [ext_resource type="Material" uid="uid://b46jn5oc5l6h3" path="res://Materials/handle.tres" id="3_770jr"]
 
 [sub_resource type="Animation" id="Animation_oh64x"]
@@ -92,10 +92,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t7mng"]
 _data = {
-"Hide": SubResource("Animation_oh64x"),
-"RESET": SubResource("Animation_sn0x6"),
-"ShowUp": SubResource("Animation_3q1nv"),
-"StartSpin": SubResource("Animation_lw00g")
+&"Hide": SubResource("Animation_oh64x"),
+&"RESET": SubResource("Animation_sn0x6"),
+&"ShowUp": SubResource("Animation_3q1nv"),
+&"StartSpin": SubResource("Animation_lw00g")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iot5y"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://iambpuaqot0s"]
+
+[ext_resource type="Shader" uid="uid://c2xyjrm0356fp" path="res://scenes/Aurora/aurora.gdshader" id="1_i1tiw"]
+[ext_resource type="Script" uid="uid://dgcmv7y0315k" path="res://scenes/Aurora/Aurora.cs" id="1_s6ded"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wivtb"]
+noise_type = 0
+frequency = 0.0006
+offset = Vector3(292.77, -335.77, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ux1ng"]
+seamless = true
+noise = SubResource("FastNoiseLite_wivtb")
+
+[sub_resource type="ShaderMaterial" id="3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_i1tiw")
+shader_parameter/speed = 0.02
+shader_parameter/color = Color(0, 0.784314, 0, 1)
+shader_parameter/emission_strength = 5.0
+shader_parameter/noise = SubResource("NoiseTexture2D_ux1ng")
+shader_parameter/offset = 0.0
+shader_parameter/smoothness = 0.15
+shader_parameter/distort = 1.0
+shader_parameter/scale = 1.0
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(2, 2, 2)
+
+[node name="Aurora" type="Node3D" node_paths=PackedStringArray("_mesh")]
+script = ExtResource("1_s6ded")
+_mesh = NodePath("Mesh")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+material_override = SubResource("3")
+mesh = SubResource("1")

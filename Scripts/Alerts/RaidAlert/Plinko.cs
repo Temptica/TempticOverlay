@@ -7,8 +7,8 @@ namespace Temptic404Overlay.Scripts.Alerts.RaidAlert;
 public partial class Plinko : Node3D
 {
 	private AnimationPlayer _animationPlayer;
-	private bool _visible;
-	public bool Visible => _visible;
+	public new bool Visible { get; private set; }
+
 	private List<CollisionShape3D> _pins;
 	public override void _Ready()
 	{
@@ -27,7 +27,7 @@ public partial class Plinko : Node3D
 	private void AnimationPlayerOnAnimationFinished(StringName name)
 	{
 		if (name != "ShowPlinko") return;
-		if (_visible)
+		if (Visible)
 		{
 			_animationPlayer.Play("MoveWall");			
 			return;
@@ -37,8 +37,8 @@ public partial class Plinko : Node3D
 	
 	public void HidePlinko()
 	{
-		if(!_visible) return;
-		_visible = false;
+		if(!Visible) return;
+		Visible = false;
 		_animationPlayer.Stop();
 		_animationPlayer.PlayBackwards("ShowPlinko");
 		_pins.ForEach(pin => pin.Disabled = true);
@@ -47,8 +47,8 @@ public partial class Plinko : Node3D
 	
 	public void ShowPlinko()
 	{
-		if (_visible) return;
-		_visible = true;
+		if (Visible) return;
+		Visible = true;
 		_animationPlayer.Stop();
 		_animationPlayer.Play("ShowPlinko");
 		_pins.ForEach(pin => pin.Disabled = false);

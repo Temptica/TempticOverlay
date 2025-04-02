@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ino4h2se4jgh"]
+
+[ext_resource type="Texture2D" uid="uid://66008ut8byfy" path="res://Images/GodotPlushie/Godot_Plushy_standing.png" id="1_8dc1r"]
+[ext_resource type="Script" uid="uid://dc8g7woya16n2" path="res://Scripts/Plushie.cs" id="1_ghkk5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_37448"]
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ghkk5"]
+radius = 0.300863
+
+[node name="GodotPlushie" type="RigidBody3D"]
+collision_layer = 1024
+collision_mask = 1547
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_37448")
+script = ExtResource("1_ghkk5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, -0.00755118, 0)
+shape = SubResource("SphereShape3D_ghkk5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0015
+render_priority = 5
+texture = ExtResource("1_8dc1r")

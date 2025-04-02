@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx3ai33ch4esp"]
+
+[ext_resource type="Shader" uid="uid://bwsecr6noi8u3" path="res://shaders/nothernlight.gdshader" id="1_rftqa"]
+[ext_resource type="Texture2D" uid="uid://dkdfti8yxoqw7" path="res://Images/particle.png" id="2_al4yh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bve4"]
+shader = ExtResource("1_rftqa")
+shader_parameter/speed = Vector2(0, 0)
+shader_parameter/move_speed = 0.0
+
+[sub_resource type="Curve" id="Curve_kvpon"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.964413, 1), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4ym5s"]
+offsets = PackedFloat32Array(0, 0.407115, 0.581028, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_sqg63"]
+colors = PackedColorArray(0.564504, 0.000132937, 0.525424, 1, 0, 0.721569, 0.247059, 1)
+
+[sub_resource type="Curve" id="Curve_7dvrw"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.250332, 0, 0, Vector2(1, 0.960586), 0.109151, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cy5kc"]
+shader = ExtResource("1_rftqa")
+shader_parameter/speed = Vector2(0, 0)
+shader_parameter/move_speed = 0.0
+
+[sub_resource type="Curve" id="Curve_csq1m"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 3.09434), 0.0, 0.905661, 0, 1, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gqatf"]
+offsets = PackedFloat32Array(0, 0.509302, 0.786047, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_podfa"]
+offsets = PackedFloat32Array(0, 0.388372, 0.760465, 1)
+colors = PackedColorArray(0.0704562, 0.199948, 2.40654e-08, 1, 0.0210789, 0.335809, 1.92523e-07, 1, 1.15514e-06, 0.233896, 0.293414, 1, 8.90419e-07, 0.334408, 0.382801, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4rme"]
+shader = ExtResource("1_rftqa")
+shader_parameter/speed = Vector2(0, 0)
+shader_parameter/move_speed = 0.0
+
+[sub_resource type="Gradient" id="Gradient_br37p"]
+colors = PackedColorArray(0.322341, 0.000529679, 0.443136, 1, 0, 0.139653, 0.31089, 1)
+
+[node name="Control" type="Node2D"]
+material = SubResource("ShaderMaterial_1bve4")
+position = Vector2(577, 560)
+scale = Vector2(8.45313, 5.40625)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(49.0942, -51.9769)
+amount = 10
+lifetime = 5.0
+texture = ExtResource("2_al4yh")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_max = 5.0
+scale_amount_max = 1.1
+split_scale = true
+scale_curve_x = SubResource("Curve_kvpon")
+scale_curve_y = null
+color_ramp = SubResource("Gradient_4ym5s")
+color_initial_ramp = SubResource("Gradient_sqg63")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_7dvrw")
+
+[node name="GreenAurora" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_cy5kc")
+position = Vector2(101.974, -55.3064)
+amount = 500
+lifetime = 5.0
+texture = ExtResource("2_al4yh")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+linear_accel_min = -5.0
+linear_accel_max = 5.0
+split_scale = true
+scale_curve_x = SubResource("Curve_csq1m")
+scale_curve_y = null
+color = Color(1, 1, 1, 0.147)
+color_ramp = SubResource("Gradient_gqatf")
+color_initial_ramp = SubResource("Gradient_podfa")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="purpleAurora2" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_v4rme")
+position = Vector2(0.2366, -55.3064)
+amount = 500
+lifetime = 5.0
+texture = ExtResource("2_al4yh")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+linear_accel_min = -5.0
+linear_accel_max = 5.0
+split_scale = true
+scale_curve_x = SubResource("Curve_csq1m")
+scale_curve_y = null
+color = Color(1, 1, 1, 0.147)
+color_ramp = SubResource("Gradient_gqatf")
+color_initial_ramp = SubResource("Gradient_br37p")
+hue_variation_min = -1.0
+hue_variation_max = 1.0

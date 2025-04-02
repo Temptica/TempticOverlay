@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Temptic404Overlay"
+config/tags=PackedStringArray("c#", "overlay")
 run/main_scene="res://overlay.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
@@ -28,6 +29,8 @@ driver/music=false
 window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/mode=3
+window/size/initial_position_type=3
+window/size/initial_screen=1
 window/size/transparent=true
 window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
@@ -50,10 +53,16 @@ enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 3d_physics/layer_5="Peepo"
 3d_physics/layer_6="Plinko"
 3d_physics/layer_7="BattleFish"
+3d_physics/layer_8="SnowFlake"
+3d_physics/layer_9="SnowBall"
+3d_physics/layer_10="Otter"
+3d_physics/layer_11="Plushie"
+3d_physics/layer_12="Pipe"
+3d_physics/layer_13="Trash"
 
 [rendering]
 
+anti_aliasing/quality/msaa_3d=3
 anti_aliasing/screen_space_roughness_limiter/amount=4.0
 anti_aliasing/screen_space_roughness_limiter/limit=1.0
-anti_aliasing/quality/msaa_3d=3
 viewport/transparent_background=true

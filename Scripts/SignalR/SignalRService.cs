@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Godot;
 using Temptic404Overlay.Scripts.SignalR.Listeners;
@@ -15,6 +17,7 @@ public class SignalRService : IAsyncDisposable
 	private readonly HubConnection _overlayHubConnection;
 	private bool _isConnected;
 	private List<ISignalRListener> _listeners;
+	private int _retryCounter;
 	
 	public SignalRService()
 	{
@@ -49,15 +52,28 @@ public class SignalRService : IAsyncDisposable
 			if (_isConnected)
 			{
 				GD.Print("Connected");
+				_retryCounter = 0;
 				return;
 			}
+
 			await _overlayHubConnection.StartAsync();
 			_isConnected = _overlayHubConnection.State == HubConnectionState.Connected;
 			GD.Print("Connected");
 		}
+		catch (HttpRequestException)
+		{
+			_retryCounter++;
+			if (_retryCounter >= 10)
+			{
+				GD.Print("Failed to connect to SignalR");
+				return;
+			}
+			await Task.Delay(_retryCounter * 5000);
+			await StartAsync();
+		}
 		catch (Exception e)
 		{
-			GD.Print(e);
+			GD.PushError(e);
 		}
 	}
 
@@ -84,5 +100,10 @@ public class SignalRService : IAsyncDisposable
 	public async Task RequestAdTime()
 	{
 		await _overlayHubConnection.InvokeAsync("NextAdRequest");
+	}
+
+	public void TrashClicks(string username, int points)
+	{
+		_overlayHubConnection.InvokeAsync("TrashClicked", username, points);
 	}
 }

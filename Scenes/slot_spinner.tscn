@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bge0jhusdlhhj"]
 
 [ext_resource type="Texture2D" uid="uid://c3c41e5pp6pf8" path="res://Images/fishBlue.png" id="1_fcr3e"]
-[ext_resource type="Script" path="res://Scripts/SlotSpinner.cs" id="1_rdnbk"]
+[ext_resource type="Script" uid="uid://b8egv6ff4703x" path="res://Scripts/SlotSpinner.cs" id="1_rdnbk"]
 [ext_resource type="Texture2D" uid="uid://r640qjioqrss" path="res://Images/fishGreen.png" id="3_k48k2"]
 [ext_resource type="Texture2D" uid="uid://c72g222xtmhaf" path="res://Images/fishOrange.png" id="4_sf4ip"]
 [ext_resource type="Texture2D" uid="uid://deu5682byrn1m" path="res://Images/fishPurple.png" id="6_hwve4"]
@@ -59,7 +59,7 @@ sprite_frames = ExtResource("8_4hbwm")
 animation = &"gif"
 frame_progress = 0.406532
 
-[node name="RightWindow" type="MeshInstance3D" parent="."]
+[node name="CenterWindow" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_yssv8")
 skeleton = NodePath("../CenterWindow")

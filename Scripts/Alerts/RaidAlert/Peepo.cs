@@ -5,17 +5,19 @@ namespace Temptic404Overlay.Scripts.Alerts.RaidAlert;
 
 public partial class Peepo : RigidBody3D
 {
-	private Sprite3D _peepoSprite;
+	[Export] public Sprite3D[] Sprites;
+	[Export] private Node3D _parashute;
+	private Sprite3D _selectedSprite;
 	private double _timeSinceSpawn = 0d;
 	private double _timeTillStartMoving = 3d;
 	private AnimationPlayer _animationPlayer;
 	
-	
 	public override void _Ready()
 	{
-		_peepoSprite = GetNode<Sprite3D>("Sprite3D");
+		_selectedSprite = Sprites[new Random().Next(0, Sprites.Length)];
+		_selectedSprite.Visible = true;
 		//add animation here which is a child of the sprite
-		_animationPlayer = _peepoSprite.GetNode<AnimationPlayer>("AnimationPlayer");
+		_animationPlayer = _parashute.GetNode<AnimationPlayer>("AnimationPlayer");
 		_animationPlayer.Play("JumpOut");
 		_timeTillStartMoving = _animationPlayer.CurrentAnimationLength;
 		
