@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnoa2m0crki35"]
+
+[ext_resource type="Script" uid="uid://dewa2y8a5ana5" path="res://Scripts/Easter/EggSpawner.cs" id="1_ypech"]
+
+[node name="EggSpawner" type="Node3D"]
+script = ExtResource("1_ypech")

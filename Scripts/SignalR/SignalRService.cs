@@ -82,9 +82,24 @@ public class SignalRService : IAsyncDisposable
 		if (_overlayHubConnection != null) await _overlayHubConnection.DisposeAsync();
 	}
 
-	public void AddPoints(string username, int sum)
+	public void FishClicked(string username, int sum)
 	{
 		_overlayHubConnection.InvokeAsync("FishClicked", username, sum);
+	}
+	
+	public void TrashClicked(string username, int sum)
+	{
+		_overlayHubConnection.InvokeAsync("TrashClicked", username, sum);
+	}
+	
+	public void EggClicked(string username, int type)
+	{
+		_overlayHubConnection.InvokeAsync("EggClicked", username, type);
+	}
+
+	public void Clicked(string username)
+	{
+		_overlayHubConnection.InvokeAsync("Clicked", username);
 	}
 	
 	public void SendChatMessage(string message)

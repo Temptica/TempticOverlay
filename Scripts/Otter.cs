@@ -3,6 +3,7 @@ using System;
 using System.Speech.Synthesis.TtsEngine;
 using System.Threading.Tasks;
 using Temptic404Overlay.Scripts;
+using Temptic404Overlay.Scripts.Extensions;
 using Temptic404Overlay.Scripts.SignalR.Listeners;
 
 public partial class Otter : Node3D
@@ -67,15 +68,16 @@ public partial class Otter : Node3D
 		}
 	}
 
-	public bool IsNoseClick(Vector3 position)
+	public async Task<bool> IsNoseClick(Vector3 position)
 	{
 		//if x and Y are in the center of the otter sprite, margin of 0.5, then return true
-		var xCenter = _texture.GlobalPosition.X + _texture.Texture.GetWidth() / 2f;
-		var yCenter = _texture.GlobalPosition.Y + _texture.Texture.GetHeight() / 2f;
+		var textureGlobalPos = (await _texture.CallAsync(Node3D.MethodName.GetGlobalPosition)).AsVector3();
+		var xCenter = textureGlobalPos.X + (await _texture.Texture.CallAsync(Texture2D.MethodName.GetWidth)).AsSingle() / 2f;
+		var yCenter = textureGlobalPos.Y + (await _texture.Texture.CallAsync(Texture2D.MethodName.GetHeight)).AsSingle() / 2f;
 		var z = position.Z;
-		
 		var pos =  new Vector3(xCenter, yCenter, z);
-
-		return pos.DistanceTo(position) < 0.5f;
+		
+		var distance = pos.DistanceTo(position);
+		return distance < 1.5f;
 	}
 }

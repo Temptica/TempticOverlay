@@ -77,7 +77,7 @@ public partial class SlotMachine : Node3D
             {
                 GD.Print(
                     $"@{_currentSpin.Username} has spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points.");
-                Overlay.SignalRService.AddPoints(_currentSpin.Username, points);
+                Overlay.SignalRService.FishClicked(_currentSpin.Username, points);
                 Overlay.SignalRService.SendChatMessage(
                     $"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points. peepoClap");
             }

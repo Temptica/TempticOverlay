@@ -1,0 +1,543 @@
+[gd_scene load_steps=66 format=3 uid="uid://sqlkahhtwtbi"]
+
+[ext_resource type="Script" uid="uid://6tlvfvq5npn6" path="res://Scripts/Overlay.cs" id="1_3wyrm"]
+[ext_resource type="Script" uid="uid://dudfiucao8jjg" path="res://Scripts/Labels/AlertLabels.cs" id="2_3wyrm"]
+[ext_resource type="LabelSettings" uid="uid://caylaw0w5pes5" path="res://MusicLabel.tres" id="3_gjmu7"]
+[ext_resource type="Animation" uid="uid://cr65ssie7rrqe" path="res://Animations/HideAlertBox.res" id="4_ieufl"]
+[ext_resource type="Animation" uid="uid://doldi8cameahy" path="res://Animations/ShowAlertBox.res" id="5_v6q1a"]
+[ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="6_kvhu2"]
+[ext_resource type="Script" uid="uid://cq4fn6wsum070" path="res://Scripts/Alerts/Glow.cs" id="7_1w8q5"]
+[ext_resource type="Script" uid="uid://mu0tc6v0pax" path="res://Scripts/AudioPlayer.cs" id="8_si15u"]
+[ext_resource type="Script" uid="uid://bd0481p314kvm" path="res://Scripts/SpamAudioPlayer.cs" id="9_rhf3q"]
+[ext_resource type="Script" uid="uid://b17p1tdqmedxj" path="res://Scripts/Alerts/AlertQueue.cs" id="10_83ms4"]
+[ext_resource type="Script" uid="uid://cx0pkierenq1u" path="res://Scripts/AudioListener.cs" id="11_3hinp"]
+[ext_resource type="Script" uid="uid://brgavxdw6hxfa" path="res://Scripts/Labels/PartyModeLabel.cs" id="12_3ceg7"]
+[ext_resource type="PackedScene" uid="uid://doqewfiknnadb" path="res://scenes/click_counter_display.tscn" id="13_bqtyy"]
+[ext_resource type="PackedScene" uid="uid://vx4qk3v8prjl" path="res://scenes/easter/egg_display.tscn" id="14_gjmu7"]
+[ext_resource type="PackedScene" uid="uid://civ2xy4ofwrew" path="res://scenes/otter.tscn" id="14_shc55"]
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="15_wbni2"]
+[ext_resource type="Script" uid="uid://0n36jr8tv3ol" path="res://Scripts/Labels/LastSubLabel.cs" id="16_de4gk"]
+[ext_resource type="Script" uid="uid://bdmnamx7ltqhr" path="res://Scripts/Labels/LastCheerLabel.cs" id="17_146ux"]
+[ext_resource type="Script" uid="uid://dj42nl1x40drj" path="res://Scripts/Labels/FirstViewerLabel.cs" id="18_mf10p"]
+[ext_resource type="Script" uid="uid://dqpxcwyefe3sa" path="res://Scripts/Labels/MusicLabel.cs" id="19_svhcv"]
+[ext_resource type="Script" uid="uid://qlv62pqtp47o" path="res://Scripts/Labels/RaidLabel.cs" id="20_w77jk"]
+[ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://scenes/emote_show_off.tscn" id="21_21iuf"]
+[ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://scenes/lasershow.tscn" id="22_jwdgb"]
+[ext_resource type="Script" uid="uid://cd5lkj468njj1" path="res://Scripts/Alerts/RaidAlert/PlaneSpawner.cs" id="23_0jnnq"]
+[ext_resource type="PackedScene" uid="uid://b4xjqfscsjpgl" path="res://Templates/plinko.tscn" id="24_edryl"]
+[ext_resource type="Script" uid="uid://cy8lvy1mnfif5" path="res://Scripts/Fishes/FishSpawner.cs" id="25_d801l"]
+[ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://scenes/fish_duel.tscn" id="26_gd3t8"]
+[ext_resource type="Script" uid="uid://4keqafoxv20l" path="res://Scripts/OverlayClicker.cs" id="27_jxljj"]
+[ext_resource type="PackedScene" uid="uid://cbwqubbq37uxa" path="res://Scripts/bubble_machine.tscn" id="28_qidb7"]
+[ext_resource type="Script" uid="uid://d35hrcjcw5pmx" path="res://Scripts/BubbleSpawner.cs" id="29_kb77t"]
+[ext_resource type="PackedScene" uid="uid://exxv880gb2q1" path="res://scenes/snowball_spawner.tscn" id="30_j2drx"]
+[ext_resource type="PackedScene" uid="uid://bsb7y1uddpgft" path="res://scenes/plushy_spawner.tscn" id="31_ajo7l"]
+[ext_resource type="PackedScene" uid="uid://s83c4yistfj0" path="res://scenes/snow_spawner.tscn" id="32_sn1kw"]
+[ext_resource type="PackedScene" uid="uid://c5c5r2loy4cev" path="res://scenes/fireworks.tscn" id="33_0gve3"]
+[ext_resource type="PackedScene" uid="uid://iambpuaqot0s" path="res://scenes/Aurora/aurora.tscn" id="34_br88o"]
+[ext_resource type="PackedScene" uid="uid://cq0a3bliit2jp" path="res://scenes/random_trash_spawner.tscn" id="35_3kiy0"]
+[ext_resource type="PackedScene" uid="uid://ccick2nkvh46s" path="res://Templates/peepo.tscn" id="36_xmqsu"]
+[ext_resource type="PackedScene" uid="uid://bnoa2m0crki35" path="res://scenes/easter/egg_spawner.tscn" id="37_fd83d"]
+[ext_resource type="PackedScene" uid="uid://x44fy0hjs7fp" path="res://scenes/slot_machine.tscn" id="38_nv3o6"]
+[ext_resource type="PackedScene" uid="uid://d4nxeh7fakmc" path="res://scenes/ad_timer.tscn" id="39_nfnp2"]
+[ext_resource type="Texture2D" uid="uid://74qfevgtrnf5" path="res://Images/Noor.png" id="40_btg7i"]
+
+[sub_resource type="Environment" id="Environment_3kf53"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2cs8"]
+size = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wck2e"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.513726)
+grow = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_3u44p"]
+size = Vector3(4, 1.855, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt3bq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tqs4t"]
+viewport_path = NodePath("AlertBox/Sprite3D/SubViewport2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l52w1"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcoyg"]
+font_size = 48
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kqet"]
+_data = {
+&"HideAlertBox": ExtResource("4_ieufl"),
+&"ShowAlertBox": ExtResource("5_v6q1a")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_3n0pd"]
+material = ExtResource("6_kvhu2")
+size = Vector3(0.05, 4.1, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7c0i"]
+material = ExtResource("6_kvhu2")
+size = Vector3(0.05, 3.05, 0.05)
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_qit8j"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_3ncr7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pvlt2"]
+size = Vector3(0.6, 9, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4er1"]
+size = Vector3(0.229, 8.94, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lj8iq"]
+material = ExtResource("6_kvhu2")
+size = Vector3(0.03, 8.4, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8lxmp"]
+size = Vector3(0.6, 9, 0.05)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kbmvl"]
+bounce = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7pnw"]
+size = Vector3(16, 0.3, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7d1ca"]
+material = ExtResource("6_kvhu2")
+size = Vector3(0.03, 15, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y56as"]
+size = Vector3(16, 0.1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xie8"]
+size = Vector3(16, 0.3, 0.05)
+
+[sub_resource type="Animation" id="Animation_ap17j"]
+resource_name = "FollowAnimation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya3yj"]
+_data = {
+&"FollowAnimation": SubResource("Animation_ap17j")
+}
+
+[node name="Overlay" type="Node3D"]
+script = ExtResource("1_3wyrm")
+
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 10.4422)
+keep_aspect = 0
+environment = SubResource("Environment_3kf53")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95153, 0.307556, 0, -0.307556, 0.95153, 0, 0, 0)
+
+[node name="FishMessageBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19404, 7.895, 0)
+mesh = SubResource("BoxMesh_l2cs8")
+surface_material_override/0 = SubResource("StandardMaterial3D_wck2e")
+
+[node name="AlertBox" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1.00537, 0, 0, 0, 1.00537, 0, 0, 0, 1.00537, 8, 4.5, -0.014)
+visible = false
+transparency = 0.1
+mesh = SubResource("BoxMesh_3u44p")
+surface_material_override/0 = SubResource("StandardMaterial3D_tt3bq")
+
+[node name="Sprite3D" type="Sprite3D" parent="AlertBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.577815, 0.0971075)
+pixel_size = 0.005
+texture = SubResource("ViewportTexture_tqs4t")
+
+[node name="SubViewport2" type="SubViewport" parent="AlertBox/Sprite3D"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(800, 1150)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="AlertBox/Sprite3D/SubViewport2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -281.5
+offset_right = 281.0
+offset_bottom = 281.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_3wyrm")
+
+[node name="AlertTypeLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+layout_mode = 2
+text = "Incomming raid"
+label_settings = SubResource("LabelSettings_l52w1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AlertUserNameLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+layout_mode = 2
+text = "Ryoon2K"
+label_settings = SubResource("LabelSettings_qcoyg")
+horizontal_alignment = 1
+
+[node name="AlertMessageLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+text = "Has raided us with 8 viewers"
+label_settings = ExtResource("3_gjmu7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AlertBoxAnimationPlayer" type="AnimationPlayer" parent="AlertBox"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1kqet")
+}
+
+[node name="Glow4" type="MeshInstance3D" parent="AlertBox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.49043, 0)
+visible = false
+mesh = SubResource("BoxMesh_3n0pd")
+skeleton = NodePath("../../Borders/BorderLeft")
+script = ExtResource("7_1w8q5")
+
+[node name="Glow5" type="MeshInstance3D" parent="AlertBox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1.52885, 0)
+visible = false
+mesh = SubResource("BoxMesh_3n0pd")
+skeleton = NodePath("../../Borders/BorderLeft")
+script = ExtResource("7_1w8q5")
+
+[node name="Glow6" type="MeshInstance3D" parent="AlertBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02531, -0.0192466, 0)
+visible = false
+mesh = SubResource("BoxMesh_c7c0i")
+skeleton = NodePath("../../Borders/BorderLeft")
+script = ExtResource("7_1w8q5")
+
+[node name="Glow7" type="MeshInstance3D" parent="AlertBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03507, -0.0192466, 0)
+visible = false
+mesh = SubResource("BoxMesh_c7c0i")
+skeleton = NodePath("../../Borders/BorderLeft")
+script = ExtResource("7_1w8q5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"AudioEffects"
+script = ExtResource("8_si15u")
+
+[node name="SpamAudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamPolyphonic_qit8j")
+max_polyphony = 32
+bus = &"AudioEffects"
+script = ExtResource("9_rhf3q")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="AlertQueue" type="Node" parent="."]
+script = ExtResource("10_83ms4")
+
+[node name="AudioListener" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_3hinp")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamMicrophone_3ncr7")
+autoplay = true
+bus = &"Music"
+
+[node name="PartyModeLabel" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.72293, 0)
+visible = false
+text = "PARTY MODE ENABLED"
+font_size = 64
+script = ExtResource("12_3ceg7")
+
+[node name="ClickCounterDisplay" parent="." instance=ExtResource("13_bqtyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2557, 8, 0)
+
+[node name="EggDisplay" parent="." instance=ExtResource("14_gjmu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03073, 0.673164, 0)
+
+[node name="Otter" parent="." instance=ExtResource("14_shc55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1802, 1.49967, -0.1)
+
+[node name="This is fine" parent="Otter" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.204456, -0.001)
+
+[node name="OtterCollision" parent="Otter" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00415897, -0.480624, 0)
+
+[node name="CollisionShape3D" parent="Otter/OtterCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280728, -0.0559438, 0)
+
+[node name="Borders" type="Node3D" parent="."]
+
+[node name="BorderLeft" type="MeshInstance3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218275, 4.5, 0)
+mesh = SubResource("BoxMesh_pvlt2")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("15_wbni2")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderLeft"]
+collision_mask = 255
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderLeft/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198192, -0.0135803, 0)
+shape = SubResource("BoxShape3D_j4er1")
+
+[node name="Glow" type="MeshInstance3D" parent="Borders/BorderLeft"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30093, -0.00512695, 0.000488281)
+mesh = SubResource("BoxMesh_lj8iq")
+script = ExtResource("7_1w8q5")
+
+[node name="BorderRight" type="MeshInstance3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01843, 15.8, 4.5, 0)
+mesh = SubResource("BoxMesh_8lxmp")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("15_wbni2")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderRight"]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_kbmvl")
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderRight/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217344, -0.0135803, 0)
+shape = SubResource("BoxShape3D_j4er1")
+
+[node name="Glow2" type="MeshInstance3D" parent="Borders/BorderRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315142, -0.00128937, 0.000520557)
+mesh = SubResource("BoxMesh_lj8iq")
+skeleton = NodePath("../../BorderLeft")
+
+[node name="BorderTop" type="MeshInstance3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8.85, 0)
+mesh = SubResource("BoxMesh_x7pnw")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("15_wbni2")
+
+[node name="LastSubTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45642, -0.0157804, 0.03)
+text = "Last Sub:"
+font_size = 38
+horizontal_alignment = 0
+
+[node name="LastSubLabel" type="Label3D" parent="Borders/BorderTop"]
+editor_description = "Tomatoes_CannotBeTrusted"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53773, -0.0188932, 0.03)
+double_sided = false
+text = "Tomatoes_CannotBeTrusted1"
+horizontal_alignment = 0
+script = ExtResource("16_de4gk")
+
+[node name="LastCheerTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32112, -0.0220213, 0.03)
+text = "Last Cheer:"
+font_size = 36
+horizontal_alignment = 0
+
+[node name="LastCheerLabel" type="Label3D" parent="Borders/BorderTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269058, -0.0314054, 0.03)
+text = "Tomatoes_CannotBeTrusted1"
+horizontal_alignment = 0
+script = ExtResource("17_146ux")
+
+[node name="FirstViewerLabel" type="Label3D" parent="Borders/BorderTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01717, -0.0345182, 0.03)
+text = "Be the first chatter!"
+font_size = 36
+horizontal_alignment = 0
+script = ExtResource("18_mf10p")
+
+[node name="FirstViewerTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87333, -0.0189695, 0.03)
+text = "First Viewer:
+"
+font_size = 36
+horizontal_alignment = 0
+
+[node name="Glow3" type="MeshInstance3D" parent="Borders/BorderTop"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00500011, -0.166303, 0.00390625)
+mesh = SubResource("BoxMesh_7d1ca")
+skeleton = NodePath("../../BorderLeft")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderTop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderTop/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127699, 0)
+shape = SubResource("BoxShape3D_y56as")
+
+[node name="BorderBottom" type="MeshInstance3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.15, 0)
+mesh = SubResource("BoxMesh_4xie8")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("15_wbni2")
+
+[node name="Glow4" type="MeshInstance3D" parent="Borders/BorderBottom"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.166644, 0)
+mesh = SubResource("BoxMesh_7d1ca")
+skeleton = NodePath("../../BorderLeft")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Borders/BorderBottom"]
+libraries = {
+&"": SubResource("AnimationLibrary_ya3yj")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133482, 0)
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderBottom/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00416943, 0)
+shape = SubResource("BoxShape3D_y56as")
+
+[node name="CurrentlyPlayingTitleLabel" type="Label3D" parent="Borders/BorderBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81249, 0.0216627, 0.0261841)
+text = "Currently Playing:"
+
+[node name="MusicLabel" type="Label3D" parent="Borders/BorderBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93269, 0.0302397, 0.062)
+text = "Loading ..."
+horizontal_alignment = 0
+script = ExtResource("19_svhcv")
+
+[node name="RaidTitleLabel" type="Label3D" parent="Borders/BorderBottom"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41734, 0.0285693, 0.03)
+visible = false
+text = "Last raid:"
+font_size = 36
+horizontal_alignment = 0
+
+[node name="RaidLabel" type="Label3D" parent="Borders/BorderBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25556, 0.0285693, 0.03)
+visible = false
+horizontal_alignment = 0
+script = ExtResource("20_w77jk")
+
+[node name="EmoteShowOff" parent="." instance=ExtResource("21_21iuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
+visible = false
+
+[node name="LaserShow" parent="." instance=ExtResource("22_jwdgb")]
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="PlaneSpawner" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5227, 6.87993, 0)
+script = ExtResource("23_0jnnq")
+
+[node name="Plinko" parent="Spawners" instance=ExtResource("24_edryl")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87826, 2.07304, 0)
+visible = false
+
+[node name="FishSpawner" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.127502)
+script = ExtResource("25_d801l")
+
+[node name="FishDuel" parent="Spawners" instance=ExtResource("26_gd3t8")]
+
+[node name="OverlayClicker" type="Node3D" parent="Spawners" node_paths=PackedStringArray("_eggSpawner", "_otter")]
+script = ExtResource("27_jxljj")
+_eggSpawner = NodePath("../EggSpawner")
+_otter = NodePath("../../Otter")
+
+[node name="BubbleMachine" parent="Spawners" instance=ExtResource("28_qidb7")]
+transform = Transform3D(0.271781, 1.73594, 0.434446, -0.296805, -0.389612, 1.74247, 1.76469, -0.332883, 0.226158, -0.173956, 0.36377, -0.479065)
+
+[node name="BubbleSpawner" type="Node3D" parent="Spawners/BubbleMachine"]
+unique_name_in_owner = true
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, 0.0611711, 0.576778, 0.343949)
+script = ExtResource("29_kb77t")
+
+[node name="SnowballSpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("30_j2drx")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.0305094, 0.491345, 0.246477)
+Target = NodePath("../../../Otter/OtterCollision/CollisionShape3D")
+_spawnRate = 3.0
+
+[node name="PlushySpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("31_ajo7l")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.02154, 0.49508, 0.258412)
+Target = NodePath("../../../Otter")
+
+[node name="SnowSpawner" parent="Spawners" instance=ExtResource("32_sn1kw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363289, 9, 0)
+_enabled = false
+
+[node name="Fireworks" parent="Spawners" instance=ExtResource("33_0gve3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75819, -8.37807, -94.7414)
+
+[node name="Aurora" parent="Spawners" instance=ExtResource("34_br88o")]
+transform = Transform3D(2.99, 0, 0, 0, 2.99, 0, 0, 0, 2.99, 7.47829, 8.27757, -9.22199)
+
+[node name="RandomTrashSpawner" parent="Spawners" node_paths=PackedStringArray("_leftBound", "_rightBound") instance=ExtResource("35_3kiy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40914, 9.90403, 0)
+_leftBound = NodePath("../../Borders/BorderLeft")
+_rightBound = NodePath("../../Borders/BorderRight")
+
+[node name="Peepo" parent="Spawners" instance=ExtResource("36_xmqsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87056, 0, 0)
+
+[node name="Blue" parent="Spawners/Peepo/JumperSprite" index="1"]
+visible = true
+
+[node name="Cyan" parent="Spawners/Peepo/JumperSprite" index="2"]
+visible = true
+
+[node name="Green" parent="Spawners/Peepo/JumperSprite" index="3"]
+visible = true
+
+[node name="Orange" parent="Spawners/Peepo/JumperSprite" index="4"]
+visible = true
+
+[node name="Purple" parent="Spawners/Peepo/JumperSprite" index="5"]
+visible = true
+
+[node name="Red" parent="Spawners/Peepo/JumperSprite" index="6"]
+visible = true
+
+[node name="Yellow" parent="Spawners/Peepo/JumperSprite" index="7"]
+visible = true
+
+[node name="EggSpawner" parent="Spawners" instance=ExtResource("37_fd83d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05149, 0.532127, 0)
+
+[node name="SlotMachine" parent="." instance=ExtResource("38_nv3o6")]
+transform = Transform3D(1.32909, 0, 0.639647, 0, 1.475, 0, -0.639647, 0, 1.32909, 3.26228, -5, 0)
+
+[node name="AdTimer" parent="." instance=ExtResource("39_nfnp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70581, 8.37343, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66174, 5.26282, -2.16418)
+visible = false
+texture = ExtResource("40_btg7i")
+
+[editable path="Otter"]
+[editable path="Spawners/Peepo"]

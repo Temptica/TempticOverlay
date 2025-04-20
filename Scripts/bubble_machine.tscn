@@ -15,9 +15,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247803, 0, -0.0518799)
 transform = Transform3D(0.802078, 0, -0.597219, 0, 1, 0, 0.597219, 0, 0.802078, 0, 0, 1.27711)
 light_energy = 0.127
 
-[node name="BubblesSpawner" type="Node3D" parent="."]
+[node name="BubblesSpawner" type="Node3D" parent="." node_paths=PackedStringArray("_bubbleMachineSpawner")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030014, 0.482345, 0.34638)
 script = ExtResource("2_5x37d")
+_bubbleMachineSpawner = NodePath("..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 2048

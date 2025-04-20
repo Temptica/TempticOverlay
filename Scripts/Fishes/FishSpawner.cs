@@ -81,7 +81,7 @@ public partial class FishSpawner : Node3D
 		
 		clickedFishes.ForEach(f=>f.QueueFree());
 		Fishes.RemoveAll(fish => clickedFishes.Contains(fish));
-		Overlay.SignalRService.AddPoints(username, points);
+		Overlay.SignalRService.FishClicked(username, points);
 		return true;
 	}
 	
