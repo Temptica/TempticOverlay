@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Temptic404Overlay.Scripts.Alerts.RaidAlert;
+namespace Temptica.Overlay.Scripts.Alerts.RaidAlert;
 
 public partial class Plane : Node3D
 {

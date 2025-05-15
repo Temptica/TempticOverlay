@@ -1,9 +1,9 @@
-using Godot;
-using System;
 using System.Threading.Tasks;
-using Temptic404Overlay.Scripts;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Godot;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
+
+namespace Temptica.Overlay.Scripts.Winter;
 
 public partial class Fireworks : Node3D
 {

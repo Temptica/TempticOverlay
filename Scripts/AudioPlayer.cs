@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
-using Temptic404Overlay.Scripts.Spotify;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Spotify;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class AudioPlayer : AudioStreamPlayer
 {
     public static Dictionary<AudioEffects, AudioStream> AudioStreams;
     private double deltaCumulitveTime = 0;
-    private Glow _glow;
+    private Alerts.Glow _glow;
     private static List<AudioEffects> NextStream { get; set; } = [];
-    
+
     [Export] SpamAudioPlayer SpamAudioPlayer { get; set; }
 
     public override void _Ready()
@@ -49,16 +49,15 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.Punch, GD.Load<AudioStream>("res://AudioFiles/punch.mp3") },
             { AudioEffects.Pikmin, GD.Load<AudioStream>("res://AudioFiles/pikmin.mp3") },
             { AudioEffects.Whip, GD.Load<AudioStream>("res://AudioFiles/whip.mp3") },
-            { AudioEffects.Bober, GD.Load<AudioStream>("res://AudioFiles/bober.mp3")},
-            { AudioEffects.Fbi, GD.Load<AudioStream>("res://AudioFiles/fbi.mp3")},
-            { AudioEffects.Pop, GD.Load<AudioStream>("res://AudioFiles/pop.mp3")},
-            { AudioEffects.Fireworks,GD.Load<AudioStream>("res://AudioFiles/Firework.mp3")},
-            { AudioEffects.Screenshot,GD.Load<AudioStream>("res://AudioFiles/Screenshot.mp3")},
-            { AudioEffects.HaveYouEverHadADream,GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3")},
-            { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3")},
-            
+            { AudioEffects.Bober, GD.Load<AudioStream>("res://AudioFiles/bober.mp3") },
+            { AudioEffects.Fbi, GD.Load<AudioStream>("res://AudioFiles/fbi.mp3") },
+            { AudioEffects.Pop, GD.Load<AudioStream>("res://AudioFiles/pop.mp3") },
+            { AudioEffects.Fireworks, GD.Load<AudioStream>("res://AudioFiles/Firework.mp3") },
+            { AudioEffects.Screenshot, GD.Load<AudioStream>("res://AudioFiles/Screenshot.mp3") },
+            { AudioEffects.HaveYouEverHadADream, GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3") },
+            { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3") },
         };
-        _glow = GetNode<Glow>("%Glow");
+        _glow = GetNode<Alerts.Glow>("%Glow");
 
         PlayAudioListener.PlayAudio += PlayAudio;
         MaxPolyphony = 5;
@@ -104,7 +103,7 @@ public partial class AudioPlayer : AudioStreamPlayer
     {
         if (NextStream.Count == 0 || GetPlaybackPosition() > 0) return;
         if (!AudioStreams.TryGetValue(NextStream[0], out var stream)) return;
-        
+
         SetStream(stream);
         Play();
         var timeout = (int)Math.Round(stream.GetLength() * 1000);

@@ -1,8 +1,10 @@
-using Godot;
 using System;
 using System.Threading.Tasks;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Godot;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Environment = Godot.Environment;
+
+namespace Temptica.Overlay.Scripts.Alerts;
 
 public partial class Glow : MeshInstance3D
 {
@@ -68,7 +70,6 @@ public partial class Glow : MeshInstance3D
 			if (AudioListener.PartyMode)
 			{
 				AudioListener.PausePartyMode();
-				GD.Print("Paused party mode");
 			}
 			else if (_RainbowMode)
 			{

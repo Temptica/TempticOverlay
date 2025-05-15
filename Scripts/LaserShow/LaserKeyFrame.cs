@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Temptic404Overlay.Scripts.LaserShow;
+namespace Temptica.Overlay.Scripts.LaserShow;
 
 public class LaserKeyFrame
 {

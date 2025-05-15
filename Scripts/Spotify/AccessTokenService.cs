@@ -1,7 +1,7 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Temptic404Overlay.Scripts.Spotify;
+namespace Temptica.Overlay.Scripts.Spotify;
 
 public class AccessTokenService
 {

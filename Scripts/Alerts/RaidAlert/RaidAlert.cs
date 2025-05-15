@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Godot;
 
-namespace Temptic404Overlay.Scripts.Alerts.RaidAlert
+namespace Temptica.Overlay.Scripts.Alerts.RaidAlert
 {
     internal class RaidAlert : Alert
     {

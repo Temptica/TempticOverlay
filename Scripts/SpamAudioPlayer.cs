@@ -1,8 +1,8 @@
-using Godot;
-using System;
 using System.Collections.Generic;
-using Temptic404Overlay.Scripts;
+using Godot;
 using Temptica.TwitchBot.Shared.enums;
+
+namespace Temptica.Overlay.Scripts;
 
 public partial class SpamAudioPlayer : AudioStreamPlayer3D
 {

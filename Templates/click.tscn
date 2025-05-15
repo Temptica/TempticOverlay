@@ -15,11 +15,13 @@ script = ExtResource("1_ra3vi")
 
 [node name="Username" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0777359, 0, 0)
+sorting_offset = 3.0
 outline_modulate = Color(0, 0, 0, 0)
 text = "TestText"
 horizontal_alignment = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+sorting_offset = 3.0
 mesh = SubResource("SphereMesh_vg6mf")
 skin = SubResource("Skin_oxgld")

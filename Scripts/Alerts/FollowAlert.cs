@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Temptic404Overlay.Scripts.Alerts
+namespace Temptica.Overlay.Scripts.Alerts
 {
     internal class FollowAlert: Alert
     {

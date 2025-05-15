@@ -2,10 +2,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scenes;
+namespace Temptica.Overlay.scenes;
 
 public partial class FishDuel : Node3D
 {
@@ -47,7 +46,7 @@ public partial class FishDuel : Node3D
             _shouldEndBattle = false;
             ShouldStartBattle = false;
             BattleInProgress = false;
-            var fishes = GetChildren().Where(f=>f is BattleFish).Cast<BattleFish>().ToList();
+            var fishes = GetChildren().Where(f=>f is Scripts.Fishes.BattleFish).Cast<Scripts.Fishes.BattleFish>().ToList();
             foreach (var fish in fishes)
             { 
                 fish.QueueFree();
@@ -58,7 +57,6 @@ public partial class FishDuel : Node3D
         }
         if (ShouldStartBattle)
         {
-            GD.Print("Starting battles!");
             ShouldStartBattle = false;
             StartBattles(); 
         }
@@ -74,10 +72,8 @@ public partial class FishDuel : Node3D
         
         if (BattleInProgress && !_startingBattle)
         { 
-            var fishes = GetChildren().Where(f=>f is BattleFish).Cast<BattleFish>().ToList();
+            var fishes = GetChildren().Where(f=>f is Scripts.Fishes.BattleFish).Cast<Scripts.Fishes.BattleFish>().ToList();
             var percentage = FishPercentage();
-            
-            GD.Print($"Percentage: {percentage}");
             
             //scale  _leftMeshInstance (4 is the max scale)
             var mesh = (BoxMesh)_leftMeshInstance.Mesh;
@@ -97,15 +93,11 @@ public partial class FishDuel : Node3D
             
             if(firstColorCount == secondColorCount )
             {
-                GD.Print("Battle in a draw!");
                 return;
             }
             
-            GD.Print("Battle ended!");
-            
             if (firstColorCount > secondColorCount)
             {
-                GD.Print("First color wins!");
                 
                 if(_battleThreeColors[0] == FishColor.None)
                 {
@@ -117,7 +109,6 @@ public partial class FishDuel : Node3D
                 }
                 else
                 {
-                    GD.Print($"{_currentBattle[0]} Has won this tournament!");
                     EndBattle(_currentBattle[0]);
                     _rightMeshInstance.Hide();
                     _centerMeshInstance.Hide();
@@ -178,7 +169,7 @@ public partial class FishDuel : Node3D
     {
         BattleInProgress = false;
         ShouldStartBattle = false;
-        var fishes = GetChildren().Where(f=>f is BattleFish).Cast<BattleFish>().ToList();
+        var fishes = GetChildren().Where(f=>f is Scripts.Fishes.BattleFish).Cast<Scripts.Fishes.BattleFish>().ToList();
         
         foreach (var fish in fishes.Where(fish => fish.Color != _battleThreeColors[0] && fish.Color != _battleThreeColors[1]))
         {
@@ -197,7 +188,7 @@ public partial class FishDuel : Node3D
             else
             {
                 _shouldEndBattle = true;
-                Overlay.SignalRService.DuelWinnerColor(winnerFish);
+                Scripts.Overlay.SignalRService.DuelWinnerColor(winnerFish);
                 GD.Print("Battle ended, winner is: " + winnerFish);
             }
         });
@@ -238,7 +229,7 @@ public partial class FishDuel : Node3D
         _shouldStartNextBattle = false;
         _startingBattle = true;
         GD.Print("Starting battle");
-        foreach (var fish in GetChildren().Where(f=>f is BattleFish).Cast<BattleFish>().ToList())
+        foreach (var fish in GetChildren().Where(f=>f is Scripts.Fishes.BattleFish).Cast<Scripts.Fishes.BattleFish>().ToList())
         {
             fish.QueueFree();
         }
@@ -278,7 +269,7 @@ public partial class FishDuel : Node3D
     }
     private void SpawnFish(FishColor color)
     {
-        var fish = (BattleFish)_fishScene.Instantiate();
+        var fish = (Scripts.Fishes.BattleFish)_fishScene.Instantiate();
         fish.SetFishColor(color);
         AddChild(fish);
         fish.GlobalPosition = new Vector3((float)new Random().NextDouble() * 14 + 1, (float)new Random().NextDouble() * 7 + 1,0);
@@ -298,7 +289,7 @@ public partial class FishDuel : Node3D
     
     private float FishPercentage()
     {
-        var fishes = GetChildren().Where(f=>f is BattleFish).Cast<BattleFish>().ToList();
+        var fishes = GetChildren().Where(f=>f is Scripts.Fishes.BattleFish).Cast<Scripts.Fishes.BattleFish>().ToList();
         var colorCount = fishes.Count(f => f.Color == _currentBattle[0]);
         return colorCount / (float)fishes.Count;
     }

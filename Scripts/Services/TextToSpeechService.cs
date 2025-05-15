@@ -4,7 +4,7 @@ using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using Godot;
 
-namespace Temptic404Overlay.Scripts.Services;
+namespace Temptica.Overlay.Scripts.Services;
 using System.Speech;
 #pragma warning disable CA1416
 public class TextToSpeechService : IDisposable
@@ -27,7 +27,6 @@ public class TextToSpeechService : IDisposable
     {
         if(_queue.Count > 0 )
         {
-            GD.Print("Speaking next in queue");
             var text = _queue[0];
             _queue.RemoveAt(0);
             StartSpeaking(text);
@@ -40,7 +39,6 @@ public class TextToSpeechService : IDisposable
 
     public void Speak(string text)
     {
-        GD.Print($"recieved speak request: {text}");
         if(_queue.Count == 0 && !IsSpeaking && !IsPaused)
         {
             StartSpeaking(text);

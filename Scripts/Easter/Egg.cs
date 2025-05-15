@@ -1,6 +1,7 @@
 using Godot;
-using System;
 using Temptica.TwitchBot.Shared.enums;
+
+namespace Temptica.Overlay.Scripts.Easter;
 
 public partial class Egg : Node3D
 {

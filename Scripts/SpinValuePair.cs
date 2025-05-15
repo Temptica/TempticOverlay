@@ -1,3 +1,3 @@
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public record SpinValuePair(double Multiplier,SpinFishType[] Values);

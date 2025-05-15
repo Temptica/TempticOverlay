@@ -1,8 +1,9 @@
 using System;
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.Overlay.scenes;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
 public class StartFishBattle : ISignalRListener
 {
@@ -10,7 +11,7 @@ public class StartFishBattle : ISignalRListener
     {
         connection.On("StartFishBattle", ()  =>
         {
-            Scenes.FishDuel.ShouldStartBattle = true;
+            FishDuel.ShouldStartBattle = true;
             GD.Print("Recieved StartFishBattle");
         });
         

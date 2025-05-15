@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6wsfj3ojirv3"]
 
 [ext_resource type="Texture2D" uid="uid://d18fvfrom1rr" path="res://Images/Bubble.png" id="1_cvigm"]
-[ext_resource type="Script" uid="uid://c2d5mc53oxdgm" path="res://Templates/Bubble.cs" id="1_khv37"]
+[ext_resource type="Script" uid="uid://ctiq12do7kocd" path="res://Scripts/Spawners/Spawnables/Bubble.cs" id="1_khv37"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gs7x3"]
 resource_local_to_scene = true
@@ -68,8 +68,8 @@ max_contacts_reported = 1
 linear_damp = 1.0
 angular_velocity = Vector3(0, 0, 0.872665)
 script = ExtResource("1_khv37")
-_animationPlayer = NodePath("AnimationPlayer")
 Frequency = 1.0
+_animationPlayer = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_vgyt1")

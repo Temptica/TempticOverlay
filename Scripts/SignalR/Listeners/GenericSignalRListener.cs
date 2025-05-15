@@ -1,13 +1,14 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
 public class GenericSignalRListener : ISignalRListener
 {
     #region EventHandlers
 
     public static EventHandler ThisIsFine; 
+    public static EventHandler Squish;
 
     #endregion
 
@@ -18,6 +19,11 @@ public class GenericSignalRListener : ISignalRListener
         {
             ThisIsFine?.Invoke(this, EventArgs.Empty);
             
+        });
+        
+        connection.On("Squish", () =>
+        {
+            Squish?.Invoke(this,null!);
         });
 
     }

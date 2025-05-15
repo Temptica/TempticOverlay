@@ -1,4 +1,4 @@
-namespace Temptic404Overlay.Scripts.SignalR.Listeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
 public interface ISignalRListener
 {

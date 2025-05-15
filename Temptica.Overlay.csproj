@@ -1,0 +1,49 @@
+<Project Sdk="Godot.NET.Sdk/4.4.0">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <LangVersion>13</LangVersion>
+    <UserSecretsId>6afccc16-f5b8-4fa9-a9e7-c45e3d409df2</UserSecretsId>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
+    <PackageReference Include="SpotifyAPI.Web" Version="7.1.1" />
+    <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
+    <PackageReference Include="System.Speech" Version="8.0.0" />
+    <PackageReference Include="VoicemeeterRemote" Version="1.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AudioFiles\flashbang.wav" />
+    <Content Include="AudioFiles\general-kenobi.wav" />
+    <Content Include="AudioFiles\hey_listen.wav" />
+    <Content Include="AudioFiles\J0kerzzHorn.wav" />
+    <Content Include="AudioFiles\KEKW0.wav" />
+    <Content Include="AudioFiles\KEKW1.wav" />
+    <Content Include="AudioFiles\KEKW2.wav" />
+    <Content Include="AudioFiles\Laugh.wav" />
+    <Content Include="AudioFiles\lilbits.wav" />
+    <Content Include="AudioFiles\mlem.wav" />
+    <Content Include="AudioFiles\Nom.wav" />
+    <Content Include="AudioFiles\Otter0.wav" />
+    <Content Include="AudioFiles\Otter1.wav" />
+    <Content Include="AudioFiles\Otter2.wav" />
+    <Content Include="AudioFiles\Otter3.wav" />
+    <Content Include="AudioFiles\Raid.wav" />
+    <Content Include="AudioFiles\raidAlert.wav" />
+    <Content Include="AudioFiles\sub_alert.wav" />
+    <Content Include="AudioFiles\water.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Temptica.TwitchBot.Shared">
+      <HintPath>..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\bin\Release\net8.0\Temptica.TwitchBot.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Easter\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,5 +1,7 @@
-using Godot;
 using System;
+using Godot;
+
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class ClickCounterDisplay : Node3D
 {

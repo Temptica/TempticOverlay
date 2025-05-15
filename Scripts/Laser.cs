@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class Laser : RayCast3D
 {

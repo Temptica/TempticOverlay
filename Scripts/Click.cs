@@ -1,9 +1,10 @@
+using System;
 using System.Globalization;
 using System.Linq;
 using Godot;
-using Temptic404Overlay.Scripts.Models;
+using Temptica.Overlay.Scripts.Models;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class Click : Node3D
 {
@@ -19,6 +20,14 @@ public partial class Click : Node3D
 		var mesh = (MeshInstance3D)children.First(c=>c is MeshInstance3D);
 		mesh = (MeshInstance3D)mesh.Duplicate();
 		_meshInstance = mesh;
+		
+		GD.Print(OverlayClickModel);
+
+		if (OverlayClickModel.Color == Colors.Transparent || OverlayClickModel.Color == Colors.Black)
+		{
+			var rng = new Random();
+			OverlayClickModel.Color = new Color((float)rng.NextDouble(), (float)rng.NextDouble(), (float)rng.NextDouble());
+		}
 		
 		label!.Text = OverlayClickModel.Username;
 		label.Modulate = OverlayClickModel.Color;

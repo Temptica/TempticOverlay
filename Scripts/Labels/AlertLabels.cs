@@ -1,11 +1,11 @@
 using System.Linq;
 using Godot;
-using Temptic404Overlay.Scripts.Alerts;
-using Temptic404Overlay.Scripts.Models;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Models;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Alerts;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts.Labels;
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class AlertLabels : VBoxContainer
 {

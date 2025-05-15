@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.SignalR;
+using Temptica.Overlay.Scripts.SignalR;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class SlotMachine : Node3D
 {
@@ -75,15 +75,12 @@ public partial class SlotMachine : Node3D
             
             if (points > 0)
             {
-                GD.Print(
-                    $"@{_currentSpin.Username} has spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points.");
-                Overlay.SignalRService.FishClicked(_currentSpin.Username, points);
+                Overlay.SignalRService.AddPoints(_currentSpin.Username, points);
                 Overlay.SignalRService.SendChatMessage(
                     $"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points. peepoClap");
             }
             else
             {
-                GD.Print($"@{_currentSpin.Username} has spun for {_currentSpin.PointsUsed} points and lost.");
                 Overlay.SignalRService.SendChatMessage(
                     $"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and lost. Sadge");
             }

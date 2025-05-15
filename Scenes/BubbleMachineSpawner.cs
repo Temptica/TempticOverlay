@@ -1,8 +1,9 @@
 using Godot;
-using System;
-using Temptic404Overlay.Scripts;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptic404Overlay.Templates;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
+
+namespace Temptica.Overlay.scenes;
 
 public partial class BubbleMachineSpawner : Node3D
 {
@@ -20,7 +21,7 @@ public partial class BubbleMachineSpawner : Node3D
 	{
 		_bubble = GD.Load<PackedScene>("res://Templates/bubble.tscn");
 		_remainingTimeTillNext = _spawnTime;
-		SpawnBubbleListener.OnSpawnBubble += (_,_) => AddBubbleTime(5);
+		SpawnersListener.OnSpawnBubble += (_,_) => AddBubbleTime(5);
 	}
 
 	private void AddBubbleTime(float bubbleTime)

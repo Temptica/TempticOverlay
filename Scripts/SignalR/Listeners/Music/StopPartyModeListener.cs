@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners.Music;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 
 public class StopPartyModeListener : ISignalRListener
 {

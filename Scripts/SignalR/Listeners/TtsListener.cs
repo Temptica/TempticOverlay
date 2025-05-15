@@ -1,8 +1,8 @@
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptic404Overlay.Scripts.Alerts;
+using Temptica.Overlay.Scripts.Alerts;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
 public class TtsListener : ISignalRListener
 {

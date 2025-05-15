@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Temptic404Overlay.Scripts.Spotify
+namespace Temptica.Overlay.Scripts.Spotify
 {
     public class WebServer
     {

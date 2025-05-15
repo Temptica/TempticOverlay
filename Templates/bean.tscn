@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ykrwi7yu3g"]
+
+[ext_resource type="Script" uid="uid://joorhbvn5fmg" path="res://Scripts/Spawners/Spawnables/Bean.cs" id="1_cgis0"]
+[ext_resource type="Texture2D" uid="uid://p6oxyhauut4u" path="res://Images/Bean.png" id="1_m0qty"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cgis0"]
+friction = 0.15
+bounce = 0.75
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cgis0"]
+radius = 0.05592
+height = 0.179384
+
+[node name="Bean" type="RigidBody3D"]
+collision_layer = 1024
+collision_mask = 3593
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+physics_material_override = SubResource("PhysicsMaterial_cgis0")
+script = ExtResource("1_cgis0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_m0qty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000450196, 0.00104431, -0.00114197)
+shape = SubResource("CapsuleShape3D_cgis0")

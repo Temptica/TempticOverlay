@@ -1,7 +1,7 @@
 using Godot;
-using Temptic404Overlay.Scripts.Spotify;
+using Temptica.Overlay.Scripts.Spotify;
 
-namespace Temptic404Overlay.Scripts.Labels;
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class MusicLabel : Label3D
 {

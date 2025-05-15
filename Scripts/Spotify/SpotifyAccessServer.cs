@@ -5,7 +5,7 @@ using EmbedIO;
 using SpotifyAPI.Web;
 using SpotifyAPI.Web.Auth;
 
-namespace Temptic404Overlay.Scripts.Spotify;
+namespace Temptica.Overlay.Scripts.Spotify;
 
 internal class SpotifyAccessServer
 {

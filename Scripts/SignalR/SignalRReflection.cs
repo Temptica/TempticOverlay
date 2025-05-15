@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 
-namespace Temptic404Overlay.Scripts.SignalR;
+namespace Temptica.Overlay.Scripts.SignalR;
 
 public class SignalRReflection
 {

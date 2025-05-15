@@ -4,11 +4,11 @@ using System.Net.Http;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts.SignalR;
-using Microsoft.AspNetCore.SignalR.Client;
+namespace Temptica.Overlay.Scripts.SignalR;
 
 public class SignalRService : IAsyncDisposable
 {
@@ -26,7 +26,6 @@ public class SignalRService : IAsyncDisposable
 			_overlayHubConnection = new HubConnectionBuilder()
 				.WithUrl(hubUrl+"/OverlayHub")
 				.Build();
-			GD.Print(hubUrl);
 			_overlayHubConnection.Closed += async (error) =>
 			{
 				GD.Print("Connection closed");
@@ -120,5 +119,10 @@ public class SignalRService : IAsyncDisposable
 	public void TrashClicks(string username, int points)
 	{
 		_overlayHubConnection.InvokeAsync("TrashClicked", username, points);
+	}
+
+	public void AddPoints(string username, int points)
+	{
+		_overlayHubConnection.InvokeAsync("AddPoints", username, points);
 	}
 }

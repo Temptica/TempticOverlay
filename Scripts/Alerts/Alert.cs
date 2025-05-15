@@ -2,12 +2,12 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.Labels;
-using Temptic404Overlay.Scripts.Models;
-using Temptic404Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.Models;
+using Temptica.Overlay.Scripts.Labels;
+using Temptica.Overlay.Scripts.Services;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts.Alerts;
+namespace Temptica.Overlay.Scripts.Alerts;
 
 public abstract class Alert
 {

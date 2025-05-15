@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://hfiqmmonjemi"]
 
 [ext_resource type="Texture2D" uid="uid://d1lb6s4hfn0n5" path="res://Images/Winter/Snowball.png" id="1_7py1m"]
-[ext_resource type="Script" uid="uid://s504v31awk4w" path="res://Templates/SnowBall.cs" id="1_ejt40"]
+[ext_resource type="Script" uid="uid://cios0fffrirkr" path="res://Scripts/Winter/SnowBall.cs" id="1_ejt40"]
 [ext_resource type="Texture2D" uid="uid://dscqspr0yn2g0" path="res://Images/Winter/Snowball_Splat.png" id="2_dnene"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uk7vg"]

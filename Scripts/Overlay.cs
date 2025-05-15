@@ -1,43 +1,45 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.Alerts;
-using Temptic404Overlay.Scripts.Services;
-using Temptic404Overlay.Scripts.SignalR;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptic404Overlay.Scripts.SignalR.Listeners.Music;
-using Temptic404Overlay.Scripts.Spotify;
+using Temptica.Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.SignalR;
+using Temptica.Overlay.Scripts.Spotify;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class Overlay : Node3D
 {
-	public static SignalRService SignalRService => _signalRService;
-	public static SpotifyService SpotifyService => _spotifyService;
-	private static SignalRService _signalRService;
-	private static SpotifyService _spotifyService;
+	public static SignalRService SignalRService { get; private set; }
+
+	public static SpotifyService SpotifyService { get; private set; }
+
 	private static WebSocketService _webSocketService;
 
 	public override void _Ready()
 	{
-		_signalRService = new SignalRService();
+		SignalRService = new SignalRService();
 		_webSocketService = new WebSocketService();
 		
 		var tokens = new AccessTokenService();
 		
 		tokens.LoadTokens();
-		_spotifyService = new SpotifyService(tokens);
-		_ = Task.Run(async () => await _spotifyService.Initialize());
+		SpotifyService = new SpotifyService(tokens);
+		_ = Task.Run(async () => await SpotifyService.Initialize());
 		_ = Task.Run(async () => await VoiceMeeterService.LogIn());
 	}
 
 	public override async void _Notification(int what)
 	{
-		if (what != NotificationCrash && what != NotificationWMCloseRequest) return;
-		await _signalRService.DisposeAsync();
-		_webSocketService.Dispose();
-		VoiceMeeterService.Logout();
+		try
+		{
+			if (what != NotificationCrash && what != NotificationWMCloseRequest) return;
+			await SignalRService.DisposeAsync();
+			_webSocketService.Dispose();
+			VoiceMeeterService.Logout();
+		}
+		catch (Exception e)
+		{
+			throw; //app is closing anyway
+		}
 	}
 }

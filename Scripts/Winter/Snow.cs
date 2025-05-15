@@ -1,5 +1,7 @@
-using Godot;
 using System;
+using Godot;
+
+namespace Temptica.Overlay.Scripts.Winter;
 
 public partial class Snow : RigidBody3D
 {

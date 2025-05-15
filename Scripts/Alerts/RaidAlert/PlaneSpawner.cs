@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Godot;
 
-namespace Temptic404Overlay.Scripts.Alerts.RaidAlert;
+namespace Temptica.Overlay.Scripts.Alerts.RaidAlert;
 
 public partial class PlaneSpawner : Node3D
 {
@@ -36,7 +36,6 @@ public partial class PlaneSpawner : Node3D
 			if (_timeSinceLastPlane >= _planeSpawnRate && peepos == 0 && Remaining == 0)
 			{
 				_plinko.HidePlinko();
-				GD.Print($"Hiding plinko, no more peepos to drop. Remaining: {Remaining}, Peepos: {peepos}");
 				return;
 			}
 		}

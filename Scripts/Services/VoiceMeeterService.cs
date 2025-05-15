@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using Voicemeeter;
 
-namespace Temptic404Overlay.Scripts.Services;
+namespace Temptica.Overlay.Scripts.Services;
 using VoiceMeeter;
 
 public class VoiceMeeterService

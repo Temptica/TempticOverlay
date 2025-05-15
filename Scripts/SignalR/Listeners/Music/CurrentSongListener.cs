@@ -1,8 +1,8 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptic404Overlay.Scripts.Spotify;
+using Temptica.Overlay.Scripts.Spotify;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners.Music;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 
 public class CurrentSongListener : ISignalRListener
 {

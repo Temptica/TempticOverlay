@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Temptic404Overlay"
 config/tags=PackedStringArray("c#", "overlay")
-run/main_scene="res://Scripts/Easter/overlay.tscn"
+run/main_scene="res://overlay.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,9 +20,9 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://audio_bus_layout.tres"
 general/text_to_speech=true
+driver/output_latency=1
 driver/enable_input=true
 driver/mix_rate=48000
-driver/music=false
 
 [display]
 
@@ -37,7 +37,7 @@ window/per_pixel_transparency/allowed=true
 
 [dotnet]
 
-project/assembly_name="Temptic404Overlay"
+project/assembly_name="Temptica.Overlay"
 
 [editor_plugins]
 
@@ -59,6 +59,7 @@ enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 3d_physics/layer_11="Plushie"
 3d_physics/layer_12="Pipe"
 3d_physics/layer_13="Trash"
+3d_physics/layer_14="DraggableArea"
 
 [rendering]
 

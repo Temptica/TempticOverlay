@@ -1,7 +1,8 @@
 using Godot;
-using System;
-using Temptic404Overlay.Scripts;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+
+namespace Temptica.Overlay.scenes.Aurora;
 
 public partial class Aurora : TemporarilyTimeoutObject<MeshInstance3D>
 {
@@ -14,7 +15,6 @@ public partial class Aurora : TemporarilyTimeoutObject<MeshInstance3D>
 		Target = _mesh;
 		NorthPoleLightListener.Lights += (_, _) =>
 		{
-			GD.Print("Lights on");
 			RemainingTime = DurationTime;
 		};
 	}

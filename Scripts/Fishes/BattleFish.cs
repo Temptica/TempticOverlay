@@ -1,7 +1,8 @@
-using Godot;
 using System;
-using Temptic404Overlay.Templates;
+using Godot;
 using Temptica.TwitchBot.Shared.enums;
+
+namespace Temptica.Overlay.Scripts.Fishes;
 
 public partial class BattleFish : RigidBody3D
 {

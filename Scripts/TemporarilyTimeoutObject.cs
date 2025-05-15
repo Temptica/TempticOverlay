@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class TemporarilyTimeoutObject<T>: Node3D where T : Node3D
 {

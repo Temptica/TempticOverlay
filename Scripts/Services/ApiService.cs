@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Temptica.TwitchBot.Shared.ResponseModels;
 
-namespace Temptic404Overlay.Scripts.Services;
+namespace Temptica.Overlay.Scripts.Services;
 
 public class ApiService
 {

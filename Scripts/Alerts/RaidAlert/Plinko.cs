@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace Temptic404Overlay.Scripts.Alerts.RaidAlert;
+namespace Temptica.Overlay.Scripts.Alerts.RaidAlert;
 
 public partial class Plinko : Node3D
 {

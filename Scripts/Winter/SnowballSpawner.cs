@@ -1,9 +1,9 @@
-using Godot;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptic404Overlay.Templates;
+using Godot;
+using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+using Temptica.Overlay.Templates;
+
+namespace Temptica.Overlay.Scripts.Winter;
 
 public partial class SnowballSpawner : Node3D
 {

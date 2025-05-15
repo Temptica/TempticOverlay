@@ -1,8 +1,8 @@
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptic404Overlay.Scripts.Alerts;
+using Temptica.Overlay.Scripts.Alerts;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
 public class SkipSpeechListener : ISignalRListener
 {
@@ -10,13 +10,11 @@ public class SkipSpeechListener : ISignalRListener
     {
         connection.On("SkipSpeech", () =>
         {
-            GD.Print("Recieved SkipSpeech");
             AlertQueue.SkipSpeech();
         });
         
         connection.On("StopAllAlerts", ()=>
         {
-            GD.Print("Recieved StopAllAlerts");
             AlertQueue.SkipAll();
 
         });

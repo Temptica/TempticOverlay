@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
 public class SetFirstListener : ISignalRListener
 {

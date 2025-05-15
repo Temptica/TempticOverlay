@@ -4,11 +4,11 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Temptic404Overlay.Scripts.Alerts;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
-using Temptic404Overlay.Scripts.Spotify;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Alerts;
+using Temptica.Overlay.Scripts.Spotify;
 
-namespace Temptic404Overlay.Scripts.Services;
+namespace Temptica.Overlay.Scripts.Services;
 
 public class WebSocketService:IDisposable
 {

@@ -6,47 +6,46 @@ using System.Threading.Tasks;
 using Godot;
 using SpotifyAPI.Web;
 
-namespace Temptic404Overlay.Scripts.Spotify;
+namespace Temptica.Overlay.Scripts.Spotify;
 
-public class SpotifyService
+public class SpotifyService(AccessTokenService accessTokenService)
 {
-    private readonly AccessTokenService _accessTokenService;
     private static SpotifyClient _spotify;
     private static bool _paused;
     private static bool _stopped;
-    static string _lastSong = "";
+    private static string _lastSong = "";
+
+    private static KeyValuePair<string, string>? CurrentSongRequest { get; set; } = new(); //<Song name, Username>
+    private static Dictionary<string, string> SongRequestQueue { get; } = new(); //<Song name, Username>
+    private static List<string> SongsToSkip { get; } = [];
 
     public static EventHandler<string> SongChanged { get; set; }
 
-    public SpotifyService(AccessTokenService accessTokenService)
-    {
-        _accessTokenService = accessTokenService;
-    }
 
     public async Task Initialize()
     {
-        if (!_accessTokenService.IsLoaded())
+        if (!accessTokenService.IsLoaded())
         {
-            _accessTokenService.LoadTokens();
+            accessTokenService.LoadTokens();
         }
 
-        var accessServer = new SpotifyAccessServer(_accessTokenService);
+        var accessServer = new SpotifyAccessServer(accessTokenService);
         //authenticate with spotify with the stored access token, if failed, refresh token
-        if (!string.IsNullOrEmpty(_accessTokenService.GetSpotifyAccessToken()))
+        if (!string.IsNullOrEmpty(accessTokenService.GetSpotifyAccessToken()))
         {
             _spotify ??= new SpotifyClient(SpotifyClientConfig
-                .CreateDefault(_accessTokenService.GetSpotifyAccessToken())
-                .WithAuthenticator(new AuthorizationCodeAuthenticator(_accessTokenService.GetClientId(),
-                    _accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
+                .CreateDefault(accessTokenService.GetSpotifyAccessToken())
+                .WithAuthenticator(new AuthorizationCodeAuthenticator(accessTokenService.GetClientId(),
+                    accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
                     {
-                        AccessToken = _accessTokenService.GetSpotifyAccessToken(),
-                        RefreshToken = _accessTokenService.GetSpotifyRefreshToken()
+                        AccessToken = accessTokenService.GetSpotifyAccessToken(),
+                        RefreshToken = accessTokenService.GetSpotifyRefreshToken()
                     })));
         }
 
         try
         {
-            if (!string.IsNullOrEmpty(_accessTokenService.GetSpotifyAccessToken()))
+            if (!string.IsNullOrEmpty(accessTokenService.GetSpotifyAccessToken()))
             {
                 GetCurrentlyPlayingAsync().Wait();
             }
@@ -57,25 +56,25 @@ public class SpotifyService
         }
         catch (Exception)
         {
-            if (!string.IsNullOrEmpty(_accessTokenService.GetSpotifyRefreshToken()) &&
-                !string.IsNullOrEmpty(_accessTokenService.GetSpotifyAccessToken()))
+            if (!string.IsNullOrEmpty(accessTokenService.GetSpotifyRefreshToken()) &&
+                !string.IsNullOrEmpty(accessTokenService.GetSpotifyAccessToken()))
             {
                 accessServer.RefreshToken().Wait();
 
                 _spotify = new SpotifyClient(SpotifyClientConfig
-                    .CreateDefault(_accessTokenService.GetSpotifyAccessToken())
-                    .WithAuthenticator(new AuthorizationCodeAuthenticator(_accessTokenService.GetClientId(),
-                        _accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
+                    .CreateDefault(accessTokenService.GetSpotifyAccessToken())
+                    .WithAuthenticator(new AuthorizationCodeAuthenticator(accessTokenService.GetClientId(),
+                        accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
                         {
-                            AccessToken = _accessTokenService.GetSpotifyAccessToken(),
-                            RefreshToken = _accessTokenService.GetSpotifyRefreshToken()
+                            AccessToken = accessTokenService.GetSpotifyAccessToken(),
+                            RefreshToken = accessTokenService.GetSpotifyRefreshToken()
                         })));
             }
 
             try
             {
-                if (!string.IsNullOrEmpty(_accessTokenService.GetSpotifyRefreshToken()) &&
-                    !string.IsNullOrEmpty(_accessTokenService.GetSpotifyAccessToken()))
+                if (!string.IsNullOrEmpty(accessTokenService.GetSpotifyRefreshToken()) &&
+                    !string.IsNullOrEmpty(accessTokenService.GetSpotifyAccessToken()))
                 {
                     await GetCurrentlyPlayingAsync();
                 }
@@ -95,13 +94,13 @@ public class SpotifyService
                 _spotify = new SpotifyClient(SpotifyClientConfig
                     .CreateDefault()
                     .WithAuthenticator(
-                        new AuthorizationCodeAuthenticator(_accessTokenService.GetClientId(),
-                            _accessTokenService.GetClientSecret(), response)));
+                        new AuthorizationCodeAuthenticator(accessTokenService.GetClientId(),
+                            accessTokenService.GetClientSecret(), response)));
             }
         }
 
         _ = GetCurrentlyPlayingLoopAsync();
-        _accessTokenService.SaveTokens();
+        accessTokenService.SaveTokens();
     }
 
     /// <summary>
@@ -115,12 +114,46 @@ public class SpotifyService
             await _spotify.Player.GetCurrentlyPlaying(
                 new PlayerCurrentlyPlayingRequest(PlayerCurrentlyPlayingRequest.AdditionalTypes.Track));
 
-        if (currentlyPlaying.Item is FullTrack track)
-        {
-            return GetTrackName(track);
-        }
+        if (CurrentlyPlayingAsync(currentlyPlaying, out var s)) return s;
 
         throw new SongNotFoundException("Nothing is currently playing");
+    }
+
+    private static bool CurrentlyPlayingAsync(CurrentlyPlaying currentlyPlaying, out string resultString)
+    {
+        resultString = "";
+
+        if (currentlyPlaying.Item is not FullTrack track) return false;
+
+        var trackName = GetTrackName(track);
+
+        if (CurrentSongRequest != null && CurrentSongRequest.Value.Key == trackName)
+        {
+            resultString = trackName + $" requested by {CurrentSongRequest.Value.Value}";
+            return true;
+        }
+        
+        if (SongsToSkip.Contains(trackName))
+        {
+            _ = Skip();
+            SongsToSkip.Remove(trackName);
+        }
+
+        if (SongRequestQueue.TryGetValue(trackName, out var value))
+        {
+            if (CurrentSongRequest is { Key: not null } && CurrentSongRequest.Value.Key != value)
+            {
+                SongRequestQueue.Remove(CurrentSongRequest.Value.Key);
+            }
+            CurrentSongRequest = new KeyValuePair<string, string>(trackName, value);
+
+            resultString = trackName + $" requested by {CurrentSongRequest.Value.Value}";
+            
+            return true;
+        }
+
+        resultString = trackName;
+        return true;
     }
 
     //loop every 10 seconds to see if the song has changed. if so raise an event to update the song in the overlay
@@ -137,17 +170,18 @@ public class SpotifyService
                 var currentlyPlaying =
                     await _spotify.Player.GetCurrentlyPlaying(
                         new PlayerCurrentlyPlayingRequest(PlayerCurrentlyPlayingRequest.AdditionalTypes.Track));
-                var song = "Not playing anything";
-                if (currentlyPlaying?.Item is FullTrack track)
+
+                if (CurrentlyPlayingAsync(currentlyPlaying, out var s))
                 {
-                    song = GetTrackName(track);
+                    if (s == _lastSong && (_paused || !_lastSong.Contains("Paused"))) continue;
+
+                    _lastSong = s;
+                    SongChanged?.Invoke(this, s);
+
+                    continue;
                 }
 
-                if (song != _lastSong)
-                {
-                    _lastSong = song;
-                    SongChanged?.Invoke(this, song);
-                }
+                SongChanged?.Invoke(this, "Not playing anything");
             }
             catch (SongNotFoundException)
             {
@@ -169,38 +203,55 @@ public class SpotifyService
     /// <summary>
     /// Add song name to queue
     /// </summary>
-    /// <param name="name"> song name</param>
+    /// <param name="name">song name</param>
+    /// <param name="username">name of the user who requested it</param>
     /// <returns></returns>
     /// <exception cref="SongNotFoundException"></exception>
-    public static async Task<string> AddSongToQueue(string name)
+    public static async Task<string> AddSongToQueue(string name, string username)
     {
-        var songName = "";
+        var response = $"@{username}: ";
         try
         {
-            var result = await _spotify.Search.Item(new(SearchRequest.Types.Track, name));
+            var result = await _spotify.Search.Item(new SearchRequest(SearchRequest.Types.Track, name));
             if (result.Tracks.Items?.First() is null) throw new SongNotFoundException("No songs found");
 
             try
             {
                 var track = result.Tracks.Items.First();
-                GD.Print("getting first track");
+
                 var req = new PlayerAddToQueueRequest(track.Uri);
-                GD.Print("adding to queue");
-                songName = GetTrackName(track);
-                await _spotify.Player.AddToQueue(req);
-                return songName;
+                var songName = GetTrackName(track);
+
+
+                if (SongRequestQueue.TryAdd(songName, username))
+                {
+                    var queueNumber = SongRequestQueue.Count;
+                    response += $"Added {songName} to queue ({queueNumber})";
+                    await _spotify.Player.AddToQueue(req);
+
+                    return response;
+                }
+
+                var existingQueueNumber = SongRequestQueue.Keys.ToList().IndexOf(songName);
+
+                response += $"{name} could not be added to queue ({existingQueueNumber}).";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return songName;
+                //GD.PrintErr(e);
+                if (response == $"@{username}: ")
+                    response += $"{name} Could not be added."; //sometimes add to que does add while throwing an error
+                return response;
             }
-            
+
+            return response;
         }
         catch (Exception e)
         {
-            GD.Print(e.Message, "Getting song");
+            GD.Print(e.Message);
         }
-        return name;
+
+        return response + $"{name} Could not be added.";
     }
 
     public static async Task Pause()
@@ -231,9 +282,9 @@ public class SpotifyService
     {
         try
         {
+            if (_stopped) return;
             await _spotify.Player.ResumePlayback();
-            var playing = await GetCurrentlyPlayingAsync();
-            SongChanged?.Invoke(null, playing);
+            SongChanged?.Invoke(null, _lastSong.Replace("Paused", ""));
             _paused = false;
         }
         catch (Exception)
@@ -319,11 +370,23 @@ public class SpotifyService
     {
         await _spotify.Player.AddToQueue(new PlayerAddToQueueRequest("spotify:track:" + songId));
     }
-}
 
-public class SongNotFoundException : Exception
-{
-    public SongNotFoundException(string message = "") : base(message)
+    public static void SkipLastRequest(string username)
     {
+        try
+        {
+            var lastRequest = SongRequestQueue.Last(kvp => kvp.Value == username);
+
+            SongRequestQueue.Remove(lastRequest.Key);
+            SongsToSkip.Add(lastRequest.Key);
+            Overlay.SignalRService.SendChatMessage($"@{username}: {lastRequest.Key} will be skipped! (Might take a few seconds)");
+
+        }
+        catch (Exception)
+        {
+            Overlay.SignalRService.SendChatMessage($"@{username}: You don't have any songs in the queue.");
+        }
     }
 }
+
+public class SongNotFoundException(string message = "") : Exception(message);

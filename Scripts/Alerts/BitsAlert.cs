@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Godot;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Extensions;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts.Alerts
+namespace Temptica.Overlay.Scripts.Alerts
 {
     internal sealed class BitsAlert : Alert
     {
         public int BitAmount { get; private set; }    
         public static EventHandler<string> StartShow;
 
-        public BitsAlert(string username, int bitAmount, string tTS, string messages = ""):base(username)
+        public BitsAlert(string username, int bitAmount, string tts, string messages = ""):base(username)
         {
             BitAmount = bitAmount;
             Event = AlertType.Bit;
-            TTSMessage = tTS;
+            TTSMessage = tts.CleanEmoteName();
             Message = messages;
             Duration = 5;
             TimeTillTTS = 2;

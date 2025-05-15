@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ino4h2se4jgh"]
 
 [ext_resource type="Texture2D" uid="uid://66008ut8byfy" path="res://Images/GodotPlushie/Godot_Plushy_standing.png" id="1_8dc1r"]
-[ext_resource type="Script" uid="uid://dc8g7woya16n2" path="res://Scripts/Plushie.cs" id="1_ghkk5"]
+[ext_resource type="Script" uid="uid://bx0nowfhwer5x" path="res://Scripts/Spawners/Spawnables/Plushie.cs" id="1_ghkk5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_37448"]
 bounce = 0.5

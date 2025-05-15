@@ -1,7 +1,9 @@
+using System;
 using Godot;
-using Temptic404Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.Extensions;
+using Temptica.Overlay.Scripts.Services;
 
-namespace Temptic404Overlay.Scripts.Alerts;
+namespace Temptica.Overlay.Scripts.Alerts;
 
 public class TtsAlert : Alert
 {
@@ -10,7 +12,7 @@ public class TtsAlert : Alert
     public TtsAlert(string message) : base("")
     {
         TimeTillTTS = 0;
-        TTSMessage = message;
+        TTSMessage = message.CleanEmoteName();
         Duration = 2;
     }
 

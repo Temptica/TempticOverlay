@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class PartyModeLabel : Label3D
 {

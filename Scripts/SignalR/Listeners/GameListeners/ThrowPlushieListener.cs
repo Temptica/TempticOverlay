@@ -1,7 +1,8 @@
 using System;
+using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
+namespace Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
 public class ThrowPlushieListener : ISignalRListener
 {

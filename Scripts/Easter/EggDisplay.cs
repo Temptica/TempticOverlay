@@ -1,11 +1,13 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Godot.Collections;
-using Temptic404Overlay.Scripts.Extensions;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Godot;
+using Temptica.GodotExtensions;
+using Temptica.Overlay.Scripts.Extensions;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
+
+namespace Temptica.Overlay.Scripts.Easter;
 
 public partial class EggDisplay : Node3D
 {

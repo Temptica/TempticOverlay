@@ -1,9 +1,9 @@
-using Godot;
 using System.Linq;
 using System.Threading.Tasks;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
+using Godot;
+using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class FishMessageHandler : MeshInstance3D
 {

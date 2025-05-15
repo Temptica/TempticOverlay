@@ -1,9 +1,9 @@
 using Godot;
-using Temptic404Overlay.Scripts.Models;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Models;
 using Temptica.TwitchBot.Shared.enums;
 
-namespace Temptic404Overlay.Scripts.Labels;
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class RaidLabel : Label3D
 {
@@ -29,7 +29,6 @@ public partial class RaidLabel : Label3D
 
     public static void OnAlert(object sender, OverlayAlert e)
     {
-        GD.Print($"Raid message received: {e.User} ({e.Amount})");
         _textToSet = $"{e.User} ({e.Amount})";
         
         _textSet = false;

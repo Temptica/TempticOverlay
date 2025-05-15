@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public partial class SlidingObject : Node3D
 {

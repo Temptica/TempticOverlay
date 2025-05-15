@@ -1,13 +1,13 @@
 using System.Net.Http.Json;
 using Godot;
-using Temptic404Overlay.Scripts.Models;
-using Temptic404Overlay.Scripts.Services;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Models;
+using Temptica.Overlay.Scripts.Services;
 using Temptica.TwitchBot.Shared.enums;
 using Temptica.TwitchBot.Shared.ResponseModels;
 using HttpClient = System.Net.Http.HttpClient;
 
-namespace Temptic404Overlay.Scripts.Labels;
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class LastCheerLabel : Label3D
 {

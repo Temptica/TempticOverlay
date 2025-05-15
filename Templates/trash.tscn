@@ -20,8 +20,6 @@ axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_68tjx")
 script = ExtResource("1_y3s7i")
 _trashTextures = [NodePath("BagSprite"), NodePath("Bottle1Sprite"), NodePath("Bottle2Sprite"), NodePath("FishBoneSprite")]
-Amplitude = 0.765
-_fallSpeedMin = 0.98
 
 [node name="BagSprite" type="Sprite3D" parent="."]
 visible = false

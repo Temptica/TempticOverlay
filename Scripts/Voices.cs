@@ -1,4 +1,4 @@
-namespace Temptic404Overlay.Scripts;
+namespace Temptica.Overlay.Scripts;
 
 public static class Voices
 {

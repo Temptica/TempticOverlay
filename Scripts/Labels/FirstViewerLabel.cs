@@ -1,8 +1,8 @@
 using Godot;
-using Temptic404Overlay.Scripts.Services;
-using Temptic404Overlay.Scripts.SignalR.Listeners;
+using Temptica.Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.SignalR.Listeners;
 
-namespace Temptic404Overlay.Scripts.Labels;
+namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class FirstViewerLabel : Label3D
 {

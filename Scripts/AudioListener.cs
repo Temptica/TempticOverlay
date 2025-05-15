@@ -1,17 +1,17 @@
 using System;
-using Godot;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Temptic404Overlay.Scripts.Services;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptic404Overlay.Scripts.SignalR.Listeners.Music;
+using Godot;
+using Temptica.Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 using Environment = Godot.Environment;
+
+namespace Temptica.Overlay.Scripts;
 
 public partial class AudioListener : Node3D
 {
 	private static Environment _environment;
-	private static Glow _glow;
-	private static PartyModeLabel _partyModeLabel;
+	private static Alerts.Glow _glow;
+	private static Labels.PartyModeLabel _partyModeLabel;
 	public static bool PartyMode { get; private set; }
 	private static bool _paused;
 	private int _busIndex;
@@ -34,12 +34,12 @@ public partial class AudioListener : Node3D
 		AudioServer.OutputDevice = output;
 		
 		_busIndex = AudioServer.GetBusIndex("Music");
-	   _environment = GetNode<Camera3D>("%Camera").Environment;
-	   _glow = GetNode<Glow>("%Glow");
+		_environment = GetNode<Camera3D>("%Camera").Environment;
+		_glow = GetNode<Alerts.Glow>("%Glow");
 	   
-	   StartPartyModeListener.StartPartyMode += (_, _) => StartPartyMode();
-	   StopPartyModeListener.StopPartyMode += (_, _) => EndPartyMode();
-	   _partyModeLabel = GetNode<PartyModeLabel>("%PartyModeLabel");
+		StartPartyModeListener.StartPartyMode += (_, _) => StartPartyMode();
+		StopPartyModeListener.StopPartyMode += (_, _) => EndPartyMode();
+		_partyModeLabel = GetNode<Labels.PartyModeLabel>("%PartyModeLabel");
 	}
 
 	public override void _Process(double delta)

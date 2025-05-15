@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Temptic404Overlay.Scripts.Services;
-using Temptic404Overlay.Scripts.SignalR.Listeners.GameListeners;
+using Temptica.Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
-namespace Temptic404Overlay.Scripts.Fishes;
+namespace Temptica.Overlay.Scripts.Fishes;
 
 public partial class FishSpawner : Node3D
 {
@@ -62,11 +62,8 @@ public partial class FishSpawner : Node3D
 	
 	public static bool CheckFishesHit(Vector2 position,string username, out int points)
 	{
-		//check if the position is within the fish
-		GD.Print("Checking for hits");
 		var clickedFishes =  Fishes.Where(fish => fish.IsHit(position)).ToList();
-		GD.Print($"Found {clickedFishes.Count} fishes");
-		ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
+		Labels.ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
 		points = clickedFishes.Sum(fish => fish.Type switch
 		{
 			FishType.Normal => 1,
