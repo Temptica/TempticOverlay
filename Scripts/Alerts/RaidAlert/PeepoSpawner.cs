@@ -11,8 +11,8 @@ public partial class PeepoSpawner : Node3D
 	public int PeeposToSpawn { get; set; }
 	
 	private PackedScene _peepoScene;
-	private double _timeSinceLastPeepo = 0;
-	private bool _spawnedFirst = false;
+	private double _timeSinceLastPeepo;
+	private bool _spawnedFirst;
 
 	public override void _Ready()
 	{

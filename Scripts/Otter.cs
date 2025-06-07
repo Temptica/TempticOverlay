@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Godot;
 using Temptica.GodotExtensions;
-using Temptica.Overlay.Scripts.Extensions;
 using Temptica.Overlay.Scripts.Interfaces;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 

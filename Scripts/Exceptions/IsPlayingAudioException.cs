@@ -1,6 +1,8 @@
+using System;
+
 namespace Temptica.Overlay.Scripts.Exceptions;
 
-public class IsPlayingAudioException : System.Exception
+public class IsPlayingAudioException : Exception
 {
     
 }

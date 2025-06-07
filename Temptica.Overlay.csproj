@@ -35,15 +35,11 @@
     <Content Include="AudioFiles\water.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Temptica.TwitchBot.Shared">
-      <HintPath>..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\bin\Release\net8.0\Temptica.TwitchBot.Shared.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Scripts\Easter\" />
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj" />
+    <ProjectReference Include="..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\Temptica.TwitchBot.Shared.csproj" />
   </ItemGroup>
 </Project>

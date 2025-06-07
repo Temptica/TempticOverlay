@@ -74,7 +74,7 @@ public partial class PlaneSpawner : Node3D
 		
 	}
 
-	private int spawnCounter = 0;
+	private int spawnCounter;
 	const float baseAdjustment = 1f; 
 	private void SpawnPlane()
 	{

@@ -1,11 +1,10 @@
 using System;
-using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using Godot;
 using Voicemeeter;
+using VoiceMeeter;
 
 namespace Temptica.Overlay.Scripts.Services;
-using VoiceMeeter;
 
 public class VoiceMeeterService
 {

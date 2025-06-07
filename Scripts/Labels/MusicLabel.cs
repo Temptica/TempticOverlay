@@ -6,7 +6,7 @@ namespace Temptica.Overlay.Scripts.Labels;
 public partial class MusicLabel : Label3D
 {
 	private string changedText = "";
-	private bool textChanged = false;
+	private bool textChanged;
 	public override void _Ready()
 	{
 		SpotifyService.SongChanged += OnSongChanged;

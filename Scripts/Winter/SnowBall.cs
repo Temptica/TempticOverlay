@@ -7,7 +7,7 @@ public partial class SnowBall : RigidBody3D
 {
 	[Export] private Sprite3D _snowBallSprite;
 	[Export] private Sprite3D _snowSplashSprite;
-	private bool isHiding = false;
+	private bool isHiding;
 	private Tween _tween;
 	
 	// Called when the node enters the scene tree for the first time.

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Temptica.Overlay.Scripts.Services;
+using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
 namespace Temptica.Overlay.Scripts.Fishes;
@@ -63,7 +63,7 @@ public partial class FishSpawner : Node3D
 	public static bool CheckFishesHit(Vector2 position,string username, out int points)
 	{
 		var clickedFishes =  Fishes.Where(fish => fish.IsHit(position)).ToList();
-		Labels.ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
+		ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
 		points = clickedFishes.Sum(fish => fish.Type switch
 		{
 			FishType.Normal => 1,

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Godot;
 using Temptica.Overlay.Scripts.Extensions;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Alerts

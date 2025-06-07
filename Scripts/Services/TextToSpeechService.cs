@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
-using Godot;
 
 namespace Temptica.Overlay.Scripts.Services;
-using System.Speech;
 #pragma warning disable CA1416
 public class TextToSpeechService : IDisposable
 {

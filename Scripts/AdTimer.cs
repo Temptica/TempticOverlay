@@ -14,7 +14,7 @@ public partial class AdTimer : Node3D
     private DateTime _nextAdTime;
     private const string AdsText = "Ad in ";
     private bool _isAdPlaying;
-    private bool _playedBell = false;
+    private bool _playedBell;
     private TimeSpan _adsTimeLeft;
 
     private const int AdsDuration = 180;

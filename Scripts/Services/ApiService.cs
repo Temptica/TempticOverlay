@@ -12,14 +12,14 @@ public class ApiService
 
 	public async Task<string> GetLastSub()
 	{
-		var response = await _client.GetAsync($"Alert/LastSubAlert");
+		var response = await _client.GetAsync("Alert/LastSubAlert");
 		
 		return response.IsSuccessStatusCode ? (await response.Content.ReadFromJsonAsync<AlertResponseModel>()).Username : "Be the first!";
 	}
 	
 	public async Task<string> GetLastCheer()
 	{
-		var response = await _client.GetAsync($"Alert/LastCheerAlert");
+		var response = await _client.GetAsync("Alert/LastCheerAlert");
 		if (!response.IsSuccessStatusCode) return "Be the first!";
 		
 		var alert = await response.Content.ReadFromJsonAsync<AlertResponseModel>();
@@ -29,7 +29,7 @@ public class ApiService
 
 	public async Task<string> GetFirstViewer()
 	{
-		var response = await _client.GetAsync($"Stream/GetFirstViewer");
+		var response = await _client.GetAsync("Stream/GetFirstViewer");
 		
 		return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : "Be the first!";
 	}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using Temptica.Overlay.Scripts.Alerts;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.Spotify;
 using Temptica.TwitchBot.Shared.enums;
@@ -12,8 +13,8 @@ namespace Temptica.Overlay.Scripts;
 public partial class AudioPlayer : AudioStreamPlayer
 {
     public static Dictionary<AudioEffects, AudioStream> AudioStreams;
-    private double deltaCumulitveTime = 0;
-    private Alerts.Glow _glow;
+    private double deltaCumulitveTime;
+    private Glow _glow;
     private static List<AudioEffects> NextStream { get; set; } = [];
 
     [Export] SpamAudioPlayer SpamAudioPlayer { get; set; }
@@ -57,7 +58,7 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.HaveYouEverHadADream, GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3") },
             { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3") },
         };
-        _glow = GetNode<Alerts.Glow>("%Glow");
+        _glow = GetNode<Glow>("%Glow");
 
         PlayAudioListener.PlayAudio += PlayAudio;
         MaxPolyphony = 5;

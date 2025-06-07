@@ -1,9 +1,3 @@
-using System.Threading.Tasks;
-using Godot;
-using Godot.Collections;
-using Godot.NativeInterop;
-using HttpClient = System.Net.Http.HttpClient;
-
 namespace Temptica.Overlay.Scripts.Services;
 
 public class EmoteService

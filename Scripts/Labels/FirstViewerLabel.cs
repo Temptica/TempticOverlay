@@ -7,7 +7,7 @@ namespace Temptica.Overlay.Scripts.Labels;
 public partial class FirstViewerLabel : Label3D
 {
     private static string _textToSet = "Be the first!";
-    private static bool _textSet = false;
+    private static bool _textSet;
     
     public override async void _Ready()
     {

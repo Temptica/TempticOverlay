@@ -36,7 +36,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
             _spotify ??= new SpotifyClient(SpotifyClientConfig
                 .CreateDefault(accessTokenService.GetSpotifyAccessToken())
                 .WithAuthenticator(new AuthorizationCodeAuthenticator(accessTokenService.GetClientId(),
-                    accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
+                    accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse
                     {
                         AccessToken = accessTokenService.GetSpotifyAccessToken(),
                         RefreshToken = accessTokenService.GetSpotifyRefreshToken()
@@ -64,7 +64,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
                 _spotify = new SpotifyClient(SpotifyClientConfig
                     .CreateDefault(accessTokenService.GetSpotifyAccessToken())
                     .WithAuthenticator(new AuthorizationCodeAuthenticator(accessTokenService.GetClientId(),
-                        accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse()
+                        accessTokenService.GetClientSecret(), new AuthorizationCodeTokenResponse
                         {
                             AccessToken = accessTokenService.GetSpotifyAccessToken(),
                             RefreshToken = accessTokenService.GetSpotifyRefreshToken()
@@ -318,7 +318,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
             var id = playlists.Items?.Find(pl => pl.Name == playlist)?.Id;
             if (id is not null)
             {
-                var req2 = new PlaylistAddItemsRequest(new List<string>() { track.Uri });
+                var req2 = new PlaylistAddItemsRequest(new List<string> { track.Uri });
                 await _spotify.Playlists.AddItems(id, req2);
                 return;
             }
@@ -326,7 +326,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
             id = playlists.Items?.Find(pl => pl.Name == "Stream")?.Id;
             if (id is not null)
             {
-                var req3 = new PlaylistAddItemsRequest(new List<string>() { track.Uri });
+                var req3 = new PlaylistAddItemsRequest(new List<string> { track.Uri });
                 await _spotify.Playlists.AddItems(id, req3);
             }
         }

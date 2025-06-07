@@ -1,8 +1,11 @@
 using System;
 using System.Globalization;
 using Godot;
+using Temptica.Overlay.Scripts.Easter;
 using Temptica.Overlay.Scripts.Fishes;
+using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+using Temptica.Overlay.Scripts.Spawners;
 using Temptica.TwitchBot.Shared.enums;
 using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
 
@@ -12,8 +15,8 @@ public partial class OverlayClicker : Node3D
 {
     private PackedScene _clickScene;
     private BubbleSpawner _bubbleSpawner;
-    [Export] private Easter.EggSpawner _eggSpawner;
-    [Export] private Temptica.Overlay.Scripts.Otter _otter;
+    [Export] private EggSpawner _eggSpawner;
+    [Export] private Otter _otter;
 
     public override void _Ready()
     {
@@ -36,7 +39,7 @@ public partial class OverlayClicker : Node3D
             //Nose boops
             if (await _otter.IsNoseClick(clickPos))
             {
-                Labels.ClickCounterDisplay.UpdateNose();
+                ClickCounterDisplay.UpdateNose();
                 if (new Random().Next(0, 100) < 10)
                 {
                     AudioPlayer.PlayAudio(AudioEffects.Otter3);
@@ -49,7 +52,7 @@ public partial class OverlayClicker : Node3D
                 Overlay.SignalRService.FishClicked(model.Username, points);
             }
 
-            if (Spawners.RandomTrashSpawner.CheckTrashHit(clickPos2D, model.Username,
+            if (RandomTrashSpawner.CheckTrashHit(clickPos2D, model.Username,
                     out var pointsTrash))
             {
                 Overlay.SignalRService.TrashClicked(model.Username, pointsTrash);

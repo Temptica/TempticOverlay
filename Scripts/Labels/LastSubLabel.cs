@@ -1,5 +1,4 @@
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Services;
 using Temptica.TwitchBot.Shared.enums;
@@ -9,7 +8,7 @@ namespace Temptica.Overlay.Scripts.Labels;
 public partial class LastSubLabel : Label3D
 {
     private static string _textToSet = "No Cheers Yet";
-    private static bool _textSet = false;
+    private static bool _textSet;
     
     public override async void _Ready()
     {

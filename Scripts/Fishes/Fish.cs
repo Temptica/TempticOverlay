@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Temptica.Overlay.Scripts.Spawners;
 
 namespace Temptica.Overlay.Scripts.Fishes;
 
@@ -94,7 +95,7 @@ public partial class Fish : RigidBody3D
 				//10% chance to spawn a bubble
 				if (new Random().Next(0, 10) == 0)
 				{
-					Spawners.BubbleSpawner.SpawnBubble?.Invoke(this, GlobalTransform.Origin);
+					BubbleSpawner.SpawnBubble?.Invoke(this, GlobalTransform.Origin);
 				}
 			}
 		}

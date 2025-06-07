@@ -29,8 +29,7 @@ public partial class Plinko : Node3D
 		if (name != "ShowPlinko") return;
 		if (Visible)
 		{
-			_animationPlayer.Play("MoveWall");			
-			return;
+			_animationPlayer.Play("MoveWall");
 		}
 		//Hide();
 	}

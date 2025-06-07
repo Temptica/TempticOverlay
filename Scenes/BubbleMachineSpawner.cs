@@ -1,6 +1,5 @@
 using Godot;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
 
 namespace Temptica.Overlay.scenes;

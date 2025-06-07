@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
 using Temptica.Overlay.scenes;

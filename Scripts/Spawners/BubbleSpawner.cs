@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Temptica.Overlay.scenes;
+using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Templates;
 
 namespace Temptica.Overlay.Scripts.Spawners;
@@ -28,7 +30,7 @@ public partial class BubbleSpawner : Node3D
             bubble.CallDeferred("set_global_position", pos.Value);
             
             bubble.InitialX = pos.Value.X;
-            if (obj is scenes.BubbleMachineSpawner)
+            if (obj is BubbleMachineSpawner)
             {
                 bubble.CallDeferred("set_linear_velocity", new Vector3(0,2,0));
                 
@@ -50,7 +52,7 @@ public partial class BubbleSpawner : Node3D
             var result = children
                 .Where(b => b != null)
                 .Count(child => child.CheckClick(clickPos));
-            Labels.ClickCounterDisplay.UpdateBubbles(result);
+            ClickCounterDisplay.UpdateBubbles(result);
             return result>0;
         }
         catch (Exception e)

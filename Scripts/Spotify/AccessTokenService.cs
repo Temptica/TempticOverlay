@@ -9,7 +9,7 @@ public class AccessTokenService
     private string _spotifyRefreshToken = "";
     private string _clientId = "";
     private string _clientSecret = "";
-    private bool _loaded = false;
+    private bool _loaded;
     
     public string GetSpotifyAccessToken()
     {

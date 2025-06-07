@@ -1,5 +1,4 @@
 using System;
-using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;

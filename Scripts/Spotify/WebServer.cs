@@ -36,11 +36,9 @@ namespace Temptica.Overlay.Scripts.Spotify
                     await writer.FlushAsync();
                     return new Authorization(req.QueryString["code"]);
                 }
-                else
-                {
-                    await writer.WriteLineAsync("No code found in query string!");
-                    await writer.FlushAsync();
-                }
+
+                await writer.WriteLineAsync("No code found in query string!");
+                await writer.FlushAsync();
             }
             return null;
         }

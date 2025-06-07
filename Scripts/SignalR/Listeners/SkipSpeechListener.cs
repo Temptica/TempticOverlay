@@ -1,4 +1,3 @@
-using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
 using Temptica.Overlay.Scripts.Alerts;
 

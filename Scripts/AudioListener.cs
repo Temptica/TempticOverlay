@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using Godot;
+using Temptica.Overlay.Scripts.Alerts;
+using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.Services;
 using Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 using Environment = Godot.Environment;
@@ -10,8 +12,8 @@ namespace Temptica.Overlay.Scripts;
 public partial class AudioListener : Node3D
 {
 	private static Environment _environment;
-	private static Alerts.Glow _glow;
-	private static Labels.PartyModeLabel _partyModeLabel;
+	private static Glow _glow;
+	private static PartyModeLabel _partyModeLabel;
 	public static bool PartyMode { get; private set; }
 	private static bool _paused;
 	private int _busIndex;
@@ -35,11 +37,11 @@ public partial class AudioListener : Node3D
 		
 		_busIndex = AudioServer.GetBusIndex("Music");
 		_environment = GetNode<Camera3D>("%Camera").Environment;
-		_glow = GetNode<Alerts.Glow>("%Glow");
+		_glow = GetNode<Glow>("%Glow");
 	   
 		StartPartyModeListener.StartPartyMode += (_, _) => StartPartyMode();
 		StopPartyModeListener.StopPartyMode += (_, _) => EndPartyMode();
-		_partyModeLabel = GetNode<Labels.PartyModeLabel>("%PartyModeLabel");
+		_partyModeLabel = GetNode<PartyModeLabel>("%PartyModeLabel");
 	}
 
 	public override void _Process(double delta)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Temptica.GodotExtensions;
-using Temptica.Overlay.Scripts.Extensions;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.TwitchBot.Shared.enums;
 
@@ -25,7 +24,7 @@ public partial class EggDisplay : Node3D
 
         if (_nameLabel == null)
         {
-            _nameLabel = new Label3D()
+            _nameLabel = new Label3D
             {
                 HorizontalAlignment = HorizontalAlignment.Right
             };

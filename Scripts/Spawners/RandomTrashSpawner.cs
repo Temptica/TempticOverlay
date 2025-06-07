@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Temptica.Overlay.Scripts.Labels;
 
 namespace Temptica.Overlay.Scripts.Spawners;
 
@@ -40,7 +41,7 @@ public partial class RandomTrashSpawner : Node3D
 	public static bool CheckTrashHit(Vector2 position, string username, out int points)
 	{
 		var clickedTrash = Trashes.Where(trash => trash.IsHit(position)).ToList();
-		Labels.ClickCounterDisplay.UpdateFishes(clickedTrash.Count);
+		ClickCounterDisplay.UpdateFishes(clickedTrash.Count);
 		points = clickedTrash.Count;
 
 		if (points <= 0) return false;

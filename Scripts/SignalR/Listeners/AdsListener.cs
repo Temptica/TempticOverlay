@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.TwitchBot.Shared.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 
@@ -16,7 +17,7 @@ public class AdsListener : ISignalRListener
                 {
                         AdStarted?.Invoke(this, EventArgs.Empty);
                 });
-                connection.On<DateTime>("AdEnded", nextAd =>
+                connection.On<DateTime>(OverlayHubMethodes.AdEnded, nextAd =>
                 {
                         AdEnded?.Invoke(this, nextAd);
                 });

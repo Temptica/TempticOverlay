@@ -8,7 +8,7 @@ public partial class Peepo : RigidBody3D
 	[Export] public Sprite3D[] Sprites;
 	[Export] private Node3D _parashute;
 	private Sprite3D _selectedSprite;
-	private double _timeSinceSpawn = 0d;
+	private double _timeSinceSpawn;
 	private double _timeTillStartMoving = 3d;
 	private AnimationPlayer _animationPlayer;
 	

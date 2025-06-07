@@ -10,7 +10,7 @@ public partial class Click : Node3D
 {
 	public OverlayClickModel OverlayClickModel { get; set; }
 	private MeshInstance3D _meshInstance;
-	private int _pointsToAdd = 0;
+	private int _pointsToAdd;
 	
 	public override void _Ready()
 	{

@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Temptica.Overlay.Scripts.Alerts
+﻿namespace Temptica.Overlay.Scripts.Alerts
 {
     internal class GiftedAlert : Alert
     {

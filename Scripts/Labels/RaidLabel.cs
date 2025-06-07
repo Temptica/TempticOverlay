@@ -1,7 +1,5 @@
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.Models;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Labels;
 

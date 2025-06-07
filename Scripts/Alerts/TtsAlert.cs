@@ -1,5 +1,3 @@
-using System;
-using Godot;
 using Temptica.Overlay.Scripts.Extensions;
 using Temptica.Overlay.Scripts.Services;
 

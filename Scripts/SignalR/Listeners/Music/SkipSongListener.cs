@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.SignalR.Client;
 using Temptica.Overlay.Scripts.Spotify;
+using Temptica.TwitchBot.Shared.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 
@@ -13,6 +14,6 @@ public class SkipSongListener : ISignalRListener
             await SpotifyService.Skip();
         });
 
-        hubConnection.On<string>("SkipLastSong", SpotifyService.SkipLastRequest);
+        hubConnection.On<string>(OverlayHubMethodes.SkipLastSong, SpotifyService.SkipLastRequest);
     }
 }

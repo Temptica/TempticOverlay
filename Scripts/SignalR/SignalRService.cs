@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -12,8 +11,8 @@ namespace Temptica.Overlay.Scripts.SignalR;
 
 public class SignalRService : IAsyncDisposable
 {
-	//private const string hubUrl = "http://192.168.1.12:5000";
-	private const string hubUrl = "https://localhost:7299";
+	//private const string hubUrl = "http://ocalhost:5002";
+	private const string hubUrl = "https://localhost:7300";
 	private readonly HubConnection _overlayHubConnection;
 	private bool _isConnected;
 	private List<ISignalRListener> _listeners;
@@ -26,7 +25,7 @@ public class SignalRService : IAsyncDisposable
 			_overlayHubConnection = new HubConnectionBuilder()
 				.WithUrl(hubUrl+"/OverlayHub")
 				.Build();
-			_overlayHubConnection.Closed += async (error) =>
+			_overlayHubConnection.Closed += async error =>
 			{
 				GD.Print("Connection closed");
 				_isConnected = false;

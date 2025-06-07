@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using Godot;
-using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.Services;
 using Temptica.TwitchBot.Shared.enums;

@@ -9,7 +9,7 @@ public partial class Fireworks : Node3D
 {
 	private const double AnimationTime = 3;
 
-	private double _remainingDelta = 0;
+	private double _remainingDelta;
 	
 	[Export]
 	private GpuParticles3D _rocketParticles;

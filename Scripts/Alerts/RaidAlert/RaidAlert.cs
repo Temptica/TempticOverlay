@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Reflection.Metadata;
-using System.Threading.Tasks;
-using Godot;
 
 namespace Temptica.Overlay.Scripts.Alerts.RaidAlert
 {
