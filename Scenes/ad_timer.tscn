@@ -7,11 +7,11 @@
 material = ExtResource("1_wieh2")
 size = Vector3(4.02, 0.27, 0.01)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5xwe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhg21"]
 albedo_color = Color(0.847059, 0.388235, 0, 0.886275)
 
 [sub_resource type="BoxMesh" id="BoxMesh_76ges"]
-material = SubResource("StandardMaterial3D_e5xwe")
+material = SubResource("StandardMaterial3D_hhg21")
 size = Vector3(4, 0.25, 0.01)
 
 [sub_resource type="BoxMesh" id="BoxMesh_m4vq4"]

@@ -1,0 +1,160 @@
+[gd_scene load_steps=22 format=3 uid="uid://dgoakphprw2nc"]
+
+[ext_resource type="PackedScene" uid="uid://cbwqubbq37uxa" path="res://Scripts/bubble_machine.tscn" id="1_amr00"]
+[ext_resource type="Script" uid="uid://6tlvfvq5npn6" path="res://Scripts/Overlay.cs" id="1_q8fag"]
+[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://scenes/BubbleMachineSpawner.cs" id="2_q8fag"]
+[ext_resource type="Script" uid="uid://c6mid3nqndryd" path="res://Scripts/Spawners/BubbleSpawner.cs" id="3_kmu3n"]
+[ext_resource type="PackedScene" uid="uid://exxv880gb2q1" path="res://scenes/snowball_spawner.tscn" id="4_qsak8"]
+[ext_resource type="PackedScene" uid="uid://bsb7y1uddpgft" path="res://scenes/plushy_spawner.tscn" id="5_t8d5o"]
+[ext_resource type="PackedScene" uid="uid://s83c4yistfj0" path="res://scenes/snow_spawner.tscn" id="6_uk7sw"]
+[ext_resource type="PackedScene" uid="uid://c5c5r2loy4cev" path="res://scenes/fireworks.tscn" id="7_hv6ti"]
+[ext_resource type="PackedScene" uid="uid://iambpuaqot0s" path="res://scenes/Aurora/aurora.tscn" id="8_yv0k8"]
+[ext_resource type="PackedScene" uid="uid://civ2xy4ofwrew" path="res://scenes/otter.tscn" id="9_4aq8m"]
+[ext_resource type="Script" uid="uid://mu0tc6v0pax" path="res://Scripts/AudioPlayer.cs" id="11_qsak8"]
+[ext_resource type="Script" uid="uid://bd0481p314kvm" path="res://Scripts/SpamAudioPlayer.cs" id="12_t8d5o"]
+[ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="13_uk7sw"]
+[ext_resource type="Script" uid="uid://cq4fn6wsum070" path="res://Scripts/Alerts/Glow.cs" id="14_hv6ti"]
+[ext_resource type="Script" uid="uid://brgavxdw6hxfa" path="res://Scripts/Labels/PartyModeLabel.cs" id="14_uk7sw"]
+
+[sub_resource type="Environment" id="Environment_amr00"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.4
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_uk7sw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hv6ti"]
+material = ExtResource("13_uk7sw")
+size = Vector3(0.03, 16, 0.05)
+
+[sub_resource type="Animation" id="Animation_ap17j"]
+resource_name = "FollowAnimation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya3yj"]
+_data = {
+&"FollowAnimation": SubResource("Animation_ap17j")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uk7sw"]
+size = Vector3(16, 0.1, 30)
+
+[node name="CoHostOverlay" type="Node3D"]
+script = ExtResource("1_q8fag")
+
+[node name="BubbleMachine" parent="." instance=ExtResource("1_amr00")]
+transform = Transform3D(0.3421976, 1.7764969, -0.05530953, -0.21180184, 0.09668277, 1.794963, 1.7646928, -0.33288252, 0.22616021, 4.201765, -0.2967906, -0.479065)
+script = ExtResource("2_q8fag")
+
+[node name="BubbleSpawner" type="Node3D" parent="BubbleMachine"]
+unique_name_in_owner = true
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, 0.0611711, 0.576778, 0.343949)
+script = ExtResource("3_kmu3n")
+
+[node name="SnowballSpawner" parent="BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("4_qsak8")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.0305094, 0.491345, 0.246477)
+Target = NodePath("../../Otter")
+_spawnRate = 3.0
+
+[node name="PlushySpawner" parent="BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("5_t8d5o")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.02154, 0.49508, 0.258412)
+Target = NodePath("../../Otter")
+
+[node name="BubbleMachine2" parent="." instance=ExtResource("1_amr00")]
+transform = Transform3D(0.6653719, -1.6747873, 0.1687222, -0.21180186, 0.09668277, 1.794963, -1.6698865, -0.6795876, -0.16043824, 11.935213, -0.2967906, -0.479065)
+script = ExtResource("2_q8fag")
+
+[node name="BubbleSpawner" type="Node3D" parent="BubbleMachine2"]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, 0.0611711, 0.576778, 0.343949)
+script = ExtResource("3_kmu3n")
+
+[node name="SnowballSpawner" parent="BubbleMachine2" node_paths=PackedStringArray("Target") instance=ExtResource("4_qsak8")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.0305094, 0.491345, 0.246477)
+Target = NodePath("../../Otter")
+_spawnRate = 3.0
+
+[node name="PlushySpawner" parent="BubbleMachine2" node_paths=PackedStringArray("Target") instance=ExtResource("5_t8d5o")]
+transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.02154, 0.49508, 0.258412)
+Target = NodePath("../../Otter")
+
+[node name="SnowSpawner" parent="." instance=ExtResource("6_uk7sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363289, 9, 0)
+
+[node name="Fireworks" parent="." instance=ExtResource("7_hv6ti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75819, -8.37807, -94.7414)
+
+[node name="Aurora" parent="." instance=ExtResource("8_yv0k8")]
+transform = Transform3D(2.99, 0, 0, 0, 2.99, 0, 0, 0, 2.99, 7.47829, 8.27757, -9.22199)
+
+[node name="Otter" parent="." instance=ExtResource("9_4aq8m")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6.861562, 4.524328, -0.1)
+
+[node name="CollisionShape3D" parent="Otter" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356654, -0.461, 0)
+
+[node name="This is fine" parent="Otter" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, -0.204, -0.001)
+
+[node name="VNyanOtter" parent="Otter" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277054, 0.0140076, 0.0217285)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.95153, 0.307556, 0, -0.307556, 0.95153, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 10.4422)
+keep_aspect = 0
+environment = SubResource("Environment_amr00")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"AudioEffects"
+script = ExtResource("11_qsak8")
+
+[node name="SpamAudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamPolyphonic_uk7sw")
+max_polyphony = 32
+bus = &"AudioEffects"
+script = ExtResource("12_t8d5o")
+
+[node name="BorderBottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.16430053, 0)
+skeleton = NodePath("../../..")
+
+[node name="Glow" type="MeshInstance3D" parent="BorderBottom"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.166644, 0)
+mesh = SubResource("BoxMesh_hv6ti")
+skeleton = NodePath("../../BorderLeft")
+script = ExtResource("14_hv6ti")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BorderBottom"]
+libraries = {
+&"": SubResource("AnimationLibrary_ya3yj")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BorderBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133482, 0)
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BorderBottom/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00416943, 0)
+shape = SubResource("BoxShape3D_uk7sw")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="PartyModeLabel" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.72293, 0)
+visible = false
+text = "PARTY MODE ENABLED"
+font_size = 64
+script = ExtResource("14_uk7sw")
+
+[editable path="Otter"]

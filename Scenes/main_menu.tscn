@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ax8uo4al57h"]
+
+[ext_resource type="Script" uid="uid://caticvqpqa37v" path="res://scenes/MainMenu.cs" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Normal" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../CoStream")
+focus_next = NodePath("../CoStream")
+theme_override_font_sizes/font_size = 32
+text = "Normal overlay"
+
+[node name="CoStream" type="Button" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Normal")
+focus_previous = NodePath("../Normal")
+theme_override_font_sizes/font_size = 32
+text = "Co-stream"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Normal" to="." method="NormalPressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/CoStream" to="." method="CoStreamPressed"]

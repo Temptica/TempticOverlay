@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
+using Temptica.Overlay.Scripts.Extensions;
 
 namespace Temptica.Overlay.Scripts.Services;
 #pragma warning disable CA1416
@@ -37,6 +38,7 @@ public class TextToSpeechService : IDisposable
 
     public void Speak(string text)
     {
+        text.CleanEmoteName();
         if(_queue.Count == 0 && !IsSpeaking && !IsPaused)
         {
             StartSpeaking(text);

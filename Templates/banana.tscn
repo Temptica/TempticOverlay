@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://kcrse1r3yndc"]
+
+[ext_resource type="Script" uid="uid://joorhbvn5fmg" path="res://Scripts/Spawners/Spawnables/Bean.cs" id="1_yggn5"]
+[ext_resource type="Texture2D" uid="uid://br41e08omskb8" path="res://Images/Stefens_Banana.png" id="2_yggn5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cgis0"]
+friction = 0.15
+bounce = 0.75
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mc3a3"]
+radius = 0.1459961
+height = 0.49975586
+
+[node name="Banana" type="RigidBody3D"]
+collision_layer = 1024
+collision_mask = 3593
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+physics_material_override = SubResource("PhysicsMaterial_cgis0")
+script = ExtResource("1_yggn5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009036064, 0.00089263916, 0.00012207031)
+pixel_size = 0.001
+texture = ExtResource("2_yggn5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.92707914, 0.3748655, 0, -0.3748655, 0.92707914, 0, 0, 0, 1, 0.00045016618, -0.012329221, -0.00114197)
+shape = SubResource("CapsuleShape3D_mc3a3")

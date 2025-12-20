@@ -8,13 +8,10 @@ public partial class BubbleMachineSpawner : Node3D
 {
 	// Called when the node enters the scene tree for the first time.
 	private PackedScene _bubble;
-	[Export]
-	private BubbleMachineSpawner _bubbleMachineSpawner;
 	private float _timer;
 	[Export]
 	private double _spawnTime = 0.300f;
 	private double _remainingTimeTillNext;
-	
 
 	public override void _Ready()
 	{

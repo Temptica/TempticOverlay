@@ -1,5 +1,7 @@
 using System;
 using Godot;
+using Temptica.Overlay.scenes;
+using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
 namespace Temptica.Overlay.Scripts.Winter;
 
@@ -10,18 +12,17 @@ public partial class Snow : RigidBody3D
 	[Export] public float Amplitude = 0.75f;
 	[Export] public float Frequency = 0.25f;
 	
-	[Export] private float _fallSpeedMin = 0.95f;
-	[Export] private float _fallSpeedMax = 1f;
+	[Export] private float _fallSpeedMin = 0.6f;
+	[Export] private float _fallSpeedMax = 0.8f;
 	private float _fallSpeed;
 	private float _time;
 	
 	public override void _Ready()
 	{
-		_fallSpeed = new Random().Next((int)_fallSpeed*100, (int)_fallSpeedMax*100)/100f;
+		var random = new Random();
+		_fallSpeed = random.NextSingle()*(_fallSpeedMax-_fallSpeedMin)+_fallSpeedMin;
+		_time = random.NextSingle()*100;
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	
 	
 	public override void _Process(double delta)
 	{
@@ -35,6 +36,18 @@ public partial class Snow : RigidBody3D
 		
 		if (GlobalPosition.Y < -3)
 		{
+			SnowSpawner.Instance.RemoveSnowFlake(this);
+			QueueFree();
+		}
+	}
+
+	public void CheckHit(Vector2 click)
+	{
+        var pos = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y);
+		if (pos.DistanceTo(click) < 0.5f)
+		{
+			SnowSpawner.Instance.RemoveSnowFlake(this);
+			SnowBallListener.SpawnSnowBall.Invoke(this, null!);
 			QueueFree();
 		}
 	}

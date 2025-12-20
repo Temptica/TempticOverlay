@@ -6,7 +6,6 @@ namespace Temptica.Overlay.Scripts.Alerts.RaidAlert
     {
         public int Count { get; private set; }
         
-        
         public static EventHandler<int> StartPlanes;
         private Plinko _plinko;
         

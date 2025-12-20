@@ -14,6 +14,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
     private static bool _paused;
     private static bool _stopped;
     private static string _lastSong = "";
+    private const int PollRate = 2;
 
     private static KeyValuePair<string, string>? CurrentSongRequest { get; set; } = new(); //<Song name, Username>
     private static Dictionary<string, string> SongRequestQueue { get; } = new(); //<Song name, Username>
@@ -161,7 +162,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
     {
         //calls GetCurrentlyPlaying() every 10 seconds
         //run a timer that calls GetCurrentlyPlaying() every 10 seconds
-        var timer = new PeriodicTimer(new TimeSpan(0, 0, 0, 10));
+        var timer = new PeriodicTimer(new TimeSpan(0, 0, 0, PollRate));
 
         while (await timer.WaitForNextTickAsync())
         {

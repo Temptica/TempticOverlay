@@ -99,7 +99,6 @@ public class WebSocketService:IDisposable
             case "NormalPosition":
                 Otter.ZoomOtterEvent.Invoke(null,false);
                 break;
-                
         }
     }
 }

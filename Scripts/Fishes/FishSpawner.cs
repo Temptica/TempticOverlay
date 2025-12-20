@@ -62,7 +62,7 @@ public partial class FishSpawner : Node3D
 	
 	public static bool CheckFishesHit(Vector2 position,string username, out int points)
 	{
-		var clickedFishes =  Fishes.Where(fish => fish.IsHit(position)).ToList();
+		var clickedFishes = Fishes.Where(fish => fish.IsHit(position)).ToList();
 		ClickCounterDisplay.UpdateFishes(clickedFishes.Count);
 		points = clickedFishes.Sum(fish => fish.Type switch
 		{
@@ -81,6 +81,4 @@ public partial class FishSpawner : Node3D
 		Overlay.SignalRService.FishClicked(username, points);
 		return true;
 	}
-	
-	
 }

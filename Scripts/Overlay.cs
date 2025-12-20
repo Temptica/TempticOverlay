@@ -25,7 +25,7 @@ public partial class Overlay : Node3D
 		tokens.LoadTokens();
 		SpotifyService = new SpotifyService(tokens);
 		_ = Task.Run(async () => await SpotifyService.Initialize());
-		_ = Task.Run(async () => await VoiceMeeterService.LogIn());
+		//_ = Task.Run(async () => await VoiceMeeterService.LogIn());
 	}
 
 	public override async void _Notification(int what)
@@ -35,7 +35,7 @@ public partial class Overlay : Node3D
 			if (what != NotificationCrash && what != NotificationWMCloseRequest) return;
 			await SignalRService.DisposeAsync();
 			_webSocketService.Dispose();
-			VoiceMeeterService.Logout();
+			//VoiceMeeterService.Logout();
 		}
 		catch (Exception e)
 		{

@@ -124,4 +124,9 @@ public class SignalRService : IAsyncDisposable
 	{
 		_overlayHubConnection.InvokeAsync("AddPoints", username, points);
 	}
+
+	public void PixelateEnd()
+	{
+		_overlayHubConnection.InvokeAsync("PixelateEnd");
+	}
 }

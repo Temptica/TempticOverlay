@@ -8,7 +8,7 @@ namespace Temptica.Overlay.Scripts.Services;
 
 public class ApiService
 {
-	private readonly HttpClient _client = new(){BaseAddress = new Uri("https://localhost:7299/api/") };
+	private readonly HttpClient _client = new(){BaseAddress = new Uri("https://localhost:8069/api/") };
 
 	public async Task<string> GetLastSub()
 	{

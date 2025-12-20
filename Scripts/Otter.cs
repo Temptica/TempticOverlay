@@ -15,7 +15,10 @@ public partial class Otter : StaticBody3D, IDraggable
 
 	public static EventHandler<bool> ShowHideOtterEvent;
 	public static EventHandler<bool> ZoomOtterEvent;
+	public static EventHandler ExplodeEvent;
 	public Vector3 OriginalPosition;
+	public Vector3 OriginalSize;
+	private Marker3D _nodeBoop;
 
 	private double _squishTimeout;
 	
@@ -23,13 +26,15 @@ public partial class Otter : StaticBody3D, IDraggable
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		OriginalPosition = Position;
-		GenericSignalRListener.ThisIsFine += (_, _) =>
+		_nodeBoop = GetNode<Marker3D>("NodeBoop");
+		OriginalPosition = GlobalPosition;
+		OriginalSize = Scale;
+		OtterSignalRListener.ThisIsFine += (_, _) =>
 		{
 			RemainingTime += 10;
 		};
 
-		GenericSignalRListener.Squish += SquishThatOtter;
+		OtterSignalRListener.Squish += SquishThatOtter;
 		
 		ShowHideOtterEvent += (_, show) =>
 		{
@@ -50,8 +55,8 @@ public partial class Otter : StaticBody3D, IDraggable
 				SetDeferred("scale", new Vector3(3,3,3));
 				return;
 			}
-			SetDeferred("position",OriginalPosition);
-			SetDeferred("scale", new Vector3(1,1,1));
+			SetDeferred("global_position",OriginalPosition);
+			SetDeferred("scale", OriginalSize);
 		};
 
 	}
@@ -80,23 +85,16 @@ public partial class Otter : StaticBody3D, IDraggable
 		}
 	}
 
-	public async Task<bool> IsNoseClick(Vector3 position)
+	public bool IsNoseClick(Vector3 position)
 	{
-		//if x and Y are in the center of the otter sprite, margin of 0.5, then return true
-		var textureGlobalPos = (await _texture.CallAsync(Node3D.MethodName.GetGlobalPosition)).AsVector3();
-		var xCenter = textureGlobalPos.X + (await _texture.Texture.CallAsync(Texture2D.MethodName.GetWidth)).AsSingle() / 2f;
-		var yCenter = textureGlobalPos.Y + (await _texture.Texture.CallAsync(Texture2D.MethodName.GetHeight)).AsSingle() / 2f;
-		var z = position.Z;
-		var pos =  new Vector3(xCenter, yCenter, z);
-		
-		var distance = pos.DistanceTo(position);
-		return distance < 1.5f;
+		var nosePosition = _nodeBoop.GetGlobalPosition();
+		return nosePosition.DistanceTo(position) < 0.2f;
 	}
 
 	private void SquishThatOtter(object sender, EventArgs e)
 	{
 		if (!(_squishTimeout <= 0)) return;
 		_animation.CallAsync(AnimationPlayer.MethodName.Play,"Squish");
-		_squishTimeout = 120; //2 minutes
+		_squishTimeout = 60; //1 minutes
 	}
 }

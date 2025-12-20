@@ -42,11 +42,10 @@ _data = {
 &"JumpOut": SubResource("Animation_pyaue")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vdc1e"]
-size = Vector3(0.961989, 1.45699, 0.5)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lr5f1"]
+height = 1.32887
 
-[node name="Peepo" type="RigidBody3D" node_paths=PackedStringArray("_parashute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042, 0, 0)
+[node name="Peepo" type="RigidBody3D" node_paths=PackedStringArray("Sprites", "_parashute")]
 collision_layer = 16
 collision_mask = 49
 mass = 0.01
@@ -56,6 +55,7 @@ lock_rotation = true
 freeze = true
 continuous_cd = true
 script = ExtResource("1_d0soi")
+Sprites = []
 _parashute = NodePath("JumperSprite")
 
 [node name="JumperSprite" type="Node3D" parent="."]
@@ -104,4 +104,4 @@ texture = ExtResource("8_vh7yx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.042, 0.02, 0)
-shape = SubResource("BoxShape3D_vdc1e")
+shape = SubResource("CapsuleShape3D_lr5f1")

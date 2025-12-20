@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TwitchOverlay"
+config/tags=PackedStringArray("3d", "overlay")
+run/main_scene="uid://5ax8uo4al57h"
+config/features=PackedStringArray("4.5", "C#")
+run/max_fps=60
+
+[audio]
+
+buses/default_bus_layout="uid://18h7rfptyk8o"
+driver/driver="Multimedia"
+driver/output_latency=1
+driver/enable_input=true
+driver/mix_rate=48000
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/initial_position_type=4
+window/size/transparent=true
+window/subwindows/embed_subwindows=false
+
+[dotnet]
+
+project/assembly_name="Temptica.Overlay"
+
+[layer_names]
+
+3d_physics/layer_2="Fish"
+3d_physics/layer_4="Map"
+3d_physics/layer_9="SnowBall"
+3d_physics/layer_12="Pixel"

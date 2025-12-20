@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0jhrvmnpg8s8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dgf4x"]
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgf4x"]
+resource_local_to_scene = true
+transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgf4x"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_dgf4x")
+size = Vector3(0.1, 0.1, 0.002)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgf4x"]
+radius = 0.06445014
+
+[node name="ExplosionChunk" type="RigidBody3D"]
+collision_layer = 2048
+collision_mask = 2063
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_dgf4x")
+continuous_cd = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dgf4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_dgf4x")

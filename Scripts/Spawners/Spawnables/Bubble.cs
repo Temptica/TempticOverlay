@@ -23,9 +23,10 @@ public partial class Bubble : RigidBody3D
         BodyEntered += _ =>
         {
             if(new Random().Next(0,20)==0)
-                QueueFree();
+                QueueFree(); 
         };
         
+		_time = new Random().NextSingle()*100;
     }
     
     public override void _PhysicsProcess(double delta)

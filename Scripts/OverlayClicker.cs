@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using Godot;
+using Temptica.Overlay.scenes;
 using Temptica.Overlay.Scripts.Easter;
 using Temptica.Overlay.Scripts.Fishes;
 using Temptica.Overlay.Scripts.Labels;
@@ -18,7 +19,7 @@ public partial class OverlayClicker : Node3D
     [Export] private EggSpawner _eggSpawner;
     [Export] private Otter _otter;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
         _clickScene = GD.Load<PackedScene>("res://Templates/click.tscn");
         _bubbleSpawner = GetNode<BubbleSpawner>("%BubbleSpawner");
@@ -27,20 +28,22 @@ public partial class OverlayClicker : Node3D
         {
             var click = (Click)_clickScene.Instantiate();
             click.OverlayClickModel = model;
-
-            CallDeferred(Node.MethodName.AddChild, click);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            AddChild(click);
 
             var x = float.Parse(model.X, CultureInfo.InvariantCulture);
             var y = float.Parse(model.Y, CultureInfo.InvariantCulture);
 
             var clickPos = new Vector3(x * 16f, 9f - y * 9f, 0);
             var clickPos2D = new Vector2(clickPos.X, clickPos.Y);
+            
+            SnowSpawner.CheckPackages(clickPos2D, model.Username);
 
             //Nose boops
-            if (await _otter.IsNoseClick(clickPos))
+            if (_otter.IsNoseClick(clickPos))
             {
                 ClickCounterDisplay.UpdateNose();
-                if (new Random().Next(0, 100) < 10)
+                if (new Random().Next(0, 100) < 1)
                 {
                     AudioPlayer.PlayAudio(AudioEffects.Otter3);
                 }

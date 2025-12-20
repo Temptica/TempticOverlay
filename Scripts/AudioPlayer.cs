@@ -57,6 +57,12 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.Screenshot, GD.Load<AudioStream>("res://AudioFiles/Screenshot.mp3") },
             { AudioEffects.HaveYouEverHadADream, GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3") },
             { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3") },
+            { AudioEffects.Toothless, GD.Load<AudioStream>("res://AudioFiles/Toothless.mp3") },
+            { AudioEffects.ILoveRepo, GD.Load<AudioStream>("res://AudioFiles/ILoveRepo.mp3")},
+            { AudioEffects.Meow, GD.Load<AudioStream>("res://AudioFiles/meow.mp3")},
+            { AudioEffects.Panda, GD.Load<AudioStream>("res://AudioFiles/panda.mp3")},
+            { AudioEffects.Mags, GD.Load<AudioStream>("res://AudioFiles/TRON-a-user_onlyvocals.mp3")},
+            {AudioEffects.IntoTheThickOfIt, GD.Load<AudioStream>("res://AudioFiles/IntoTheThickOfIt.mp3")}
         };
         _glow = GetNode<Glow>("%Glow");
 
@@ -104,7 +110,7 @@ public partial class AudioPlayer : AudioStreamPlayer
     {
         if (NextStream.Count == 0 || GetPlaybackPosition() > 0) return;
         if (!AudioStreams.TryGetValue(NextStream[0], out var stream)) return;
-
+        GD.Print($"Audio stream {stream}");
         SetStream(stream);
         Play();
         var timeout = (int)Math.Round(stream.GetLength() * 1000);

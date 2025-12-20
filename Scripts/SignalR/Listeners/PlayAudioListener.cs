@@ -11,6 +11,11 @@ public class PlayAudioListener : ISignalRListener
 	{
 		connection.On<string>(OverlayHubMethodes.PlayAudio, audio =>
 		{
+			if (audio == "HalloweenSound")
+			{
+				HalloweenPlayer.PlayRandomSound();
+				return;
+			}
 			PlayAudio?.Invoke(this, audio);
 		});
 	}

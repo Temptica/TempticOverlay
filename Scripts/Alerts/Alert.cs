@@ -63,6 +63,11 @@ public abstract class Alert
                 Event = AlertType.Gift;
                 break;
             }
+            case DonationAlert:
+            {
+                Event = AlertType.Charity;
+                break;
+            }
             default:
                 Event = 0;
                 break;
@@ -95,7 +100,6 @@ public abstract class Alert
         
         if(TimeTillTTS > 0 && ElapsedTime >= TimeTillTTS && !TtsStarted)
         {
-            GD.Print("Starting TTS");
             TtsStarted = true;
             TextToSpeechService.Speak(TTSMessage);
         }
@@ -131,6 +135,9 @@ public abstract class Alert
                 break;
             case AlertType.Raid:
                 AudioPlayer.PlayAudio(AudioEffects.Raid);
+                break;
+            case AlertType.Charity:
+                AudioPlayer.PlayAudio(AudioEffects.ILoveRepo);
                 break;
         }
         AlertLabels.ShowAlert(this);

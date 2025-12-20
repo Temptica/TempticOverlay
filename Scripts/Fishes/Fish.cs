@@ -87,17 +87,10 @@ public partial class Fish : RigidBody3D
 	}
 
 	private void OnBodyEntered(Node body)
-	{
-		if (body is RigidBody3D collided)
+	{	//10% chance to spawn a bubble
+		if (body is Fish && new Random().Next(0, 10) == 0)
 		{
-			if (collided is Fish || collided.GetCollisionLayerValue(0))
-			{
-				//10% chance to spawn a bubble
-				if (new Random().Next(0, 10) == 0)
-				{
-					BubbleSpawner.SpawnBubble?.Invoke(this, GlobalTransform.Origin);
-				}
-			}
+			BubbleSpawner.SpawnBubble?.Invoke(this, GlobalTransform.Origin);
 		}
 	}
 
@@ -105,15 +98,15 @@ public partial class Fish : RigidBody3D
 	{
 		var pos = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y);
 		var isHit = position.DistanceTo(pos) <= 0.4f;
-		if(Type == FishType.Rainbow && isHit)
-		{
-			_hitTimes++;
-			
-			var currentSize = _rainbowFish.CallDeferred("get_pixel_size").AsDouble();
-			_rainbowFish.CallDeferred("set_pixel_size", currentSize-0.001);
-			//return _hitTimes >= 3;
-		}
 		
-		return isHit;
+		if (Type != FishType.Rainbow || !isHit) return isHit;
+		
+		_hitTimes++;
+			
+		var currentSize = _rainbowFish.CallDeferred("get_pixel_size").AsDouble();
+		_rainbowFish.CallDeferred("set_pixel_size", currentSize-0.001);
+		//return _hitTimes >= 3;
+
+		return true;
 	}
 }

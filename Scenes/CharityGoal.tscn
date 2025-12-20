@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctccth1pj3ukh"]
+
+[ext_resource type="Script" uid="uid://de72egb5u46vv" path="res://Scripts/CharityGoal.cs" id="1_gv7sd"]
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_yapip"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yiatj"]
+material = ExtResource("2_yapip")
+size = Vector3(4.02, 0.27, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5xwe"]
+albedo_color = Color(0.847059, 0.388235, 0, 0.886275)
+
+[sub_resource type="BoxMesh" id="BoxMesh_82iad"]
+material = SubResource("StandardMaterial3D_e5xwe")
+size = Vector3(4, 0.25, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhdaa"]
+material = ExtResource("2_yapip")
+size = Vector3(0.1, 0.5, 0.01)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharityGoal" type="Node3D" parent="." node_paths=PackedStringArray("_mesh", "_label")]
+script = ExtResource("1_gv7sd")
+_mesh = NodePath("FrontMeshInstance")
+_label = NodePath("Label3D")
+
+[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="CharityGoal"]
+mesh = SubResource("BoxMesh_yiatj")
+
+[node name="FrontMeshInstance" type="MeshInstance3D" parent="CharityGoal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+mesh = SubResource("BoxMesh_82iad")
+
+[node name="Label3D" type="Label3D" parent="CharityGoal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.052124)
+text = "0/0"
+
+[node name="DisplayBox2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64044, 0.325256, -0.0109863)
+mesh = SubResource("BoxMesh_xhdaa")
+
+[node name="DisplayBox3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75884, 0.318054, -0.0109863)
+mesh = SubResource("BoxMesh_xhdaa")
+
+[node name="DisplayBox4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.15316, 7.24792e-05, -0.0109863)
+visible = false
+mesh = SubResource("BoxMesh_xhdaa")

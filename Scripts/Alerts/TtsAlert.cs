@@ -10,7 +10,7 @@ public class TtsAlert : Alert
     public TtsAlert(string message) : base("")
     {
         TimeTillTTS = 0;
-        TTSMessage = message.CleanEmoteName();
+        TTSMessage = message;
         Duration = 2;
     }
 

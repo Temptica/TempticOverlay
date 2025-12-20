@@ -14,26 +14,25 @@ public partial class BubbleSpawner : Node3D
 
     public static EventHandler<Vector3?> SpawnBubble;
     private List<Bubble> _bubbles = [];
-    
+
     public static BubbleSpawner Instance { get; private set; }
+
     public override void _Ready()
     {
         Instance = this;
         _bubbleScene = GD.Load<PackedScene>("res://Templates/bubble.tscn");
-        SpawnBubble += (obj , pos) =>
+        SpawnBubble += async (obj, pos) =>
         {
             pos ??= GlobalPosition;
             var bubble = (Bubble)_bubbleScene.Instantiate();
-            
-            CallDeferred("add_child", bubble);
-            
-            bubble.CallDeferred("set_global_position", pos.Value);
-            
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            AddChild(bubble);
+            bubble.SetGlobalPosition(pos.Value);
+
             bubble.InitialX = pos.Value.X;
             if (obj is BubbleMachineSpawner)
             {
-                bubble.CallDeferred("set_linear_velocity", new Vector3(0,2,0));
-                
+                bubble.SetLinearVelocity(new Vector3(0, 2, 0));
             }
         };
     }
@@ -48,12 +47,12 @@ public partial class BubbleSpawner : Node3D
         try
         {
             var children = _bubbles.ToList();
-                
+
             var result = children
                 .Where(b => b != null)
                 .Count(child => child.CheckClick(clickPos));
             ClickCounterDisplay.UpdateBubbles(result);
-            return result>0;
+            return result > 0;
         }
         catch (Exception e)
         {

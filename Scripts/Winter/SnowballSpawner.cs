@@ -23,7 +23,6 @@ public partial class SnowballSpawner : Node3D
 		{
 			_ballsToSpawn++;
 		};
-
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

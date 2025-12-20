@@ -69,6 +69,9 @@ public partial class AlertQueue : Node
 				_queue.Enqueue(new FollowAlert(alert.User));
 				FishSpawner.SpawnFishes(1);
 				return;
+			case AlertType.Charity:
+				_queue.Enqueue(new DonationAlert(alert.User, alert.Message));
+				return;
 		}
 	}
 	

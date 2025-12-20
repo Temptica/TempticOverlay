@@ -10,16 +10,18 @@ namespace Temptica.Overlay.Scripts.Spawners;
 public enum LaunchAbles
 {
     Godot,
-    Bean
+    Bean,
+    Banana
 }
 
 public partial class CannonLauncher : Node3D
 {
     [Export] public Node3D Target;
-    [Export] public float SpawnRate = 0.75f;
+    [Export] public float SpawnRate = 0.25f;
     private double _timeTillNextSpawn;
     private PackedScene _godotThrowable;
     private PackedScene _beanThrowable;
+    private PackedScene _bananaThrowable;
 
     private readonly Queue<LaunchAbles> _itemsToSpawn = [];
 
@@ -28,8 +30,14 @@ public partial class CannonLauncher : Node3D
     {
         _godotThrowable = GD.Load<PackedScene>("res://Templates/godot_plushie.tscn");
         _beanThrowable = GD.Load<PackedScene>("res://Templates/bean.tscn");
+        _bananaThrowable = GD.Load<PackedScene>("res://Templates/banana.tscn");
 
-        ThrowPlushieListener.OnThrowPlushie += (_, _) => _itemsToSpawn.Enqueue(LaunchAbles.Godot);
+        ThrowPlushieListener.OnThrowPlushie += (_, _) =>
+        {
+            var items = Enum.GetValues<LaunchAbles>();
+            var randomItem =  items[new Random().Next(0, items.Length)];
+            _itemsToSpawn.Enqueue(randomItem);
+        };
         SpawnersListener.OnSpawnBean += (_, _) => _itemsToSpawn.Enqueue(LaunchAbles.Bean);
     }
 
@@ -51,29 +59,39 @@ public partial class CannonLauncher : Node3D
             case LaunchAbles.Bean:
                 LaunchBean();
                 break;
+            case LaunchAbles.Banana:
+                LaunchBanana();
+                break;
         }
 
         _timeTillNextSpawn = 0;
     }
 
+    private void LaunchBanana()
+    {
+        var banana = _bananaThrowable.Instantiate<RigidBody3D>();
+        LaunchItem(banana);
+    }
+
+    private void LaunchItem(RigidBody3D banana)
+    {
+        AddChild(banana);
+        banana.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
+
+        var velocity = CalculateShotVelocity(banana.GlobalPosition);
+        banana.LinearVelocity = velocity;
+    }
+
     private void LaunchBean()
     {
         var bean = _beanThrowable.Instantiate<Bean>();
-        AddChild(bean);
-        bean.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
-
-        var velocity = CalculateShotVelocity(bean.GlobalPosition);
-        bean.LinearVelocity = velocity;
+        LaunchItem(bean);
     }
 
     private void LaunchGodot()
     {
         var plushie = _godotThrowable.Instantiate<Plushie>();
-        AddChild(plushie);
-        plushie.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
-
-        var velocity = CalculateShotVelocity(plushie.GlobalPosition);
-        plushie.LinearVelocity = velocity;
+        LaunchItem(plushie);
     }
 
     private Vector3 CalculateShotVelocity(Vector3 from)

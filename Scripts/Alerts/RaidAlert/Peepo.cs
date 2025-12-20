@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 
 namespace Temptica.Overlay.Scripts.Alerts.RaidAlert;
@@ -14,6 +15,8 @@ public partial class Peepo : RigidBody3D
 	
 	public override void _Ready()
 	{
+		Sprites = GetChild(0).GetChildren().OfType<Sprite3D>().ToArray();
+		
 		_selectedSprite = Sprites[new Random().Next(0, Sprites.Length)];
 		_selectedSprite.Visible = true;
 		//add animation here which is a child of the sprite
