@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://cc0w5gm30hhiv"]
+
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_rwyri"]
+[ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_l8s2k"]
+[ext_resource type="Texture2D" uid="uid://bnde37257f2m6" path="res://addons/twitcher/assets/default-2.png" id="3_imhje"]
+[ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_esesx"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_cxi6v"]
+
+[sub_resource type="Resource" id="Resource_h1iak"]
+script = ExtResource("1_rwyri")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[resource]
+script = ExtResource("5_cxi6v")
+id = "e51c232c-d875-445c-b8de-910e9a54cc35"
+broadcaster_user = SubResource("Resource_h1iak")
+title = "TTS"
+cost = 201
+background_color = Color(1, 0.7019608, 0, 1)
+is_user_input_required = true
+global_cooldown_seconds = 300

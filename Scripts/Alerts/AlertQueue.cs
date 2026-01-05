@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Fishes;
 using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Spotify;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Alerts;
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Temptica.GodotExtensions;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Easter;
 
@@ -17,7 +17,9 @@ public partial class EggDisplay : Node3D
     
     public override void _Ready()
     {
-        _eggScene = GD.Load<PackedScene>("res://scenes/easter/egg.tscn");
+        
+        ProcessMode = DateTime.Now.Month is 4 ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;
+        _eggScene = GD.Load<PackedScene>("res://Scenes/easter/egg.tscn");
         var offset = new Vector3(0.2f, 0,0);
         GD.Print(_nameLabel?.Text);
         _nameLabel ??= GetChildren().OfType<Label3D>().FirstOrDefault();

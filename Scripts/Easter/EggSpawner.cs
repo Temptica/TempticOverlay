@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Temptica.TwitchBot.Shared.enums;
+using Temptica.Overlay.Enums;
 
 namespace Temptica.Overlay.Scripts.Easter;
 
@@ -19,7 +19,7 @@ public partial class EggSpawner : Node3D
 
     public override void _Ready()
     {
-        _eggScene = GD.Load<PackedScene>("res://scenes/easter/egg.tscn");
+        _eggScene = GD.Load<PackedScene>("res://Scenes/easter/egg.tscn");
         _enabled = DateTime.Now.Month == 4; //Only during the month of Easter so April
     }
 

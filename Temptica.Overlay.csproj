@@ -1,20 +1,18 @@
 <Project Sdk="Godot.NET.Sdk/4.5.1">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <LangVersion>13</LangVersion>
     <UserSecretsId>6afccc16-f5b8-4fa9-a9e7-c45e3d409df2</UserSecretsId>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
-    <PackageReference Include="SpotifyAPI.Web" Version="7.1.1" />
+    <PackageReference Include="SpotifyAPI.Web" Version="7.2.1" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
-    <PackageReference Include="System.Speech" Version="8.0.0" />
-    <PackageReference Include="VoicemeeterRemote" Version="1.0.3" />
-    <PackageReference Update="Godot.SourceGenerators" Version="4.4.1" />
-    <PackageReference Update="GodotSharp" Version="4.4.1" />
+    <PackageReference Include="System.Speech" Version="10.0.1" />
+    <PackageReference Update="Godot.SourceGenerators" Version="4.6.0-beta2" />
+    <PackageReference Update="GodotSharp" Version="4.6.0-beta2" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AudioFiles\flashbang.wav" />
@@ -45,7 +43,16 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Enums\AlertType.cs.uid" />
+    <None Include="Enums\AudioEffects.cs.uid" />
+    <None Include="Enums\BadPresentTypes.cs.uid" />
+    <None Include="Enums\EggType.cs.uid" />
+    <None Include="Enums\FishColor.cs.uid" />
+    <None Include="Enums\GoodPresentTypes.cs.uid" />
+    <None Include="HubMethodes\OverlayHubMethodes.cs.uid" />
+    <None Include="ResponseModels\AlertResponseModel.cs.uid" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj" />
-    <ProjectReference Include="..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\Temptica.TwitchBot.Shared.csproj" />
   </ItemGroup>
 </Project>

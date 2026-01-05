@@ -1,7 +1,7 @@
 using Godot;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Services;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Labels;
 

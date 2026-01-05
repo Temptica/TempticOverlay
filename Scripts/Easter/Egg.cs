@@ -1,5 +1,5 @@
 using Godot;
-using Temptica.TwitchBot.Shared.enums;
+using Temptica.Overlay.Enums;
 
 namespace Temptica.Overlay.Scripts.Easter;
 

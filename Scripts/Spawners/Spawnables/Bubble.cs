@@ -1,9 +1,8 @@
 using System;
 using Godot;
-using Temptica.Overlay.Scripts;
-using Temptica.TwitchBot.Shared.enums;
+using Temptica.Overlay.Enums;
 
-namespace Temptica.Overlay.Templates;
+namespace Temptica.Overlay.Scripts.Spawners.Spawnables;
 
 public partial class Bubble : RigidBody3D
 {

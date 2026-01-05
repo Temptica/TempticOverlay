@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.Overlay.HubMethodes;
 using Temptica.Overlay.Scripts.Models;
-using Temptica.TwitchBot.Shared.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 

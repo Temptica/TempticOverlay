@@ -2,14 +2,11 @@
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temptica.Overlay", "Temptica.Overlay.csproj", "{45263424-3A06-4EA5-8F0C-12F0AFE897EF}"
 EndProject
-
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temptica.TwitchBot.Shared", "..\Temptica.TwitchBot\Temptica.TwitchBot.Shared\Temptica.TwitchBot.Shared.csproj", "{C256B483-E6B6-4BFF-8D0B-6C4E27050BB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temptica.GodotExtensions", "..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj", "{A7DBE4EB-2CE1-4812-B28B-E98D99020C62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-	Debug|Any CPU = Debug|Any CPU
+	Debug|Any CPU = Debug|Any CPUs
 	ExportDebug|Any CPU = ExportDebug|Any CPU
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d0s6g1co4e1vj"]
+
+[ext_resource type="Shader" uid="uid://cqgw1nlnx0w4o" path="res://Scenes/pixelated_otter.gdshader" id="1_yoyue"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_xedff"]
+camera_feed_id = 2
+which_feed = 1
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yoyue")
+shader_parameter/pixel_divisions = 128.0
+shader_parameter/albedo_texture = SubResource("CameraTexture_xedff")

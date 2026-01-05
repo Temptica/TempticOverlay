@@ -4,7 +4,7 @@ using System.Linq;
 using Godot;
 using Temptica.Overlay.Scripts.Winter;
 
-namespace Temptica.Overlay.scenes;
+namespace Temptica.Overlay.Scenes;
 
 public partial class SnowSpawner : Node3D
 {
@@ -54,6 +54,7 @@ public partial class SnowSpawner : Node3D
 			_snowFlakes.Add(flake);
 		}
 
+		return;
 		if (DateTime.Now >= _nextPackage)
 		{
 			_nextPackage = DateTime.Now.AddMinutes(15);

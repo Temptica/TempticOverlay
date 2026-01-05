@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://cl6m1owuaowma"]
+
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_oxmvr"]
+[ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_tiuj8"]
+[ext_resource type="Texture2D" uid="uid://bnde37257f2m6" path="res://addons/twitcher/assets/default-2.png" id="3_tk3rr"]
+[ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_f2qmb"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_b3lhy"]
+
+[sub_resource type="Resource" id="Resource_h1iak"]
+script = ExtResource("1_oxmvr")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[resource]
+script = ExtResource("5_b3lhy")
+id = "2f7e3232-2b60-491f-8504-42ef90e08afb"
+broadcaster_user = SubResource("Resource_h1iak")
+title = "Insert 1 credit (Play pinball)"
+description = "I'll play 1 credit of pinball on a table (of your choice).
+Pinball FX (you can choose the table once I open the game)
+Space cadet"
+cost = 1500
+background_color = Color(0.07450981, 0.27058825, 0.6666667, 1)
+is_enabled = true
+is_global_cooldown_enabled = true
+global_cooldown_seconds = 1800

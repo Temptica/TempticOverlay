@@ -1,14 +1,14 @@
 using System;
 using System.Globalization;
 using Godot;
-using Temptica.Overlay.scenes;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Easter;
 using Temptica.Overlay.Scripts.Fishes;
 using Temptica.Overlay.Scripts.Labels;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 using Temptica.Overlay.Scripts.Spawners;
-using Temptica.TwitchBot.Shared.enums;
 using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
+using SnowSpawner = Temptica.Overlay.Scenes.SnowSpawner;
 
 namespace Temptica.Overlay.Scripts;
 

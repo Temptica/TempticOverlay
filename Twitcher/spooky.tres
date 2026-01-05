@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://cs0coxu3nw44o"]
+
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_y7g8m"]
+[ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_xfhlb"]
+[ext_resource type="Texture2D" uid="uid://bnde37257f2m6" path="res://addons/twitcher/assets/default-2.png" id="3_r1yh5"]
+[ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_eyx25"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_infok"]
+
+[sub_resource type="Resource" id="Resource_h1iak"]
+script = ExtResource("1_y7g8m")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[resource]
+script = ExtResource("5_infok")
+id = "596a322a-0ee7-4c70-b098-656e69a4bbc7"
+broadcaster_user = SubResource("Resource_h1iak")
+title = "Spooky"
+description = "Play a jump-scare sound on stream"
+cost = 300
+background_color = Color(0.5686275, 0.2784314, 1, 1)
+is_global_cooldown_enabled = true
+global_cooldown_seconds = 600

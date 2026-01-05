@@ -31,11 +31,6 @@ public partial class AudioListener : Node3D
 
     public override void _Ready()
     {
-        var input = AudioServer.GetInputDeviceList().First(o => o.Contains("CABLE-A"));
-        AudioServer.InputDevice = input;
-        var output = AudioServer.GetOutputDeviceList().First(o => o.Contains("VAIO3"));
-        AudioServer.OutputDevice = output;
-
         _busIndex = AudioServer.GetBusIndex("Music");
         _environment = GetNode<Camera3D>("%Camera").Environment;
         _glow = GetNode<Glow>("%Glow");

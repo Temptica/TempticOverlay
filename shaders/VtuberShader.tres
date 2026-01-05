@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dif6guuy13or4"]
+
+[sub_resource type="Shader" id="Shader_jfof8"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform sampler2D texture_albedo : source_color, filter_nearest;
+uniform vec4 chroma_key_color : source_color = vec4(1.0, 0.0, 1.0, 1.0); // Default Magenta
+uniform float precision : hint_range(0.0, 1.0) = 0.15;
+uniform float softness : hint_range(0.0, 1.0) = 0.05;
+
+void fragment() {
+	vec4 tex_color = texture(texture_albedo, UV);
+	
+	// Calculate the distance between the pixel color and our target chroma color
+	float dist = distance(tex_color.rgb, chroma_key_color.rgb);
+	
+	// Create a mask based on the distance and precision
+	// smoothstep helps soften the edges of the cutout
+	float mask = smoothstep(precision, precision + softness, dist);
+	
+	ALBEDO = tex_color.rgb;
+	ALPHA = tex_color.a * mask;
+	
+	// Handle alpha scissor for better depth sorting in 3D
+	ALPHA_SCISSOR_THRESHOLD = 0.9;
+}"
+
+[sub_resource type="CameraTexture" id="CameraTexture_t4le0"]
+camera_feed_id = 2
+which_feed = 1
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_jfof8")
+shader_parameter/texture_albedo = SubResource("CameraTexture_t4le0")
+shader_parameter/chroma_key_color = Color(1, 0, 1, 1)
+shader_parameter/precision = 0.90000004275
+shader_parameter/softness = 0.0

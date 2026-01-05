@@ -2,7 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Temptica.TwitchBot.Shared.ResponseModels;
+using Temptica.Overlay.ResponseModels;
 
 namespace Temptica.Overlay.Scripts.Services;
 
@@ -12,6 +12,7 @@ public class ApiService
 
 	public async Task<string> GetLastSub()
 	{
+		return "";
 		var response = await _client.GetAsync("Alert/LastSubAlert");
 		
 		return response.IsSuccessStatusCode ? (await response.Content.ReadFromJsonAsync<AlertResponseModel>()).Username : "Be the first!";
@@ -19,6 +20,8 @@ public class ApiService
 	
 	public async Task<string> GetLastCheer()
 	{
+		return "";
+		
 		var response = await _client.GetAsync("Alert/LastCheerAlert");
 		if (!response.IsSuccessStatusCode) return "Be the first!";
 		
@@ -29,6 +32,8 @@ public class ApiService
 
 	public async Task<string> GetFirstViewer()
 	{
+		return "";
+		
 		var response = await _client.GetAsync("Stream/GetFirstViewer");
 		
 		return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : "Be the first!";

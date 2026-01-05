@@ -12,7 +12,7 @@ internal class SpotifyAccessServer
     private static EmbedIOAuthServer _server;
     public bool IsReady;
     private readonly AccessTokenService _accessTokenService;
-    private readonly string _callbackUrl = "http://localhost:5005/callback/";
+    private readonly string _callbackUrl = "http://127.0.0.1:5005/callback/";
     
     public SpotifyAccessServer(AccessTokenService accessTokenService)
     {

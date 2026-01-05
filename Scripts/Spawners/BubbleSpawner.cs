@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Temptica.Overlay.scenes;
 using Temptica.Overlay.Scripts.Labels;
-using Temptica.Overlay.Templates;
+using Bubble = Temptica.Overlay.Scripts.Spawners.Spawnables.Bubble;
+using BubbleMachineSpawner = Temptica.Overlay.Scenes.BubbleMachineSpawner;
 
 namespace Temptica.Overlay.Scripts.Spawners;
 

@@ -1,6 +1,6 @@
 ﻿using System;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Extensions;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Alerts
 {

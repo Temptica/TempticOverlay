@@ -1,48 +1,52 @@
-[gd_scene load_steps=72 format=3 uid="uid://sqlkahhtwtbi"]
+[gd_scene load_steps=73 format=3 uid="uid://sqlkahhtwtbi"]
 
 [ext_resource type="Script" uid="uid://6tlvfvq5npn6" path="res://Scripts/Overlay.cs" id="1_i5ik8"]
 [ext_resource type="Script" uid="uid://dudfiucao8jjg" path="res://Scripts/Labels/AlertLabels.cs" id="2_7arfu"]
+[ext_resource type="PackedScene" uid="uid://v4cbellhwmkn" path="res://Scenes/twitcher.tscn" id="2_sfgtk"]
 [ext_resource type="LabelSettings" uid="uid://caylaw0w5pes5" path="res://MusicLabel.tres" id="3_13pte"]
-[ext_resource type="Animation" uid="uid://cr65ssie7rrqe" path="res://Animations/HideAlertBox.res" id="4_rfovf"]
-[ext_resource type="Animation" uid="uid://doldi8cameahy" path="res://Animations/ShowAlertBox.res" id="5_eqbbm"]
+[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="5_av6hf"]
 [ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="6_3rxmi"]
 [ext_resource type="Script" uid="uid://cq4fn6wsum070" path="res://Scripts/Alerts/Glow.cs" id="7_ue7e7"]
 [ext_resource type="Script" uid="uid://mu0tc6v0pax" path="res://Scripts/AudioPlayer.cs" id="8_xg7lu"]
 [ext_resource type="Script" uid="uid://bd0481p314kvm" path="res://Scripts/SpamAudioPlayer.cs" id="9_vctfn"]
 [ext_resource type="Script" uid="uid://b17p1tdqmedxj" path="res://Scripts/Alerts/AlertQueue.cs" id="10_dqppc"]
 [ext_resource type="Script" uid="uid://cx0pkierenq1u" path="res://Scripts/AudioListener.cs" id="11_av78a"]
+[ext_resource type="Script" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="12_4tdmp"]
 [ext_resource type="Script" uid="uid://brgavxdw6hxfa" path="res://Scripts/Labels/PartyModeLabel.cs" id="12_7brcr"]
-[ext_resource type="PackedScene" uid="uid://doqewfiknnadb" path="res://scenes/click_counter_display.tscn" id="13_p46v7"]
-[ext_resource type="PackedScene" uid="uid://vx4qk3v8prjl" path="res://scenes/easter/egg_display.tscn" id="14_sftb8"]
-[ext_resource type="PackedScene" uid="uid://civ2xy4ofwrew" path="res://scenes/otter.tscn" id="15_7y4yb"]
+[ext_resource type="PackedScene" uid="uid://doqewfiknnadb" path="res://Scenes/click_counter_display.tscn" id="13_p46v7"]
+[ext_resource type="Script" path="res://addons/twitcher/reward/twitch_reward.gd" id="13_rye8v"]
+[ext_resource type="Resource" uid="uid://dwr0t8kwhwhrj" path="res://Twitcher/party_mode.tres" id="14_8bj1s"]
+[ext_resource type="PackedScene" uid="uid://vx4qk3v8prjl" path="res://Scenes/easter/egg_display.tscn" id="14_sftb8"]
+[ext_resource type="PackedScene" uid="uid://civ2xy4ofwrew" path="res://Scenes/otter.tscn" id="15_7y4yb"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="16_w68tm"]
 [ext_resource type="Script" uid="uid://0n36jr8tv3ol" path="res://Scripts/Labels/LastSubLabel.cs" id="17_ra46g"]
 [ext_resource type="Script" uid="uid://bdmnamx7ltqhr" path="res://Scripts/Labels/LastCheerLabel.cs" id="18_4cb35"]
+[ext_resource type="Script" path="res://addons/twitcher/chat/twitch_command.gd" id="18_rye8v"]
 [ext_resource type="Script" uid="uid://dj42nl1x40drj" path="res://Scripts/Labels/FirstViewerLabel.cs" id="19_2a6h5"]
 [ext_resource type="Script" uid="uid://dqpxcwyefe3sa" path="res://Scripts/Labels/MusicLabel.cs" id="20_qq534"]
 [ext_resource type="Script" uid="uid://qlv62pqtp47o" path="res://Scripts/Labels/RaidLabel.cs" id="21_j8nub"]
-[ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://scenes/emote_show_off.tscn" id="22_bf7jj"]
-[ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://scenes/lasershow.tscn" id="23_hx5vr"]
+[ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://Scenes/emote_show_off.tscn" id="22_bf7jj"]
+[ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://Scenes/lasershow.tscn" id="23_hx5vr"]
 [ext_resource type="Script" uid="uid://cd5lkj468njj1" path="res://Scripts/Alerts/RaidAlert/PlaneSpawner.cs" id="24_m10ky"]
 [ext_resource type="PackedScene" uid="uid://b4xjqfscsjpgl" path="res://Templates/plinko.tscn" id="25_ufvwg"]
 [ext_resource type="Script" uid="uid://cy8lvy1mnfif5" path="res://Scripts/Fishes/FishSpawner.cs" id="26_xxo6u"]
-[ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://scenes/fish_duel.tscn" id="27_daboe"]
+[ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://Scenes/fish_duel.tscn" id="27_daboe"]
 [ext_resource type="Script" uid="uid://4keqafoxv20l" path="res://Scripts/OverlayClicker.cs" id="28_ru0wr"]
 [ext_resource type="PackedScene" uid="uid://cbwqubbq37uxa" path="res://Scripts/bubble_machine.tscn" id="29_6mu36"]
-[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://scenes/BubbleMachineSpawner.cs" id="30_61chx"]
+[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://Scenes/BubbleMachineSpawner.cs" id="30_61chx"]
 [ext_resource type="Script" uid="uid://c6mid3nqndryd" path="res://Scripts/Spawners/BubbleSpawner.cs" id="31_i5ik8"]
-[ext_resource type="PackedScene" uid="uid://exxv880gb2q1" path="res://scenes/snowball_spawner.tscn" id="32_jmhn2"]
-[ext_resource type="PackedScene" uid="uid://bsb7y1uddpgft" path="res://scenes/plushy_spawner.tscn" id="33_wavaw"]
-[ext_resource type="PackedScene" uid="uid://s83c4yistfj0" path="res://scenes/snow_spawner.tscn" id="34_lcbp4"]
-[ext_resource type="PackedScene" uid="uid://c5c5r2loy4cev" path="res://scenes/fireworks.tscn" id="35_a5vxk"]
-[ext_resource type="PackedScene" uid="uid://iambpuaqot0s" path="res://scenes/Aurora/aurora.tscn" id="36_k7nao"]
-[ext_resource type="PackedScene" uid="uid://cq0a3bliit2jp" path="res://scenes/random_trash_spawner.tscn" id="37_rr1qg"]
+[ext_resource type="PackedScene" uid="uid://exxv880gb2q1" path="res://Scenes/snowball_spawner.tscn" id="32_jmhn2"]
+[ext_resource type="PackedScene" uid="uid://bsb7y1uddpgft" path="res://Scenes/plushy_spawner.tscn" id="33_wavaw"]
+[ext_resource type="PackedScene" uid="uid://s83c4yistfj0" path="res://Scenes/snow_spawner.tscn" id="34_lcbp4"]
+[ext_resource type="PackedScene" uid="uid://c5c5r2loy4cev" path="res://Scenes/fireworks.tscn" id="35_a5vxk"]
+[ext_resource type="PackedScene" uid="uid://iambpuaqot0s" path="res://Scenes/Aurora/aurora.tscn" id="36_k7nao"]
+[ext_resource type="PackedScene" uid="uid://cq0a3bliit2jp" path="res://Scenes/random_trash_spawner.tscn" id="37_rr1qg"]
 [ext_resource type="PackedScene" uid="uid://ccick2nkvh46s" path="res://Templates/peepo.tscn" id="38_fpli6"]
-[ext_resource type="PackedScene" uid="uid://bnoa2m0crki35" path="res://scenes/easter/egg_spawner.tscn" id="39_tjp6e"]
-[ext_resource type="PackedScene" uid="uid://x44fy0hjs7fp" path="res://scenes/slot_machine.tscn" id="40_lrr1q"]
-[ext_resource type="PackedScene" uid="uid://d4nxeh7fakmc" path="res://scenes/ad_timer.tscn" id="41_af3mp"]
-[ext_resource type="PackedScene" uid="uid://ctccth1pj3ukh" path="res://scenes/CharityGoal.tscn" id="42_i5ik8"]
-[ext_resource type="PackedScene" uid="uid://kl66v2tvsr70" path="res://scenes/draggable_area.tscn" id="44_8fk1q"]
+[ext_resource type="PackedScene" uid="uid://bnoa2m0crki35" path="res://Scenes/easter/egg_spawner.tscn" id="39_tjp6e"]
+[ext_resource type="PackedScene" uid="uid://x44fy0hjs7fp" path="res://Scenes/slot_machine.tscn" id="40_lrr1q"]
+[ext_resource type="PackedScene" uid="uid://d4nxeh7fakmc" path="res://Scenes/ad_timer.tscn" id="41_af3mp"]
+[ext_resource type="PackedScene" uid="uid://ctccth1pj3ukh" path="res://Scenes/CharityGoal.tscn" id="42_i5ik8"]
+[ext_resource type="PackedScene" uid="uid://kl66v2tvsr70" path="res://Scenes/draggable_area.tscn" id="44_8fk1q"]
 [ext_resource type="Texture2D" uid="uid://byqkpenl3y4p3" path="res://Images/Halloween/Pumpking.png" id="45_13pte"]
 [ext_resource type="Script" uid="uid://bcae6jellmkon" path="res://HalloweenPlayer.cs" id="46_7arfu"]
 [ext_resource type="Texture2D" uid="uid://cyochraqbdb2h" path="res://Images/Halloween/witch-hat.png" id="46_rfovf"]
@@ -74,12 +78,6 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 48
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kqet"]
-_data = {
-&"HideAlertBox": ExtResource("4_rfovf"),
-&"ShowAlertBox": ExtResource("5_eqbbm")
-}
 
 [sub_resource type="BoxMesh" id="BoxMesh_3n0pd"]
 material = ExtResource("6_3rxmi")
@@ -122,14 +120,6 @@ size = Vector3(16, 0.1, 30)
 [sub_resource type="BoxMesh" id="BoxMesh_4xie8"]
 size = Vector3(16, 0.3, 0.05)
 
-[sub_resource type="Animation" id="Animation_ap17j"]
-resource_name = "FollowAnimation"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya3yj"]
-_data = {
-&"FollowAnimation": SubResource("Animation_ap17j")
-}
-
 [sub_resource type="Environment" id="Environment_3kf53"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
@@ -138,11 +128,12 @@ sdfgi_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
 glow_intensity = 1.0
-glow_blend_mode = 1
 glow_hdr_threshold = 0.4
 
 [node name="Overlay" type="Node3D"]
 script = ExtResource("1_i5ik8")
+
+[node name="Twitcher" parent="." instance=ExtResource("2_sfgtk")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.95153, 0.307556, 0, -0.307556, 0.95153, 0, 0, 0)
@@ -205,12 +196,15 @@ label_settings = ExtResource("3_13pte")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="FollowEventListener" type="Node" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer" node_paths=PackedStringArray("eventsub")]
+script = ExtResource("5_av6hf")
+eventsub = NodePath("../../../../../Twitcher/TwitchEventsub")
+subscription = 5
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
 [node name="AlertBoxAnimationPlayer" type="AnimationPlayer" parent="AlertBox"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1kqet")
-}
 
 [node name="Glow4" type="MeshInstance3D" parent="AlertBox"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.49043, 0)
@@ -277,6 +271,23 @@ text = "PARTY MODE ENABLED"
 font_size = 64
 script = ExtResource("12_7brcr")
 
+[node name="TwitchRedeemListener" type="Node" parent="PartyModeLabel" node_paths=PackedStringArray("eventsub", "api")]
+script = ExtResource("12_4tdmp")
+rewards_to_listen = Array[ExtResource("13_rye8v")]([ExtResource("14_8bj1s")])
+eventsub = NodePath("../../Twitcher/TwitchEventsub")
+api = NodePath("../../Twitcher/TwitchAPI")
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="TwitchCommand" type="Node" parent="PartyModeLabel" node_paths=PackedStringArray("eventsub")]
+script = ExtResource("18_rye8v")
+command = "startpartymode"
+aliases = Array[String](["spm", "startparty"])
+permission_level = 4
+where = 3
+listen_to_chatrooms = Array[String](["temptic404"])
+eventsub = NodePath("../../Twitcher/TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
 [node name="ClickCounterDisplay" parent="." instance=ExtResource("13_p46v7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2557, 8, 0)
 
@@ -285,16 +296,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03073, 0.673164, 0)
 visible = false
 
 [node name="Otter" parent="." instance=ExtResource("15_7y4yb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.23092, 1.49967, -0.1)
-
-[node name="CollisionShape3D" parent="Otter" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356654, -0.461, 0)
-
-[node name="This is fine" parent="Otter" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, -0.204, -0.001)
-
-[node name="VNyanOtter" parent="Otter" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277054, 0.0140076, 0.0217285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.90589, 2.089144, -0.11031637)
 
 [node name="Borders" type="Node3D" parent="."]
 
@@ -410,9 +412,6 @@ mesh = SubResource("BoxMesh_7d1ca")
 skeleton = NodePath("../../BorderLeft")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Borders/BorderBottom"]
-libraries = {
-&"": SubResource("AnimationLibrary_ya3yj")
-}
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133482, 0)
@@ -486,8 +485,8 @@ script = ExtResource("31_i5ik8")
 
 [node name="SnowballSpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("32_jmhn2")]
 transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.0305094, 0.491345, 0.246477)
-Target = NodePath("../../../Otter")
 _spawnRate = 3.0
+Target = NodePath("../../../Otter")
 
 [node name="PlushySpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("33_wavaw")]
 transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.02154, 0.49508, 0.258412)
@@ -508,6 +507,9 @@ script = null
 
 [node name="Peepo" parent="Spawners" instance=ExtResource("38_fpli6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87056, 0, 0)
+
+[node name="AnimationPlayer" parent="Spawners/Peepo/JumperSprite" index="0"]
+libraries = {}
 
 [node name="Blue" parent="Spawners/Peepo/JumperSprite" index="1"]
 visible = true
@@ -583,5 +585,9 @@ texture = ExtResource("47_eqbbm")
 transform = Transform3D(0.022285027, 0.0658303, 0, -0.0658303, 0.022285027, 0, 0, 0, 0.06950001, 0.6981735, 7.9761353, -0.030273438)
 texture = ExtResource("47_eqbbm")
 
-[editable path="Otter"]
+[connection signal="received" from="AlertBox/Sprite3D/SubViewport2/HBoxContainer/FollowEventListener" to="AlertBox/Sprite3D/SubViewport2/HBoxContainer" method="OnFollow"]
+[connection signal="redeemed" from="PartyModeLabel/TwitchRedeemListener" to="." method="StartPartyMode"]
+[connection signal="command_received" from="PartyModeLabel/TwitchCommand" to="PartyModeLabel" method="StartPartyMode"]
+
+[editable path="Twitcher"]
 [editable path="Spawners/Peepo"]

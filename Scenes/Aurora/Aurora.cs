@@ -2,7 +2,7 @@ using Godot;
 using Temptica.Overlay.Scripts;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 
-namespace Temptica.Overlay.scenes.Aurora;
+namespace Temptica.Overlay.Scenes.Aurora;
 
 public partial class Aurora : TemporarilyTimeoutObject<MeshInstance3D>
 {

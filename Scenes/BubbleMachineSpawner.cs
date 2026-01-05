@@ -2,7 +2,7 @@ using Godot;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
 
-namespace Temptica.Overlay.scenes;
+namespace Temptica.Overlay.Scenes;
 
 public partial class BubbleMachineSpawner : Node3D
 {

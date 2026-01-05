@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Alerts;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.Spotify;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts;
 
@@ -53,7 +53,7 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.Bober, GD.Load<AudioStream>("res://AudioFiles/bober.mp3") },
             { AudioEffects.Fbi, GD.Load<AudioStream>("res://AudioFiles/fbi.mp3") },
             { AudioEffects.Pop, GD.Load<AudioStream>("res://AudioFiles/pop.mp3") },
-            { AudioEffects.Fireworks, GD.Load<AudioStream>("res://AudioFiles/Firework.mp3") },
+            { AudioEffects.Fireworks, GD.Load<AudioStream>("res://AudioFiles/firework.mp3") },
             { AudioEffects.Screenshot, GD.Load<AudioStream>("res://AudioFiles/Screenshot.mp3") },
             { AudioEffects.HaveYouEverHadADream, GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3") },
             { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3") },

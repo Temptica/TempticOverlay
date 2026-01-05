@@ -1,5 +1,3 @@
-using Temptica.TwitchBot.Shared.enums;
-
 namespace Temptica.Overlay.Scripts.Alerts;
 
 public class DonationAlert : Alert

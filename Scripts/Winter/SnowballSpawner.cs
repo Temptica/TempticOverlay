@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptica.Overlay.Templates;
 
 namespace Temptica.Overlay.Scripts.Winter;
 

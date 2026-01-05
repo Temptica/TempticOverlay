@@ -90,7 +90,7 @@ public partial class CannonLauncher : Node3D
 
     private void LaunchGodot()
     {
-        var plushie = _godotThrowable.Instantiate<Plushie>();
+        var plushie = _godotThrowable.Instantiate<Spawnables.Plushie>();
         LaunchItem(plushie);
     }
 

@@ -1,7 +1,7 @@
 using System.Linq;
 using Godot;
 
-namespace Temptica.Overlay.Templates;
+namespace Temptica.Overlay.Scripts.Winter;
 
 public partial class SnowBall : RigidBody3D
 {

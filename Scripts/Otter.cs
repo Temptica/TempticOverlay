@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Godot;
 using Temptica.GodotExtensions;
 using Temptica.Overlay.Scripts.Interfaces;
@@ -29,13 +28,10 @@ public partial class Otter : StaticBody3D, IDraggable
 		_nodeBoop = GetNode<Marker3D>("NodeBoop");
 		OriginalPosition = GlobalPosition;
 		OriginalSize = Scale;
-		OtterSignalRListener.ThisIsFine += (_, _) =>
-		{
-			RemainingTime += 10;
-		};
+		OtterSignalRListener.ThisIsFine += (_, _) => { RemainingTime += 10; };
 
 		OtterSignalRListener.Squish += SquishThatOtter;
-		
+
 		ShowHideOtterEvent += (_, show) =>
 		{
 			if (show)
@@ -43,23 +39,25 @@ public partial class Otter : StaticBody3D, IDraggable
 				CallDeferred("show");
 				return;
 			}
-			
+
 			CallDeferred("hide");
-			
+
 		};
 		ZoomOtterEvent += (_, zoom) =>
 		{
 			if (zoom)
 			{
-				SetDeferred("position",new Vector3(8, 4.5f, -0.1f));
-				SetDeferred("scale", new Vector3(3,3,3));
+				SetDeferred("position", new Vector3(8, 4.5f, -0.1f));
+				SetDeferred("scale", new Vector3(3, 3, 3));
 				return;
 			}
-			SetDeferred("global_position",OriginalPosition);
+
+			SetDeferred("global_position", OriginalPosition);
 			SetDeferred("scale", OriginalSize);
 		};
 
 	}
+
 	public override void _Process(double delta)
 	{
 		if (RemainingTime > 0)

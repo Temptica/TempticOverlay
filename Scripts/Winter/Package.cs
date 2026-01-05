@@ -1,8 +1,8 @@
 using System;
 using Godot;
+using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
-using Temptica.TwitchBot.Shared.enums;
 
 namespace Temptica.Overlay.Scripts.Winter;
 

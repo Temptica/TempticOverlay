@@ -1,6 +1,6 @@
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptica.Overlay.scenes;
+using FishDuel = Temptica.Overlay.Scenes.FishDuel;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 

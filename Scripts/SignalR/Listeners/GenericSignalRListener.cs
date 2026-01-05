@@ -1,7 +1,7 @@
 using System;
 using Godot;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptica.TwitchBot.Shared.HubMethodes;
+using Temptica.Overlay.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 

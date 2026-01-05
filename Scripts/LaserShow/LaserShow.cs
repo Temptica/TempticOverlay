@@ -118,8 +118,6 @@ public partial class LaserShow : Node3D
         _audioListener.StartPartyMode();
         AlertQueue.StopAlerts();
 
-        VoiceMeeterService.MuteSpotify();
-
 
         var lastFrame = _showLoader.LaserKeyFrames.MaxBy(kf => kf.Time + kf.Duration);
         var duration = lastFrame.Time + lastFrame.Duration;
@@ -127,7 +125,6 @@ public partial class LaserShow : Node3D
         _ = Task.Run(async () =>
         {
             await Task.Delay((int)((duration + 2) * 1000));
-            VoiceMeeterService.UnmuteSpotify();
             IsPlaying = false;
             AlertQueue.ResumeAlerts();
             _audioListener.EndPartyMode();

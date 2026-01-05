@@ -1,0 +1,208 @@
+[gd_scene load_steps=32 format=3 uid="uid://v4cbellhwmkn"]
+
+[ext_resource type="Script" path="res://addons/twitcher/twitcher.gd" id="1_m2ppo"]
+[ext_resource type="Script" path="res://addons/twitcher/generated/twitch_api.gd" id="2_lec3h"]
+[ext_resource type="Resource" path="res://addons/twitcher/lib/oOuch/default_key_provider.tres" id="3_h80d6"]
+[ext_resource type="Script" path="res://addons/twitcher/lib/oOuch/oauth_token.gd" id="4_6njx0"]
+[ext_resource type="Script" path="res://addons/twitcher/lib/oOuch/oauth_setting.gd" id="5_drx1n"]
+[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_eventsub.gd" id="6_183ew"]
+[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_eventsub_config.gd" id="7_s4w68"]
+[ext_resource type="Script" path="res://addons/twitcher/auth/twitch_oauth_scopes.gd" id="8_1fp8e"]
+[ext_resource type="Script" path="res://addons/twitcher/generated/twitch_user.gd" id="8_m2ppo"]
+[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="9_g01w8"]
+
+[sub_resource type="Resource" id="Resource_ph8hg"]
+script = ExtResource("4_6njx0")
+_identifier = "Auth-4534"
+metadata/_custom_type_script = "uid://b52xp7c23ucfk"
+
+[sub_resource type="Resource" id="Resource_wdp36"]
+script = ExtResource("5_drx1n")
+client_id = "teyb9j15742aubkd697irj10fonguv"
+client_secret = "BjRs9DrX2PxE8Sms9gRr6JpB9GmtQFE0zKalR4D9OG8="
+metadata/_custom_type_script = "uid://00xbijwpi8xa"
+
+[sub_resource type="Resource" id="Resource_lec3h"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_h80d6"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_rye8v"]
+script = ExtResource("7_s4w68")
+type = 5
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/moderator_user_id_user = SubResource("Resource_h80d6")
+metadata/broadcaster_user_id_user = SubResource("Resource_lec3h")
+
+[sub_resource type="Resource" id="Resource_ggcip"]
+script = ExtResource("7_s4w68")
+type = 6
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_5y8w4"]
+script = ExtResource("7_s4w68")
+type = 9
+condition = {
+&"broadcaster_user_id": "542726050",
+&"user_id": ""
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_s5uvo"]
+script = ExtResource("7_s4w68")
+type = 15
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_ca6ij"]
+script = ExtResource("7_s4w68")
+type = 17
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_f6gk1"]
+script = ExtResource("7_s4w68")
+type = 18
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_u21nw"]
+script = ExtResource("7_s4w68")
+type = 19
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_ckw7t"]
+script = ExtResource("7_s4w68")
+type = 20
+condition = {
+&"to_broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_qy230"]
+script = ExtResource("7_s4w68")
+type = 33
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_a321c"]
+script = ExtResource("7_s4w68")
+type = 37
+condition = {
+&"broadcaster_user_id": "542726050",
+&"reward_id": ""
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_fbgsp"]
+script = ExtResource("7_s4w68")
+type = 42
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_tkl6q"]
+script = ExtResource("7_s4w68")
+type = 44
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_mcpgh"]
+script = ExtResource("7_s4w68")
+type = 52
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_7smwi"]
+script = ExtResource("7_s4w68")
+type = 54
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_vqntc"]
+script = ExtResource("7_s4w68")
+type = 65
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_51ym4"]
+script = ExtResource("7_s4w68")
+type = 64
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_5m3hw"]
+script = ExtResource("8_1fp8e")
+used_scopes = Array[StringName]([&"bits:read", &"channel:bot", &"channel:manage:ads", &"channel:manage:broadcast", &"channel:manage:polls", &"channel:manage:predictions", &"channel:manage:raids", &"channel:manage:redemptions", &"channel:read:ads", &"channel:read:hype_train", &"channel:read:polls", &"channel:read:predictions", &"channel:read:redemptions", &"moderation:read", &"moderator:manage:chat_messages", &"moderator:manage:shoutouts", &"moderator:read:chat_messages", &"moderator:read:followers", &"moderator:read:shoutouts", &"user:read:chat", &"user:read:follows", &"user:read:subscriptions", &"user:read:emotes", &"user:write:chat", &"user:bot", &"channel:read:subscriptions"])
+metadata/_custom_type_script = "uid://b3n3et8mebjcc"
+
+[node name="Twitcher" type="Node"]
+script = ExtResource("1_m2ppo")
+metadata/_custom_type_script = "uid://dv7ewgsctdjqr"
+
+[node name="TwitchAPI" type="Node" parent="."]
+script = ExtResource("2_lec3h")
+token = SubResource("Resource_ph8hg")
+oauth_setting = SubResource("Resource_wdp36")
+metadata/_custom_type_script = "uid://cw30cwveway65"
+
+[node name="TwitchEventsub" type="Node" parent="." node_paths=PackedStringArray("api")]
+script = ExtResource("6_183ew")
+api = NodePath("../TwitchAPI")
+_subscriptions = Array[ExtResource("7_s4w68")]([SubResource("Resource_rye8v"), SubResource("Resource_ggcip"), SubResource("Resource_5y8w4"), SubResource("Resource_s5uvo"), SubResource("Resource_ca6ij"), SubResource("Resource_f6gk1"), SubResource("Resource_u21nw"), SubResource("Resource_ckw7t"), SubResource("Resource_qy230"), SubResource("Resource_a321c"), SubResource("Resource_fbgsp"), SubResource("Resource_tkl6q"), SubResource("Resource_mcpgh"), SubResource("Resource_7smwi"), SubResource("Resource_vqntc"), SubResource("Resource_51ym4")])
+scopes = SubResource("Resource_5m3hw")
+metadata/_custom_type_script = "uid://blmhj3j00yk45"
+
+[node name="TwitchEventListener" type="Node" parent="TwitchEventsub" node_paths=PackedStringArray("eventsub")]
+script = ExtResource("9_g01w8")
+eventsub = NodePath("..")
+subscription = 9
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"

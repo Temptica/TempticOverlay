@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.SignalR.Client;
-using Temptica.TwitchBot.Shared.enums;
+using Temptica.Overlay.Enums;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 

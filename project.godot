@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="TwitchOverlay"
@@ -37,9 +41,25 @@ window/subwindows/embed_subwindows=false
 
 project/assembly_name="Temptica.Overlay"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/twitcher/plugin.cfg")
+
 [layer_names]
 
 3d_physics/layer_2="Fish"
 3d_physics/layer_4="Map"
 3d_physics/layer_9="SnowBall"
 3d_physics/layer_12="Pixel"
+
+[twitcher]
+
+editor/game_oauth_token="res://addons/twitcher/default_oauth_token.tres"
+editor/game_oauth_setting="res://addons/twitcher/twitch_oauth_setting.tres"
+editor/project_preset=&"Overlay"
+editor/show_setup_on_startup=false
+logs/TwitchEditorSetting="debug"
+logs/TwitchEventsub="debug"
+logs/TwitchRewardService="debug"
+"logs/Twitcher Plugin"="debug"
+editor/reward_folder="res://Twitcher"

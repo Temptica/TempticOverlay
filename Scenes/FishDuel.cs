@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptica.TwitchBot.Shared.enums;
+using Temptica.Overlay.Enums;
 
-namespace Temptica.Overlay.scenes;
+namespace Temptica.Overlay.Scenes;
 
 public partial class FishDuel : Node3D
 {

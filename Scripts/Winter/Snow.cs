@@ -1,7 +1,7 @@
 using System;
 using Godot;
-using Temptica.Overlay.scenes;
 using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+using SnowSpawner = Temptica.Overlay.Scenes.SnowSpawner;
 
 namespace Temptica.Overlay.Scripts.Winter;
 

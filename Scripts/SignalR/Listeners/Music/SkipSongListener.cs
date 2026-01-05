@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.Overlay.HubMethodes;
 using Temptica.Overlay.Scripts.Spotify;
-using Temptica.TwitchBot.Shared.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners.Music;
 

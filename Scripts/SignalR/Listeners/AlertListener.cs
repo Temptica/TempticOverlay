@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.SignalR.Client;
+using Temptica.Overlay.Enums;
+using Temptica.Overlay.HubMethodes;
 using Temptica.Overlay.Scripts.Alerts;
 using Temptica.Overlay.Scripts.Models;
-using Temptica.TwitchBot.Shared.enums;
-using Temptica.TwitchBot.Shared.HubMethodes;
 
 namespace Temptica.Overlay.Scripts.SignalR.Listeners;
 

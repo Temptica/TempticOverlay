@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 namespace Temptica.Overlay.Scripts.Labels;
 
@@ -22,11 +23,11 @@ public partial class PartyModeLabel : Label3D
 		_rainbowTween.Pause();
 	}
 	
-	public void StartPartyMode(float speedScale = 0.25f)
+	public void StartPartyMode()
 	{
 		if(_RainbowMode) return;
 		_rainbowTween.Play();
-		_rainbowTween.SetSpeedScale(speedScale);
+		_rainbowTween.SetSpeedScale(0);
 		_RainbowMode = true;
 		CallDeferred(Node3D.MethodName.Show);
 	}
