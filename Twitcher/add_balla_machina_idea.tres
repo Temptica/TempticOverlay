@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://s22ec3u4bgbx"]
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://d03efnlelx5go"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_45nf2"]
 [ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_0atdu"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_h7mtt"]
 [ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_abxpk"]
 
-[sub_resource type="Resource" id="Resource_h1iak"]
+[sub_resource type="Resource" id="Resource_swtiv"]
 script = ExtResource("1_45nf2")
 id = "542726050"
 login = "temptic404"
@@ -20,7 +20,7 @@ created_at = "2020-06-12T11:47:24Z"
 [resource]
 script = ExtResource("5_abxpk")
 id = "640eb391-5761-4af4-b591-1f04a184985a"
-broadcaster_user = SubResource("Resource_h1iak")
+broadcaster_user = SubResource("Resource_swtiv")
 title = "Add Balla Machina idea"
 description = "suggest an idea for balla machina. if I like it I'll add it to the miro board"
 cost = 100

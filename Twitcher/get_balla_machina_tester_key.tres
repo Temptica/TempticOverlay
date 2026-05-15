@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://ctwo2u78tf6h5"]
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://ckstbi6fmr5cy"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_wdqbf"]
 [ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_e24b1"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_dhocy"]
 [ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_m1hnf"]
 
-[sub_resource type="Resource" id="Resource_h1iak"]
+[sub_resource type="Resource" id="Resource_swtiv"]
 script = ExtResource("1_wdqbf")
 id = "542726050"
 login = "temptic404"
@@ -20,7 +20,7 @@ created_at = "2020-06-12T11:47:24Z"
 [resource]
 script = ExtResource("5_m1hnf")
 id = "4a7b765e-65c2-4784-8132-07fcc650d017"
-broadcaster_user = SubResource("Resource_h1iak")
+broadcaster_user = SubResource("Resource_swtiv")
 title = "Get Balla machina tester key"
 description = "Get your own Balla machina steam key (only one per person)"
 cost = 20000

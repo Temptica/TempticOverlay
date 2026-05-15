@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://cs0coxu3nw44o"]
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://dylgfyydntl3a"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_y7g8m"]
 [ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_xfhlb"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_eyx25"]
 [ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_infok"]
 
-[sub_resource type="Resource" id="Resource_h1iak"]
+[sub_resource type="Resource" id="Resource_swtiv"]
 script = ExtResource("1_y7g8m")
 id = "542726050"
 login = "temptic404"
@@ -20,7 +20,7 @@ created_at = "2020-06-12T11:47:24Z"
 [resource]
 script = ExtResource("5_infok")
 id = "596a322a-0ee7-4c70-b098-656e69a4bbc7"
-broadcaster_user = SubResource("Resource_h1iak")
+broadcaster_user = SubResource("Resource_swtiv")
 title = "Spooky"
 description = "Play a jump-scare sound on stream"
 cost = 300

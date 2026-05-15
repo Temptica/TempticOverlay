@@ -1,28 +1,42 @@
-[gd_scene load_steps=73 format=3 uid="uid://sqlkahhtwtbi"]
+[gd_scene format=3 uid="uid://sqlkahhtwtbi"]
 
 [ext_resource type="Script" uid="uid://6tlvfvq5npn6" path="res://Scripts/Overlay.cs" id="1_i5ik8"]
 [ext_resource type="Script" uid="uid://dudfiucao8jjg" path="res://Scripts/Labels/AlertLabels.cs" id="2_7arfu"]
 [ext_resource type="PackedScene" uid="uid://v4cbellhwmkn" path="res://Scenes/twitcher.tscn" id="2_sfgtk"]
+[ext_resource type="Script" uid="uid://bty3n42mxs51m" path="res://Scenes/OverlayColorManager.cs" id="2_wdp36"]
 [ext_resource type="LabelSettings" uid="uid://caylaw0w5pes5" path="res://MusicLabel.tres" id="3_13pte"]
-[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="5_av6hf"]
+[ext_resource type="Script" uid="uid://cjug64e3433g0" path="res://addons/twitcher/eventsub/twitch_eventsub_config.gd" id="3_r3g3n"]
+[ext_resource type="PackedScene" uid="uid://cmn0x76ot6lpo" path="res://Scenes/twitch_bot.tscn" id="4_ok0o6"]
 [ext_resource type="Material" uid="uid://dxgdclt23yler" path="res://Materials/BorderGlow.tres" id="6_3rxmi"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="6_vyv46"]
 [ext_resource type="Script" uid="uid://cq4fn6wsum070" path="res://Scripts/Alerts/Glow.cs" id="7_ue7e7"]
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="7_vyv46"]
+[ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="8_ph8hg"]
+[ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="8_s7h27"]
 [ext_resource type="Script" uid="uid://mu0tc6v0pax" path="res://Scripts/AudioPlayer.cs" id="8_xg7lu"]
+[ext_resource type="Texture2D" uid="uid://bnde37257f2m6" path="res://addons/twitcher/assets/default-2.png" id="9_ok0o6"]
 [ext_resource type="Script" uid="uid://bd0481p314kvm" path="res://Scripts/SpamAudioPlayer.cs" id="9_vctfn"]
 [ext_resource type="Script" uid="uid://b17p1tdqmedxj" path="res://Scripts/Alerts/AlertQueue.cs" id="10_dqppc"]
+[ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="10_i2mln"]
+[ext_resource type="Script" uid="uid://bol5ltrjr6ux8" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="10_ph8hg"]
+[ext_resource type="Script" uid="uid://csea6pf1sh1xc" path="res://Scripts/Services/UserService.cs" id="10_vyv46"]
 [ext_resource type="Script" uid="uid://cx0pkierenq1u" path="res://Scripts/AudioListener.cs" id="11_av78a"]
-[ext_resource type="Script" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="12_4tdmp"]
+[ext_resource type="Script" uid="uid://q3rnc6oyny0q" path="res://Scenes/MusicService.cs" id="11_s7h27"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="11_wdp36"]
 [ext_resource type="Script" uid="uid://brgavxdw6hxfa" path="res://Scripts/Labels/PartyModeLabel.cs" id="12_7brcr"]
+[ext_resource type="Animation" uid="uid://cr65ssie7rrqe" path="res://Animations/HideAlertBox.res" id="12_ph8hg"]
+[ext_resource type="Resource" uid="uid://dcio062dbysq5" path="res://Twitcher/tts.tres" id="13_ok0o6"]
 [ext_resource type="PackedScene" uid="uid://doqewfiknnadb" path="res://Scenes/click_counter_display.tscn" id="13_p46v7"]
-[ext_resource type="Script" path="res://addons/twitcher/reward/twitch_reward.gd" id="13_rye8v"]
-[ext_resource type="Resource" uid="uid://dwr0t8kwhwhrj" path="res://Twitcher/party_mode.tres" id="14_8bj1s"]
+[ext_resource type="Animation" uid="uid://doldi8cameahy" path="res://Animations/ShowAlertBox.res" id="13_wdp36"]
 [ext_resource type="PackedScene" uid="uid://vx4qk3v8prjl" path="res://Scenes/easter/egg_display.tscn" id="14_sftb8"]
 [ext_resource type="PackedScene" uid="uid://civ2xy4ofwrew" path="res://Scenes/otter.tscn" id="15_7y4yb"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="16_w68tm"]
 [ext_resource type="Script" uid="uid://0n36jr8tv3ol" path="res://Scripts/Labels/LastSubLabel.cs" id="17_ra46g"]
 [ext_resource type="Script" uid="uid://bdmnamx7ltqhr" path="res://Scripts/Labels/LastCheerLabel.cs" id="18_4cb35"]
-[ext_resource type="Script" path="res://addons/twitcher/chat/twitch_command.gd" id="18_rye8v"]
+[ext_resource type="Script" uid="uid://crimb3lphylm5" path="res://Scripts/Services/KaniService.cs" id="18_n8mlp"]
 [ext_resource type="Script" uid="uid://dj42nl1x40drj" path="res://Scripts/Labels/FirstViewerLabel.cs" id="19_2a6h5"]
+[ext_resource type="Script" uid="uid://na88o57rk0u5" path="res://Scripts/Services/NexusAuthService.cs" id="19_owi6t"]
+[ext_resource type="Script" uid="uid://lmex7dmdbcdc" path="res://Scripts/Services/ChatListener.cs" id="20_mfjki"]
 [ext_resource type="Script" uid="uid://dqpxcwyefe3sa" path="res://Scripts/Labels/MusicLabel.cs" id="20_qq534"]
 [ext_resource type="Script" uid="uid://qlv62pqtp47o" path="res://Scripts/Labels/RaidLabel.cs" id="21_j8nub"]
 [ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://Scenes/emote_show_off.tscn" id="22_bf7jj"]
@@ -33,8 +47,6 @@
 [ext_resource type="PackedScene" uid="uid://c5n3h0hermdxt" path="res://Scenes/fish_duel.tscn" id="27_daboe"]
 [ext_resource type="Script" uid="uid://4keqafoxv20l" path="res://Scripts/OverlayClicker.cs" id="28_ru0wr"]
 [ext_resource type="PackedScene" uid="uid://cbwqubbq37uxa" path="res://Scripts/bubble_machine.tscn" id="29_6mu36"]
-[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://Scenes/BubbleMachineSpawner.cs" id="30_61chx"]
-[ext_resource type="Script" uid="uid://c6mid3nqndryd" path="res://Scripts/Spawners/BubbleSpawner.cs" id="31_i5ik8"]
 [ext_resource type="PackedScene" uid="uid://exxv880gb2q1" path="res://Scenes/snowball_spawner.tscn" id="32_jmhn2"]
 [ext_resource type="PackedScene" uid="uid://bsb7y1uddpgft" path="res://Scenes/plushy_spawner.tscn" id="33_wavaw"]
 [ext_resource type="PackedScene" uid="uid://s83c4yistfj0" path="res://Scenes/snow_spawner.tscn" id="34_lcbp4"]
@@ -51,6 +63,237 @@
 [ext_resource type="Script" uid="uid://bcae6jellmkon" path="res://HalloweenPlayer.cs" id="46_7arfu"]
 [ext_resource type="Texture2D" uid="uid://cyochraqbdb2h" path="res://Images/Halloween/witch-hat.png" id="46_rfovf"]
 [ext_resource type="Texture2D" uid="uid://cbpi6chsxf073" path="res://Images/Halloween/spiderweb.png" id="47_eqbbm"]
+
+[sub_resource type="Resource" id="Resource_occp4"]
+script = ExtResource("7_vyv46")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_00o2h"]
+script = ExtResource("7_vyv46")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_s7h27"]
+script = ExtResource("3_r3g3n")
+type = 5
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_occp4")
+metadata/moderator_user_id_user = SubResource("Resource_00o2h")
+
+[sub_resource type="Resource" id="Resource_ok0o6"]
+script = ExtResource("3_r3g3n")
+type = 6
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_i2mln"]
+script = ExtResource("3_r3g3n")
+type = 9
+condition = {
+&"broadcaster_user_id": "542726050",
+&"user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_n8mlp"]
+script = ExtResource("3_r3g3n")
+type = 15
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_owi6t"]
+script = ExtResource("3_r3g3n")
+type = 17
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_mfjki"]
+script = ExtResource("3_r3g3n")
+type = 18
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_7gssd"]
+script = ExtResource("3_r3g3n")
+type = 19
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_k50hd"]
+script = ExtResource("3_r3g3n")
+type = 20
+condition = {
+&"to_broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_8uk1r"]
+script = ExtResource("3_r3g3n")
+type = 33
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_rnb74"]
+script = ExtResource("3_r3g3n")
+type = 37
+condition = {
+&"broadcaster_user_id": "542726050",
+&"reward_id": ""
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_27gl7"]
+script = ExtResource("3_r3g3n")
+type = 39
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_e2rh2"]
+script = ExtResource("3_r3g3n")
+type = 41
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_h1wea"]
+script = ExtResource("3_r3g3n")
+type = 42
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_nfkib"]
+script = ExtResource("3_r3g3n")
+type = 45
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_8c2rx"]
+script = ExtResource("3_r3g3n")
+type = 52
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_52vaw"]
+script = ExtResource("3_r3g3n")
+type = 54
+condition = {
+&"broadcaster_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_osa0r"]
+script = ExtResource("3_r3g3n")
+type = 64
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_6v2fa"]
+script = ExtResource("3_r3g3n")
+type = 65
+condition = {
+&"broadcaster_user_id": "542726050",
+&"moderator_user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+
+[sub_resource type="Resource" id="Resource_da31f"]
+script = ExtResource("3_r3g3n")
+type = 38
+condition = {
+"broadcaster_user_id": "542726050"
+}
+
+[sub_resource type="Resource" id="Resource_f5iqe"]
+script = ExtResource("3_r3g3n")
+type = 38
+condition = {
+"broadcaster_user_id": "542726050"
+}
+
+[sub_resource type="Resource" id="Resource_sg4nt"]
+script = ExtResource("3_r3g3n")
+type = 38
+condition = {
+"broadcaster_user_id": "542726050"
+}
+
+[sub_resource type="Resource" id="Resource_yk0la"]
+script = ExtResource("3_r3g3n")
+type = 38
+condition = {
+"broadcaster_user_id": "542726050"
+}
+
+[sub_resource type="Resource" id="Resource_je1h8"]
+script = ExtResource("3_r3g3n")
+type = 38
+condition = {
+"broadcaster_user_id": "542726050"
+}
+
+[sub_resource type="Resource" id="Resource_swtiv"]
+script = ExtResource("7_vyv46")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_vvuyk"]
+script = ExtResource("6_vyv46")
+id = "88e30467-ac34-497e-9e22-c24ec9424f0c"
+broadcaster_user = SubResource("Resource_swtiv")
+title = "Party mode"
+description = "Starts party mode when V3 overlay is active (for about 2 songs)"
+cost = 1000
+background_color = Color(1, 0.50980395, 0.5019608, 1)
+is_enabled = true
+is_global_cooldown_enabled = true
+global_cooldown_seconds = 1800
 
 [sub_resource type="BoxMesh" id="BoxMesh_l2cs8"]
 size = Vector3(0, 1, 0)
@@ -79,6 +322,12 @@ font_size = 48
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyv46"]
+_data = {
+&"HideAlertBox": ExtResource("12_ph8hg"),
+&"ShowAlertBox": ExtResource("13_wdp36")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_3n0pd"]
 material = ExtResource("6_3rxmi")
 size = Vector3(0.05, 4.1, 0.05)
@@ -100,6 +349,30 @@ size = Vector3(0.229, 8.94, 30)
 [sub_resource type="BoxMesh" id="BoxMesh_lj8iq"]
 material = ExtResource("6_3rxmi")
 size = Vector3(0.03, 8.4, 0.05)
+
+[sub_resource type="Resource" id="Resource_wuwhe"]
+script = ExtResource("7_vyv46")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_pr3iv"]
+script = ExtResource("6_vyv46")
+id = "e565b24e-94aa-49eb-a62f-9064cb48ee24"
+broadcaster_user = SubResource("Resource_wuwhe")
+title = "Set overlay color"
+description = "include any html color or hexidecimal code like #FFFFFF to set my overlay color"
+background_color = Color(1, 0.7019608, 0, 1)
+is_enabled = true
+is_user_input_required = true
+should_redemptions_skip_request_queue = true
+is_global_cooldown_enabled = true
+global_cooldown_seconds = 60
 
 [sub_resource type="BoxMesh" id="BoxMesh_8lxmp"]
 size = Vector3(0.6, 9, 0.05)
@@ -130,38 +403,173 @@ glow_enabled = true
 glow_intensity = 1.0
 glow_hdr_threshold = 0.4
 
-[node name="Overlay" type="Node3D"]
+[node name="Overlay" type="Node3D" unique_id=1970370669]
 script = ExtResource("1_i5ik8")
 
-[node name="Twitcher" parent="." instance=ExtResource("2_sfgtk")]
+[node name="Twitcher" parent="." unique_id=2015626794 instance=ExtResource("2_sfgtk")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="TwitchEventsub" parent="Twitcher/TwitchService" parent_id_path=PackedInt32Array(2015626794, 56984047) index="1" unique_id=1115440533]
+_subscriptions = Array[ExtResource("3_r3g3n")]([SubResource("Resource_s7h27"), SubResource("Resource_ok0o6"), SubResource("Resource_i2mln"), SubResource("Resource_n8mlp"), SubResource("Resource_owi6t"), SubResource("Resource_mfjki"), SubResource("Resource_7gssd"), SubResource("Resource_k50hd"), SubResource("Resource_8uk1r"), SubResource("Resource_rnb74"), SubResource("Resource_27gl7"), SubResource("Resource_e2rh2"), SubResource("Resource_h1wea"), SubResource("Resource_nfkib"), SubResource("Resource_8c2rx"), SubResource("Resource_52vaw"), SubResource("Resource_osa0r"), SubResource("Resource_6v2fa"), SubResource("Resource_da31f"), SubResource("Resource_f5iqe"), SubResource("Resource_sg4nt"), SubResource("Resource_yk0la"), SubResource("Resource_je1h8")])
+
+[node name="TwitchBot" parent="." unique_id=1229059104 instance=ExtResource("4_ok0o6")]
+
+[node name="OverlayColorManager" type="Node" parent="." unique_id=1474355206]
+script = ExtResource("2_wdp36")
+
+[node name="PartyModeTwitchRedeemListener" type="Node" parent="OverlayColorManager" unique_id=397213804 node_paths=PackedStringArray("eventsub", "api")]
+script = ExtResource("11_wdp36")
+rewards_to_listen = Array[ExtResource("6_vyv46")]([SubResource("Resource_vvuyk")])
+eventsub = NodePath("../../Twitcher/TwitchService/TwitchEventsub")
+api = NodePath("../../Twitcher/TwitchService/TwitchAPI")
+ensure_subscriptions_on_ready = false
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="StopPartyModeTwitchCommand" type="Node" parent="OverlayColorManager" unique_id=576445693]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["StartParty", "StartPartyMode"])
+command = "Party"
+permission_level = 28
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="StartPartyModeTwitchCommand" type="Node" parent="OverlayColorManager" unique_id=405886875]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["StopPartyMode", "NoParty"])
+command = "StopParty"
+permission_level = 28
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Services" type="Node" parent="." unique_id=892088364]
+
+[node name="UserService" type="Node" parent="Services" unique_id=1393893022]
+script = ExtResource("10_vyv46")
+
+[node name="MusicService" type="Node" parent="Services" unique_id=403519692]
+script = ExtResource("11_s7h27")
+
+[node name="SongRequestCommand" type="Node" parent="Services/MusicService" unique_id=1230734139]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["songrequest"])
+command = "sr"
+permission_level = 29
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="SkipOwnRequestCommand" type="Node" parent="Services/MusicService" unique_id=502225045]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["sl"])
+command = "skiplast"
+description = "Skips your last requested song in the queue"
+permission_level = 29
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="SkipRequestCommand" type="Node" parent="Services/MusicService" unique_id=477710514]
+script = ExtResource("8_ph8hg")
+command = "skip"
+description = "Skip the current song"
+permission_level = 28
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="AlertQueue" type="Node" parent="Services" unique_id=1453858730]
+script = ExtResource("10_dqppc")
+
+[node name="FollowEventListener" type="Node" parent="Services/AlertQueue" unique_id=1709140969 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 5
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="SubEventListener" type="Node" parent="Services/AlertQueue" unique_id=2122608292 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 15
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="ReSubEventListener" type="Node" parent="Services/AlertQueue" unique_id=1996855975 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 18
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="CheerEventListener" type="Node" parent="Services/AlertQueue" unique_id=521320989 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 19
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="PowerUpEventListener" type="Node" parent="Services/AlertQueue" unique_id=730887734 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 33
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="RaidEventListener" type="Node" parent="Services/AlertQueue" unique_id=1306902764 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 20
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="TtsRedeemListener" type="Node" parent="Services/AlertQueue" unique_id=1292133394 node_paths=PackedStringArray("eventsub", "api")]
+script = ExtResource("11_wdp36")
+rewards_to_listen = Array[ExtResource("6_vyv46")]([ExtResource("13_ok0o6")])
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+api = NodePath("../../../Twitcher/TwitchService/TwitchAPI")
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="SkipSpeechTwitchCommand" type="Node" parent="Services/AlertQueue" unique_id=1289544253]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["SkipSpeech"])
+command = "ss"
+permission_level = 28
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="StopAllAlertsTwitchCommand" type="Node" parent="Services/AlertQueue" unique_id=856020480]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["sa"])
+command = "StopAlerts"
+permission_level = 24
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="KaniService" type="Node" parent="Services" unique_id=1300332014]
+script = ExtResource("18_n8mlp")
+
+[node name="NexusService" type="Node" parent="Services/KaniService" unique_id=1928779592]
+script = ExtResource("19_owi6t")
+
+[node name="ChatListener" type="Node" parent="Services" unique_id=570522065]
+script = ExtResource("20_mfjki")
+
+[node name="TwitchChatListener" type="Node" parent="Services/ChatListener" unique_id=334448986 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("10_ph8hg")
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+subscription = 9
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1333098043]
 transform = Transform3D(1, 0, 0, 0, 0.95153, 0.307556, 0, -0.307556, 0.95153, 0, 0, 0)
 
-[node name="FishMessageBox" type="MeshInstance3D" parent="."]
+[node name="FishMessageBox" type="MeshInstance3D" parent="." unique_id=720975847]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19404, 7.895, 0)
 mesh = SubResource("BoxMesh_l2cs8")
 surface_material_override/0 = SubResource("StandardMaterial3D_wck2e")
 
-[node name="AlertBox" type="MeshInstance3D" parent="."]
+[node name="AlertBox" type="MeshInstance3D" parent="." unique_id=1748436937]
 unique_name_in_owner = true
-transform = Transform3D(1.00537, 0, 0, 0, 1.00537, 0, 0, 0, 1.00537, 8, 4.5, -0.014)
+transform = Transform3D(1.00537, 0, 0, 0, 1.00537, 0, 0, 0, 1.00537, 18.031, 4.5, -0.014)
 visible = false
 transparency = 0.1
 mesh = SubResource("BoxMesh_3u44p")
 surface_material_override/0 = SubResource("StandardMaterial3D_tt3bq")
 
-[node name="Sprite3D" type="Sprite3D" parent="AlertBox"]
+[node name="Sprite3D" type="Sprite3D" parent="AlertBox" unique_id=683695244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.577815, 0.0971075)
 pixel_size = 0.005
 texture = SubResource("ViewportTexture_tqs4t")
 
-[node name="SubViewport2" type="SubViewport" parent="AlertBox/Sprite3D"]
+[node name="SubViewport2" type="SubViewport" parent="AlertBox/Sprite3D" unique_id=841916286]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(800, 1150)
 
-[node name="HBoxContainer" type="VBoxContainer" parent="AlertBox/Sprite3D/SubViewport2"]
+[node name="HBoxContainer" type="VBoxContainer" parent="AlertBox/Sprite3D/SubViewport2" unique_id=1054769856]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -175,20 +583,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7arfu")
 
-[node name="AlertTypeLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+[node name="AlertTypeLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer" unique_id=1092424115]
 layout_mode = 2
 text = "Incomming raid"
 label_settings = SubResource("LabelSettings_l52w1")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="AlertUserNameLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+[node name="AlertUserNameLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer" unique_id=1077676950]
 layout_mode = 2
 text = "Ryoon2K"
 label_settings = SubResource("LabelSettings_qcoyg")
 horizontal_alignment = 1
 
-[node name="AlertMessageLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer"]
+[node name="AlertMessageLabel" type="Label" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer" unique_id=1572489146]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 text = "Has raided us with 8 viewers"
@@ -196,74 +604,67 @@ label_settings = ExtResource("3_13pte")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="FollowEventListener" type="Node" parent="AlertBox/Sprite3D/SubViewport2/HBoxContainer" node_paths=PackedStringArray("eventsub")]
-script = ExtResource("5_av6hf")
-eventsub = NodePath("../../../../../Twitcher/TwitchEventsub")
-subscription = 5
-metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
-
-[node name="AlertBoxAnimationPlayer" type="AnimationPlayer" parent="AlertBox"]
+[node name="AlertBoxAnimationPlayer" type="AnimationPlayer" parent="AlertBox" unique_id=1987647088]
 unique_name_in_owner = true
 root_node = NodePath("../..")
+libraries/AlertBox = SubResource("AnimationLibrary_vyv46")
 
-[node name="Glow4" type="MeshInstance3D" parent="AlertBox"]
+[node name="Glow4" type="MeshInstance3D" parent="AlertBox" unique_id=704484631]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.49043, 0)
 visible = false
 mesh = SubResource("BoxMesh_3n0pd")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("7_ue7e7")
 
-[node name="Glow5" type="MeshInstance3D" parent="AlertBox"]
+[node name="Glow5" type="MeshInstance3D" parent="AlertBox" unique_id=832548424]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1.52885, 0)
 visible = false
 mesh = SubResource("BoxMesh_3n0pd")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("7_ue7e7")
 
-[node name="Glow6" type="MeshInstance3D" parent="AlertBox"]
+[node name="Glow6" type="MeshInstance3D" parent="AlertBox" unique_id=151594522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02531, -0.0192466, 0)
 visible = false
 mesh = SubResource("BoxMesh_c7c0i")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("7_ue7e7")
 
-[node name="Glow7" type="MeshInstance3D" parent="AlertBox"]
+[node name="Glow7" type="MeshInstance3D" parent="AlertBox" unique_id=589719966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03507, -0.0192466, 0)
 visible = false
 mesh = SubResource("BoxMesh_c7c0i")
 skeleton = NodePath("../../Borders/BorderLeft")
 script = ExtResource("7_ue7e7")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("SpamAudioPlayer")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=152528518 node_paths=PackedStringArray("SpamAudioPlayer")]
 unique_name_in_owner = true
 bus = &"AudioEffects"
 script = ExtResource("8_xg7lu")
 SpamAudioPlayer = NodePath("../SpamAudioStreamPlayer")
 
-[node name="SpamAudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="SpamAudioStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1351204417]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamPolyphonic_qit8j")
+max_db = 1.0
 max_polyphony = 32
 bus = &"AudioEffects"
 script = ExtResource("9_vctfn")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="."]
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1921114403]
 current = true
 
-[node name="AlertQueue" type="Node" parent="."]
-script = ExtResource("10_dqppc")
-
-[node name="AudioListener" type="Node3D" parent="."]
+[node name="AudioListener" type="Node3D" parent="." unique_id=1842985612]
 unique_name_in_owner = true
 script = ExtResource("11_av78a")
 
-[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1286084594]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamMicrophone_3ncr7")
 autoplay = true
 bus = &"Music"
 
-[node name="PartyModeLabel" type="Label3D" parent="."]
+[node name="PartyModeLabel" type="Label3D" parent="." unique_id=2086986836]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.72293, 0)
 visible = false
@@ -271,90 +672,82 @@ text = "PARTY MODE ENABLED"
 font_size = 64
 script = ExtResource("12_7brcr")
 
-[node name="TwitchRedeemListener" type="Node" parent="PartyModeLabel" node_paths=PackedStringArray("eventsub", "api")]
-script = ExtResource("12_4tdmp")
-rewards_to_listen = Array[ExtResource("13_rye8v")]([ExtResource("14_8bj1s")])
-eventsub = NodePath("../../Twitcher/TwitchEventsub")
-api = NodePath("../../Twitcher/TwitchAPI")
-metadata/_custom_type_script = "uid://b8b32wrju6f63"
-
-[node name="TwitchCommand" type="Node" parent="PartyModeLabel" node_paths=PackedStringArray("eventsub")]
-script = ExtResource("18_rye8v")
-command = "startpartymode"
-aliases = Array[String](["spm", "startparty"])
-permission_level = 4
-where = 3
-listen_to_chatrooms = Array[String](["temptic404"])
-eventsub = NodePath("../../Twitcher/TwitchEventsub")
-metadata/_custom_type_script = "uid://bmluckfvgm1c2"
-
-[node name="ClickCounterDisplay" parent="." instance=ExtResource("13_p46v7")]
+[node name="ClickCounterDisplay" parent="." unique_id=758896629 instance=ExtResource("13_p46v7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2557, 8, 0)
 
-[node name="EggDisplay" parent="." instance=ExtResource("14_sftb8")]
+[node name="EggDisplay" parent="." unique_id=388205059 instance=ExtResource("14_sftb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03073, 0.673164, 0)
-visible = false
 
-[node name="Otter" parent="." instance=ExtResource("15_7y4yb")]
+[node name="Otter" parent="." unique_id=1951356362 instance=ExtResource("15_7y4yb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.90589, 2.089144, -0.11031637)
 
-[node name="Borders" type="Node3D" parent="."]
+[node name="Borders" type="Node3D" parent="." unique_id=1454804252]
 
-[node name="BorderLeft" type="MeshInstance3D" parent="Borders"]
+[node name="BorderLeft" type="MeshInstance3D" parent="Borders" unique_id=505767727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218275, 4.5, 0)
 mesh = SubResource("BoxMesh_pvlt2")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("16_w68tm")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderLeft"]
+[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderLeft" unique_id=1178510178]
 collision_mask = 255
+input_ray_pickable = false
 freeze = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderLeft/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderLeft/RigidBody3D" unique_id=2012805360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198192, -0.0135803, 0)
 shape = SubResource("BoxShape3D_j4er1")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="Glow" type="MeshInstance3D" parent="Borders/BorderLeft"]
+[node name="Glow" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1452137536]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30093, -0.00512695, 0.000488281)
 mesh = SubResource("BoxMesh_lj8iq")
 script = ExtResource("7_ue7e7")
 
-[node name="BorderRight" type="MeshInstance3D" parent="Borders"]
+[node name="OverlayColorRedeemListener" type="Node" parent="Borders/BorderLeft/Glow" unique_id=514329401 node_paths=PackedStringArray("eventsub", "api")]
+script = ExtResource("11_wdp36")
+rewards_to_listen = Array[ExtResource("6_vyv46")]([SubResource("Resource_pr3iv")])
+eventsub = NodePath("../../../../Twitcher/TwitchService/TwitchEventsub")
+api = NodePath("../../../../Twitcher/TwitchService/TwitchAPI")
+ensure_subscriptions_on_ready = false
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="BorderRight" type="MeshInstance3D" parent="Borders" unique_id=941858901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01843, 15.8, 4.5, 0)
 mesh = SubResource("BoxMesh_8lxmp")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("16_w68tm")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderRight"]
+[node name="RigidBody3D" type="RigidBody3D" parent="Borders/BorderRight" unique_id=1013805610]
+input_ray_pickable = false
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_kbmvl")
 freeze = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderRight/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderRight/RigidBody3D" unique_id=1287222668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217344, -0.0135803, 0)
 shape = SubResource("BoxShape3D_j4er1")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="Glow2" type="MeshInstance3D" parent="Borders/BorderRight"]
+[node name="Glow2" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=89000584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315142, -0.00128937, 0.000520557)
 mesh = SubResource("BoxMesh_lj8iq")
 skeleton = NodePath("../../BorderLeft")
 
-[node name="BorderTop" type="MeshInstance3D" parent="Borders"]
+[node name="BorderTop" type="MeshInstance3D" parent="Borders" unique_id=947188150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8.85, 0)
 mesh = SubResource("BoxMesh_x7pnw")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("16_w68tm")
 
-[node name="LastSubTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="LastSubTitleLabel" type="Label3D" parent="Borders/BorderTop" unique_id=1477855411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45642, -0.0157804, 0.03)
 text = "Last Sub:"
 font_size = 38
 horizontal_alignment = 0
 
-[node name="LastSubLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="LastSubLabel" type="Label3D" parent="Borders/BorderTop" unique_id=1895478676]
 editor_description = "Tomatoes_CannotBeTrusted"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53773, -0.0188932, 0.03)
 double_sided = false
@@ -362,77 +755,79 @@ text = "Tomatoes_CannotBeTrusted1"
 horizontal_alignment = 0
 script = ExtResource("17_ra46g")
 
-[node name="LastCheerTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="LastCheerTitleLabel" type="Label3D" parent="Borders/BorderTop" unique_id=524363157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32112, -0.0220213, 0.03)
 text = "Last Cheer:"
 font_size = 36
 horizontal_alignment = 0
 
-[node name="LastCheerLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="LastCheerLabel" type="Label3D" parent="Borders/BorderTop" unique_id=145093411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269058, -0.0314054, 0.03)
 text = "Tomatoes_CannotBeTrusted1"
 horizontal_alignment = 0
 script = ExtResource("18_4cb35")
 
-[node name="FirstViewerLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="FirstViewerLabel" type="Label3D" parent="Borders/BorderTop" unique_id=1630408046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01717, -0.0345182, 0.03)
 text = "Be the first chatter!"
 font_size = 36
 horizontal_alignment = 0
 script = ExtResource("19_2a6h5")
 
-[node name="FirstViewerTitleLabel" type="Label3D" parent="Borders/BorderTop"]
+[node name="FirstViewerTitleLabel" type="Label3D" parent="Borders/BorderTop" unique_id=1312690855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87333, -0.0189695, 0.03)
 text = "First Viewer:
 "
 font_size = 36
 horizontal_alignment = 0
 
-[node name="Glow3" type="MeshInstance3D" parent="Borders/BorderTop"]
+[node name="Glow3" type="MeshInstance3D" parent="Borders/BorderTop" unique_id=271473940]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00500011, -0.166303, 0.00390625)
 mesh = SubResource("BoxMesh_7d1ca")
 skeleton = NodePath("../../BorderLeft")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderTop"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderTop" unique_id=1437524156]
+input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderTop/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderTop/StaticBody3D" unique_id=2000969828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127699, 0)
 shape = SubResource("BoxShape3D_y56as")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="BorderBottom" type="MeshInstance3D" parent="Borders"]
+[node name="BorderBottom" type="MeshInstance3D" parent="Borders" unique_id=546055708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.15, 0)
 mesh = SubResource("BoxMesh_4xie8")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("16_w68tm")
 
-[node name="Glow4" type="MeshInstance3D" parent="Borders/BorderBottom"]
+[node name="Glow4" type="MeshInstance3D" parent="Borders/BorderBottom" unique_id=289486352]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.166644, 0)
 mesh = SubResource("BoxMesh_7d1ca")
 skeleton = NodePath("../../BorderLeft")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Borders/BorderBottom"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Borders/BorderBottom" unique_id=630493203]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderBottom"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Borders/BorderBottom" unique_id=824117445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133482, 0)
 collision_layer = 8
+input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderBottom/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BorderBottom/StaticBody3D" unique_id=2118487366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00416943, 0)
 shape = SubResource("BoxShape3D_y56as")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="CurrentlyPlayingTitleLabel" type="Label3D" parent="Borders/BorderBottom"]
+[node name="CurrentlyPlayingTitleLabel" type="Label3D" parent="Borders/BorderBottom" unique_id=1146536454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81249, 0.0216627, 0.0261841)
 text = "Currently Playing:"
 
-[node name="MusicLabel" type="Label3D" parent="Borders/BorderBottom"]
+[node name="MusicLabel" type="Label3D" parent="Borders/BorderBottom" unique_id=315953802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93269, 0.0201689, 0.062)
 text = "Loading ..."
 horizontal_alignment = 0
 script = ExtResource("20_qq534")
 
-[node name="RaidTitleLabel" type="Label3D" parent="Borders/BorderBottom"]
+[node name="RaidTitleLabel" type="Label3D" parent="Borders/BorderBottom" unique_id=1440821107]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41734, 0.0285693, 0.03)
 visible = false
@@ -440,79 +835,73 @@ text = "Last raid:"
 font_size = 36
 horizontal_alignment = 0
 
-[node name="RaidLabel" type="Label3D" parent="Borders/BorderBottom"]
+[node name="RaidLabel" type="Label3D" parent="Borders/BorderBottom" unique_id=1091227629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25556, 0.0285693, 0.03)
 visible = false
 horizontal_alignment = 0
 script = ExtResource("21_j8nub")
 
-[node name="EmoteShowOff" parent="." instance=ExtResource("22_bf7jj")]
+[node name="EmoteShowOff" parent="." unique_id=1801993898 instance=ExtResource("22_bf7jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, 0)
 visible = false
 
-[node name="LaserShow" parent="." instance=ExtResource("23_hx5vr")]
+[node name="LaserShow" parent="." unique_id=1818659561 instance=ExtResource("23_hx5vr")]
 
-[node name="Spawners" type="Node" parent="."]
+[node name="Spawners" type="Node" parent="." unique_id=952876014]
 
-[node name="PlaneSpawner" type="Node3D" parent="Spawners"]
+[node name="PlaneSpawner" type="Node3D" parent="Spawners" unique_id=317490864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5227, 6.87993, 0)
 script = ExtResource("24_m10ky")
 
-[node name="Plinko" parent="Spawners" instance=ExtResource("25_ufvwg")]
+[node name="Plinko" parent="Spawners" unique_id=1460429881 instance=ExtResource("25_ufvwg")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87826, 2.07304, 0)
 visible = false
 
-[node name="FishSpawner" type="Node3D" parent="Spawners"]
+[node name="FishSpawner" type="Node3D" parent="Spawners" unique_id=1726118834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.127502)
 script = ExtResource("26_xxo6u")
 
-[node name="FishDuel" parent="Spawners" instance=ExtResource("27_daboe")]
+[node name="FishDuel" parent="Spawners" unique_id=1293869725 instance=ExtResource("27_daboe")]
 
-[node name="OverlayClicker" type="Node3D" parent="Spawners" node_paths=PackedStringArray("_eggSpawner", "_otter")]
+[node name="OverlayClicker" type="Node3D" parent="Spawners" unique_id=989262864 node_paths=PackedStringArray("_eggSpawner", "_otter")]
 script = ExtResource("28_ru0wr")
 _eggSpawner = NodePath("../EggSpawner")
 _otter = NodePath("../../Otter")
 
-[node name="BubbleMachine" parent="Spawners" instance=ExtResource("29_6mu36")]
+[node name="BubbleMachine" parent="Spawners" unique_id=804597294 instance=ExtResource("29_6mu36")]
 transform = Transform3D(0.271781, 1.73594, 0.434446, -0.296805, -0.389612, 1.74247, 1.76469, -0.332883, 0.226158, -0.173956, 0.36377, -0.479065)
-script = ExtResource("30_61chx")
 
-[node name="BubbleSpawner" type="Node3D" parent="Spawners/BubbleMachine"]
-unique_name_in_owner = true
-transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, 0.0611711, 0.576778, 0.343949)
-script = ExtResource("31_i5ik8")
+[node name="SpawnBubbelsRedeemListener" parent="Spawners/BubbleMachine" index="0" unique_id=249765212 node_paths=PackedStringArray("eventsub", "api")]
+eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
+api = NodePath("../../../Twitcher/TwitchService/TwitchAPI")
+ensure_subscriptions_on_ready = false
 
-[node name="SnowballSpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("32_jmhn2")]
+[node name="SnowballSpawner" parent="Spawners/BubbleMachine" unique_id=1544141455 node_paths=PackedStringArray("Target") instance=ExtResource("32_jmhn2")]
 transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.0305094, 0.491345, 0.246477)
-_spawnRate = 3.0
 Target = NodePath("../../../Otter")
+_spawnRate = 3.0
 
-[node name="PlushySpawner" parent="Spawners/BubbleMachine" node_paths=PackedStringArray("Target") instance=ExtResource("33_wavaw")]
+[node name="PlushySpawner" parent="Spawners/BubbleMachine" unique_id=439908555 node_paths=PackedStringArray("Target") instance=ExtResource("33_wavaw")]
 transform = Transform3D(0.0825004, -0.0907506, 0.538701, 0.529914, -0.11911, -0.10122, 0.132764, 0.531807, 0.0692568, -0.02154, 0.49508, 0.258412)
 Target = NodePath("../../../Otter")
+SpawnRate = 0.25
 
-[node name="SnowSpawner" parent="Spawners" instance=ExtResource("34_lcbp4")]
+[node name="SnowSpawner" parent="Spawners" unique_id=1161990892 instance=ExtResource("34_lcbp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363289, 9, 0)
 
-[node name="Fireworks" parent="Spawners" instance=ExtResource("35_a5vxk")]
+[node name="Fireworks" parent="Spawners" unique_id=2082389167 instance=ExtResource("35_a5vxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75819, -8.37807, -94.7414)
 
-[node name="Aurora" parent="Spawners" instance=ExtResource("36_k7nao")]
+[node name="Aurora" parent="Spawners" unique_id=120680835 instance=ExtResource("36_k7nao")]
 transform = Transform3D(2.99, 0, 0, 0, 2.99, 0, 0, 0, 2.99, 7.47829, 8.27757, -9.22199)
 
-[node name="RandomTrashSpawner" parent="Spawners" instance=ExtResource("37_rr1qg")]
+[node name="RandomTrashSpawner" parent="Spawners" unique_id=1264288133 instance=ExtResource("37_rr1qg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40914, 9.90403, 0)
 script = null
 
-[node name="Peepo" parent="Spawners" instance=ExtResource("38_fpli6")]
+[node name="Peepo" parent="Spawners" unique_id=821617006 instance=ExtResource("38_fpli6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87056, 0, 0)
-
-[node name="AnimationPlayer" parent="Spawners/Peepo/JumperSprite" index="0"]
-libraries = {}
-
-[node name="Blue" parent="Spawners/Peepo/JumperSprite" index="1"]
-visible = true
 
 [node name="Cyan" parent="Spawners/Peepo/JumperSprite" index="2"]
 visible = true
@@ -532,62 +921,60 @@ visible = true
 [node name="Yellow" parent="Spawners/Peepo/JumperSprite" index="7"]
 visible = true
 
-[node name="EggSpawner" parent="Spawners" instance=ExtResource("39_tjp6e")]
+[node name="EggSpawner" parent="Spawners" unique_id=1361576652 instance=ExtResource("39_tjp6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05149, 0.532127, 0)
 
-[node name="SlotMachine" parent="." instance=ExtResource("40_lrr1q")]
+[node name="SlotMachine" parent="." unique_id=1108022396 instance=ExtResource("40_lrr1q")]
 transform = Transform3D(1.32909, 0, 0.639647, 0, 1.475, 0, -0.639647, 0, 1.32909, 3.26228, -5, 0)
 
-[node name="AdTimer" parent="." instance=ExtResource("41_af3mp")]
+[node name="AdTimer" parent="." unique_id=158088791 instance=ExtResource("41_af3mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70581, 8.37343, 0)
 
-[node name="CharityGoal" parent="." instance=ExtResource("42_i5ik8")]
+[node name="CharityGoal" parent="." unique_id=1321242314 instance=ExtResource("42_i5ik8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8.373, 0)
 visible = false
 
-[node name="DraggableArea" parent="." instance=ExtResource("44_8fk1q")]
+[node name="DraggableArea" parent="." unique_id=40101926 instance=ExtResource("44_8fk1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, -0.170945)
+collision_layer = 16384
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." unique_id=1941427234]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 10.4422)
 keep_aspect = 0
 environment = SubResource("Environment_3kf53")
 
-[node name="HalloweenPlayer" type="AudioStreamPlayer" parent="."]
+[node name="HalloweenPlayer" type="AudioStreamPlayer" parent="." unique_id=604486405]
 volume_db = -10.0
 script = ExtResource("46_7arfu")
 
-[node name="Halloween" type="Node3D" parent="."]
+[node name="Halloween" type="Node3D" parent="." unique_id=156389686]
 visible = false
 
-[node name="Sprite3D" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D" type="Sprite3D" parent="Halloween" unique_id=2140768650]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 1.3641968, 0.59558105, 0)
 texture = ExtResource("45_13pte")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D2" type="Sprite3D" parent="Halloween" unique_id=1282605522]
 transform = Transform3D(0.0465, 0, 0, 0, 0.0465, 0, 0, 0, 0.0465, 13.419682, 0.8825531, 0.020599365)
 texture = ExtResource("46_rfovf")
 
-[node name="Sprite3D3" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D3" type="Sprite3D" parent="Halloween" unique_id=30698381]
 transform = Transform3D(-0.020050572, 0.03803912, 0, -0.03803912, -0.020050572, 0, 0, 0, 0.043, 1.2594147, 8.574219, -0.030273438)
 texture = ExtResource("47_eqbbm")
 
-[node name="Sprite3D4" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D4" type="Sprite3D" parent="Halloween" unique_id=464689252]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 13.3967, 0.5987, -0.01)
 texture = ExtResource("45_13pte")
 
-[node name="Sprite3D5" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D5" type="Sprite3D" parent="Halloween" unique_id=806123117]
 transform = Transform3D(0.011376197, 0.026675494, 0, -0.026675494, 0.011376197, 0, 0, 0, 0.029, 4.3242493, 8.592163, -0.030273438)
 texture = ExtResource("47_eqbbm")
 
-[node name="Sprite3D6" type="Sprite3D" parent="Halloween"]
+[node name="Sprite3D6" type="Sprite3D" parent="Halloween" unique_id=57045404]
 transform = Transform3D(0.022285027, 0.0658303, 0, -0.0658303, 0.022285027, 0, 0, 0, 0.06950001, 0.6981735, 7.9761353, -0.030273438)
 texture = ExtResource("47_eqbbm")
 
-[connection signal="received" from="AlertBox/Sprite3D/SubViewport2/HBoxContainer/FollowEventListener" to="AlertBox/Sprite3D/SubViewport2/HBoxContainer" method="OnFollow"]
-[connection signal="redeemed" from="PartyModeLabel/TwitchRedeemListener" to="." method="StartPartyMode"]
-[connection signal="command_received" from="PartyModeLabel/TwitchCommand" to="PartyModeLabel" method="StartPartyMode"]
-
 [editable path="Twitcher"]
+[editable path="Spawners/BubbleMachine"]
 [editable path="Spawners/Peepo"]

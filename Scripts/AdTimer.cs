@@ -2,36 +2,53 @@ using System;
 using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Enums;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+using TwitcherSharp.Api.Generated;
+using TwitcherSharp.Chat;
+using TwitcherSharp.EventSub;
+using TwitcherSharp.EventSub.Generated.ChannelAdBreakBegin;
 
 namespace Temptica.Overlay.Scripts;
 
 public partial class AdTimer : Node3D
 {
-    [Export] MeshInstance3D _adMesh = null!;
-    [Export] Label3D _adLabel = null!;
+    [Export] private MeshInstance3D _adMesh = null!;
+    [Export] private Label3D _adLabel = null!;
 
     private DateTime _nextAdTime;
     private const string AdsText = "Ad in ";
     private bool _isAdPlaying;
     private bool _playedBell;
     private TimeSpan _adsTimeLeft;
+    private bool _firstLoad = true;
 
     private const int AdsDuration = 180;
     private const int AdsStartingSoonWarning = 30;
 
+
     public override void _Ready()
     {
-        //listen to signalR
-        //first send a request to get the time until the next ad
+        
+        var listener = TwitchEventListener<TwitchChannelAdBreakBeginEvent>
+            .FromObject(GetNode("AdsStartedEventListener"));
+        listener.Received += OnAdStarted;
+        _ = GetNextAdTime().ConfigureAwait(0);
+    }
 
-        AdsListener.AdStarted += OnAdStarted;
-        AdsListener.AdEnded += OnAdEnded;
-        _ = Task.Run(async () =>
-        {
-            await Task.Delay(2000);
-            await Overlay.SignalRService.RequestAdTime();
-        });
+    private void OnAdStarted(TwitchChannelAdBreakBeginEvent e)
+    {
+        _isAdPlaying = true;
+        _adsTimeLeft = TimeSpan.FromSeconds(AdsDuration);
+        _nextAdTime = DateTime.Now;
+    }
+
+    private async Task GetNextAdTime()
+    {
+        if (_firstLoad) await Task.Delay(5000);
+        else _firstLoad = false;
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var result = await TwitchApi.Instance.GetAdSchedule(Overlay.BroadcasterId);
+
+        _nextAdTime = DateTime.UnixEpoch.AddSeconds(result.Data[0].NextAdAt);
     }
 
     public override void _Process(double delta)
@@ -52,24 +69,30 @@ public partial class AdTimer : Node3D
                 if (timeLeft.Seconds <= AdsStartingSoonWarning && !_playedBell)
                 {
                     AudioPlayer.PlayAudio(AudioEffects.Bell);
-                    Overlay.SignalRService.SendChatMessage(
+                    _playedBell = true;
+                    _ = TwitchBot.SendMessage(
                         "BONG! Ads will start in approximately 30 second! Get yourself some snacks " +
                         "and water and we'll see you after!");
-                    //TODO: Start random overlay game;
-                    _playedBell = true;
                 }
             }
         }
         else
         {
             _adsTimeLeft -= TimeSpan.FromSeconds(delta);
-            if (_adsTimeLeft.Seconds > 0)
+            if (_adsTimeLeft.Seconds > 0 || _adsTimeLeft.Minutes > 0)
             {
                 _adLabel.Text = "Ads remaining: " + (_adsTimeLeft.Minutes > 0
                     ? _adsTimeLeft.Seconds > 30
                         ? _adsTimeLeft.Minutes + 1 + "m"
                         : _adsTimeLeft.Minutes + "m"
                     : _adsTimeLeft.Seconds + "s");
+            }
+            else
+            {
+                _isAdPlaying = false;
+                _playedBell = false;
+                _adLabel.Text = "Ads ended!";
+                _ = GetNextAdTime();
             }
         }
 
@@ -80,7 +103,6 @@ public partial class AdTimer : Node3D
         if (_isAdPlaying)
         {
             percent = (float)_adsTimeLeft.TotalSeconds / AdsDuration;
-            _playedBell = false;
         }
         else if (timeLeft.Seconds > 0 || timeLeft.Minutes > 0)
         {
@@ -97,19 +119,5 @@ public partial class AdTimer : Node3D
         mesh.Size = new Vector3(originalSize * percent, mesh.Size.Y, mesh.Size.Z);
 
         _adMesh.Position = new Vector3((mesh.Size.X - originalSize) / 2f, 0, 0);
-    }
-
-    private void OnAdEnded(object sender, DateTime e)
-    {
-        GD.Print($"next ad at {e}");
-        _nextAdTime = e;
-        _isAdPlaying = false;
-    }
-
-    private void OnAdStarted(object sender, EventArgs e)
-    {
-        _isAdPlaying = true;
-        _adsTimeLeft = TimeSpan.FromSeconds(AdsDuration);
-        _nextAdTime = DateTime.Now;
     }
 }

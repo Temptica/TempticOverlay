@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d0s6g1co4e1vj"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0s6g1co4e1vj"]
 
 [ext_resource type="Shader" uid="uid://cqgw1nlnx0w4o" path="res://Scenes/pixelated_otter.gdshader" id="1_yoyue"]
 

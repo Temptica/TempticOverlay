@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnoa2m0crki35"]
+[gd_scene format=3 uid="uid://bnoa2m0crki35"]
 
 [ext_resource type="Script" uid="uid://dewa2y8a5ana5" path="res://Scripts/Easter/EggSpawner.cs" id="1_ypech"]
+[ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="2_qfc4m"]
 
-[node name="EggSpawner" type="Node3D"]
+[node name="EggSpawner" type="Node3D" unique_id=1480358322]
 script = ExtResource("1_ypech")
+
+[node name="TwitchCommand" type="Node" parent="." unique_id=1944279236]
+script = ExtResource("2_qfc4m")
+aliases = Array[String](["showEggs"])
+command = "eggs"
+listen_to_chatrooms = Array[String](["temptic404"])
+global_cooldown = 119.99999999999964
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"

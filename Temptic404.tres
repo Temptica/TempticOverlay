@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchUser" load_steps=2 format=3 uid="uid://du3l4fq2jwi7p"]
+[gd_resource type="Resource" script_class="TwitchUser" format=3 uid="uid://du3l4fq2jwi7p"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_geyvi"]
 
@@ -6,4 +6,5 @@
 script = ExtResource("1_geyvi")
 id = "542726050"
 login = "temptic404"
+display_name = "Temptic404"
 metadata/_custom_type_script = "uid://cnmohrdxqihr0"

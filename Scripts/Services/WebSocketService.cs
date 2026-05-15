@@ -4,8 +4,6 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
-using Temptica.Overlay.Scripts.Alerts;
 using Temptica.Overlay.Scripts.Spotify;
 
 namespace Temptica.Overlay.Scripts.Services;
@@ -79,7 +77,7 @@ public class WebSocketService:IDisposable
         switch (message)
         {
             case "SkipSpeech":
-                AlertQueue.SkipSpeech();
+                //AlertQueue.SkipSpeech();
                 break;
             case "Hide":
                 Otter.ShowHideOtterEvent.Invoke(null,false);

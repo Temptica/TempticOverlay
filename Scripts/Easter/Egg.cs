@@ -1,23 +1,62 @@
+using System;
 using Godot;
-using Temptica.Overlay.Enums;
+using Temptica.Overlay.Scripts.Models;
 
 namespace Temptica.Overlay.Scripts.Easter;
 
-public partial class Egg : Node3D
+public partial class Egg : RefCounted
 {
-    [Export] public AnimatedSprite3D AnimatedSprite3D = null!;
+    private const string EggPath = "res://scene_nexus/eastern_egg/eastern_egg.tscn";
+    protected static PackedScene _eggScene;
+    protected Node3D Data;
 
-    public EggType EggType { get; set; }
+    public string Name => EggData.Name;
+    public EggMetaData EggData { get; set; }
 
-    public void SetSprite(EggType eggType)
+    public bool IsHit = false;
+
+    public static Egg Create(Node3D parent, EggMetaData eggData)
     {
-        AnimatedSprite3D.Frame = (int)eggType;
-        EggType = eggType;
+        _eggScene ??= GD.Load<PackedScene>(EggPath);
+
+        var egg = _eggScene.Instantiate<Node3D>();
+        parent.AddChild(egg);
+        var cSharpEgg = new Egg();
+        cSharpEgg.EggData = eggData;
+        cSharpEgg.Data = egg;
+        egg.Set("title", eggData.Name);
+
+        var image = new Image();
+        image.LoadPngFromBuffer(Convert.FromBase64String(eggData.Data.Image.Split(',')[1]));
+        egg.Set("image", ImageTexture.CreateFromImage(image));
+        egg.Set(RigidBody3D.PropertyName.GravityScale, 0.0f);
+        return cSharpEgg;
     }
 
-    public bool IsHit(Vector2 position)
+    public static Egg FromNode(Node3D eggNode)
     {
-        var pos = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y);
-        return position.DistanceTo(pos) <= 0.4f;
+        var eggData = eggNode?.GetMeta("_egg").AsGodotObject() as Egg;
+        return eggData;
+    }
+
+    public bool CheckHit(Vector2 position)
+    {
+        if (IsHit) return false;
+
+        var pos = new Vector2(Data.GlobalTransform.Origin.X, Data.GlobalTransform.Origin.Y);
+        IsHit = position.DistanceTo(pos) <= 2f;
+        return IsHit;
+    }
+
+    public void SetGlobalPosition(Vector3 vector3)
+    {
+        Data.SetGlobalPosition(vector3);
+    }
+
+    public void Remove()
+    {
+        Data.QueueFree();
+        Data = null;
+        Unreference();
     }
 }

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bai4xfh78reqr"]
+
+[ext_resource type="PackedScene" uid="uid://cyh1mshope4u4" path="res://scene_nexus/eastern_egg/eastern_egg.tscn" id="1_57ldq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_57ldq"]
+bounce = 0.33
+
+[node name="EasternEgg" unique_id=1245650251 instance=ExtResource("1_57ldq")]
+collision_layer = 32768
+collision_mask = 41480
+input_ray_pickable = false
+physics_material_override = SubResource("PhysicsMaterial_57ldq")
+
+[node name="Label3D" type="Label3D" parent="." index="2" unique_id=757816642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0006053, 0.42842162, 0)
+billboard = 2
+text = "EGG NAME"

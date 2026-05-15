@@ -1,8 +1,6 @@
 using System;
 using Godot;
 using Temptica.Overlay.Enums;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 
 namespace Temptica.Overlay.Scripts.Winter;
 
@@ -36,57 +34,58 @@ public partial class Package : Node3D
 
     private void OpenGoodPresent(string userName)
     {
-        var values = Enum.GetValues<GoodPresentTypes>();
-        var type = values[new Random().Next(values.Length)];
-
-        switch (type)
-        {
-            case GoodPresentTypes.GiveawayTicket:
-                //Give Ticket Via Api
-                break;
-            case GoodPresentTypes.Vip:
-                //Give Vip Via Api
-                break;
-            case GoodPresentTypes.Sub:
-                //Do Nothing
-                break;
-            case GoodPresentTypes.ChooseRaid:
-                //DO nothing
-                break;
-            case GoodPresentTypes.GivePoints:
-                //Give Points Via Api
-                break;
-            case GoodPresentTypes.Compliment:
-                // Do nothing
-                break;
-            case GoodPresentTypes.SteamKey:
-                // Do nothing
-                break;
-            case GoodPresentTypes.PixelArt:
-                // Do nothing
-                
-                break;
-            case GoodPresentTypes.SmallSong:
-                // Do nothing
-                
-                break;
-            case GoodPresentTypes.TimeOutSomebodyElse:
-                // Do nothing
-                break;
-            case GoodPresentTypes.Explode:
-                // Explode otter
-                for (var i = 0; i < 7; i++)
-                {
-                    OtterSignalRListener.Pixelate.Invoke(this, null!);
-                }
-                break;
-            case GoodPresentTypes.SpawnFishes:
-                // StartSpawningfishes
-                SpawnFishListener.SpawnFish.Invoke(this, 20);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        // var values = Enum.GetValues<GoodPresentTypes>();
+        // var type = values[new Random().Next(values.Length)];
+        //
+        // switch (type)
+        // {
+        //     case GoodPresentTypes.GiveawayTicket:
+        //         //Give Ticket Via Api
+        //         break;
+        //     case GoodPresentTypes.Vip:
+        //         //Give Vip Via Api
+        //         break;
+        //     case GoodPresentTypes.Sub:
+        //         //Do Nothing
+        //         break;
+        //     case GoodPresentTypes.ChooseRaid:
+        //         //DO nothing
+        //         break;
+        //     case GoodPresentTypes.GivePoints:
+        //         //Give Points Via Api
+        //         break;
+        //     case GoodPresentTypes.Compliment:
+        //         // Do nothing
+        //         break;
+        //     case GoodPresentTypes.SteamKey:
+        //         // Do nothing
+        //         break;
+        //     case GoodPresentTypes.PixelArt:
+        //         // Do nothing
+        //         
+        //         break;
+        //     case GoodPresentTypes.SmallSong:
+        //         // Do nothing
+        //         
+        //         break;
+        //     case GoodPresentTypes.TimeOutSomebodyElse:
+        //         // Do nothing
+        //         break;
+        //     case GoodPresentTypes.Explode:
+        //         // Explode otter
+        //         for (var i = 0; i < 7; i++)
+        //         {
+        //             Otter..
+        //             OtterSignalRListener.Pixelate.Invoke(this, null!);
+        //         }
+        //         break;
+        //     case GoodPresentTypes.SpawnFishes:
+        //         // StartSpawningfishes
+        //         SpawnFishListener.SpawnFish.Invoke(this, 20);
+        //         break;
+        //     default:
+        //         throw new ArgumentOutOfRangeException();
+        // }
     }
 
     private void OpenBadPresent(string userName)

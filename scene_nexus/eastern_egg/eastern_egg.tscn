@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cyh1mshope4u4"]
+
+[ext_resource type="Script" uid="uid://cmmbwyvtqknle" path="res://scene_nexus/eastern_egg/eastern_egg.gd" id="1_54j8t"]
+[ext_resource type="ArrayMesh" uid="uid://bqsb5aehgbd82" path="res://scene_nexus/eastern_egg/egg_model.tres" id="2_dbx0b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tkj4i"]
+radius = 0.4
+height = 1.05
+
+[node name="EasternEgg" type="RigidBody3D" unique_id=1245650251]
+script = ExtResource("1_54j8t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=389448582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52753675, 0)
+shape = SubResource("CapsuleShape3D_tkj4i")
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1995980395]
+unique_name_in_owner = true
+mesh = ExtResource("2_dbx0b")

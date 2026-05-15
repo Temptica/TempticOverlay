@@ -1,59 +1,81 @@
-<Project Sdk="Godot.NET.Sdk/4.6.0-beta.2">
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-    <UserSecretsId>6afccc16-f5b8-4fa9-a9e7-c45e3d409df2</UserSecretsId>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
-    <PackageReference Include="SpotifyAPI.Web" Version="7.2.1" />
-    <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
-    <PackageReference Include="System.Speech" Version="10.0.1" />
-    <PackageReference Update="Godot.SourceGenerators" Version="4.6.0-beta2" />
-    <PackageReference Update="GodotSharp" Version="4.6.0-beta2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AudioFiles\flashbang.wav" />
-    <Content Include="AudioFiles\general-kenobi.wav" />
-    <Content Include="AudioFiles\hey_listen.wav" />
-    <Content Include="AudioFiles\J0kerzzHorn.wav" />
-    <Content Include="AudioFiles\KEKW0.wav" />
-    <Content Include="AudioFiles\KEKW1.wav" />
-    <Content Include="AudioFiles\KEKW2.wav" />
-    <Content Include="AudioFiles\Laugh.wav" />
-    <Content Include="AudioFiles\lilbits.wav" />
-    <Content Include="AudioFiles\meow.mp3" />
-    <Content Include="AudioFiles\mlem.wav" />
-    <Content Include="AudioFiles\Nom.wav" />
-    <Content Include="AudioFiles\Otter0.wav" />
-    <Content Include="AudioFiles\Otter1.wav" />
-    <Content Include="AudioFiles\Otter2.wav" />
-    <Content Include="AudioFiles\Otter3.wav" />
-    <Content Include="AudioFiles\panda.mp3" />
-    <Content Include="AudioFiles\Raid.wav" />
-    <Content Include="AudioFiles\raidAlert.wav" />
-    <Content Include="AudioFiles\sub_alert.wav" />
-    <Content Include="AudioFiles\water.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="addons\twitcher_dotnet\Models\" />
-    <Folder Include="AudioFiles\HalloweenSounds\" />
-    <Folder Include="Scripts\Easter\" />
-    <Folder Include="Templates\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Enums\AlertType.cs.uid" />
-    <None Include="Enums\AudioEffects.cs.uid" />
-    <None Include="Enums\BadPresentTypes.cs.uid" />
-    <None Include="Enums\EggType.cs.uid" />
-    <None Include="Enums\FishColor.cs.uid" />
-    <None Include="Enums\GoodPresentTypes.cs.uid" />
-    <None Include="HubMethodes\OverlayHubMethodes.cs.uid" />
-    <None Include="ResponseModels\AlertResponseModel.cs.uid" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj" />
-  </ItemGroup>
+<Project Sdk="Godot.NET.Sdk/4.6.1">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <UserSecretsId>6afccc16-f5b8-4fa9-a9e7-c45e3d409df2</UserSecretsId>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+        <PackageReference Include="SpotifyAPI.Web" Version="7.2.1" />
+        <PackageReference Include="SpotifyAPI.Web.Auth" Version="7.1.1" />
+        <PackageReference Include="System.Speech" Version="10.0.1" />
+        <PackageReference Update="Godot.SourceGenerators" Version="4.6.0-beta1" />
+        <PackageReference Update="GodotSharp" Version="4.6.0-beta.2" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="addons\twitcher\" />
+        <Content Include="AudioFiles\flashbang.wav" />
+        <Content Include="AudioFiles\general-kenobi.wav" />
+        <Content Include="AudioFiles\hey_listen.wav" />
+        <Content Include="AudioFiles\J0kerzzHorn.wav" />
+        <Content Include="AudioFiles\KEKW0.wav" />
+        <Content Include="AudioFiles\KEKW1.wav" />
+        <Content Include="AudioFiles\KEKW2.wav" />
+        <Content Include="AudioFiles\Laugh.wav" />
+        <Content Include="AudioFiles\lilbits.wav" />
+        <Content Include="AudioFiles\meow.mp3" />
+        <Content Include="AudioFiles\mlem.wav" />
+        <Content Include="AudioFiles\Nom.wav" />
+        <Content Include="AudioFiles\Otter0.wav" />
+        <Content Include="AudioFiles\Otter1.wav" />
+        <Content Include="AudioFiles\Otter2.wav" />
+        <Content Include="AudioFiles\Otter3.wav" />
+        <Content Include="AudioFiles\panda.mp3" />
+        <Content Include="AudioFiles\Raid.wav" />
+        <Content Include="AudioFiles\raidAlert.wav" />
+        <Content Include="AudioFiles\sub_alert.wav" />
+        <Content Include="AudioFiles\water.wav" />
+        <Content Include="Twitcher\add_balla_machina_idea.tres" />
+        <Content Include="Twitcher\change_costume.tres" />
+        <Content Include="Twitcher\click_the_fishes.tres" />
+        <Content Include="Twitcher\fart.tres" />
+        <Content Include="Twitcher\fireworks.tres" />
+        <Content Include="Twitcher\fish.tres" />
+        <Content Include="Twitcher\get_balla_machina_tester_key.tres" />
+        <Content Include="Twitcher\horn.tres" />
+        <Content Include="Twitcher\hydrate.tres" />
+        <Content Include="Twitcher\insert_1_credit_play_pinball).tres" />
+        <Content Include="Twitcher\party_mode.tres" />
+        <Content Include="Twitcher\pixelate.tres" />
+        <Content Include="Twitcher\rrrrrrrrr.tres" />
+        <Content Include="Twitcher\set_overlay_color.tres" />
+        <Content Include="Twitcher\snowball.tres" />
+        <Content Include="Twitcher\spawn_bubbles.tres" />
+        <Content Include="Twitcher\spooky.tres" />
+        <Content Include="Twitcher\start_fish_battle.tres" />
+        <Content Include="Twitcher\steal_points.tres" />
+        <Content Include="Twitcher\test.tres" />
+        <Content Include="Twitcher\timeout_somebody_else.tres" />
+        <Content Include="Twitcher\tts.tres" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="AudioFiles\HalloweenSounds\" />
+        <Folder Include="Templates\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Enums\AlertType.cs.uid" />
+        <None Include="Enums\AudioEffects.cs.uid" />
+        <None Include="Enums\BadPresentTypes.cs.uid" />
+        <None Include="Enums\EggType.cs.uid" />
+        <None Include="Enums\FishColor.cs.uid" />
+        <None Include="Enums\GoodPresentTypes.cs.uid" />
+        <None Include="ResponseModels\AlertResponseModel.cs.uid" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj" />
+        <ProjectReference Include="..\TwitcherSharp\TwitcherSharp\TwitcherSharp.csproj" />
+    </ItemGroup>
 </Project>

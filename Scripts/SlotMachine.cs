@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptica.Overlay.Scripts.SignalR;
+using TwitcherSharp.Chat;
 
 namespace Temptica.Overlay.Scripts;
 
@@ -36,9 +36,9 @@ public partial class SlotMachine : Node3D
         new(2d, [SpinFishType.Orange, SpinFishType.Orange, SpinFishType.Orange])
     ];
 
-    public static void Spin(string username, int betAmount)
+    public static void Spin(string username, int betAmount, string messageId)
     {
-        SpinQueue.Add(new SpinRequest(username, betAmount));
+        SpinQueue.Add(new SpinRequest(username, betAmount, messageId));
     }
 
     public override void _Process(double delta)
@@ -75,14 +75,12 @@ public partial class SlotMachine : Node3D
             
             if (points > 0)
             {
-                Overlay.SignalRService.AddPoints(_currentSpin.Username, points);
-                Overlay.SignalRService.SendChatMessage(
-                    $"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points. peepoClap");
+                //Overlay.SignalRService.AddPoints(_currentSpin.Username, points);
+                _ = TwitchChat.Instance.SendMessage($"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and gained {points - _currentSpin.PointsUsed} points. peepoClap", _currentSpin.MessageId);
             }
             else
             {
-                Overlay.SignalRService.SendChatMessage(
-                    $"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and lost. Sadge");
+                _ = TwitchChat.Instance.SendMessage($"@{_currentSpin.Username} spun for {_currentSpin.PointsUsed} points and lost. Sadge", _currentSpin.MessageId);
             }
             
             _currentSpin = null;
@@ -162,4 +160,4 @@ public partial class SlotMachine : Node3D
     }
 }
 
-public record SpinRequest(string Username, int PointsUsed);
+public record SpinRequest(string Username, int PointsUsed, string MessageId);

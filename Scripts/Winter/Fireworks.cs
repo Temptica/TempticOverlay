@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Enums;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+using TwitcherSharp.Extensions;
+using TwitcherSharp.Reward;
 
 namespace Temptica.Overlay.Scripts.Winter;
 
@@ -16,13 +17,13 @@ public partial class Fireworks : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		FireworkListener.DisplayFirework += (sender, args) =>
+		this.GetTwitcherNode<TwitchRedeemListener>("FireworkListener").Redeemed += redeem =>
 		{
 			_remainingDelta += AnimationTime;
 			_ = Task.Run(async() =>
 			{
 				await Task.Delay(4000);
-				AudioPlayer.PlayAudio(AudioEffects.Pop+1);
+				AudioPlayer.PlayAudio(AudioEffects.Fireworks);
 			});
 		};
 	}
@@ -43,6 +44,4 @@ public partial class Fireworks : Node3D
 		}
 		_rocketParticles.Emitting = _remainingDelta > 0;
 	}
-	
-	
 }

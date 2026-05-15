@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+
 
 namespace Temptica.Overlay.Scripts;
 
@@ -9,7 +9,7 @@ public partial class FishMessageHandler : MeshInstance3D
 {
 	public override void _Ready()
 	{
-		FishMessageListener.FishMessage += FishMessage;
+		//FishMessageListener.FishMessage += FishMessage;
 	}
 
 	private void FishMessage(object sender, string e)

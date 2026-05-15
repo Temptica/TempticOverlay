@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+
 using SnowSpawner = Temptica.Overlay.Scenes.SnowSpawner;
 
 namespace Temptica.Overlay.Scripts.Winter;
@@ -44,11 +44,11 @@ public partial class Snow : RigidBody3D
 	public void CheckHit(Vector2 click)
 	{
         var pos = new Vector2(GlobalTransform.Origin.X, GlobalTransform.Origin.Y);
-		if (pos.DistanceTo(click) < 0.5f)
-		{
-			SnowSpawner.Instance.RemoveSnowFlake(this);
-			SnowBallListener.SpawnSnowBall.Invoke(this, null!);
-			QueueFree();
-		}
+        
+        if (!(pos.DistanceTo(click) < 0.5f)) return;
+        
+        SnowSpawner.Instance.RemoveSnowFlake(this);
+		SnowballSpawner.Instance.SpawnBall();
+		QueueFree();
 	}
 }

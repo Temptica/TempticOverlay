@@ -1,6 +1,4 @@
 using Godot;
-using Temptica.Overlay.Enums;
-using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Services;
 
 namespace Temptica.Overlay.Scripts.Labels;
@@ -13,6 +11,7 @@ public partial class LastSubLabel : Label3D
     public override async void _Ready()
     {
         Text = await new ApiService().GetLastSub();
+        
     }
     public override void _Process(double delta)
     {
@@ -21,10 +20,9 @@ public partial class LastSubLabel : Label3D
         _textSet = true;
     }
 
-    public static void OnAlert(object sender, OverlayAlert e)
+    public static void OnAlert(string user, int amount)
     {
-        if (e.Type != AlertType.Bit) return;
-        _textToSet = $"{e.User} ({e.Amount})";
+        _textToSet = $"{user} ({amount})";
         _textSet = false;
     }
 }

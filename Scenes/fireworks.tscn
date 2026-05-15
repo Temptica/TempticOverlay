@@ -1,8 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5c5r2loy4cev"]
+[gd_scene format=3 uid="uid://c5c5r2loy4cev"]
 
 [ext_resource type="Material" uid="uid://b773ambbddyja" path="res://Materials/Fireworks.tres" id="1_m2t4i"]
 [ext_resource type="Script" uid="uid://digrujkka4fln" path="res://Scripts/Winter/Fireworks.cs" id="1_oel46"]
 [ext_resource type="Material" uid="uid://goqftes86lw1" path="res://Materials/Sparks.tres" id="2_7raai"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="4_rutgs"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_cl3ew"]
+[ext_resource type="Resource" uid="uid://b6v56ye4l2ut8" path="res://Twitcher/fireworks.tres" id="6_tk5w2"]
 
 [sub_resource type="Gradient" id="Gradient_ufuob"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
@@ -107,11 +110,11 @@ material = ExtResource("2_7raai")
 radius = 0.2
 radial_steps = 3
 
-[node name="Fireworks" type="Node3D" node_paths=PackedStringArray("_rocketParticles")]
+[node name="Fireworks" type="Node3D" unique_id=1093761823 node_paths=PackedStringArray("_rocketParticles")]
 script = ExtResource("1_oel46")
 _rocketParticles = NodePath("RocketParticles")
 
-[node name="RocketParticles" type="GPUParticles3D" parent="."]
+[node name="RocketParticles" type="GPUParticles3D" parent="." unique_id=411806447]
 emitting = false
 amount = 4
 sub_emitter = NodePath("../BlastParticle")
@@ -122,7 +125,7 @@ trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_lhb56")
 draw_pass_1 = SubResource("RibbonTrailMesh_nlt1a")
 
-[node name="BlastParticle" type="GPUParticles3D" parent="."]
+[node name="BlastParticle" type="GPUParticles3D" parent="." unique_id=238300310]
 emitting = false
 amount = 300
 sub_emitter = NodePath("../SparksParticle")
@@ -134,7 +137,7 @@ trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_j7q3w")
 draw_pass_1 = SubResource("RibbonTrailMesh_pxjxm")
 
-[node name="SparksParticle" type="GPUParticles3D" parent="."]
+[node name="SparksParticle" type="GPUParticles3D" parent="." unique_id=1030792697]
 emitting = false
 amount = 1000
 lifetime = 0.3
@@ -143,3 +146,8 @@ fixed_fps = 60
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_mfte8")
 draw_pass_1 = SubResource("TubeTrailMesh_sgtua")
+
+[node name="FireworkListener" type="Node" parent="." unique_id=740801486]
+script = ExtResource("4_rutgs")
+rewards_to_listen = Array[ExtResource("5_cl3ew")]([ExtResource("6_tk5w2")])
+metadata/_custom_type_script = "uid://b8b32wrju6f63"

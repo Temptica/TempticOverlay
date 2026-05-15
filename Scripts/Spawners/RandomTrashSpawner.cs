@@ -48,7 +48,6 @@ public partial class RandomTrashSpawner : Node3D
 		
 		clickedTrash.ForEach(f=>f.QueueFree());
 		Trashes.RemoveAll(fish => clickedTrash.Contains(fish));
-		Overlay.SignalRService.TrashClicks(username, points);
 		return true;
 	}
 }

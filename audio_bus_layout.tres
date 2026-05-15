@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://18h7rfptyk8o"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://18h7rfptyk8o"]
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_bio5p"]
 resource_name = "SpectrumAnalyzer"
@@ -14,7 +14,7 @@ bus/2/name = &"AudioEffects"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.267241
+bus/2/volume_db = 0.26501846
 bus/2/send = &"Master"
 bus/3/name = &"Music"
 bus/3/solo = false

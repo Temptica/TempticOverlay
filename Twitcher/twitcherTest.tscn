@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b46y1jwgarx3"]
+
+[ext_resource type="Script" uid="uid://i8st3lv0lidh" path="res://addons/twitcher/twitch_service.gd" id="2_q08md"]
+[ext_resource type="Resource" uid="uid://ry64ckbckh6m" path="res://addons/twitcher/twitch_oauth_setting.tres" id="3_7fthb"]
+[ext_resource type="Resource" uid="uid://cjimlt3ctasuu" path="res://Twitcher/Scopes.tres" id="4_sp0pf"]
+[ext_resource type="Resource" uid="uid://m7epy882axmp" path="res://addons/twitcher/default_oauth_token.tres" id="5_qch7g"]
+[ext_resource type="Script" uid="uid://cw30cwveway65" path="res://addons/twitcher/generated/twitch_api.gd" id="6_1sqkn"]
+[ext_resource type="Script" uid="uid://iv0mgv0lu8b0" path="res://addons/twitcher/auth/twitch_auth.gd" id="7_hdrfo"]
+[ext_resource type="Script" uid="uid://bf0wi70haua35" path="res://addons/twitcher/lib/oOuch/oauth.gd" id="8_giyed"]
+[ext_resource type="Script" uid="uid://blnbogtrshw4r" path="res://addons/twitcher/auth/twitch_token_handler.gd" id="9_oro2e"]
+[ext_resource type="Script" uid="uid://oqdie4boxql2" path="res://Scenes/TwitchStartup.gd" id="10_7jowo"]
+
+[node name="Node" type="Node" unique_id=1057706549]
+script = ExtResource("10_7jowo")
+
+[node name="TwitchService" type="Node" parent="." unique_id=1705115788]
+script = ExtResource("2_q08md")
+oauth_setting = ExtResource("3_7fthb")
+scopes = ExtResource("4_sp0pf")
+token = ExtResource("5_qch7g")
+metadata/_custom_type_script = "uid://i8st3lv0lidh"
+
+[node name="TwitchAPI" type="Node" parent="TwitchService" unique_id=238617102]
+script = ExtResource("6_1sqkn")
+token = ExtResource("5_qch7g")
+oauth_setting = ExtResource("3_7fthb")
+metadata/_custom_type_script = "uid://cw30cwveway65"
+
+[node name="TwitchAuth" type="Node" parent="TwitchService" unique_id=370264763]
+script = ExtResource("7_hdrfo")
+oauth_setting = ExtResource("3_7fthb")
+token = ExtResource("5_qch7g")
+scopes = ExtResource("4_sp0pf")
+metadata/_custom_type_script = "uid://iv0mgv0lu8b0"
+
+[node name="OAuth" type="Node" parent="TwitchService/TwitchAuth" unique_id=133011942 node_paths=PackedStringArray("token_handler")]
+script = ExtResource("8_giyed")
+oauth_setting = ExtResource("3_7fthb")
+scopes = ExtResource("4_sp0pf")
+token_handler = NodePath("../TokenHandler")
+
+[node name="TokenHandler" type="Node" parent="TwitchService/TwitchAuth" unique_id=970660609]
+script = ExtResource("9_oro2e")
+oauth_setting = ExtResource("3_7fthb")
+token = ExtResource("5_qch7g")

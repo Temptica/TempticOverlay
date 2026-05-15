@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Godot;
-using Temptica.Overlay.Scripts;
 
 namespace Temptica.Overlay;
 

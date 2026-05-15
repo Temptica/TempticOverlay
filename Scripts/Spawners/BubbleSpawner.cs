@@ -4,16 +4,16 @@ using System.Linq;
 using Godot;
 using Temptica.Overlay.Scripts.Labels;
 using Bubble = Temptica.Overlay.Scripts.Spawners.Spawnables.Bubble;
-using BubbleMachineSpawner = Temptica.Overlay.Scenes.BubbleMachineSpawner;
 
 namespace Temptica.Overlay.Scripts.Spawners;
 
 public partial class BubbleSpawner : Node3D
 {
     private PackedScene _bubbleScene;
-
-    public static EventHandler<Vector3?> SpawnBubble;
     private List<Bubble> _bubbles = [];
+    private float _timer;
+    [Export] private double _spawnTime = 0.01f;
+    private double _remainingTimeTillNext;
 
     public static BubbleSpawner Instance { get; private set; }
 
@@ -21,25 +21,44 @@ public partial class BubbleSpawner : Node3D
     {
         Instance = this;
         _bubbleScene = GD.Load<PackedScene>("res://Templates/bubble.tscn");
-        SpawnBubble += async (obj, pos) =>
-        {
-            pos ??= GlobalPosition;
-            var bubble = (Bubble)_bubbleScene.Instantiate();
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            AddChild(bubble);
-            bubble.SetGlobalPosition(pos.Value);
+        _remainingTimeTillNext = _spawnTime;
+    }
 
-            bubble.InitialX = pos.Value.X;
-            if (obj is BubbleMachineSpawner)
-            {
-                bubble.SetLinearVelocity(new Vector3(0, 2, 0));
-            }
-        };
+    public void AddBubbleTime(float bubbleTime)
+    {
+        GD.Print($"Added {bubbleTime}s");
+        _timer += bubbleTime;
+    }
+
+    public void SpawnBubble(Vector3? pos = null)
+    {
+        pos ??= GlobalPosition;
+        var bubble = (Bubble)_bubbleScene.Instantiate();
+        
+        AddChild(bubble);
+        bubble.SetGlobalPosition(pos.Value);
+        bubble.SetRotation(Vector3.Zero);
+
+        bubble.InitialX = pos.Value.X;
+        
+        bubble.SetLinearVelocity(new Vector3(0, 2, 0));
     }
 
     public override void _Process(double delta)
     {
         _bubbles = GetChildren().Cast<Bubble>().ToList();
+
+        if (!(_timer > 0)) return;
+
+        _remainingTimeTillNext -= delta;
+
+        if (_remainingTimeTillNext <= 0)
+        {
+            SpawnBubble();
+            _remainingTimeTillNext = _spawnTime;
+        }
+
+        _timer -= (float)delta;
     }
 
     public bool CheckBubbleHit(Vector3 clickPos)

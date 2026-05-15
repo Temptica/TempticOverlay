@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+using TwitcherSharp.Extensions;
+using TwitcherSharp.Reward;
 using Timer = Godot.Timer;
 
 namespace Temptica.Overlay.Scripts;
@@ -22,14 +23,18 @@ public partial class OtterSprite : MeshInstance3D
 	private Timer _explosionTimer;
 	private Timer _awaitingVtuberTimer;
 	private static CameraFeed CameraFeed { get; set; }
+	private TwitchRedeemListener PixelateRedeemListener { get; set; }
+	private TwitchReward _pixelateMoreReward;
 
-	private sealed record ChunkData(RigidBody3D Chunk, Vector3 TargetPosition, Vector3 TargetScale);
+	private sealed record ChunkData(RigidBody3D Chunk, Vector3 TargetPosition);
 
 	private List<ChunkData> _activeChunks = [];
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_pixelateMoreReward = TwitchReward.FromObject(GD.Load<GodotObject>("res://Twitcher/pixelate_more.tres"));
+		
 		if(!TrySetVtuber()){
 			_awaitingVtuberTimer = new Timer();
 			AddChild(_awaitingVtuberTimer);
@@ -43,7 +48,8 @@ public partial class OtterSprite : MeshInstance3D
 			};
 		}
 
-		OtterSignalRListener.Pixelate += (_, _) =>
+		PixelateRedeemListener = this.GetTwitcherNode<TwitchRedeemListener>("./PixelateListener");
+		PixelateRedeemListener.Redeemed += _ => 
 		{
 			if (_pixelatedEndTime == null)
 			{
@@ -79,6 +85,8 @@ public partial class OtterSprite : MeshInstance3D
 		_pixelatedEndTime = DateTime.Now.AddSeconds(60);
 		MaterialOverride = _pixelShader;
 		_pixelShader.SetShaderParameter(ParameterDivisions, 64);
+		PixelateRedeemListener.AddReward(_pixelateMoreReward);
+		PixelateRedeemListener.EnsureSubscription();
 	}
 
 	private void HalfPixels()
@@ -86,7 +94,7 @@ public partial class OtterSprite : MeshInstance3D
 		var pixels = _pixelShader.GetShaderParameter(ParameterDivisions).AsInt32();
 		if (pixels == 4)
 		{
-			Overlay.SignalRService.PixelateEnd();
+			//Overlay.SignalRService.PixelateEnd();
 			_pixelShader.SetShaderParameter(ParameterDivisions, 24);
 			ExplodeAvatar().RunSynchronously();
 			return;
@@ -146,7 +154,7 @@ public partial class OtterSprite : MeshInstance3D
 
 				chunkNode.Scale = initialChunkScale;
 
-				var chunkData = new ChunkData(chunkNode, startPosition, initialChunkScale);
+				var chunkData = new ChunkData(chunkNode, startPosition);
 				_activeChunks.Add(chunkData);
 
 				var mesh = chunkNode.GetNode<MeshInstance3D>("MeshInstance3D");
@@ -177,7 +185,7 @@ public partial class OtterSprite : MeshInstance3D
 		await ToSignal(GetTree().CreateTimer(7f), Timer.SignalName.Timeout);
 
 		// 5. Rollback Phase: Visually collect the pieces back to the original spot
-		await RollbackChunks(0.75f); // Rollback over 0.75 seconds
+		await RollbackChunks(); // Rollback over 0.75 seconds
 
 		// 6. Final Reset and "Build"
 		ResetAfterExplosion();
@@ -195,8 +203,8 @@ public partial class OtterSprite : MeshInstance3D
 		return textureImage.GetPixel(pixelX, pixelY);
 	}
 
-	// Rollback logic using Tweens, and awaiting the first Tween's completion
-	private async Task RollbackChunks(float duration)
+	// Rollback logic using Tweens and awaiting the first Tween's completion
+	private async Task RollbackChunks()
 	{
 		MaterialOverride = _defaultMaterial;
 
@@ -206,7 +214,7 @@ public partial class OtterSprite : MeshInstance3D
 		//modulate to white
 		chunkTween.SetParallel();
 
-		foreach (var (chunk, targetPosition, _) in _activeChunks) // Iterate over the new structure
+		foreach (var (chunk, targetPosition) in _activeChunks) // Iterate over the new structure
 		{
 			// Stop physics and movement
 			chunk.PhysicsMaterialOverride = null;
@@ -229,7 +237,7 @@ public partial class OtterSprite : MeshInstance3D
 
 		var tweenFade = CreateTween();
 		tweenFade.SetParallel();
-		foreach (var (chunk, targetPosition, _) in _activeChunks)
+		foreach (var (chunk, targetPosition) in _activeChunks)
 		{
 			tweenFade
 				.TweenProperty(chunk, "global_position", targetPosition + new Vector3(10, -10, 0),
@@ -252,7 +260,7 @@ public partial class OtterSprite : MeshInstance3D
 
 		_activeChunks.Clear();
 		_pixelatedEndTime = null;
-		Overlay.SignalRService.PixelateEnd();
+		//Overlay.SignalRService.PixelateEnd();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -262,6 +270,6 @@ public partial class OtterSprite : MeshInstance3D
 		_pixelatedEndTime = null;
 		MaterialOverride = null;
 
-		Overlay.SignalRService.PixelateEnd();
+		//Overlay.SignalRService.PixelateEnd();
 	}
 }

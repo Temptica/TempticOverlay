@@ -20,9 +20,9 @@ public partial class Peepo : RigidBody3D
 		_selectedSprite = Sprites[new Random().Next(0, Sprites.Length)];
 		_selectedSprite.Visible = true;
 		//add animation here which is a child of the sprite
-		_animationPlayer = _parashute.GetNode<AnimationPlayer>("AnimationPlayer");
+		_animationPlayer = _parashute.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
 		_animationPlayer.Play("JumpOut");
-		_timeTillStartMoving = _animationPlayer.CurrentAnimationLength;
+		_timeTillStartMoving = _animationPlayer?.CurrentAnimationLength ?? 0;
 		
 		Freeze = true;		
 		LinearVelocity = new Vector3((float)(new Random().NextDouble() - 0.5f), -0.1f, 0);

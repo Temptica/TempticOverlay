@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temptica.Overlay", "Temptic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temptica.GodotExtensions", "..\Temptica.GodotExtensions\Temptica.GodotExtensions.csproj", "{A7DBE4EB-2CE1-4812-B28B-E98D99020C62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitcherSharp", "..\TwitcherSharp\TwitcherSharp\TwitcherSharp.csproj", "{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 	Debug|Any CPU = Debug|Any CPUs
@@ -29,5 +31,11 @@ Global
 		{A7DBE4EB-2CE1-4812-B28B-E98D99020C62}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{A7DBE4EB-2CE1-4812-B28B-E98D99020C62}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{A7DBE4EB-2CE1-4812-B28B-E98D99020C62}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8A9884-ADB5-4C9C-829F-4CE348F452AA}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://civ2xy4ofwrew"]
+[gd_scene format=3 uid="uid://civ2xy4ofwrew"]
 
 [ext_resource type="Script" uid="uid://bvfvq58m75t1j" path="res://Scripts/Otter.cs" id="1_k1tal"]
 [ext_resource type="Shader" uid="uid://bwg53kks7sq8h" path="res://shaders/fire.gdshader" id="2_41g6y"]
@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://ctbbya07tdwcl" path="res://Scripts/OtterSprite.cs" id="4_hwjwp"]
 [ext_resource type="Material" uid="uid://d0s6g1co4e1vj" path="res://shaders/PixelOtterShader.tres" id="4_jfof8"]
 [ext_resource type="PackedScene" uid="uid://c0jhrvmnpg8s8" path="res://Scenes/ExplosionChunk.tscn" id="5_hwjwp"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="7_b32j1"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="8_b32j1"]
+[ext_resource type="Script" uid="uid://bufkk5qtekmhc" path="res://Scenes/otter_spoud.gd" id="8_nyc70"]
+[ext_resource type="Resource" uid="uid://b5k803kpo321v" path="res://Twitcher/pixelate.tres" id="9_nn1tx"]
+[ext_resource type="Resource" uid="uid://diysdotngdhfx" path="res://Twitcher/pixelate_more.tres" id="10_nn1tx"]
+[ext_resource type="Script" uid="uid://cj7ec73yr4qi1" path="res://addons/twitcher/chat/twitch_command_contains.gd" id="12_3rayt"]
+[ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="13_bwdi7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hxfwx"]
 radius = 0.407332
@@ -34,28 +41,30 @@ size = Vector2(2, 2)
 [sub_resource type="PlaneMesh" id="PlaneMesh_jfof8"]
 size = Vector2(6.4, 3.6)
 
-[node name="OtterCollision" type="StaticBody3D" node_paths=PackedStringArray("_thisIsFine", "_animation")]
-collision_layer = 512
+[sub_resource type="ImageTexture" id="ImageTexture_qjcdg"]
+
+[node name="OtterCollision" type="StaticBody3D" unique_id=154524125 node_paths=PackedStringArray("_thisIsFine", "_animation")]
+collision_layer = 4608
 collision_mask = 256
 script = ExtResource("1_k1tal")
 _thisIsFine = NodePath("This is fine")
 _animation = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1120848161]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2037114593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000208832, -0.461, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_hxfwx")
 
-[node name="This is fine" type="MeshInstance3D" parent="."]
+[node name="This is fine" type="MeshInstance3D" parent="." unique_id=1863753811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.0389019)
 visible = false
 sorting_offset = -1.0
 mesh = SubResource("QuadMesh_mymt5")
 skeleton = NodePath("../OtterCollision")
 
-[node name="VNyanOtter" type="MeshInstance3D" parent="."]
+[node name="VNyanOtter" type="MeshInstance3D" parent="." unique_id=1936075483]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 visible = false
 material_override = ExtResource("3_5hy4m")
@@ -64,4 +73,28 @@ script = ExtResource("4_hwjwp")
 _pixelShader = ExtResource("4_jfof8")
 _chunkScene = ExtResource("5_hwjwp")
 
-[node name="NodeBoop" type="Marker3D" parent="."]
+[node name="PixelateListener" type="Node" parent="VNyanOtter" unique_id=1778735911]
+script = ExtResource("7_b32j1")
+rewards_to_listen = Array[ExtResource("8_b32j1")]([ExtResource("9_nn1tx"), ExtResource("10_nn1tx")])
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="NodeBoop" type="Marker3D" parent="." unique_id=453575696]
+
+[node name="OtterSpoud" type="Sprite3D" parent="." unique_id=1927612007]
+texture = SubResource("ImageTexture_qjcdg")
+script = ExtResource("8_nyc70")
+
+[node name="ThisIsFineCommandListener" type="Node" parent="." unique_id=611478863]
+script = ExtResource("12_3rayt")
+contains = Array[String](["This is fine", "fire", "ThisIsFine", "BeholdThis"])
+permission_level = 31
+listen_to_chatrooms = Array[String](["temptic404"])
+metadata/_custom_type_script = "uid://cj7ec73yr4qi1"
+
+[node name="SquishCommandListener" type="Node" parent="." unique_id=1465978441]
+script = ExtResource("13_bwdi7")
+command = "Squish"
+description = "Squishes the otter"
+permission_level = 31
+listen_to_chatrooms = Array[String](["temptic404"])
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"

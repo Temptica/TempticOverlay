@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cr5ustxnnty0q"]
+
+[ext_resource type="Script" uid="uid://5f85hg5iqo01" path="res://Scripts/Spawners/Spawnables/TempticBlob.cs" id="1_r2bnu"]
+[ext_resource type="PackedScene" uid="uid://dwh3okvhg1vye" path="res://Meshes/blob-temptic.glb" id="1_tv3q4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tv3q4"]
+radius = 0.46484375
+height = 1.2304688
+
+[node name="TempticBlob" type="RigidBody3D" unique_id=1548835010]
+script = ExtResource("1_r2bnu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2116082537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56715757, 0)
+shape = SubResource("CapsuleShape3D_tv3q4")
+
+[node name="blob-temptic" parent="." unique_id=1801484410 instance=ExtResource("1_tv3q4")]
+
+[editable path="blob-temptic"]

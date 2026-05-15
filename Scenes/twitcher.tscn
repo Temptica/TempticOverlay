@@ -1,26 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://v4cbellhwmkn"]
+[gd_scene format=3 uid="uid://v4cbellhwmkn"]
 
-[ext_resource type="Script" path="res://addons/twitcher/twitcher.gd" id="1_m2ppo"]
-[ext_resource type="Script" path="res://addons/twitcher/generated/twitch_api.gd" id="2_lec3h"]
-[ext_resource type="Resource" path="res://addons/twitcher/lib/oOuch/default_key_provider.tres" id="3_h80d6"]
-[ext_resource type="Script" path="res://addons/twitcher/lib/oOuch/oauth_token.gd" id="4_6njx0"]
-[ext_resource type="Script" path="res://addons/twitcher/lib/oOuch/oauth_setting.gd" id="5_drx1n"]
-[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_eventsub.gd" id="6_183ew"]
-[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_eventsub_config.gd" id="7_s4w68"]
-[ext_resource type="Script" path="res://addons/twitcher/auth/twitch_oauth_scopes.gd" id="8_1fp8e"]
-[ext_resource type="Script" path="res://addons/twitcher/generated/twitch_user.gd" id="8_m2ppo"]
-[ext_resource type="Script" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="9_g01w8"]
-
-[sub_resource type="Resource" id="Resource_ph8hg"]
-script = ExtResource("4_6njx0")
-_identifier = "Auth-4534"
-metadata/_custom_type_script = "uid://b52xp7c23ucfk"
-
-[sub_resource type="Resource" id="Resource_wdp36"]
-script = ExtResource("5_drx1n")
-client_id = "teyb9j15742aubkd697irj10fonguv"
-client_secret = "BjRs9DrX2PxE8Sms9gRr6JpB9GmtQFE0zKalR4D9OG8="
-metadata/_custom_type_script = "uid://00xbijwpi8xa"
+[ext_resource type="Script" uid="uid://dv7ewgsctdjqr" path="res://addons/twitcher/twitcher.gd" id="1_m2ppo"]
+[ext_resource type="Script" uid="uid://i8st3lv0lidh" path="res://addons/twitcher/twitch_service.gd" id="2_6njx0"]
+[ext_resource type="Script" uid="uid://cw30cwveway65" path="res://addons/twitcher/generated/twitch_api.gd" id="2_lec3h"]
+[ext_resource type="Resource" uid="uid://2pd6shsp3bas" path="res://Twitcher/authSettings.tres" id="3_drx1n"]
+[ext_resource type="Script" uid="uid://blmhj3j00yk45" path="res://addons/twitcher/eventsub/twitch_eventsub.gd" id="6_183ew"]
+[ext_resource type="Resource" uid="uid://crgq01d77kyku" path="res://Twitcher/TwitcherToken.tres" id="6_s4w68"]
+[ext_resource type="Script" uid="uid://cjug64e3433g0" path="res://addons/twitcher/eventsub/twitch_eventsub_config.gd" id="7_s4w68"]
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="8_m2ppo"]
+[ext_resource type="Script" uid="uid://iv0mgv0lu8b0" path="res://addons/twitcher/auth/twitch_auth.gd" id="10_s4w68"]
+[ext_resource type="Script" uid="uid://bf0wi70haua35" path="res://addons/twitcher/lib/oOuch/oauth.gd" id="11_1fp8e"]
+[ext_resource type="Resource" uid="uid://cjimlt3ctasuu" path="res://Twitcher/Scopes.tres" id="11_s4w68"]
+[ext_resource type="Script" uid="uid://blnbogtrshw4r" path="res://addons/twitcher/auth/twitch_token_handler.gd" id="12_g01w8"]
+[ext_resource type="Script" uid="uid://ch0rxi1ogjx3q" path="res://addons/twitcher/chat/twitch_command_help.gd" id="14_183ew"]
+[ext_resource type="Script" uid="uid://oqdie4boxql2" path="res://Scenes/TwitchStartup.gd" id="15_183ew"]
+[ext_resource type="Script" uid="uid://clgmqb8jjjw7d" path="res://addons/heat/heat_service.gd" id="15_s4w68"]
 
 [sub_resource type="Resource" id="Resource_lec3h"]
 script = ExtResource("8_m2ppo")
@@ -55,6 +49,17 @@ metadata/_custom_type_script = "uid://cjug64e3433g0"
 metadata/moderator_user_id_user = SubResource("Resource_h80d6")
 metadata/broadcaster_user_id_user = SubResource("Resource_lec3h")
 
+[sub_resource type="Resource" id="Resource_183ew"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
 [sub_resource type="Resource" id="Resource_ggcip"]
 script = ExtResource("7_s4w68")
 type = 6
@@ -62,15 +67,51 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_183ew")
+
+[sub_resource type="Resource" id="Resource_s4w68"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_xkl5n"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_5y8w4"]
 script = ExtResource("7_s4w68")
 type = 9
 condition = {
 &"broadcaster_user_id": "542726050",
-&"user_id": ""
+&"user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/user_id_user = SubResource("Resource_xkl5n")
+metadata/broadcaster_user_id_user = SubResource("Resource_s4w68")
+
+[sub_resource type="Resource" id="Resource_5m3hw"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_s5uvo"]
 script = ExtResource("7_s4w68")
@@ -79,6 +120,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_5m3hw")
+
+[sub_resource type="Resource" id="Resource_3le0n"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_ca6ij"]
 script = ExtResource("7_s4w68")
@@ -87,6 +140,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_3le0n")
+
+[sub_resource type="Resource" id="Resource_c31kw"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_f6gk1"]
 script = ExtResource("7_s4w68")
@@ -95,6 +160,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_c31kw")
+
+[sub_resource type="Resource" id="Resource_1ytcc"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_u21nw"]
 script = ExtResource("7_s4w68")
@@ -103,6 +180,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_1ytcc")
+
+[sub_resource type="Resource" id="Resource_rvual"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_ckw7t"]
 script = ExtResource("7_s4w68")
@@ -111,6 +200,18 @@ condition = {
 &"to_broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/to_broadcaster_user_id_user = SubResource("Resource_rvual")
+
+[sub_resource type="Resource" id="Resource_408cb"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_qy230"]
 script = ExtResource("7_s4w68")
@@ -119,6 +220,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_408cb")
+
+[sub_resource type="Resource" id="Resource_yoo1l"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_a321c"]
 script = ExtResource("7_s4w68")
@@ -128,6 +241,18 @@ condition = {
 &"reward_id": ""
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_yoo1l")
+
+[sub_resource type="Resource" id="Resource_o2i4w"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_fbgsp"]
 script = ExtResource("7_s4w68")
@@ -136,6 +261,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_o2i4w")
+
+[sub_resource type="Resource" id="Resource_uufyl"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_tkl6q"]
 script = ExtResource("7_s4w68")
@@ -144,6 +281,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_uufyl")
+
+[sub_resource type="Resource" id="Resource_2fosw"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_mcpgh"]
 script = ExtResource("7_s4w68")
@@ -152,6 +301,18 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_2fosw")
+
+[sub_resource type="Resource" id="Resource_xpbrs"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_7smwi"]
 script = ExtResource("7_s4w68")
@@ -160,6 +321,29 @@ condition = {
 &"broadcaster_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/broadcaster_user_id_user = SubResource("Resource_xpbrs")
+
+[sub_resource type="Resource" id="Resource_6e4hw"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_n0217"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_vqntc"]
 script = ExtResource("7_s4w68")
@@ -169,6 +353,30 @@ condition = {
 &"moderator_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/moderator_user_id_user = SubResource("Resource_n0217")
+metadata/broadcaster_user_id_user = SubResource("Resource_6e4hw")
+
+[sub_resource type="Resource" id="Resource_uptu0"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_5u4cy"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
 
 [sub_resource type="Resource" id="Resource_51ym4"]
 script = ExtResource("7_s4w68")
@@ -178,31 +386,114 @@ condition = {
 &"moderator_user_id": "542726050"
 }
 metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/moderator_user_id_user = SubResource("Resource_5u4cy")
+metadata/broadcaster_user_id_user = SubResource("Resource_uptu0")
 
-[sub_resource type="Resource" id="Resource_5m3hw"]
-script = ExtResource("8_1fp8e")
-used_scopes = Array[StringName]([&"bits:read", &"channel:bot", &"channel:manage:ads", &"channel:manage:broadcast", &"channel:manage:polls", &"channel:manage:predictions", &"channel:manage:raids", &"channel:manage:redemptions", &"channel:read:ads", &"channel:read:hype_train", &"channel:read:polls", &"channel:read:predictions", &"channel:read:redemptions", &"moderation:read", &"moderator:manage:chat_messages", &"moderator:manage:shoutouts", &"moderator:read:chat_messages", &"moderator:read:followers", &"moderator:read:shoutouts", &"user:read:chat", &"user:read:follows", &"user:read:subscriptions", &"user:read:emotes", &"user:write:chat", &"user:bot", &"channel:read:subscriptions"])
-metadata/_custom_type_script = "uid://b3n3et8mebjcc"
+[sub_resource type="Resource" id="Resource_c20vw"]
+script = ExtResource("8_m2ppo")
+id = "443367221"
+login = "iraddev"
+display_name = "iRadDev"
+broadcaster_type = "affiliate"
+description = "My name is Dario, I am an architect and I code and game dev. I'm working on a Tower Defence game with some RTS elements blended into it. You will see map generations, programmer's art in Krita and development in Godot 4. Enjoy!"
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/cceb39b3-01c2-41b2-9309-a9c9697372cb-profile_image-300x300.png"
+created_at = "2019-06-22T15:18:14Z"
 
-[node name="Twitcher" type="Node"]
+[sub_resource type="Resource" id="Resource_a27rs"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_klv8f"]
+script = ExtResource("7_s4w68")
+type = 9
+condition = {
+&"broadcaster_user_id": "443367221",
+&"user_id": "542726050"
+}
+metadata/_custom_type_script = "uid://cjug64e3433g0"
+metadata/user_id_user = SubResource("Resource_a27rs")
+metadata/broadcaster_user_id_user = SubResource("Resource_c20vw")
+
+[sub_resource type="Resource" id="Resource_1fp8e"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[sub_resource type="Resource" id="Resource_g01w8"]
+script = ExtResource("8_m2ppo")
+id = "542726050"
+login = "temptic404"
+display_name = "Temptic404"
+broadcaster_type = "affiliate"
+description = "A kind otter from another dimension."
+profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
+offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
+created_at = "2020-06-12T11:47:24Z"
+
+[node name="Twitcher" type="Node" unique_id=1610655127]
 script = ExtResource("1_m2ppo")
 metadata/_custom_type_script = "uid://dv7ewgsctdjqr"
 
-[node name="TwitchAPI" type="Node" parent="."]
+[node name="TwitchService" type="Node" parent="." unique_id=56984047]
+script = ExtResource("2_6njx0")
+oauth_setting = ExtResource("3_drx1n")
+scopes = ExtResource("11_s4w68")
+token = ExtResource("6_s4w68")
+metadata/_custom_type_script = "uid://i8st3lv0lidh"
+
+[node name="TwitchAPI" type="Node" parent="TwitchService" unique_id=934480034]
 script = ExtResource("2_lec3h")
-token = SubResource("Resource_ph8hg")
-oauth_setting = SubResource("Resource_wdp36")
+token = ExtResource("6_s4w68")
+oauth_setting = ExtResource("3_drx1n")
 metadata/_custom_type_script = "uid://cw30cwveway65"
 
-[node name="TwitchEventsub" type="Node" parent="." node_paths=PackedStringArray("api")]
+[node name="TwitchEventsub" type="Node" parent="TwitchService" unique_id=1115440533 node_paths=PackedStringArray("api")]
 script = ExtResource("6_183ew")
 api = NodePath("../TwitchAPI")
-_subscriptions = Array[ExtResource("7_s4w68")]([SubResource("Resource_rye8v"), SubResource("Resource_ggcip"), SubResource("Resource_5y8w4"), SubResource("Resource_s5uvo"), SubResource("Resource_ca6ij"), SubResource("Resource_f6gk1"), SubResource("Resource_u21nw"), SubResource("Resource_ckw7t"), SubResource("Resource_qy230"), SubResource("Resource_a321c"), SubResource("Resource_fbgsp"), SubResource("Resource_tkl6q"), SubResource("Resource_mcpgh"), SubResource("Resource_7smwi"), SubResource("Resource_vqntc"), SubResource("Resource_51ym4")])
-scopes = SubResource("Resource_5m3hw")
+_subscriptions = Array[ExtResource("7_s4w68")]([SubResource("Resource_rye8v"), SubResource("Resource_ggcip"), SubResource("Resource_5y8w4"), SubResource("Resource_s5uvo"), SubResource("Resource_ca6ij"), SubResource("Resource_f6gk1"), SubResource("Resource_u21nw"), SubResource("Resource_ckw7t"), SubResource("Resource_qy230"), SubResource("Resource_a321c"), SubResource("Resource_fbgsp"), SubResource("Resource_tkl6q"), SubResource("Resource_mcpgh"), SubResource("Resource_7smwi"), SubResource("Resource_vqntc"), SubResource("Resource_51ym4"), SubResource("Resource_klv8f")])
 metadata/_custom_type_script = "uid://blmhj3j00yk45"
 
-[node name="TwitchEventListener" type="Node" parent="TwitchEventsub" node_paths=PackedStringArray("eventsub")]
-script = ExtResource("9_g01w8")
-eventsub = NodePath("..")
-subscription = 9
-metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+[node name="TwitchAuth" type="Node" parent="TwitchService" unique_id=690482567]
+script = ExtResource("10_s4w68")
+oauth_setting = ExtResource("3_drx1n")
+token = ExtResource("6_s4w68")
+scopes = ExtResource("11_s4w68")
+metadata/_custom_type_script = "uid://iv0mgv0lu8b0"
+
+[node name="OAuth" type="Node" parent="TwitchService/TwitchAuth" unique_id=499759089 node_paths=PackedStringArray("token_handler")]
+script = ExtResource("11_1fp8e")
+oauth_setting = ExtResource("3_drx1n")
+scopes = ExtResource("11_s4w68")
+token_handler = NodePath("../TokenHandler")
+
+[node name="TokenHandler" type="Node" parent="TwitchService/TwitchAuth" unique_id=1034124145]
+script = ExtResource("12_g01w8")
+oauth_setting = ExtResource("3_drx1n")
+token = ExtResource("6_s4w68")
+
+[node name="TwitcherStartup" type="Node" parent="TwitchService" unique_id=447169042]
+script = ExtResource("15_183ew")
+
+[node name="TwitchCommandHelp" type="Node" parent="TwitchService" unique_id=171873367]
+script = ExtResource("14_183ew")
+sender_user = SubResource("Resource_1fp8e")
+command = "help"
+metadata/_custom_type_script = "uid://ch0rxi1ogjx3q"
+
+[node name="HeatService" type="Node" parent="." unique_id=490656152]
+script = ExtResource("15_s4w68")
+broadcaster = SubResource("Resource_g01w8")
+metadata/_custom_type_script = "uid://clgmqb8jjjw7d"

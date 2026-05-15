@@ -18,7 +18,7 @@ public partial class Bubble : RigidBody3D
     public override void _Ready()
     {
         //GlobalRotation = new Vector3(0,0,new Random().Next(0,360));
-        Scale = Vector3.One * new Random().Next(75, 126) / 100;
+        Scale = Vector3.One * (new Random().Next(75, 126) / 100f);
         BodyEntered += _ =>
         {
             if(new Random().Next(0,20)==0)

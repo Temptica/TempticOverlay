@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://coujg78c4iod3"]
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://dgh5a1q515ueh"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_2sh8s"]
 [ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_2mpiq"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_j8cjx"]
 [ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_g45pl"]
 
-[sub_resource type="Resource" id="Resource_h1iak"]
+[sub_resource type="Resource" id="Resource_swtiv"]
 script = ExtResource("1_2sh8s")
 id = "542726050"
 login = "temptic404"
@@ -20,7 +20,7 @@ created_at = "2020-06-12T11:47:24Z"
 [resource]
 script = ExtResource("5_g45pl")
 id = "eb597f9c-fdac-4a09-b75d-db83ea1c76d5"
-broadcaster_user = SubResource("Resource_h1iak")
+broadcaster_user = SubResource("Resource_swtiv")
 title = "Timeout Somebody Else"
 description = "Time out another user for a random amount of times between 10 and 60 secodns. User not found!"
 cost = 404

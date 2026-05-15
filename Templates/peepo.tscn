@@ -46,7 +46,7 @@ _data = {
 height = 1.32887
 
 [node name="Peepo" type="RigidBody3D" node_paths=PackedStringArray("Sprites", "_parashute")]
-collision_layer = 16
+collision_layer = 4112
 collision_mask = 49
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_6bjmt")
@@ -59,7 +59,7 @@ Sprites = []
 _parashute = NodePath("JumperSprite")
 
 [node name="JumperSprite" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0416636, 0.0196838, 0)
+transform = Transform3D(0.100000024, 0, 0, 0, 0.100000024, 0, 0, 0, 0.100000024, 0.0416636, 0.0196838, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="JumperSprite"]
 root_node = NodePath("../..")

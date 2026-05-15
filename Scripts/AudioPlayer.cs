@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Alerts;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
 using Temptica.Overlay.Scripts.Spotify;
 
 namespace Temptica.Overlay.Scripts;
@@ -58,15 +56,15 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.HaveYouEverHadADream, GD.Load<AudioStream>("res://AudioFiles/HaveYouEverHadADream.mp3") },
             { AudioEffects.Quack, GD.Load<AudioStream>("res://AudioFiles/quack_5.mp3") },
             { AudioEffects.Toothless, GD.Load<AudioStream>("res://AudioFiles/Toothless.mp3") },
-            { AudioEffects.ILoveRepo, GD.Load<AudioStream>("res://AudioFiles/ILoveRepo.mp3")},
-            { AudioEffects.Meow, GD.Load<AudioStream>("res://AudioFiles/meow.mp3")},
-            { AudioEffects.Panda, GD.Load<AudioStream>("res://AudioFiles/panda.mp3")},
-            { AudioEffects.Mags, GD.Load<AudioStream>("res://AudioFiles/TRON-a-user_onlyvocals.mp3")},
-            {AudioEffects.IntoTheThickOfIt, GD.Load<AudioStream>("res://AudioFiles/IntoTheThickOfIt.mp3")}
+            { AudioEffects.ILoveRepo, GD.Load<AudioStream>("res://AudioFiles/ILoveRepo.mp3") },
+            { AudioEffects.Meow, GD.Load<AudioStream>("res://AudioFiles/meow.mp3") },
+            { AudioEffects.Panda, GD.Load<AudioStream>("res://AudioFiles/panda.mp3") },
+            { AudioEffects.Mags, GD.Load<AudioStream>("res://AudioFiles/TRON-a-user_onlyvocals.mp3") },
+            { AudioEffects.IntoTheThickOfIt, GD.Load<AudioStream>("res://AudioFiles/IntoTheThickOfIt.mp3") },
+            { AudioEffects.IHeartRaid, GD.Load<AudioStream>("res://AudioFiles/IHeartRaid.mp3") },
         };
         _glow = GetNode<Glow>("%Glow");
 
-        PlayAudioListener.PlayAudio += PlayAudio;
         MaxPolyphony = 5;
     }
 
@@ -76,9 +74,9 @@ public partial class AudioPlayer : AudioStreamPlayer
         AudioEffects.Whip
     ];
 
-    private void PlayAudio(object sender, string e)
+    private void PlayAudio(string soundName)
     {
-        if (e.Equals("Spooky", StringComparison.OrdinalIgnoreCase))
+        if (soundName.Equals("Spooky", StringComparison.OrdinalIgnoreCase))
         {
             var random = _spookySounds[new Random().Next(0, _spookySounds.Length)];
 
@@ -86,7 +84,7 @@ public partial class AudioPlayer : AudioStreamPlayer
             return;
         }
 
-        if (Enum.TryParse(e, out AudioEffects effect2))
+        if (Enum.TryParse(soundName, out AudioEffects effect2))
         {
             if (SpamAudioPlayer.Spamables.Contains(effect2))
             {
@@ -98,7 +96,7 @@ public partial class AudioPlayer : AudioStreamPlayer
             return;
         }
 
-        GD.Print($"Audio effect {e} not found");
+        GD.Print($"Audio effect {soundName} not found");
     }
 
     public static void PlayAudio(AudioEffects e)
@@ -118,14 +116,14 @@ public partial class AudioPlayer : AudioStreamPlayer
         switch (NextStream[0])
         {
             case AudioEffects.Flash:
-                _glow.PlayFlashBang();
+                OverlayColorManager.Instance.PlayFlashBang();
                 break;
             case AudioEffects.Eww:
             case AudioEffects.HaveYouEverHadADream:
                 _ = Task.Run(async () =>
                 {
                     await SpotifyService.Pause();
-                    var timeout = (int)Math.Round(stream.GetLength() * 1000);
+                    timeout = (int)Math.Round(stream.GetLength() * 1000);
                     GD.Print(timeout);
                     await Task.Delay(timeout);
                     await SpotifyService.Resume();

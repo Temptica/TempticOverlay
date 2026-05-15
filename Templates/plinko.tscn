@@ -53,6 +53,7 @@ mesh = SubResource("BoxMesh_bo7nq")
 
 [node name="RigidBody3D" type="StaticBody3D" parent="MovingWall"]
 collision_layer = 32
+collision_mask = 16
 physics_material_override = SubResource("PhysicsMaterial_pcmfl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingWall/RigidBody3D"]
@@ -139,5 +140,5 @@ skeleton = NodePath("../..")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../MovingWall")
 libraries = {
-"": SubResource("AnimationLibrary_6c0gl")
+&"": SubResource("AnimationLibrary_6c0gl")
 }

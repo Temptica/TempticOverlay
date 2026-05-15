@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Godot;
 using SpotifyAPI.Web;
+using TwitcherSharp.Chat;
 
 namespace Temptica.Overlay.Scripts.Spotify;
 
@@ -133,7 +134,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
             resultString = trackName + $" requested by {CurrentSongRequest.Value.Value}";
             return true;
         }
-        
+
         if (SongsToSkip.Contains(trackName))
         {
             _ = Skip();
@@ -146,10 +147,11 @@ public class SpotifyService(AccessTokenService accessTokenService)
             {
                 SongRequestQueue.Remove(CurrentSongRequest.Value.Key);
             }
+
             CurrentSongRequest = new KeyValuePair<string, string>(trackName, value);
 
             resultString = trackName + $" requested by {CurrentSongRequest.Value.Value}";
-            
+
             return true;
         }
 
@@ -204,55 +206,47 @@ public class SpotifyService(AccessTokenService accessTokenService)
     /// <summary>
     /// Add song name to queue
     /// </summary>
-    /// <param name="name">song name</param>
+    /// <param name="songName">song name</param>
     /// <param name="username">name of the user who requested it</param>
     /// <returns></returns>
     /// <exception cref="SongNotFoundException"></exception>
-    public static async Task<string> AddSongToQueue(string name, string username)
+    public static async Task<string> AddSongToQueue(string songName, string username)
     {
-        var response = $"@{username}: ";
         try
         {
-            var result = await _spotify.Search.Item(new SearchRequest(SearchRequest.Types.Track, name));
-            if (result.Tracks.Items?.First() is null) throw new SongNotFoundException("No songs found");
+            var result = await _spotify.Search.Item(new SearchRequest(SearchRequest.Types.Track, songName));
+            if (result.Tracks.Items?[0] is null) throw new SongNotFoundException("No songs found");
 
             try
             {
-                var track = result.Tracks.Items.First();
+                var track = result.Tracks.Items[0];
 
                 var req = new PlayerAddToQueueRequest(track.Uri);
-                var songName = GetTrackName(track);
+                var trackName = GetTrackName(track);
 
-
-                if (SongRequestQueue.TryAdd(songName, username))
+                if (SongRequestQueue.TryAdd(trackName, username))
                 {
                     var queueNumber = SongRequestQueue.Count;
-                    response += $"Added {songName} to queue ({queueNumber})";
                     await _spotify.Player.AddToQueue(req);
 
-                    return response;
+                    return $"Added {trackName} to queue ({queueNumber})";
                 }
 
-                var existingQueueNumber = SongRequestQueue.Keys.ToList().IndexOf(songName);
+                var existingQueueNumber = SongRequestQueue.Keys.ToList().IndexOf(trackName);
 
-                response += $"{name} could not be added to queue ({existingQueueNumber}).";
+                return $"{songName} could not be added to queue as it already exists: ({existingQueueNumber}).";
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //GD.PrintErr(e);
-                if (response == $"@{username}: ")
-                    response += $"{name} Could not be added."; //sometimes add to que does add while throwing an error
-                return response;
+                return $"{songName} Could not be added."; //sometimes add to que does add while throwing an error
             }
-
-            return response;
         }
         catch (Exception e)
         {
             GD.Print(e.Message);
         }
 
-        return response + $"{name} Could not be added.";
+        return $"{songName} Could not be added.";
     }
 
     public static async Task Pause()
@@ -372,7 +366,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
         await _spotify.Player.AddToQueue(new PlayerAddToQueueRequest("spotify:track:" + songId));
     }
 
-    public static void SkipLastRequest(string username)
+    public static void SkipLastRequest(string username, string messageId = null)
     {
         try
         {
@@ -380,13 +374,23 @@ public class SpotifyService(AccessTokenService accessTokenService)
 
             SongRequestQueue.Remove(lastRequest.Key);
             SongsToSkip.Add(lastRequest.Key);
-            Overlay.SignalRService.SendChatMessage($"@{username}: {lastRequest.Key} will be skipped! (Might take a few seconds)");
-
+            _ = TwitchChat.Instance.SendMessage(
+                $"@{username}: {lastRequest.Key} will be skipped! (Might take a few seconds)", messageId);
         }
         catch (Exception)
         {
-            Overlay.SignalRService.SendChatMessage($"@{username}: You don't have any songs in the queue.");
+            _ = TwitchChat.Instance.SendMessage($"@{username}: You don't have any songs in the queue.", messageId);
         }
+    }
+
+    public static async Task<string> AddTrackToQueue(string trackId, string username)
+    {
+        await PlaySong(trackId);
+        var track = GetTrackName(await _spotify.Tracks.Get(trackId));
+        SongRequestQueue.Add(track, username);
+
+        var queueNumber = SongRequestQueue.Count;
+        return $"Added {track} to queue ({queueNumber})";
     }
 }
 

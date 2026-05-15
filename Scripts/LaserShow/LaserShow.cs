@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Scripts.Alerts;
-using Temptica.Overlay.Scripts.Services;
 using Temptica.Overlay.Scripts.Spotify;
 
 namespace Temptica.Overlay.Scripts.LaserShow;
@@ -115,7 +114,7 @@ public partial class LaserShow : Node3D
             }
         }
 
-        _audioListener.StartPartyMode();
+        //_audioListener.StartPartyMode();
         AlertQueue.StopAlerts();
 
 

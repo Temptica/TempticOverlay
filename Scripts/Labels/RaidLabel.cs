@@ -1,5 +1,4 @@
 using Godot;
-using Temptica.Overlay.Scripts.Models;
 
 namespace Temptica.Overlay.Scripts.Labels;
 
@@ -25,9 +24,9 @@ public partial class RaidLabel : Label3D
         _textSet = true;
     }
 
-    public static void OnAlert(object sender, OverlayAlert e)
+    public static void OnAlert(string user, int amount)
     {
-        _textToSet = $"{e.User} ({e.Amount})";
+        _textToSet = $"{user} ({amount})";
         
         _textSet = false;
     }

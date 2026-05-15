@@ -1,29 +1,25 @@
 using Godot;
 using Temptica.Overlay.Scripts.Services;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+
 
 namespace Temptica.Overlay.Scripts.Labels;
 
 public partial class FirstViewerLabel : Label3D
 {
-    private static string _textToSet = "Be the first!";
-    private static bool _textSet;
-    
-    public override async void _Ready()
-    {
-        SetFirstListener.SetFirst += SetFirst;
-        Text = await new ApiService().GetFirstViewer();
-    }
-    public override void _Process(double delta)
-    {
-        if (_textSet) return;
-        Text = _textToSet;
-        _textSet = true;
-    }
+	private static string _textToSet = "It's definitely Noor!";
+	private static bool _textSet;
+	
+	public override async void _Ready()
+	{
+		ChatListener.Instance.StreamNewChatMessage += SetFirst;
+		Text = await new ApiService().GetFirstViewer();
+	}
 
-    private void SetFirst(object sender, string e)
-    {
-        _textToSet = e;
-        _textSet = false;
-    }
+	private void SetFirst(string userName)
+	{
+		if(_textSet) return;
+		_textToSet = userName;
+		Text = _textToSet;
+		_textSet = true;
+	}
 }

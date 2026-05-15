@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://5ax8uo4al57h"]
+[gd_scene load_steps=2 format=3 uid="uid://5ax8uo4al57h"]
 
 [ext_resource type="Script" uid="uid://caticvqpqa37v" path="res://Scenes/MainMenu.cs" id="1_l6cm7"]
 
-[node name="MainMenu" type="Control" unique_id=529129077]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=436360891]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,18 +19,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=693163340]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Normal" type="Button" parent="CenterContainer/HBoxContainer" unique_id=1477203590]
+[node name="Normal" type="Button" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_right = NodePath("../CoStream")
 focus_next = NodePath("../CoStream")
 theme_override_font_sizes/font_size = 32
 text = "Normal overlay"
 
-[node name="CoStream" type="Button" parent="CenterContainer/HBoxContainer" unique_id=297639213]
+[node name="CoStream" type="Button" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Normal")
 focus_previous = NodePath("../Normal")

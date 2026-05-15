@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4nxeh7fakmc"]
+[gd_scene format=3 uid="uid://d4nxeh7fakmc"]
 
 [ext_resource type="Script" uid="uid://bjqhrk4ryhb5o" path="res://Scripts/AdTimer.cs" id="1_m3ea2"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_wieh2"]
+[ext_resource type="Script" uid="uid://bol5ltrjr6ux8" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="3_s0838"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="4_mh7pj"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_g8jcv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5m2uk"]
 material = ExtResource("1_wieh2")
@@ -18,32 +21,42 @@ size = Vector3(4, 0.25, 0.01)
 material = ExtResource("1_wieh2")
 size = Vector3(0.1, 0.5, 0.01)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1683639707]
 
-[node name="AdTimer" type="Node3D" parent="." node_paths=PackedStringArray("_adMesh", "_adLabel")]
+[node name="AdTimer" type="Node3D" parent="." unique_id=1434749658 node_paths=PackedStringArray("_adMesh", "_adLabel")]
 script = ExtResource("1_m3ea2")
 _adMesh = NodePath("FrontMeshInstance")
 _adLabel = NodePath("Label3D")
 
-[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="AdTimer"]
+[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="AdTimer" unique_id=1636152414]
 mesh = SubResource("BoxMesh_5m2uk")
 
-[node name="FrontMeshInstance" type="MeshInstance3D" parent="AdTimer"]
+[node name="FrontMeshInstance" type="MeshInstance3D" parent="AdTimer" unique_id=2127455068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
 mesh = SubResource("BoxMesh_76ges")
 
-[node name="Label3D" type="Label3D" parent="AdTimer"]
+[node name="Label3D" type="Label3D" parent="AdTimer" unique_id=350352551]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.052124)
 text = "Ads in 0 seconds	"
 
-[node name="DisplayBox2" type="MeshInstance3D" parent="."]
+[node name="AdsStartedEventListener" type="Node" parent="AdTimer" unique_id=1886474790]
+script = ExtResource("3_s0838")
+subscription = 6
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="DisplayBox2" type="MeshInstance3D" parent="." unique_id=883974312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64044, 0.325256, -0.0109863)
 mesh = SubResource("BoxMesh_m4vq4")
 
-[node name="DisplayBox3" type="MeshInstance3D" parent="."]
+[node name="DisplayBox3" type="MeshInstance3D" parent="." unique_id=678864719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75884, 0.318054, -0.0109863)
 mesh = SubResource("BoxMesh_m4vq4")
 
-[node name="DisplayBox4" type="MeshInstance3D" parent="."]
+[node name="DisplayBox4" type="MeshInstance3D" parent="." unique_id=2123125173]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.15316, 7.24792e-05, -0.0109863)
 mesh = SubResource("BoxMesh_m4vq4")
+
+[node name="TwitchRedeemListener" type="Node" parent="." unique_id=1406061271]
+script = ExtResource("4_mh7pj")
+rewards_to_listen = Array[ExtResource("5_g8jcv")]([null])
+metadata/_custom_type_script = "uid://b8b32wrju6f63"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://diysdotngdhfx"]
+
+[ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_5htux"]
+[ext_resource type="Texture2D" uid="uid://bnde37257f2m6" path="res://addons/twitcher/assets/default-2.png" id="3_x8fpb"]
+[ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_16a15"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_dw6if"]
+
+[resource]
+script = ExtResource("5_dw6if")
+title = "Pixelate More"
+is_max_per_user_per_stream_enabled = true
+max_per_user_per_stream = 1
+metadata/_custom_type_script = "uid://yxws8ofwmdiy"

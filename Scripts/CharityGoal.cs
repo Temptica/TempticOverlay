@@ -1,6 +1,9 @@
 using System;
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+using TwitcherSharp.Api.Generated.Charity;
+using TwitcherSharp.EventSub;
+using TwitcherSharp.EventSub.Generated.CharityCampaignProgress;
+
 
 namespace Temptica.Overlay.Scripts;
 
@@ -18,13 +21,20 @@ public partial class CharityGoal : Node3D
     {
         //listen to signalR
         //first send a request to get the time until the next ad
-
-        GenericSignalRListener.CharityChanged += (_, tuple) =>
+        
+        var eventListener = new TwitchEventListener<TwitchCharityCampaignProgressEvent>();
+        
+        eventListener.SubscriptionDefinition = TwitchEventSubDefinition.ChannelCharityCampaignProgress;
+        
+        AddChild(eventListener.ToGodotObject() as Node);
+        
+        eventListener.Received += eventData =>
         {
-            _currentAmount = tuple.current;
-            _totalAmount = tuple.goal;
+            
+            _currentAmount = eventData.CurrentAmount.Value / Math.Pow(10f,eventData.CurrentAmount.DecimalPlaces);
+            _totalAmount = eventData.TargetAmount.Value / Math.Pow(10f,eventData.TargetAmount.DecimalPlaces);
 
-            _text = $"Charity: {_currentAmount}/{_totalAmount} {tuple.currency}";
+            _text = $"Charity: {_currentAmount}/{_totalAmount} {eventData.CurrentAmount.Currency}";
             _changed = true;
         };
     }

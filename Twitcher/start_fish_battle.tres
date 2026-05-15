@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TwitchReward" load_steps=7 format=3 uid="uid://bgkoqhpgy5eg0"]
+[gd_resource type="Resource" script_class="TwitchReward" format=3 uid="uid://ba7jsdwabwwqo"]
 
 [ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_x8cxq"]
 [ext_resource type="Texture2D" uid="uid://co54e4bvuxyg4" path="res://addons/twitcher/assets/default-1.png" id="2_kmjeo"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cywqsjbcrlg4i" path="res://addons/twitcher/assets/default-4.png" id="4_y4ndp"]
 [ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="5_xsbyx"]
 
-[sub_resource type="Resource" id="Resource_h1iak"]
+[sub_resource type="Resource" id="Resource_swtiv"]
 script = ExtResource("1_x8cxq")
 id = "542726050"
 login = "temptic404"
@@ -20,7 +20,7 @@ created_at = "2020-06-12T11:47:24Z"
 [resource]
 script = ExtResource("5_xsbyx")
 id = "680ec365-35fe-4264-bb02-fe98448851f9"
-broadcaster_user = SubResource("Resource_h1iak")
+broadcaster_user = SubResource("Resource_swtiv")
 title = "Start Fish Battle"
 description = "Starts an epic Fish battle where you can predict with channel points on a fish color. 4 Fish colors will then battle in a 1V1 duel. The winner of each duel will go to the final round! Will you win?"
 cost = 500

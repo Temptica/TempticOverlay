@@ -41,5 +41,6 @@ public enum AudioEffects
     Meow,
     Panda,
     Mags,
-    IntoTheThickOfIt
+    IntoTheThickOfIt,
+    IHeartRaid,
 }

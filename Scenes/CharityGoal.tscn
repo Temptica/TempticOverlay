@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctccth1pj3ukh"]
+[gd_scene format=3 uid="uid://ctccth1pj3ukh"]
 
 [ext_resource type="Script" uid="uid://de72egb5u46vv" path="res://Scripts/CharityGoal.cs" id="1_gv7sd"]
 [ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="2_yapip"]
+[ext_resource type="Script" uid="uid://bol5ltrjr6ux8" path="res://addons/twitcher/eventsub/twitch_event_listener.gd" id="3_xhnmh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yiatj"]
 material = ExtResource("2_yapip")
@@ -18,33 +19,37 @@ size = Vector3(4, 0.25, 0.01)
 material = ExtResource("2_yapip")
 size = Vector3(0.1, 0.5, 0.01)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1824960087]
 
-[node name="CharityGoal" type="Node3D" parent="." node_paths=PackedStringArray("_mesh", "_label")]
+[node name="CharityGoal" type="Node3D" parent="." unique_id=1756217839 node_paths=PackedStringArray("_mesh", "_label")]
 script = ExtResource("1_gv7sd")
 _mesh = NodePath("FrontMeshInstance")
 _label = NodePath("Label3D")
 
-[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="CharityGoal"]
+[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="CharityGoal" unique_id=349127054]
 mesh = SubResource("BoxMesh_yiatj")
 
-[node name="FrontMeshInstance" type="MeshInstance3D" parent="CharityGoal"]
+[node name="FrontMeshInstance" type="MeshInstance3D" parent="CharityGoal" unique_id=436320054]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
 mesh = SubResource("BoxMesh_82iad")
 
-[node name="Label3D" type="Label3D" parent="CharityGoal"]
+[node name="Label3D" type="Label3D" parent="CharityGoal" unique_id=261881714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.052124)
 text = "0/0"
 
-[node name="DisplayBox2" type="MeshInstance3D" parent="."]
+[node name="TwitchEventListener" type="Node" parent="CharityGoal" unique_id=1653257693]
+script = ExtResource("3_xhnmh")
+metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="DisplayBox2" type="MeshInstance3D" parent="." unique_id=1408892474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64044, 0.325256, -0.0109863)
 mesh = SubResource("BoxMesh_xhdaa")
 
-[node name="DisplayBox3" type="MeshInstance3D" parent="."]
+[node name="DisplayBox3" type="MeshInstance3D" parent="." unique_id=1365391936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75884, 0.318054, -0.0109863)
 mesh = SubResource("BoxMesh_xhdaa")
 
-[node name="DisplayBox4" type="MeshInstance3D" parent="."]
+[node name="DisplayBox4" type="MeshInstance3D" parent="." unique_id=856882427]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.15316, 7.24792e-05, -0.0109863)
 visible = false
 mesh = SubResource("BoxMesh_xhdaa")

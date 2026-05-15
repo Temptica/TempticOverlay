@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TwitchUser" format=3 uid="uid://qrbqrq4mbwyr"]
+
+[ext_resource type="Script" uid="uid://cnmohrdxqihr0" path="res://addons/twitcher/generated/twitch_user.gd" id="1_cn0g8"]
+
+[resource]
+script = ExtResource("1_cn0g8")
+id = "714505079"
+login = "temptic_bot"
+display_name = "temptic_bot"
+metadata/_custom_type_script = "uid://cnmohrdxqihr0"

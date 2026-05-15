@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://exxv880gb2q1"]
+[gd_scene format=3 uid="uid://exxv880gb2q1"]
 
 [ext_resource type="Script" uid="uid://jkyuyw6jp3bo" path="res://Scripts/Winter/SnowballSpawner.cs" id="1_neiuj"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="2_rju3s"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="3_7n05i"]
+[ext_resource type="Resource" uid="uid://q4ngnv7w8dhu" path="res://Twitcher/snowball.tres" id="4_cwgl0"]
 
-[node name="SnowballSpawner" type="Node3D"]
+[node name="SnowballSpawner" type="Node3D" unique_id=898603412]
 script = ExtResource("1_neiuj")
+
+[node name="SnowballListener" type="Node" parent="." unique_id=409235805]
+script = ExtResource("2_rju3s")
+rewards_to_listen = Array[ExtResource("3_7n05i")]([ExtResource("4_cwgl0")])
+metadata/_custom_type_script = "uid://b8b32wrju6f63"

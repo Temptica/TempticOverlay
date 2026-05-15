@@ -2,12 +2,15 @@ using System;
 using Godot;
 using Temptica.GodotExtensions;
 using Temptica.Overlay.Scripts.Interfaces;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
+using TwitcherSharp.Chat;
+using TwitcherSharp.Extensions;
 
 namespace Temptica.Overlay.Scripts;
 
 public partial class Otter : StaticBody3D, IDraggable
 {
+	public Otter Instance { get; private set; }
+	
 	[Export] private MeshInstance3D _thisIsFine = null!;
 	[Export] private Sprite3D _texture = null!;
 	[Export] private AnimationPlayer _animation = null!;
@@ -28,9 +31,13 @@ public partial class Otter : StaticBody3D, IDraggable
 		_nodeBoop = GetNode<Marker3D>("NodeBoop");
 		OriginalPosition = GlobalPosition;
 		OriginalSize = Scale;
-		OtterSignalRListener.ThisIsFine += (_, _) => { RemainingTime += 10; };
 
-		OtterSignalRListener.Squish += SquishThatOtter;
+		var thisIsFineListener = this.GetTwitcherNode<TwitchCommandContains>("ThisIsFineCommandListener");
+		var squishListener = this.GetTwitcherNode<TwitchCommandContains>("SquishCommandListener");
+		
+		thisIsFineListener.CommandReceived += (_,_,_) => { RemainingTime += 10; };
+
+		squishListener.CommandReceived += (_,_,_) => { SquishThatOtter(); };
 
 		ShowHideOtterEvent += (_, show) =>
 		{
@@ -89,7 +96,7 @@ public partial class Otter : StaticBody3D, IDraggable
 		return nosePosition.DistanceTo(position) < 0.2f;
 	}
 
-	private void SquishThatOtter(object sender, EventArgs e)
+	private void SquishThatOtter()
 	{
 		if (!(_squishTimeout <= 0)) return;
 		_animation.CallAsync(AnimationPlayer.MethodName.Play,"Squish");

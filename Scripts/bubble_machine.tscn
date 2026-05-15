@@ -1,29 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwqubbq37uxa"]
+[gd_scene format=3 uid="uid://cbwqubbq37uxa"]
 
 [ext_resource type="PackedScene" uid="uid://dqm5rhv5r88dq" path="res://Materials/Pipe.glb" id="1_kulht"]
-[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://scenes/BubbleMachineSpawner.cs" id="2_5x37d"]
+[ext_resource type="Script" uid="uid://dvr7t48uvrjwk" path="res://Scenes/BubbleMachineSpawner.cs" id="2_5x37d"]
+[ext_resource type="Script" uid="uid://b8b32wrju6f63" path="res://addons/twitcher/reward/twitch_redeem_listener.gd" id="3_k5oee"]
+[ext_resource type="Script" uid="uid://yxws8ofwmdiy" path="res://addons/twitcher/reward/twitch_reward.gd" id="4_akbd5"]
+[ext_resource type="Resource" uid="uid://c7stniqm81cff" path="res://Twitcher/spawn_bubbles.tres" id="5_7phw6"]
+[ext_resource type="Script" uid="uid://c6mid3nqndryd" path="res://Scripts/Spawners/BubbleSpawner.cs" id="6_7phw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_om47i"]
 size = Vector3(0.675781, 0.735046, 0.604492)
 
-[node name="BubbleMachine" type="Node3D"]
+[node name="BubbleMachine" type="Node3D" unique_id=1570902765]
+script = ExtResource("2_5x37d")
 
-[node name="Pipe" parent="." instance=ExtResource("1_kulht")]
+[node name="SpawnBubbelsRedeemListener" type="Node" parent="." unique_id=249765212]
+script = ExtResource("3_k5oee")
+rewards_to_listen = Array[ExtResource("4_akbd5")]([ExtResource("5_7phw6")])
+metadata/_custom_type_script = "uid://b8b32wrju6f63"
+
+[node name="Pipe" parent="." unique_id=381054717 instance=ExtResource("1_kulht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247803, 0, -0.0518799)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=483312782]
 transform = Transform3D(0.802078, 0, -0.597219, 0, 1, 0, 0.597219, 0, 0.802078, 0, 0, 1.27711)
 light_energy = 0.127
 
-[node name="BubblesSpawner" type="Node3D" parent="." node_paths=PackedStringArray("_bubbleMachineSpawner")]
+[node name="BubblesSpawner" type="Node3D" parent="." unique_id=431474299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030014, 0.482345, 0.34638)
-script = ExtResource("2_5x37d")
-_bubbleMachineSpawner = NodePath("..")
+script = ExtResource("6_7phw6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 2048
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1795342843]
+collision_layer = 8192
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=787912457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162109, 0.323578, 0.112793)
 shape = SubResource("BoxShape3D_om47i")

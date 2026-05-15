@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsb7y1uddpgft"]
+[gd_scene load_steps=3 format=3 uid="uid://bsb7y1uddpgft"]
 
 [ext_resource type="Script" uid="uid://e0b3ued3kc0m" path="res://Scripts/Spawners/CannonLauncher.cs" id="1_giaa8"]
+[ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="2_ydubi"]
 
 [node name="PlushySpawner" type="Node3D"]
 script = ExtResource("1_giaa8")
+SpawnRate = null
+
+[node name="ThrowCommand" type="Node" parent="."]
+script = ExtResource("2_ydubi")
+command = "throw"
+listen_to_chatrooms = Array[String](["temptic404"])
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="ThrowBeanCommand" type="Node" parent="."]
+script = ExtResource("2_ydubi")
+command = "bean"
+aliases = Array[String](["b"])
+listen_to_chatrooms = Array[String](["iraddev", "temptic404"])
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"

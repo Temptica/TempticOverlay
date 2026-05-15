@@ -1,36 +1,49 @@
 using System;
 using System.Threading.Tasks;
 using Godot;
-using Temptica.Overlay.Scripts.Services;
-using Temptica.Overlay.Scripts.SignalR;
 using Temptica.Overlay.Scripts.Spotify;
+using TwitcherSharp;
+using TwitcherSharp.Api.Generated;
+using TwitcherSharp.Api.Generated.Users;
+using TwitcherSharp.Chat;
+using TwitcherSharp.Extensions;
 
 namespace Temptica.Overlay.Scripts;
 
 public partial class Overlay : Node3D
 {
-	public static SignalRService SignalRService { get; private set; }
+	private static SpotifyService SpotifyService { get; set; }
+	public static string BroadcasterId => BroadcastUser.Id; //542726050
+	public static TwitchUser BroadcastUser { get; private set; }
 
-	public static SpotifyService SpotifyService { get; private set; }
-
-	private static WebSocketService _webSocketService;
-
-	public override void _Ready()
+	public override async void _Ready()
 	{
-		SignalRService = new SignalRService();
-		_webSocketService = new WebSocketService();
-		
-		var tokens = new AccessTokenService();
-		
-		tokens.LoadTokens();
-		SpotifyService = new SpotifyService(tokens);
-		_ = Task.Run(async () => await SpotifyService.Initialize());
-	}
+		try
+		{
+			var tokens = new AccessTokenService();
+			tokens.LoadTokens();
+			SpotifyService = new SpotifyService(tokens);
 
-	public override void _Notification(int what)
-	{
-		if (what != NotificationCrash && what != NotificationWMCloseRequest) return;
-		SignalRService.DisposeAsync().AsTask().RunSynchronously();
-		_webSocketService.Dispose();
+			var test = new Node();
+			test.SetTwitcherSharp(TwitchService.Instance);
+			test.GetTwitcherSharp<TwitchService>();
+			test.RemoveTwitcherSharp();
+			test.HasTwitcherSharp();
+			
+			await TwitchService.Instance.Setup();
+			BroadcastUser = (await TwitchApi.Instance.GetUsers()).Data[0];
+			
+			TwitchChat.CreateInstance(x =>
+			{
+				x.BroadcasterUser = BroadcastUser;
+				x.SenderUser = BroadcastUser;
+			});
+		
+			_ = Task.Run(async () => await SpotifyService.Initialize());
+		}
+		catch (Exception e)
+		{
+			GD.PushError(e);
+		}
 	}
 }

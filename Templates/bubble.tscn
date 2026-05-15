@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6wsfj3ojirv3"]
+[gd_scene format=3 uid="uid://b6wsfj3ojirv3"]
 
 [ext_resource type="Texture2D" uid="uid://d18fvfrom1rr" path="res://Images/Bubble.png" id="1_cvigm"]
 [ext_resource type="Script" uid="uid://ctiq12do7kocd" path="res://Scripts/Spawners/Spawnables/Bubble.cs" id="1_khv37"]
@@ -53,7 +53,7 @@ _data = {
 &"wobble": SubResource("Animation_k2l0h")
 }
 
-[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("_animationPlayer")]
+[node name="Bubble" type="RigidBody3D" unique_id=1436957093 node_paths=PackedStringArray("_animationPlayer")]
 collision_layer = 4
 collision_mask = 6
 axis_lock_linear_z = true
@@ -68,17 +68,16 @@ max_contacts_reported = 1
 linear_damp = 1.0
 angular_velocity = Vector3(0, 0, 0.872665)
 script = ExtResource("1_khv37")
-Frequency = 1.0
 _animationPlayer = NodePath("AnimationPlayer")
+Frequency = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1911171024]
 shape = SubResource("SphereShape3D_vgyt1")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=98833814]
 pixel_size = 0.001
+billboard = 2
 texture = ExtResource("1_cvigm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y28uj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=927794503]
+libraries/ = SubResource("AnimationLibrary_y28uj")

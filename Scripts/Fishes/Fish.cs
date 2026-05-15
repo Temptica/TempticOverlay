@@ -90,7 +90,7 @@ public partial class Fish : RigidBody3D
 	{	//10% chance to spawn a bubble
 		if (body is Fish && new Random().Next(0, 10) == 0)
 		{
-			BubbleSpawner.SpawnBubble?.Invoke(this, GlobalTransform.Origin);
+			BubbleSpawner.Instance.SpawnBubble(GlobalTransform.Origin);
 		}
 	}
 

@@ -1,11 +1,12 @@
 using System;
-using System.Globalization;
+using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Easter;
 using Temptica.Overlay.Scripts.Fishes;
 using Temptica.Overlay.Scripts.Labels;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
+using Temptica.Overlay.Scripts.Models;
+using Temptica.Overlay.Scripts.Services;
 using Temptica.Overlay.Scripts.Spawners;
 using BubbleSpawner = Temptica.Overlay.Scripts.Spawners.BubbleSpawner;
 using SnowSpawner = Temptica.Overlay.Scenes.SnowSpawner;
@@ -14,68 +15,82 @@ namespace Temptica.Overlay.Scripts;
 
 public partial class OverlayClicker : Node3D
 {
-    private PackedScene _clickScene;
-    private BubbleSpawner _bubbleSpawner;
-    [Export] private EggSpawner _eggSpawner;
-    [Export] private Otter _otter;
+	private PackedScene _clickScene;
+	[Export] private EggSpawner _eggSpawner;
+	[Export] private Otter _otter;
 
-    public override async void _Ready()
-    {
-        _clickScene = GD.Load<PackedScene>("res://Templates/click.tscn");
-        _bubbleSpawner = GetNode<BubbleSpawner>("%BubbleSpawner");
+	public override void _Ready()
+	{
+		_clickScene = GD.Load<PackedScene>("res://Templates/click.tscn");
+	}
 
-        OverlayClickListener.OverlayClick += async (_, model) =>
-        {
-            var click = (Click)_clickScene.Instantiate();
-            click.OverlayClickModel = model;
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            AddChild(click);
+	public override async void _Input(InputEvent @event)
+	{
+		var userId = @event.Get("user_id").AsString();
+		if (string.IsNullOrEmpty(userId) || @event is not InputEventMouseButton mouseButtonEvent) return;
+		
+		//click event
+		if (userId.StartsWith('U')) return;
 
-            var x = float.Parse(model.X, CultureInfo.InvariantCulture);
-            var y = float.Parse(model.Y, CultureInfo.InvariantCulture);
+		var user = userId.StartsWith('A') 
+			? new User { Id = userId, Username = "Anonymous" } 
+			: await UserService.Instance.GetOrCreateUser(userId);
 
-            var clickPos = new Vector3(x * 16f, 9f - y * 9f, 0);
-            var clickPos2D = new Vector2(clickPos.X, clickPos.Y);
-            
-            SnowSpawner.CheckPackages(clickPos2D, model.Username);
+		var clickModel = new OverlayClickModel(mouseButtonEvent.Position.X, mouseButtonEvent.Position.Y,
+			user.Username, userId, user.Color);
+		await OnClick(clickModel);
+	}
 
-            //Nose boops
-            if (_otter.IsNoseClick(clickPos))
-            {
-                ClickCounterDisplay.UpdateNose();
-                if (new Random().Next(0, 100) < 1)
-                {
-                    AudioPlayer.PlayAudio(AudioEffects.Otter3);
-                }
-            }
+	private async Task OnClick(OverlayClickModel clickModel)
+	{
+		var click = (Click)_clickScene.Instantiate();
+		click.OverlayClickModel = clickModel;
 
-            //check hits any of teh fishes
-            if (FishSpawner.CheckFishesHit(clickPos2D, model.Username, out var points))
-            {
-                Overlay.SignalRService.FishClicked(model.Username, points);
-            }
+		AddChild(click);
+		
+		if(clickModel.Anonymous) return;
 
-            if (RandomTrashSpawner.CheckTrashHit(clickPos2D, model.Username,
-                    out var pointsTrash))
-            {
-                Overlay.SignalRService.TrashClicked(model.Username, pointsTrash);
-            }
+		var x = clickModel.X;
+		var y = clickModel.Y;
 
-            if (_eggSpawner.IsEggHit(clickPos2D, out var eggType))
-            {
-                Overlay.SignalRService.EggClicked(model.Username, (int)eggType!.Value);
-                return;
-            }
-            
-            Overlay.SignalRService.Clicked(model.Username);
+		var clickPos = new Vector3(x * 16f, 9f - y * 9f, 0);
+		var clickPos2D = new Vector2(clickPos.X, clickPos.Y);
 
-            if (_bubbleSpawner.CheckBubbleHit(clickPos))
-                return;
+		SnowSpawner.CheckPackages(clickPos2D, clickModel.Username);
 
-            if (new Random().Next(0, 10) < 3)
-            {
-                BubbleSpawner.SpawnBubble?.Invoke(this, clickPos);
-            }
-        };
-    }
+		//Nose boops
+		if (_otter.IsNoseClick(clickPos))
+		{
+			ClickCounterDisplay.UpdateNose();
+			if (new Random().Next(0, 100) < 3)
+			{
+				AudioPlayer.PlayAudio(AudioEffects.Otter3);
+			}
+		}
+
+		//check hits any of teh fishes
+		if (FishSpawner.CheckFishesHit(clickPos2D, clickModel.Username, out var points))
+		{
+			
+		}
+
+		if (RandomTrashSpawner.CheckTrashHit(clickPos2D, clickModel.Username,
+				out var pointsTrash))
+		{
+			
+		}
+
+		if (await _eggSpawner.IsEggHit(clickPos2D, clickModel))
+		{
+			return;
+		}
+
+		if (BubbleSpawner.Instance.CheckBubbleHit(clickPos))
+			return;
+
+		if (new Random().Next(0, 10) < 3)
+		{
+			BubbleSpawner.Instance.SpawnBubble(clickPos);
+		}
+	}
 }

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Godot;
-using Temptica.Overlay.Scripts.SignalR.Listeners;
-using Temptica.Overlay.Scripts.SignalR.Listeners.GameListeners;
 using Temptica.Overlay.Scripts.Spawners.Spawnables;
+using TwitcherSharp.Chat;
 
 namespace Temptica.Overlay.Scripts.Spawners;
 
@@ -11,7 +11,8 @@ public enum LaunchAbles
 {
     Godot,
     Bean,
-    Banana
+    Banana,
+    Blob,
 }
 
 public partial class CannonLauncher : Node3D
@@ -22,6 +23,7 @@ public partial class CannonLauncher : Node3D
     private PackedScene _godotThrowable;
     private PackedScene _beanThrowable;
     private PackedScene _bananaThrowable;
+    private PackedScene _blobThrowable;
 
     private readonly Queue<LaunchAbles> _itemsToSpawn = [];
 
@@ -31,18 +33,54 @@ public partial class CannonLauncher : Node3D
         _godotThrowable = GD.Load<PackedScene>("res://Templates/godot_plushie.tscn");
         _beanThrowable = GD.Load<PackedScene>("res://Templates/bean.tscn");
         _bananaThrowable = GD.Load<PackedScene>("res://Templates/banana.tscn");
+        _blobThrowable = GD.Load<PackedScene>("res://Templates/TempticBlob.tscn");
 
-        ThrowPlushieListener.OnThrowPlushie += (_, _) =>
+        var throwCommand = TwitchCommand.FromObject(GetNode<GodotObject>("ThrowCommand"));
+
+        throwCommand.CommandReceived += (_, _, args) =>
         {
+            var textInfo = new CultureInfo("en-US", false).TextInfo;
+
+            if (args.Length > 0 && Enum.TryParse<LaunchAbles>(textInfo.ToTitleCase(args[0]), out var launchAble))
+            {
+                _itemsToSpawn.Enqueue(launchAble);
+                return;
+            }
+
             var items = Enum.GetValues<LaunchAbles>();
-            var randomItem =  items[new Random().Next(0, items.Length)];
+            var randomItem = items[new Random().Next(0, items.Length)];
             _itemsToSpawn.Enqueue(randomItem);
         };
-        SpawnersListener.OnSpawnBean += (_, _) => _itemsToSpawn.Enqueue(LaunchAbles.Bean);
+
+        var throwBeanCommand = TwitchCommand.FromObject(GetNode<GodotObject>("ThrowBeanCommand"));
+        
+        throwBeanCommand.CommandReceived += (_, _, args) =>
+        {
+            if (args.Length > 0 && int.TryParse(args[0], out var count))
+            {
+                count = count > 69 ? 69 : count;
+                for (var i = 0; i < count; i++)
+                {
+                    _itemsToSpawn.Enqueue(LaunchAbles.Bean);
+                }
+
+                return;
+            }
+
+            _itemsToSpawn.Enqueue(LaunchAbles.Bean);
+        };
     }
 
     public override void _Process(double delta)
     {
+        if (_itemsToSpawn.Count == 0) return;
+        if (_itemsToSpawn.Peek() == LaunchAbles.Bean)
+        {
+            _itemsToSpawn.Dequeue();
+            LaunchBean();
+            return;
+        }
+
         if (_timeTillNextSpawn < SpawnRate)
         {
             _timeTillNextSpawn += delta;
@@ -62,35 +100,45 @@ public partial class CannonLauncher : Node3D
             case LaunchAbles.Banana:
                 LaunchBanana();
                 break;
+            case LaunchAbles.Blob:
+                LaunchBlob();
+                break;
         }
 
         _timeTillNextSpawn = 0;
     }
 
+    private void LaunchBlob()
+    {
+        var blob = _blobThrowable.Instantiate<TempticBlob>();
+        LaunchItem(blob);
+    }
+
     private void LaunchBanana()
     {
-        var banana = _bananaThrowable.Instantiate<RigidBody3D>();
+        var banana = _bananaThrowable.Instantiate<Banana>();
         LaunchItem(banana);
     }
 
-    private void LaunchItem(RigidBody3D banana)
+    private void LaunchItem(Spawnable spawnable)
     {
-        AddChild(banana);
-        banana.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
+        AddChild(spawnable);
+        spawnable.GlobalPosition = new Vector3(GlobalPosition.X, GlobalPosition.Y, 0);
 
-        var velocity = CalculateShotVelocity(banana.GlobalPosition);
-        banana.LinearVelocity = velocity;
+        var velocity = CalculateShotVelocity(spawnable.GlobalPosition);
+        spawnable.LinearVelocity = velocity;
     }
 
     private void LaunchBean()
     {
         var bean = _beanThrowable.Instantiate<Bean>();
         LaunchItem(bean);
+        //Send a bean msg to IRadDev
     }
 
     private void LaunchGodot()
     {
-        var plushie = _godotThrowable.Instantiate<Spawnables.Plushie>();
+        var plushie = _godotThrowable.Instantiate<Plushie>();
         LaunchItem(plushie);
     }
 

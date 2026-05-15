@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="TwitchOverlay"
 config/tags=PackedStringArray("3d", "overlay")
 run/main_scene="uid://5ax8uo4al57h"
-config/features=PackedStringArray("4.5", "C#")
+config/features=PackedStringArray("4.6", "C#")
 run/max_fps=60
 
 [audio]
@@ -43,14 +43,22 @@ project/assembly_name="Temptica.Overlay"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/twitcher/plugin.cfg")
+enabled=PackedStringArray("res://addons/scene_nexus/plugin.cfg", "res://addons/twitcher/plugin.cfg")
 
 [layer_names]
 
 3d_physics/layer_2="Fish"
 3d_physics/layer_4="Map"
+3d_physics/layer_5="Peepo"
+3d_physics/layer_6="Plinco"
 3d_physics/layer_9="SnowBall"
+3d_physics/layer_10="Otter"
+3d_physics/layer_11="Spawnable"
 3d_physics/layer_12="Pixel"
+3d_physics/layer_13="Movable"
+3d_physics/layer_14="Spawner"
+3d_physics/layer_15="DragArea"
+3d_physics/layer_16="Egg"
 
 [twitcher]
 
@@ -58,8 +66,7 @@ editor/game_oauth_token="res://addons/twitcher/default_oauth_token.tres"
 editor/game_oauth_setting="res://addons/twitcher/twitch_oauth_setting.tres"
 editor/project_preset=&"Overlay"
 editor/show_setup_on_startup=false
-logs/TwitchEditorSetting="debug"
-logs/TwitchEventsub="debug"
-logs/TwitchRewardService="debug"
-"logs/Twitcher Plugin"="debug"
 editor/reward_folder="res://Twitcher"
+logs/TwitchAPI="debug"
+logs/TwitchEventListener="debug"
+logs/Http="debug"

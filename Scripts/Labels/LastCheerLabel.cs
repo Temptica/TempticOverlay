@@ -1,6 +1,4 @@
 using Godot;
-using Temptica.Overlay.Enums;
-using Temptica.Overlay.Scripts.Models;
 using Temptica.Overlay.Scripts.Services;
 
 namespace Temptica.Overlay.Scripts.Labels;
@@ -21,10 +19,9 @@ public partial class LastCheerLabel : Label3D
         _textSet = true;
     }
 
-    public static void OnAlert(object sender, OverlayAlert e)
+    public static void OnAlert(string username, int amount)
     {
-        if (e.Type != AlertType.Bit) return;
-        _textToSet = $"{e.User} ({e.Amount})";
+        _textToSet = $"{username} ({amount})";
         _textSet = false;
     }
 }
