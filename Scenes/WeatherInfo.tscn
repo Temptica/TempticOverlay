@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b8x3rrnwy0jga"]
+
+[ext_resource type="Script" uid="uid://cd0ovlurg828o" path="res://Scenes/WeatherInfo.cs" id="1_5b6xj"]
+[ext_resource type="Material" uid="uid://bj5shv77pvw56" path="res://Materials/border.tres" id="1_f41ql"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5b6xj"]
+material = ExtResource("1_f41ql")
+size = Vector3(4.02, 0.61199707, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v84ao"]
+material = ExtResource("1_f41ql")
+size = Vector3(0.1, 0.5, 0.01)
+
+[node name="WeatherInfo" type="Node3D" unique_id=1751995027]
+script = ExtResource("1_5b6xj")
+
+[node name="WeatherLabel" type="Label3D" parent="." unique_id=1826947496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9174064, 0.07164532, 0.052124)
+double_sided = false
+text = "Temp Ind: 23°C / 78°F | Hum: 50%
+Temp Out: 33.9°C / 130°F | Hum: 50%
+Wind: 2.3Kts @ 250° (7km/h or 5mph)"
+font_size = 24
+outline_size = 8
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="BackgroundMeshInstance" type="MeshInstance3D" parent="." unique_id=1725180766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17099854, 0)
+mesh = SubResource("BoxMesh_5b6xj")
+
+[node name="DisplayBox2" type="MeshInstance3D" parent="." unique_id=546101180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64044, 0.325256, -0.0109863)
+mesh = SubResource("BoxMesh_v84ao")
+
+[node name="DisplayBox3" type="MeshInstance3D" parent="." unique_id=1516675885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75884, 0.318054, -0.0109863)
+mesh = SubResource("BoxMesh_v84ao")
+
+[node name="DisplayBox4" type="MeshInstance3D" parent="." unique_id=1470616472]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.15316, 7.24792e-05, -0.0109863)
+mesh = SubResource("BoxMesh_v84ao")

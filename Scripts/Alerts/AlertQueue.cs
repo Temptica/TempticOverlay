@@ -93,7 +93,7 @@ public partial class AlertQueue : Node
     {
         var userName = data.UserName;
         var message = data.Message.Text;
-        var tier = int.Parse(data.Tier);
+        var tier = int.Parse(data.Tier)/1000;
         var cul = data.CumulativeMonths;
         var streak = data.StreakMonths;
         var tts = $"{userName} just resubscribed with a tier {tier} sub for a total of {cul} months ";
@@ -108,7 +108,7 @@ public partial class AlertQueue : Node
         }
 
         LastSubLabel.OnAlert(userName, tier);
-        FishSpawner.SpawnFishes(tier);
+        FishSpawner.SpawnFishes(tier*cul);
         _queue.Enqueue(new ReSubAlert(userName, message, tts));
     }
 

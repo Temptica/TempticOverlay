@@ -67,6 +67,3 @@ editor/game_oauth_setting="res://addons/twitcher/twitch_oauth_setting.tres"
 editor/project_preset=&"Overlay"
 editor/show_setup_on_startup=false
 editor/reward_folder="res://Twitcher"
-logs/TwitchAPI="debug"
-logs/TwitchEventListener="debug"
-logs/Http="debug"

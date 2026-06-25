@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Godot;
+using Temptica.GreenHeatSharp;
 using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Easter;
 using Temptica.Overlay.Scripts.Fishes;
@@ -26,19 +27,17 @@ public partial class OverlayClicker : Node3D
 
 	public override async void _Input(InputEvent @event)
 	{
-		var userId = @event.Get("user_id").AsString();
-		if (string.IsNullOrEmpty(userId) || @event is not InputEventMouseButton mouseButtonEvent) return;
+		var message = (@event as InputEventMouseButton)?.AsGreenHeatMessage();
+		if (message is not { Type: GreenHeatMessageType.Click }) return;
+		var userId = message.Id;
 		
-		//click event
-		if (userId.StartsWith('U')) return;
-
-		var user = userId.StartsWith('A') 
-			? new User { Id = userId, Username = "Anonymous" } 
+		var user = message.IsAnonymous!.Value
+			? new User { Id =userId, Username = "Anonymous" }
 			: await UserService.Instance.GetOrCreateUser(userId);
 
-		var clickModel = new OverlayClickModel(mouseButtonEvent.Position.X, mouseButtonEvent.Position.Y,
+		var clickModel = new OverlayClickModel(message.X, message.Y,
 			user.Username, userId, user.Color);
-		await OnClick(clickModel);
+		_ = OnClick(clickModel);
 	}
 
 	private async Task OnClick(OverlayClickModel clickModel)

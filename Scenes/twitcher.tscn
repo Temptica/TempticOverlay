@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://blnbogtrshw4r" path="res://addons/twitcher/auth/twitch_token_handler.gd" id="12_g01w8"]
 [ext_resource type="Script" uid="uid://ch0rxi1ogjx3q" path="res://addons/twitcher/chat/twitch_command_help.gd" id="14_183ew"]
 [ext_resource type="Script" uid="uid://oqdie4boxql2" path="res://Scenes/TwitchStartup.gd" id="15_183ew"]
-[ext_resource type="Script" uid="uid://clgmqb8jjjw7d" path="res://addons/heat/heat_service.gd" id="15_s4w68"]
 
 [sub_resource type="Resource" id="Resource_lec3h"]
 script = ExtResource("8_m2ppo")
@@ -432,17 +431,6 @@ profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8
 offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
 created_at = "2020-06-12T11:47:24Z"
 
-[sub_resource type="Resource" id="Resource_g01w8"]
-script = ExtResource("8_m2ppo")
-id = "542726050"
-login = "temptic404"
-display_name = "Temptic404"
-broadcaster_type = "affiliate"
-description = "A kind otter from another dimension."
-profile_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/711a47f8-2f8c-4b77-a3fd-96b6108b076b-profile_image-300x300.png"
-offline_image_url = "https://static-cdn.jtvnw.net/jtv_user_pictures/fdfc8ab8-8a5d-436c-bbd7-d4053198ba52-channel_offline_image-1920x1080.jpeg"
-created_at = "2020-06-12T11:47:24Z"
-
 [node name="Twitcher" type="Node" unique_id=1610655127]
 script = ExtResource("1_m2ppo")
 metadata/_custom_type_script = "uid://dv7ewgsctdjqr"
@@ -492,8 +480,3 @@ script = ExtResource("14_183ew")
 sender_user = SubResource("Resource_1fp8e")
 command = "help"
 metadata/_custom_type_script = "uid://ch0rxi1ogjx3q"
-
-[node name="HeatService" type="Node" parent="." unique_id=490656152]
-script = ExtResource("15_s4w68")
-broadcaster = SubResource("Resource_g01w8")
-metadata/_custom_type_script = "uid://clgmqb8jjjw7d"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6tlvfvq5npn6" path="res://Scripts/Overlay.cs" id="1_i5ik8"]
 [ext_resource type="Script" uid="uid://dudfiucao8jjg" path="res://Scripts/Labels/AlertLabels.cs" id="2_7arfu"]
+[ext_resource type="PackedScene" uid="uid://bl3um7p4suv3n" path="res://GreenHeatSharp/GreenHeatSharp.tscn" id="2_mfjki"]
 [ext_resource type="PackedScene" uid="uid://v4cbellhwmkn" path="res://Scenes/twitcher.tscn" id="2_sfgtk"]
 [ext_resource type="Script" uid="uid://bty3n42mxs51m" path="res://Scenes/OverlayColorManager.cs" id="2_wdp36"]
 [ext_resource type="LabelSettings" uid="uid://caylaw0w5pes5" path="res://MusicLabel.tres" id="3_13pte"]
@@ -38,8 +39,10 @@
 [ext_resource type="Script" uid="uid://na88o57rk0u5" path="res://Scripts/Services/NexusAuthService.cs" id="19_owi6t"]
 [ext_resource type="Script" uid="uid://lmex7dmdbcdc" path="res://Scripts/Services/ChatListener.cs" id="20_mfjki"]
 [ext_resource type="Script" uid="uid://dqpxcwyefe3sa" path="res://Scripts/Labels/MusicLabel.cs" id="20_qq534"]
+[ext_resource type="Script" uid="uid://nx1g57kl624x" path="res://Scripts/Shoutout.cs" id="21_da31f"]
 [ext_resource type="Script" uid="uid://qlv62pqtp47o" path="res://Scripts/Labels/RaidLabel.cs" id="21_j8nub"]
 [ext_resource type="PackedScene" uid="uid://cshoafwqdnsi8" path="res://Scenes/emote_show_off.tscn" id="22_bf7jj"]
+[ext_resource type="Script" uid="uid://bari4qf813ijd" path="res://Scripts/Services/WeatherService.cs" id="23_f5iqe"]
 [ext_resource type="PackedScene" uid="uid://dovrejaqxj1au" path="res://Scenes/lasershow.tscn" id="23_hx5vr"]
 [ext_resource type="Script" uid="uid://cd5lkj468njj1" path="res://Scripts/Alerts/RaidAlert/PlaneSpawner.cs" id="24_m10ky"]
 [ext_resource type="PackedScene" uid="uid://b4xjqfscsjpgl" path="res://Templates/plinko.tscn" id="25_ufvwg"]
@@ -63,6 +66,7 @@
 [ext_resource type="Script" uid="uid://bcae6jellmkon" path="res://HalloweenPlayer.cs" id="46_7arfu"]
 [ext_resource type="Texture2D" uid="uid://cyochraqbdb2h" path="res://Images/Halloween/witch-hat.png" id="46_rfovf"]
 [ext_resource type="Texture2D" uid="uid://cbpi6chsxf073" path="res://Images/Halloween/spiderweb.png" id="47_eqbbm"]
+[ext_resource type="PackedScene" uid="uid://b8x3rrnwy0jga" path="res://Scenes/WeatherInfo.tscn" id="61_vvuyk"]
 
 [sub_resource type="Resource" id="Resource_occp4"]
 script = ExtResource("7_vyv46")
@@ -374,6 +378,42 @@ should_redemptions_skip_request_queue = true
 is_global_cooldown_enabled = true
 global_cooldown_seconds = 60
 
+[sub_resource type="BoxMesh" id="BoxMesh_f5iqe"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvuyk"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.11, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7gssd"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.13, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wuwhe"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.14, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pr3iv"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.15, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k50hd"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.16, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8uk1r"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.17, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnb74"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.18, 0.2, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_da31f"]
+material = ExtResource("6_3rxmi")
+size = Vector3(0.2, 0.2, 0.05)
+
 [sub_resource type="BoxMesh" id="BoxMesh_8lxmp"]
 size = Vector3(0.6, 9, 0.05)
 
@@ -410,6 +450,11 @@ script = ExtResource("1_i5ik8")
 
 [node name="TwitchEventsub" parent="Twitcher/TwitchService" parent_id_path=PackedInt32Array(2015626794, 56984047) index="1" unique_id=1115440533]
 _subscriptions = Array[ExtResource("3_r3g3n")]([SubResource("Resource_s7h27"), SubResource("Resource_ok0o6"), SubResource("Resource_i2mln"), SubResource("Resource_n8mlp"), SubResource("Resource_owi6t"), SubResource("Resource_mfjki"), SubResource("Resource_7gssd"), SubResource("Resource_k50hd"), SubResource("Resource_8uk1r"), SubResource("Resource_rnb74"), SubResource("Resource_27gl7"), SubResource("Resource_e2rh2"), SubResource("Resource_h1wea"), SubResource("Resource_nfkib"), SubResource("Resource_8c2rx"), SubResource("Resource_52vaw"), SubResource("Resource_osa0r"), SubResource("Resource_6v2fa"), SubResource("Resource_da31f"), SubResource("Resource_f5iqe"), SubResource("Resource_sg4nt"), SubResource("Resource_yk0la"), SubResource("Resource_je1h8")])
+
+[node name="GreenHeatSharp" parent="." unique_id=152361399 instance=ExtResource("2_mfjki")]
+StreamName = "temptic404"
+SendInputEvent = true
+ConnectOnStart = true
 
 [node name="TwitchBot" parent="." unique_id=1229059104 instance=ExtResource("4_ok0o6")]
 
@@ -451,6 +496,14 @@ script = ExtResource("8_ph8hg")
 aliases = Array[String](["songrequest"])
 command = "sr"
 permission_level = 29
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="SongRequestWhitelistCommand" type="Node" parent="Services/MusicService" unique_id=739078260]
+script = ExtResource("8_ph8hg")
+aliases = Array[String](["songrequest"])
+command = "sr"
+allowed_users = Array[String](["pandacoder"])
+listen_to_chatrooms = Array[String](["temptic404"])
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
 [node name="SkipOwnRequestCommand" type="Node" parent="Services/MusicService" unique_id=502225045]
@@ -534,6 +587,9 @@ script = ExtResource("18_n8mlp")
 [node name="NexusService" type="Node" parent="Services/KaniService" unique_id=1928779592]
 script = ExtResource("19_owi6t")
 
+[node name="Shoutout" type="Node" parent="Services/KaniService" unique_id=746472034]
+script = ExtResource("21_da31f")
+
 [node name="ChatListener" type="Node" parent="Services" unique_id=570522065]
 script = ExtResource("20_mfjki")
 
@@ -542,6 +598,9 @@ script = ExtResource("10_ph8hg")
 eventsub = NodePath("../../../Twitcher/TwitchService/TwitchEventsub")
 subscription = 9
 metadata/_custom_type_script = "uid://bol5ltrjr6ux8"
+
+[node name="WeatherService" type="Node" parent="Services" unique_id=451099324]
+script = ExtResource("23_f5iqe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1333098043]
 transform = Transform3D(1, 0, 0, 0, 0.95153, 0.307556, 0, -0.307556, 0.95153, 0, 0, 0)
@@ -713,6 +772,46 @@ api = NodePath("../../../../Twitcher/TwitchService/TwitchAPI")
 ensure_subscriptions_on_ready = false
 metadata/_custom_type_script = "uid://b8b32wrju6f63"
 
+[node name="Glow2" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1174526906]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -4.074941, 0.014287233)
+mesh = SubResource("BoxMesh_f5iqe")
+
+[node name="Glow3" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1389703954]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -3.57494, 0.014289999)
+mesh = SubResource("BoxMesh_vvuyk")
+
+[node name="Glow4" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=594062565]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -3.07494, 0.014289999)
+mesh = SubResource("BoxMesh_7gssd")
+
+[node name="Glow5" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1763468865]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -2.57494, 0.014289999)
+mesh = SubResource("BoxMesh_wuwhe")
+
+[node name="Glow6" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=797288489]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -2.07494, 0.014289999)
+mesh = SubResource("BoxMesh_pr3iv")
+
+[node name="Glow7" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1959576215]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -1.57494, 0.014289999)
+mesh = SubResource("BoxMesh_k50hd")
+
+[node name="Glow8" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1072586908]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -1.07494, 0.014289999)
+mesh = SubResource("BoxMesh_8uk1r")
+
+[node name="Glow9" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=607779174]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -0.57494, 0.014289999)
+mesh = SubResource("BoxMesh_rnb74")
+
+[node name="Glow10" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1955154654]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, -0.07494, 0.014289999)
+mesh = SubResource("BoxMesh_da31f")
+
+[node name="Glow11" type="MeshInstance3D" parent="Borders/BorderLeft" unique_id=1419227427]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.05, 0.42506, 0.014289999)
+mesh = SubResource("BoxMesh_da31f")
+
 [node name="BorderRight" type="MeshInstance3D" parent="Borders" unique_id=941858901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.01843, 15.8, 4.5, 0)
 mesh = SubResource("BoxMesh_8lxmp")
@@ -731,9 +830,49 @@ shape = SubResource("BoxShape3D_j4er1")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Glow2" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=89000584]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315142, -0.00128937, 0.000520557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31514, 0.0012899997, 0.0005199997)
 mesh = SubResource("BoxMesh_lj8iq")
 skeleton = NodePath("../../BorderLeft")
+
+[node name="Glow3" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=1382820280]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 4.0749397, 0.01429)
+mesh = SubResource("BoxMesh_f5iqe")
+
+[node name="Glow4" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=2137508269]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 3.5749397, 0.01429)
+mesh = SubResource("BoxMesh_vvuyk")
+
+[node name="Glow5" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=384027593]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 3.0749397, 0.01429)
+mesh = SubResource("BoxMesh_7gssd")
+
+[node name="Glow6" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=905632741]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 2.5749397, 0.01429)
+mesh = SubResource("BoxMesh_wuwhe")
+
+[node name="Glow7" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=1836925317]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 2.0749397, 0.01429)
+mesh = SubResource("BoxMesh_pr3iv")
+
+[node name="Glow8" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=375629909]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 1.5749397, 0.01429)
+mesh = SubResource("BoxMesh_k50hd")
+
+[node name="Glow9" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=1538947173]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 1.0749397, 0.01429)
+mesh = SubResource("BoxMesh_8uk1r")
+
+[node name="Glow10" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=45649140]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 0.5749402, 0.01429)
+mesh = SubResource("BoxMesh_rnb74")
+
+[node name="Glow11" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=1779212605]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, 0.074940205, 0.01429)
+mesh = SubResource("BoxMesh_da31f")
+
+[node name="Glow12" type="MeshInstance3D" parent="Borders/BorderRight" unique_id=1874584799]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, -0.4250598, 0.01429)
+mesh = SubResource("BoxMesh_da31f")
 
 [node name="BorderTop" type="MeshInstance3D" parent="Borders" unique_id=947188150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8.85, 0)
@@ -929,6 +1068,9 @@ transform = Transform3D(1.32909, 0, 0.639647, 0, 1.475, 0, -0.639647, 0, 1.32909
 
 [node name="AdTimer" parent="." unique_id=158088791 instance=ExtResource("41_af3mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70581, 8.37343, 0)
+
+[node name="WeatherInfo" parent="AdTimer" unique_id=1751995027 instance=ExtResource("61_vvuyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41871834, 0)
 
 [node name="CharityGoal" parent="." unique_id=1321242314 instance=ExtResource("42_i5ik8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8.373, 0)

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using Temptica.Overlay.Enums;
 using Temptica.Overlay.Scripts.Alerts;
+using Temptica.Overlay.Scripts.Services;
 using Temptica.Overlay.Scripts.Spotify;
 
 namespace Temptica.Overlay.Scripts;
@@ -63,9 +64,46 @@ public partial class AudioPlayer : AudioStreamPlayer
             { AudioEffects.IntoTheThickOfIt, GD.Load<AudioStream>("res://AudioFiles/IntoTheThickOfIt.mp3") },
             { AudioEffects.IHeartRaid, GD.Load<AudioStream>("res://AudioFiles/IHeartRaid.mp3") },
         };
+        
         _glow = GetNode<Glow>("%Glow");
 
         MaxPolyphony = 5;
+
+        SetViewerSounds();
+    }
+
+    private void SetViewerSounds()
+    {
+        ChatListener.Instance.StreamNewChatMessage += userName =>
+        {
+            if (userName.Equals("qmezu", StringComparison.OrdinalIgnoreCase))
+            {
+                PlayAudio(AudioEffects.Meow);
+                return;
+            }
+
+            if (userName.Equals("booooooooooooooooooom", StringComparison.OrdinalIgnoreCase))
+            {
+                PlayAudio(AudioEffects.Fbi);
+                return;
+            }
+
+            if (userName.Equals("iheartfunnyboys", StringComparison.OrdinalIgnoreCase))
+            {
+                PlayAudio(AudioEffects.IHeartRaid);
+                return;
+            }
+
+            if (userName.Equals("xfoff", StringComparison.OrdinalIgnoreCase))
+            {
+                PlayAudio(AudioEffects.Bober);
+            }
+
+            if (userName.Equals("pandacoder", StringComparison.OrdinalIgnoreCase))
+            {
+                PlayAudio(AudioEffects.Panda);
+            }
+        };
     }
 
     private static AudioEffects[] _spookySounds =

@@ -18,10 +18,12 @@ public class SpotifyService(AccessTokenService accessTokenService)
     private const int PollRate = 2;
 
     private static KeyValuePair<string, string>? CurrentSongRequest { get; set; } = new(); //<Song name, Username>
-    private static Dictionary<string, string> SongRequestQueue { get; } = new(); //<Song name, Username>
+    private static Dictionary<string, SongRequest> SongRequestQueue { get; } = new(); //<Song name, Username>
     private static List<string> SongsToSkip { get; } = [];
 
     public static EventHandler<string> SongChanged { get; set; }
+
+    private static int _songIndex = 0;
 
 
     public async Task Initialize()
@@ -143,12 +145,12 @@ public class SpotifyService(AccessTokenService accessTokenService)
 
         if (SongRequestQueue.TryGetValue(trackName, out var value))
         {
-            if (CurrentSongRequest is { Key: not null } && CurrentSongRequest.Value.Key != value)
+            if (CurrentSongRequest is { Key: not null } && CurrentSongRequest.Value.Key != value.SongName)
             {
                 SongRequestQueue.Remove(CurrentSongRequest.Value.Key);
             }
 
-            CurrentSongRequest = new KeyValuePair<string, string>(trackName, value);
+            CurrentSongRequest = new KeyValuePair<string, string>(trackName, value.SongName);
 
             resultString = trackName + $" requested by {CurrentSongRequest.Value.Value}";
 
@@ -224,15 +226,18 @@ public class SpotifyService(AccessTokenService accessTokenService)
                 var req = new PlayerAddToQueueRequest(track.Uri);
                 var trackName = GetTrackName(track);
 
-                if (SongRequestQueue.TryAdd(trackName, username))
+                if (!SongRequestQueue.ContainsKey(trackName))
                 {
-                    var queueNumber = SongRequestQueue.Count;
                     await _spotify.Player.AddToQueue(req);
-
-                    return $"Added {trackName} to queue ({queueNumber})";
+                    var request = new SongRequest(++_songIndex, trackName, username);
+                    SongRequestQueue.Add(trackName, request);
+                    return $"Added {trackName} to queue (id: {request.Id})";
                 }
 
-                var existingQueueNumber = SongRequestQueue.Keys.ToList().IndexOf(trackName);
+                var existingQueueNumber = SongRequestQueue
+                    .Where(kvp => kvp.Value.SongName == trackName)
+                    .Select(kvp => kvp.Value.Id)
+                    .FirstOrDefault();
 
                 return $"{songName} could not be added to queue as it already exists: ({existingQueueNumber}).";
             }
@@ -370,7 +375,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
     {
         try
         {
-            var lastRequest = SongRequestQueue.Last(kvp => kvp.Value == username);
+            var lastRequest = SongRequestQueue.Last(kvp => kvp.Value.Username == username);
 
             SongRequestQueue.Remove(lastRequest.Key);
             SongsToSkip.Add(lastRequest.Key);
@@ -379,7 +384,7 @@ public class SpotifyService(AccessTokenService accessTokenService)
         }
         catch (Exception)
         {
-            _ = TwitchChat.Instance.SendMessage($"@{username}: You don't have any songs in the queue.", messageId);
+            _ = TwitchChat.Instance.SendMessage("You don't have any songs in the queue.", messageId);
         }
     }
 
@@ -387,11 +392,28 @@ public class SpotifyService(AccessTokenService accessTokenService)
     {
         await PlaySong(trackId);
         var track = GetTrackName(await _spotify.Tracks.Get(trackId));
-        SongRequestQueue.Add(track, username);
+        var request = new SongRequest(++_songIndex, track, username);
+        SongRequestQueue.Add(track, request);
 
-        var queueNumber = SongRequestQueue.Count;
-        return $"Added {track} to queue ({queueNumber})";
+        return $"Added {track} to queue (id: {request.Id})";
+    }
+
+    public static void SkipById(int result, string fromUsername, string chatMessageMessageId)
+    {
+        var song = SongRequestQueue.FirstOrDefault(kvp => kvp.Value.Id == result).Value;
+        if (song is null || song.Username != fromUsername)
+        {
+            _ = TwitchChat.Instance.SendMessage("You don't have permission to skip this song.", chatMessageMessageId);
+            return;
+        }
+
+        SongRequestQueue.Remove(song.SongName);
+        SongsToSkip.Add(song.SongName);
+        _ = TwitchChat.Instance.SendMessage(
+            $"{song.SongName} will be skipped! (Might take a few seconds)", chatMessageMessageId);
     }
 }
 
 public class SongNotFoundException(string message = "") : Exception(message);
+
+public record SongRequest(int Id, string SongName, string Username);

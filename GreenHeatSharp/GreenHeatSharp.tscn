@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bl3um7p4suv3n"]
+
+[ext_resource type="Script" uid="uid://c70mny2w4m0mc" path="res://GreenHeatSharp/GreenHeatSharp.cs" id="1_hxo4c"]
+
+[node name="GreenHeatSharp" type="Node" unique_id=152361399]
+script = ExtResource("1_hxo4c")

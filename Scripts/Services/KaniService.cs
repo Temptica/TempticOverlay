@@ -85,9 +85,9 @@ public partial class KaniService : Node
     public async Task<List<string>> GetAllEggNames()
     {
         await CheckToken();
-        
+
         var request = RequestHelper.CreateRequest(HttpMethod.Get, "eggs?select=name");
-        
+
         var response = await _client.SendAsync(request);
         if (!response.IsSuccessStatusCode)
         {
@@ -105,6 +105,11 @@ public partial class KaniService : Node
         {
             await _nexusAuthService.FetchToken();
 
+            if (_client.DefaultRequestHeaders.Contains("Authorization"))
+            {
+                _client.DefaultRequestHeaders.Remove("Authorization");
+            }
+
             _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {AccessToken}");
         }
     }
@@ -112,7 +117,7 @@ public partial class KaniService : Node
     public async Task<EggMetaData> GetEggData(string eggName)
     {
         await CheckToken();
-        
+
         var request = RequestHelper.CreateRequest(HttpMethod.Get, $"eggs?name=eq.{eggName}");
         var response = await _client.SendAsync(request);
         if (!response.IsSuccessStatusCode)
@@ -169,14 +174,38 @@ public partial class KaniService : Node
         return eggs;
     }
 
-    public async Task<string> GetShoutout(string userId)
+    public async Task<ShoutoutMessage> GetShoutout(string userId)
     {
         await CheckToken();
 
-        var request = RequestHelper.CreateRequest(HttpMethod.Get, $"shoutout?twitch_id=eq.{userId}");
+        var request = RequestHelper.CreateRequest(HttpMethod.Get, $"shoutout?twitch_id=eq.{userId}&select=message");
         var response = await _client.SendAsync(request);
-        var json = await response.Content.ReadAsStringAsync();
-        return json;
+        var data = await response.Content.ReadFromJsonAsync<List<ShoutoutMessage>>();
+        return data.FirstOrDefault();
+    }
+
+    public async Task SetShoutout(string userId, string message)
+    {
+        var msg = new ShoutoutMessage()
+        {
+            TwitchId = userId,
+            Message = message,
+            Color = "primary",
+        };
+        
+        await CheckToken();
+        
+        var request = RequestHelper.CreateRequest(HttpMethod.Post, "shoutout?twitch_id=eq." + userId);
+        request.Headers.Add("Prefer", "resolution=merge-duplicates");
+
+
+        request.Content = new StringContent(JsonConvert.SerializeObject(msg), Encoding.UTF8, "application/json");
+        var response = await _client.SendAsync(request);
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorMsg = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Failed to set shoutout: {response.StatusCode}: {errorMsg}");
+        }
     }
 }
 

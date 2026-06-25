@@ -31,9 +31,5 @@ public partial class ChatListener : Node
 		
 		UsersJoined.Add(userName);
 		EmitSignalStreamNewChatMessage(userName);
-		
-		
-		messageEvent.Unreference();
 	}
-	
 }
