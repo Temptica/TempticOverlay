@@ -67,6 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://cyochraqbdb2h" path="res://Images/Halloween/witch-hat.png" id="46_rfovf"]
 [ext_resource type="Texture2D" uid="uid://cbpi6chsxf073" path="res://Images/Halloween/spiderweb.png" id="47_eqbbm"]
 [ext_resource type="PackedScene" uid="uid://b8x3rrnwy0jga" path="res://Scenes/WeatherInfo.tscn" id="61_vvuyk"]
+[ext_resource type="PackedScene" uid="uid://c7rw3nfx2ekq5" path="res://Scenes/weather_effects.tscn" id="62_wfx01"]
 
 [sub_resource type="Resource" id="Resource_occp4"]
 script = ExtResource("7_vyv46")
@@ -1031,6 +1032,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363289, 9, 0)
 
 [node name="Fireworks" parent="Spawners" unique_id=2082389167 instance=ExtResource("35_a5vxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75819, -8.37807, -94.7414)
+
+[node name="WeatherEffects" parent="Spawners" unique_id=1408260917 instance=ExtResource("62_wfx01")]
 
 [node name="Aurora" parent="Spawners" unique_id=120680835 instance=ExtResource("36_k7nao")]
 transform = Transform3D(2.99, 0, 0, 0, 2.99, 0, 0, 0, 2.99, 7.47829, 8.27757, -9.22199)

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c7rw3nfx2ekq5"]
+
+[ext_resource type="Script" uid="uid://bq6w1m4etn3xa" path="res://Scenes/WeatherEffects.cs" id="1_wfx01"]
+[ext_resource type="Texture2D" uid="uid://eke0uc70f41q" path="res://Images/Winter/Snowflake.png" id="2_wfx02"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rain"]
+emission_shape = 3
+emission_box_extents = Vector3(9, 0.1, 1)
+direction = Vector3(0, -1, 0)
+spread = 2.0
+initial_velocity_min = 14.0
+initial_velocity_max = 18.0
+gravity = Vector3(0, -4, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rain"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.72, 0.82, 1, 0.55)
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_rain"]
+material = SubResource("StandardMaterial3D_rain")
+size = Vector2(0.02, 0.4)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_snow"]
+emission_shape = 3
+emission_box_extents = Vector3(9, 0.1, 1)
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 0.6
+initial_velocity_max = 1.0
+gravity = Vector3(0, -0.2, 0)
+angle_min = -180.0
+angle_max = 180.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+scale_min = 0.6
+scale_max = 1.2
+turbulence_enabled = true
+turbulence_noise_strength = 0.6
+turbulence_noise_scale = 6.0
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snow"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_wfx02")
+billboard_mode = 3
+
+[sub_resource type="QuadMesh" id="QuadMesh_snow"]
+material = SubResource("StandardMaterial3D_snow")
+size = Vector2(0.15, 0.15)
+
+[node name="WeatherEffects" type="Node3D" node_paths=PackedStringArray("_rain", "_snow") unique_id=1408260917]
+script = ExtResource("1_wfx01")
+_rain = NodePath("Rain")
+_snow = NodePath("Snow")
+
+[node name="Rain" type="GPUParticles3D" parent="." unique_id=873214560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 10, 1)
+emitting = false
+amount = 1500
+lifetime = 1.0
+visibility_aabb = AABB(-10, -12, -2, 20, 13, 4)
+process_material = SubResource("ParticleProcessMaterial_rain")
+draw_pass_1 = SubResource("QuadMesh_rain")
+
+[node name="Snow" type="GPUParticles3D" parent="." unique_id=1592734018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 10, 1)
+emitting = false
+amount = 600
+lifetime = 9.0
+visibility_aabb = AABB(-10, -12, -2, 20, 13, 4)
+process_material = SubResource("ParticleProcessMaterial_snow")
+draw_pass_1 = SubResource("QuadMesh_snow")
