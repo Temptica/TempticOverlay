@@ -28,6 +28,10 @@ driver/output_latency=1
 driver/enable_input=true
 driver/mix_rate=48000
 
+[autoload]
+
+WindowTitleService="*res://Scripts/Services/WindowTitleService.cs"
+
 [display]
 
 window/size/viewport_width=1920
